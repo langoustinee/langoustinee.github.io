@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Jooney's git blog"
+title                    : "lango's blog"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Jooney"
+subtitle                 : "찍먹? 부먹? 난 부먹 개발자."
+name                     : "lango"
 description              : "my git blog"
 url                      : "https://jooney-95.github.io"
 baseurl                  : ""
