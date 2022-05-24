@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 2884번 - lango’s blog</title>
-<meta name="description" content="알람시계-조건문">
+<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 2525번 - lango’s blog</title>
+<meta name="description" content="오븐시계-조건문">
 
 
   <meta name="author" content="Your Name">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="lango's blog">
-<meta property="og:title" content="[알고리즘 스터디] 백준 2884번">
-<meta property="og:url" content="http://localhost:4000/blog/3-post/">
+<meta property="og:title" content="[알고리즘 스터디] 백준 2525번">
+<meta property="og:url" content="http://localhost:4000/blog/4-post/">
 
 
-  <meta property="og:description" content="알람시계-조건문">
+  <meta property="og:description" content="오븐시계-조건문">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/blog/3-post/">
+<link rel="canonical" href="http://localhost:4000/blog/4-post/">
 
 
 
@@ -249,8 +249,8 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[알고리즘 스터디] 백준 2884번">
-    <meta itemprop="description" content="알람시계-조건문">
+    <meta itemprop="headline" content="[알고리즘 스터디] 백준 2525번">
+    <meta itemprop="description" content="오븐시계-조건문">
     <meta itemprop="datePublished" content="2022-05-24T00:00:00+09:00">
     
 
@@ -258,7 +258,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/blog/3-post/" class="u-url" itemprop="url">[알고리즘 스터디] 백준 2884번
+            <a href="http://localhost:4000/blog/4-post/" class="u-url" itemprop="url">[알고리즘 스터디] 백준 2525번
 </a>
           </h1>
           
@@ -290,46 +290,40 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</a><ul><li><a href="#문제-1">문제-1</a><ul><li><a href="#문제해결-1">문제해결-1</a></li></ul></li><li><a href="#문제-2">문제-2</a><ul><li><a href="#문제해결-2">문제해결-2</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#2525번-오븐시계">2525번 오븐시계</a><ul><li><a href="#문제">문제</a><ul><li><a href="#문제해결">문제해결</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</h1>
-<p>첫째 줄에 두 정수 H와 M이 주어진다. (0 ≤ H ≤ 23, 0 ≤ M ≤ 59) 그리고 이것은 현재 상근이가 설정한 놓은 알람 시간 H시 M분을 의미한다.
-입력 시간은 24시간 표현을 사용한다. 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)이다. 시간을 나타낼 때, 불필요한 0은 사용하지 않는다.
-Input) 10 10
-Output) 9 25</p>
+        <h1 id="2525번-오븐시계">2525번 오븐시계</h1>
+<p>첫째 줄에는 현재 시각이 나온다. 현재 시각은 시 A (0 ≤ A ≤ 23) 와 분 B (0 ≤ B ≤ 59)가 정수로 빈칸을 사이에 두고 순서대로 주어진다. 두 번째 줄에는 요리하는 데 필요한 시간 C (0 ≤ C ≤ 1,000)가 분 단위로 주어진다. 
+첫째 줄에 종료되는 시각의 시와 분을 공백을 사이에 두고 출력한다. (단, 시는 0부터 23까지의 정수, 분은 0부터 59까지의 정수이다. 디지털 시계는 23시 59분에서 1분이 지나면 0시 0분이 된다.)</p>
 
-<h2 id="문제-1">문제-1</h2>
-<p>1 40을 입력할 경우 정상값인 0 55가 아닌 0 10이라는 잘못된 출력이 나왔다.</p>
-<h3 id="문제해결-1">문제해결-1</h3>
-<p>가장 바깥쪽의 시간(h)을 비교하는 if문에서 h가 0일 때의 조건문이 elif가 아니라 if로 돌아가고 있어 오류가 발생하였다.
-h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못된 출력이 발생하였다. elif로 수정히니 정상적으로 작동하였다.</p>
+<p>Input)</p>
 
-<h2 id="문제-2">문제-2</h2>
-<p>분(m)이 45분일 경우 45분을 빼면 0분인데, 0분일 때의 경우를 생각하지 못했다.</p>
-<h3 id="문제해결-2">문제해결-2</h3>
-<p>m에서 45를 뺴서 0이면 0분 그대로 두도록 수정하였다.</p>
+<p>14 30</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">h</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="k">if</span> <span class="n">h</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">15</span>
-    <span class="k">elif</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
-<span class="k">elif</span> <span class="n">h</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">h</span><span class="o">=</span><span class="mi">23</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">15</span>
-    <span class="k">elif</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
-<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+<p>20</p>
+
+<p>Output) 14 50</p>
+
+<h2 id="문제">문제</h2>
+<p>요리시간(C)을 1000분까지 입력가능하니 분단위를 몇시간인지 알 수 있어야 했지만, 감이 잘 잡히지 않았다.</p>
+<h3 id="문제해결">문제해결</h3>
+<p>곰곰히 생각해보니 시간과 분, 요리시간을 모두 분으로 통일하여 더한 뒤 60으로 나눈 몫과 나머지가 패턴에 꼭 들어맞았다.
+시간의 경우 60을 곱하여 분으로 변환하였고 분과 요리시간은 그대로 더하였다. 
+몫의 경우 소수점을 버린 정수만 시간으로 가지고 있고 나머지를 분으로 더해주면 요리시간만큼 지난 시간값을 알 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="p">,</span><span class="n">B</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">C</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">A1</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span><span class="o">//</span><span class="mi">60</span>
+<span class="n">B1</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span><span class="o">%</span><span class="mi">60</span>
+<span class="k">if</span> <span class="n">A1</span> <span class="o">==</span> <span class="mi">24</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'0'</span><span class="p">,</span><span class="n">B1</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">A1</span> <span class="o">&gt;</span> <span class="mi">24</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">A1</span><span class="o">-</span><span class="mi">24</span><span class="p">,</span><span class="n">B1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">B1</span><span class="p">)</span>
 </code></pre></div></div>
 
         
@@ -387,23 +381,22 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5B%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EC%8A%A4%ED%84%B0%EB%94%94%5D+%EB%B0%B1%EC%A4%80+2884%EB%B2%88%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EC%8A%A4%ED%84%B0%EB%94%94%5D+%EB%B0%B1%EC%A4%80+2525%EB%B2%88%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F4-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F4-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F4-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/second-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 2588번
+      <a href="/blog/3-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 2884번
 ">Previous</a>
     
     
-      <a href="/blog/4-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 2525번
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -427,7 +420,7 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/4-post/" rel="permalink">[알고리즘 스터디] 백준 2525번
+        <a href="/blog/3-post/" rel="permalink">[알고리즘 스터디] 백준 2884번
 </a>
       
     </h2>
@@ -452,7 +445,7 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">오븐시계-조건문
+    <p class="archive__item-excerpt" itemprop="description">알람시계-조건문
 </p>
   </article>
 </div>
