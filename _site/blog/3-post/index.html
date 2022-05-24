@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>벡엔드 개발자란?(작성중) - lango’s blog</title>
-<meta name="description" content="GitHub Blog에서 포스팅을 시작하기로 하였다.">
+<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 2884번 - lango’s blog</title>
+<meta name="description" content="알람시계-조건문">
 
 
   <meta name="author" content="Your Name">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="lango's blog">
-<meta property="og:title" content="벡엔드 개발자란?(작성중)">
-<meta property="og:url" content="http://localhost:4000/blog/first-post/">
+<meta property="og:title" content="[알고리즘 스터디] 백준 2884번">
+<meta property="og:url" content="http://localhost:4000/blog/3-post/">
 
 
-  <meta property="og:description" content="GitHub Blog에서 포스팅을 시작하기로 하였다.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-05-10T00:00:00+09:00">
+  <meta property="og:description" content="알람시계-조건문">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-05-24T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/blog/first-post/">
+
+<link rel="canonical" href="http://localhost:4000/blog/3-post/">
 
 
 
@@ -249,16 +249,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="벡엔드 개발자란?(작성중)">
-    <meta itemprop="description" content="GitHub Blog에서 포스팅을 시작하기로 하였다.">
-    <meta itemprop="datePublished" content="2022-05-10T00:00:00+09:00">
+    <meta itemprop="headline" content="[알고리즘 스터디] 백준 2884번">
+    <meta itemprop="description" content="알람시계-조건문">
+    <meta itemprop="datePublished" content="2022-05-24T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/blog/first-post/" class="u-url" itemprop="url">벡엔드 개발자란?(작성중)
+            <a href="http://localhost:4000/blog/3-post/" class="u-url" itemprop="url">[알고리즘 스터디] 백준 2884번
 </a>
           </h1>
           
@@ -290,12 +290,47 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              
+              <ul class="toc__menu"><li><a href="#2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</a><ul><li><a href="#문제-1">문제-1</a><ul><li><a href="#문제해결-1">문제해결-1</a></li></ul></li><li><a href="#문제-2">문제-2</a><ul><li><a href="#문제해결-2">문제해결-2</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p>나는 왜 백엔드 개발자가 되려고 하는걸까?</p>
+        <h1 id="2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</h1>
+<p>첫째 줄에 두 정수 H와 M이 주어진다. (0 ≤ H ≤ 23, 0 ≤ M ≤ 59) 그리고 이것은 현재 상근이가 설정한 놓은 알람 시간 H시 M분을 의미한다.
+입력 시간은 24시간 표현을 사용한다. 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)이다. 시간을 나타낼 때, 불필요한 0은 사용하지 않는다.
+Input) 10 10
+Output) 9 25</p>
+
+<h2 id="문제-1">문제-1</h2>
+<p>1 40을 입력할 경우 정상값인 0 55가 아닌 0 10이라는 잘못된 출력이 나왔다.</p>
+<h3 id="문제해결-1">문제해결-1</h3>
+<p>가장 바깥쪽의 시간(h)을 비교하는 if문에서 h가 0일 때의 조건문이 elif가 아니라 if로 돌아가고 있어 오류가 발생하였다.
+h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못된 출력이 발생하였다. elif로 수정히니 정상적으로 작동하였다.</p>
+
+<h2 id="문제-2">문제-2</h2>
+<p>분(m)이 45분일 경우 45분을 빼면 0분인데, 0분일 때의 경우를 생각하지 못했다.</p>
+<h3 id="문제해결-2">문제해결-2</h3>
+<p>m에서 45를 뺴서 0이면 0분 그대로 두도록 수정하였다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">h</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">h</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">15</span>
+    <span class="k">elif</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
+<span class="k">elif</span> <span class="n">h</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">=</span><span class="mi">23</span>
+        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">15</span>
+    <span class="k">elif</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
+<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+</code></pre></div></div>
 
         
       </section>
@@ -312,13 +347,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#backend" class="page__taxonomy-item p-category" rel="tag">Backend</a><span class="sep">, </span>
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">algorithm</a><span class="sep">, </span>
+    
+      <a href="/tags/#backjoon" class="page__taxonomy-item p-category" rel="tag">Backjoon</a><span class="sep">, </span>
     
       <a href="/tags/#blog" class="page__taxonomy-item p-category" rel="tag">Blog</a><span class="sep">, </span>
     
-      <a href="/tags/#developer" class="page__taxonomy-item p-category" rel="tag">developer</a><span class="sep">, </span>
-    
-      <a href="/tags/#github" class="page__taxonomy-item p-category" rel="tag">Github</a>
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
     
     </span>
   </p>
@@ -343,7 +378,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-05-10T00:00:00+09:00">May 10, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-05-24T00:00:00+09:00">May 24, 2022</time></p>
 
       </footer>
 
@@ -352,22 +387,22 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EB%B2%A1%EC%97%94%EB%93%9C+%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%9E%80%3F%28%EC%9E%91%EC%84%B1%EC%A4%91%29%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffirst-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EC%8A%A4%ED%84%B0%EB%94%94%5D+%EB%B0%B1%EC%A4%80+2884%EB%B2%88%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffirst-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffirst-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
-    
-    
       <a href="/blog/second-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 2588번
-">Next</a>
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -381,46 +416,6 @@
     <div class="page__related">
       <h2 class="page__related-title">You may also enjoy</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/3-post/" rel="permalink">[알고리즘 스터디] 백준 2884번
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">알람시계-조건문
-</p>
-  </article>
-</div>
-
         
           
 
@@ -457,6 +452,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">코딩테스트 준비를 위해 백준에서 알고리즘 공부를 시작했다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/first-post/" rel="permalink">벡엔드 개발자란?(작성중)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog에서 포스팅을 시작하기로 하였다.
 </p>
   </article>
 </div>
