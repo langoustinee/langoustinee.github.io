@@ -1,31 +1,33 @@
-I"�	<h1 id="11021번-ab-7">11021번 A+B-7</h1>
+I"i<h1 id="11021번-ab-7">11021번 A+B-7</h1>
 <p>두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
 첫째 줄에 테스트 케이스의 개수 T가 주어진다.
 각 테스트 케이스는 한 줄로 이루어져 있으며, 각 줄에 A와 B가 주어진다. (0 &lt; A, B &lt; 10)</p>
 
 <blockquote>
-  <p>Input)
-5
-1 1
-2 3
-3 4
-9 8
+  <p>Input) <br />
+5 <br />
+1 1 <br />
+2 3 <br />
+3 4 <br />
+9 8 <br />
 5 2</p>
 </blockquote>
 
 <blockquote>
-  <p>Output)
-Case #1: 2
-Case #2: 5
-Case #3: 7
-Case #4: 17
+  <p>Output) <br />
+Case #1: 2 <br />
+Case #2: 5 <br />
+Case #3: 7 <br />
+Case #4: 17 <br />
 Case #5: 7</p>
 </blockquote>
 
 <h2 id="문제">문제</h2>
-
+<p>A+B 값의 경우는 리스트에 저장한 후 출력하면 되는데, 반복 횟수별 인덱스를 가져오는 게 문제였다.</p>
 <h2 id="문제해결">문제해결</h2>
+<p>for문을 range 범위로 리스트 갯수만큼 돌면 인덱스를 가져올 수 있기에 리스트 갯수만큼 돌며 A+B값을 함께 출력하도록 구현하였다.</p>
 
+<p>{ % highlight python linenos % }</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">T</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">T</span><span class="p">):</span>
@@ -34,4 +36,5 @@ Case #5: 7</p>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Case #'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="s">':'</span><span class="p">,</span><span class="n">l</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </code></pre></div></div>
+<p>{ % endhighlight % }</p>
 :ET

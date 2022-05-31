@@ -290,3 +290,10 @@ defaults:
       related: true
 
 theme: jekyll-theme-minimal
+
+markdown: kramdown
+kramdown:
+    highlighter: rouge
+    syntax_highlighter_opts:
+        block:
+            line_numbers: true
