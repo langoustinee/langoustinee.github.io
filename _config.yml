@@ -14,6 +14,8 @@
 # remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+published: true
+
 # Site Settings
 locale                   : "en-US"
 title                    : "lango's blog"
@@ -297,5 +299,3 @@ kramdown:
     syntax_highlighter_opts:
         block:
             line_numbers: true
-futrue: true
-published: true
