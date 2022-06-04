@@ -1,4 +1,4 @@
-I"H<h1 id="2525번-오븐시계">2525번 오븐시계</h1>
+I"�<h1 id="2525번-오븐시계">2525번 오븐시계</h1>
 <p>첫째 줄에는 현재 시각이 나온다. 현재 시각은 시 A (0 ≤ A ≤ 23) 와 분 B (0 ≤ B ≤ 59)가 정수로 빈칸을 사이에 두고 순서대로 주어진다. 두 번째 줄에는 요리하는 데 필요한 시간 C (0 ≤ C ≤ 1,000)가 분 단위로 주어진다. 
 첫째 줄에 종료되는 시각의 시와 분을 공백을 사이에 두고 출력한다. (단, 시는 0부터 23까지의 정수, 분은 0부터 59까지의 정수이다. 디지털 시계는 23시 59분에서 1분이 지나면 0시 0분이 된다.)</p>
 
@@ -17,7 +17,17 @@
 시간의 경우 60을 곱하여 분으로 변환하였고 분과 요리시간은 그대로 더하였다. 
 몫의 경우 소수점을 버린 정수만 시간으로 가지고 있고 나머지를 분으로 더해주면 요리시간만큼 지난 시간값을 알 수 있다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="p">,</span><span class="n">B</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="n">A</span><span class="p">,</span><span class="n">B</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
 <span class="n">C</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <span class="n">A1</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span><span class="o">//</span><span class="mi">60</span>
 <span class="n">B1</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span><span class="p">)</span><span class="o">%</span><span class="mi">60</span>
@@ -27,5 +37,5 @@
     <span class="k">print</span><span class="p">(</span><span class="n">A1</span><span class="o">-</span><span class="mi">24</span><span class="p">,</span><span class="n">B1</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="n">B1</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 :ET

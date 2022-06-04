@@ -34,4 +34,10 @@ var store = [{
         "tags": ["Blog","algorithm","study","Backjoon"],
         "url": "/blog/6-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디] 백준 1110번",
+        "excerpt":"1110번 더하기 사이클 0보다 크거나 같고, 99보다 작거나 같은 정수가 주어질 때 다음과 같은 연산을 할 수 있다. 먼저 주어진 수가 10보다 작다면 앞에 0을 붙여 두 자리 수로 만들고, 각 자리의 숫자를 더한다. 그 다음, 주어진 수의 가장 오른쪽 자리 수와 앞에서 구한 합의 가장 오른쪽 자리 수를 이어...","categories": ["Blog"],
+        "tags": ["Blog","algorithm","study","Backjoon"],
+        "url": "/blog/7-post/",
+        "teaser": null
       }]

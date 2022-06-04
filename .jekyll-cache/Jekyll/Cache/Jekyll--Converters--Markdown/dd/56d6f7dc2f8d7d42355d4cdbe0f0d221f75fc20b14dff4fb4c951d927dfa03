@@ -1,4 +1,4 @@
-I"L<h1 id="2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</h1>
+I"<h1 id="2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</h1>
 <p>첫째 줄에 두 정수 H와 M이 주어진다. (0 ≤ H ≤ 23, 0 ≤ M ≤ 59) 그리고 이것은 현재 상근이가 설정한 놓은 알람 시간 H시 M분을 의미한다.
 입력 시간은 24시간 표현을 사용한다. 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)이다. 시간을 나타낼 때, 불필요한 0은 사용하지 않는다.
 Input) 10 10
@@ -15,7 +15,25 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
 <h3 id="문제해결-2">문제해결-2</h3>
 <p>m에서 45를 뺴서 0이면 0분 그대로 두도록 수정하였다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">h</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="n">h</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
 <span class="k">if</span> <span class="n">h</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span>
@@ -33,5 +51,5 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
     <span class="k">else</span><span class="p">:</span>
         <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
 <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 :ET

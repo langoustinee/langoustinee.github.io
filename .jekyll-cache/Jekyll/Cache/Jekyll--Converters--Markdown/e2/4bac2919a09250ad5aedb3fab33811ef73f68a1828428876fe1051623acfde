@@ -1,5 +1,4 @@
-I"�
-<center><img src="https://d2gd6pc034wcta.cloudfront.net/images/logo@2x.png" /></center>
+I"�<center><img src="https://d2gd6pc034wcta.cloudfront.net/images/logo@2x.png" /></center>
 
 <h1 id="백준-알고리즘-스터디-시작">백준 알고리즘 스터디 시작!</h1>
 <p>코딩테스트 준비를 위해 백준에서 알고리즘 공부를 시작했다.
@@ -14,11 +13,17 @@
 <p>해결: 반복문을 통해 두번째 세자리수(B)를 거꾸로 반복하여 첫번째 세자리수(A)를 반복할 때마다 곱해주니 3, 4, 5 위치의 값을 알 수 있었다.
 <script src="https://gist.github.com/Jooney-95/c01302e3e30577e135f9027b28acf655.js"></script></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="nb">input</span><span class="p">())),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="nb">input</span><span class="p">()))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="nb">input</span><span class="p">())),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="nb">input</span><span class="p">()))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 :ET

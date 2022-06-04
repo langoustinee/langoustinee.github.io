@@ -1,4 +1,4 @@
-I"}<h1 id="2480번-주사위-세개">2480번 주사위 세개</h1>
+I"�<h1 id="2480번-주사위-세개">2480번 주사위 세개</h1>
 <p>1에서부터 6까지의 눈을 가진 3개의 주사위를 던져서 다음과 같은 규칙에 따라 상금을 받는 게임이 있다. 
 같은 눈이 3개가 나오면 10,000원+(같은 눈)×1,000원의 상금을 받게 된다. 
 같은 눈이 2개만 나오는 경우에는 1,000원+(같은 눈)×100원의 상금을 받게 된다. 
@@ -13,14 +13,21 @@
   <p>Output) 1300</p>
 </blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="mi">10000</span><span class="o">+</span><span class="n">a</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="n">c</span> <span class="ow">or</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="mi">1000</span><span class="o">+</span><span class="n">a</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>위와 같이 작성하니 1 2 2 를 입력했을 때 1200원이 아닌 1100원이 출력되었다.</p>
 
@@ -29,7 +36,18 @@
 <h2 id="문제해결">문제해결</h2>
 <p>b와 c의 같은 눈 조건문 elif를 추가로 작성하였다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="mi">10000</span><span class="o">+</span><span class="n">a</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
@@ -40,5 +58,5 @@
     <span class="k">print</span><span class="p">(</span><span class="mi">1000</span><span class="o">+</span><span class="n">c</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 :ET
