@@ -1,0 +1,90 @@
+I"�<h1 id="괄호-문자열-검증">괄호 문자열 검증</h1>
+<p>’(‘, ‘)’, ‘{‘, ‘}’, ‘[’ 및 ‘]’ 만 포함하는 문자열이 주어지면 입력 문자열이 유효한지 확인하자.
+다음과 같은 경우 입력 문자열이 유효합니다.
+열린 괄호와 동일한 유형의 괄호로 닫아야 합니다.
+열린 괄호는 올바른 순서로 닫아야 합니다.
+유효하면 true, 아니면 false를 리턴합니다.</p>
+
+<blockquote>
+  <p>Input) <br />
+() <br />
+Output) <br />
+true</p>
+</blockquote>
+
+<blockquote>
+  <p>Input) <br />
+()[]{} <br />
+Output) <br />
+true</p>
+</blockquote>
+
+<blockquote>
+  <p>Input) <br />
+(] <br />
+Output) <br />
+false</p>
+</blockquote>
+
+<blockquote>
+  <p>Input) <br />
+(([])) <br />
+Output) <br />
+true</p>
+</blockquote>
+
+<h2 id="접근방식">접근방식</h2>
+<p>열린, 닫힌 괄호를 객체로 생성하여 두고, 입력 문자열을 반복하며 현재요소가 괄호객체에 key, value 값으로 존재하는지 여부를 확인하여 검증하는 방식으로 접근하였다.</p>
+<h2 id="문제">문제</h2>
+
+<h3 id="문제해결">문제해결</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">bracket_input</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">map</span><span class="o">=</span><span class="p">{</span> <span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">{</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">}</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">[</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">]</span><span class="dl">'</span> <span class="p">},</span> <span class="nx">keys</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">map</span><span class="p">),</span> <span class="nx">l</span><span class="o">=</span><span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">''</span><span class="p">),</span> <span class="nx">t</span><span class="o">=</span><span class="p">[],</span> <span class="nx">result</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">ele</span> <span class="k">of</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">ele</span><span class="p">))</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span> 
+            <span class="k">if</span><span class="p">(</span><span class="nx">ele</span> <span class="o">===</span> <span class="nx">map</span><span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span> <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span> <span class="nx">result</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
+    <span class="c1">// bracket_input 값이 유효하다면 t배열은 빈 배열이 되고(true), 배열에 값이 있다면 짝이 안맞는 괄호값이 존재(false)</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nx">result</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="소스-리뷰">소스 리뷰</h2>
+<h3 id="4-line">4 line</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">ele</span> <span class="k">of</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">ele</span><span class="p">))</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote>
+  <p>ele(현재요소)가 map(괄호객체)에 key값으로 존재한다면 t(빈배열) 맨뒤에 값을 넣음.</p>
+</blockquote>
+
+<h3 id="6-line">6 line</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="p">(</span><span class="nx">ele</span> <span class="o">===</span> <span class="nx">map</span><span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span> <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote>
+  <p>ele(현재요소)가 조회한 value값과 일치하면 괄호의 짝이 맞으므로 t배열에서 마지막요소 삭제함.</p>
+</blockquote>
+
+:ET

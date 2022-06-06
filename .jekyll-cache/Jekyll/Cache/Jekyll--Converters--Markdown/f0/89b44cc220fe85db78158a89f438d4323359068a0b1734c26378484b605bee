@@ -1,0 +1,63 @@
+I"�<h1 id="괄호-문자열-검증">괄호 문자열 검증</h1>
+<p>’(‘, ‘)’, ‘{‘, ‘}’, ‘[’ 및 ‘]’ 만 포함하는 문자열이 주어지면 입력 문자열이 유효한지 확인하자.
+다음과 같은 경우 입력 문자열이 유효합니다.
+열린 괄호와 동일한 유형의 괄호로 닫아야 합니다.
+열린 괄호는 올바른 순서로 닫아야 합니다.
+유효하면 true, 아니면 false를 리턴합니다.</p>
+
+<blockquote>
+  <p>Input) <br />
+26</p>
+</blockquote>
+
+<blockquote>
+  <p>Output) <br />
+4</p>
+</blockquote>
+
+<h2 id="문제">문제</h2>
+<p>최초 입력값(n)이 10보다 작을 경우 앞에 0을 붙이는 로직을 while문 안에서 수행하다 보니 루프를 1번 진행한 후 10보다 작은 수(n을 new_n값으로 치환할 때)가 될 경우 0을 한번 더 붙여버리는 문제가 발생하였다.</p>
+<h2 id="문제해결">문제해결</h2>
+<p>최초 입력값(n)이 10보다 작을 경우에만 앞에 0을 붙이도록 while문 바깥쪽에서 수행하도록 변경하였다.
+<del>코드가 더러워졌다는 단점이 있다..</del></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="n">n</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">new_n</span><span class="p">,</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="n">first_n</span> <span class="o">=</span> <span class="n">n</span>
+<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1"># 최초 입력값이 10보다 작을 경우 앞에 0을 붙임.
+</span>    <span class="n">n</span> <span class="o">=</span> <span class="s">'0'</span> <span class="o">+</span> <span class="n">n</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">break</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 두수의 합
+</span>    <span class="k">if</span> <span class="n">rs</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">new_n</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rs</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 두수의 합이 10보다 클 경우 우측자리수로 저장.
+</span>    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_n</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span> 
+    <span class="n">n</span> <span class="o">=</span> <span class="n">new_n</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">new_n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">first_n</span><span class="p">):</span>
+        <span class="k">break</span>
+<span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+:ET

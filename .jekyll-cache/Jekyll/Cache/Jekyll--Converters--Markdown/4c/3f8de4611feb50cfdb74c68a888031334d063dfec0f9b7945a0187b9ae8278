@@ -1,0 +1,75 @@
+I"�<h1 id="괄호-문자열-검증">괄호 문자열 검증</h1>
+<p>’(‘, ‘)’, ‘{‘, ‘}’, ‘[’ 및 ‘]’ 만 포함하는 문자열이 주어지면 입력 문자열이 유효한지 확인하자.
+다음과 같은 경우 입력 문자열이 유효합니다.
+열린 괄호와 동일한 유형의 괄호로 닫아야 합니다.
+열린 괄호는 올바른 순서로 닫아야 합니다.
+유효하면 true, 아니면 false를 리턴합니다.</p>
+
+<blockquote>
+  <p>Input) <br />
+()
+Output) <br />
+true</p>
+</blockquote>
+
+<blockquote>
+  <p>Input) <br />
+()[]{}
+Output) <br />
+true</p>
+</blockquote>
+
+<blockquote>
+  <p>Input) <br />
+(]
+Output) <br />
+false</p>
+</blockquote>
+
+<blockquote>
+  <p>Input) <br />
+(([]))
+Output) <br />
+true</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="nx">n</span> <span class="o">=</span> <span class="nx">input</span><span class="p">()</span>
+<span class="nx">new_n</span><span class="p">,</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="nx">first_n</span> <span class="o">=</span> <span class="nx">n</span>
+<span class="k">if</span> <span class="nx">int</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="err">#</span> <span class="nx">최초</span> <span class="nx">입력값이</span> <span class="mi">10</span><span class="nx">보다</span> <span class="nx">작을</span> <span class="nx">경우</span> <span class="nx">앞에</span> <span class="mi">0</span><span class="nx">을</span> <span class="nx">붙임</span><span class="p">.</span>
+    <span class="nx">n</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">n</span>
+<span class="k">while</span> <span class="nx">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nx">int</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nx">count</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">break</span>
+    <span class="nx">rs</span> <span class="o">=</span> <span class="nx">int</span><span class="p">(</span><span class="nx">n</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="nx">int</span><span class="p">(</span><span class="nx">n</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="err">#</span> <span class="nx">두수의</span> <span class="nx">합</span>
+    <span class="k">if</span> <span class="nx">rs</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nx">new_n</span> <span class="o">=</span> <span class="nx">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">str</span><span class="p">(</span><span class="nx">rs</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="err">#</span> <span class="nx">두수의</span> <span class="nx">합이</span> <span class="mi">10</span><span class="nx">보다</span> <span class="nx">클</span> <span class="nx">경우</span> <span class="nx">우측자리수로</span> <span class="nx">저장</span><span class="p">.</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nx">new_n</span> <span class="o">=</span> <span class="nx">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">str</span><span class="p">(</span><span class="nx">rs</span><span class="p">)</span> 
+    <span class="nx">n</span> <span class="o">=</span> <span class="nx">new_n</span>
+    <span class="nx">count</span> <span class="o">=</span> <span class="nx">count</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="nx">int</span><span class="p">(</span><span class="nx">new_n</span><span class="p">)</span> <span class="o">==</span> <span class="nx">int</span><span class="p">(</span><span class="nx">first_n</span><span class="p">):</span>
+        <span class="k">break</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+:ET
