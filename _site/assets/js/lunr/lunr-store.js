@@ -41,9 +41,15 @@ var store = [{
         "url": "/blog/7-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디] 괄호 문자열 검증",
+        "title": "[알고리즘 문제] 괄호 문자열 검증",
         "excerpt":"괄호 문자열 검증 ’(‘, ‘)’, ‘{‘, ‘}’, ‘[’ 및 ‘]’ 만 포함하는 문자열이 주어지면 입력 문자열이 유효한지 확인하자. 다음과 같은 경우 입력 문자열이 유효합니다. 열린 괄호와 동일한 유형의 괄호로 닫아야 합니다. 열린 괄호는 올바른 순서로 닫아야 합니다. 유효하면 true, 아니면 false를 리턴합니다. Input) () Output) true Input) ()[]{} Output) true...","categories": ["Blog"],
         "tags": ["Blog","algorithm","study","js"],
         "url": "/blog/8-post/",
+        "teaser": null
+      },{
+        "title": "[알고리즘 스터디] 백준 4673번",
+        "excerpt":"셀프 넘버 셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다. 양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), …과 같은 무한 수열을 만들 수 있다. 예를...","categories": ["Blog"],
+        "tags": ["Blog","algorithm","study","python","Backjoon"],
+        "url": "/blog/9-post/",
         "teaser": null
       }]

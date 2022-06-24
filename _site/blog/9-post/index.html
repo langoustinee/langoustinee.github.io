@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 2884번 - lango’s blog</title>
-<meta name="description" content="알람시계-조건문">
+<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 4673번 - lango’s blog</title>
+<meta name="description" content="셀프 넘버">
 
 
   <meta name="author" content="Your Name">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="lango's blog">
-<meta property="og:title" content="[알고리즘 스터디] 백준 2884번">
-<meta property="og:url" content="http://localhost:4000/blog/3-post/">
+<meta property="og:title" content="[알고리즘 스터디] 백준 4673번">
+<meta property="og:url" content="http://localhost:4000/blog/9-post/">
 
 
-  <meta property="og:description" content="알람시계-조건문">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-05-24T00:00:00+09:00">
+  <meta property="og:description" content="셀프 넘버">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-06-24T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/blog/3-post/">
+
+<link rel="canonical" href="http://localhost:4000/blog/9-post/">
 
 
 
@@ -249,16 +249,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[알고리즘 스터디] 백준 2884번">
-    <meta itemprop="description" content="알람시계-조건문">
-    <meta itemprop="datePublished" content="2022-05-24T00:00:00+09:00">
+    <meta itemprop="headline" content="[알고리즘 스터디] 백준 4673번">
+    <meta itemprop="description" content="셀프 넘버">
+    <meta itemprop="datePublished" content="2022-06-24T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/blog/3-post/" class="u-url" itemprop="url">[알고리즘 스터디] 백준 2884번
+            <a href="http://localhost:4000/blog/9-post/" class="u-url" itemprop="url">[알고리즘 스터디] 백준 4673번
 </a>
           </h1>
           
@@ -275,7 +275,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -290,29 +290,53 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</a><ul><li><a href="#문제-1">문제-1</a><ul><li><a href="#문제해결-1">문제해결-1</a></li></ul></li><li><a href="#문제-2">문제-2</a><ul><li><a href="#문제해결-2">문제해결-2</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#셀프-넘버">셀프 넘버</a><ul><li><a href="#접근-방식">접근 방식</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="2884번-조건문을-활용한-알람시계-문제">2884번 조건문을 활용한 알람시계 문제</h1>
-<p>첫째 줄에 두 정수 H와 M이 주어진다. (0 ≤ H ≤ 23, 0 ≤ M ≤ 59) 그리고 이것은 현재 상근이가 설정한 놓은 알람 시간 H시 M분을 의미한다.
-입력 시간은 24시간 표현을 사용한다. 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)이다. 시간을 나타낼 때, 불필요한 0은 사용하지 않는다.
-Input) 10 10
-Output) 9 25</p>
+        <h1 id="셀프-넘버">셀프 넘버</h1>
+<p>셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
+양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), …과 같은 무한 수열을 만들 수 있다. 
+예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. 이런식으로 다음과 같은 수열을 만들 수 있다.
+33, 39, 51, 57, 69, 84, 96, 111, 114, 120, 123, 129, 141, …
+n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자, 51은 57의 생성자이다. 생성자가 한 개보다 많은 경우도 있다. 예를 들어, 101은 생성자가 2개(91과 100) 있다. 
+생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97
+10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.</p>
 
-<h2 id="문제-1">문제-1</h2>
-<p>1 40을 입력할 경우 정상값인 0 55가 아닌 0 10이라는 잘못된 출력이 나왔다.</p>
-<h3 id="문제해결-1">문제해결-1</h3>
-<p>가장 바깥쪽의 시간(h)을 비교하는 if문에서 h가 0일 때의 조건문이 elif가 아니라 if로 돌아가고 있어 오류가 발생하였다.
-h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못된 출력이 발생하였다. elif로 수정히니 정상적으로 작동하였다.</p>
+<blockquote>
+  <p>Input) <br />
+Output) <br />
+1<br />
+3<br />
+5<br />
+7<br />
+9<br />
+20<br />
+31<br />
+42<br />
+53<br />
+64<br />
+ |<br />
+ |       &lt;– a lot more numbers<br />
+ |<br />
+9903<br />
+9914<br />
+9925<br />
+9927<br />
+9938<br />
+9949<br />
+9960<br />
+9971<br />
+9982<br />
+9993<br /></p>
+</blockquote>
 
-<h2 id="문제-2">문제-2</h2>
-<p>분(m)이 45분일 경우 45분을 빼면 0분인데, 0분일 때의 경우를 생각하지 못했다.</p>
-<h3 id="문제해결-2">문제해결-2</h3>
-<p>m에서 45를 뺴서 0이면 0분 그대로 두도록 수정하였다.</p>
+<h3 id="접근-방식">접근 방식</h3>
+<p>셀프넘버가 아닌 수(=생성자 존재, 이하 S)를 구하는게 핵심이다.
+S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 않은 수(셀프넘버)를 찾는 방식으로 접근하였다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -328,26 +352,22 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
 14
 15
 16
-17
-18
-</pre></td><td class="rouge-code"><pre><span class="n">h</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="k">if</span> <span class="n">h</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">15</span>
-    <span class="k">elif</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
-<span class="k">elif</span> <span class="n">h</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">h</span><span class="o">=</span><span class="mi">23</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">+</span><span class="mi">15</span>
-    <span class="k">elif</span> <span class="n">m</span><span class="o">-</span><span class="mi">45</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
-<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="nx">l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">def</span> <span class="nx">selfNum</span><span class="p">(</span><span class="nx">n</span><span class="p">):</span>
+    <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span><span class="o">+</span><span class="nx">n</span>
+    <span class="nx">elif</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nx">elif</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">):</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="nx">elif</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">):</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nx">res</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10001</span><span class="p">):</span>
+    <span class="nx">l</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">selfNum</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nx">i</span> <span class="nx">not</span> <span class="k">in</span> <span class="nx">l</span><span class="p">:</span>
+        <span class="nx">print</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
         
@@ -398,7 +418,7 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-05-24T00:00:00+09:00">May 24, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-06-24T00:00:00+09:00">June 24, 2022</time></p>
 
       </footer>
 
@@ -407,23 +427,22 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5B%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EC%8A%A4%ED%84%B0%EB%94%94%5D+%EB%B0%B1%EC%A4%80+2884%EB%B2%88%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EC%8A%A4%ED%84%B0%EB%94%94%5D+%EB%B0%B1%EC%A4%80+4673%EB%B2%88%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F9-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F9-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F3-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F9-post%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/second-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 2588번
+      <a href="/blog/8-post/" class="pagination--pager" title="[알고리즘 문제] 괄호 문자열 검증
 ">Previous</a>
     
     
-      <a href="/blog/4-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 2525번
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -437,46 +456,6 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
     <div class="page__related">
       <h2 class="page__related-title">You may also enjoy</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/9-post/" rel="permalink">[알고리즘 스터디] 백준 4673번
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">셀프 넘버
-</p>
-  </article>
-</div>
-
         
           
 
@@ -545,7 +524,7 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -593,6 +572,46 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
 
 
     <p class="archive__item-excerpt" itemprop="description">반복문 - A+B-7
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/5-post/" rel="permalink">[알고리즘 스터디] 백준 2480번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">조건문-주사위 세개
 </p>
   </article>
 </div>
