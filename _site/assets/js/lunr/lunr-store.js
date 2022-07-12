@@ -52,4 +52,10 @@ var store = [{
         "tags": ["Blog","algorithm","study","python","Backjoon"],
         "url": "/blog/9-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디] 백준 1157번",
+        "excerpt":"단어 공부 알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오. 단, 대문자와 소문자를 구분하지 않는다. Input-1) Mississipi Output-1) ? Input-2) bbaaac Output-2) A 접근 방식 입력 배열의 알파벳 중복을 제거한 뒤 사용된 알파벳의 갯수를 세어 빈 배열에 저장한다. 1번에서 저장한 배열의 최대값 개수가...","categories": ["Blog"],
+        "tags": ["Blog","algorithm","study","python","Backjoon"],
+        "url": "/blog/10-post/",
+        "teaser": null
       }]

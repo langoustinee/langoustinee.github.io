@@ -336,7 +336,7 @@ Output) <br />
 <p>셀프넘버가 아닌 수(=생성자 존재, 이하 S)를 구하는게 핵심이다.
 S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 않은 수(셀프넘버)를 찾는 방식으로 접근하였다.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -352,22 +352,22 @@ S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 �
 14
 15
 16
-</pre></td><td class="rouge-code"><pre><span class="nx">l</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="nx">def</span> <span class="nx">selfNum</span><span class="p">(</span><span class="nx">n</span><span class="p">):</span>
-    <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
-        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span><span class="o">+</span><span class="nx">n</span>
-    <span class="nx">elif</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
-        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="nx">elif</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">):</span>
-        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
-    <span class="nx">elif</span><span class="p">(</span><span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">):</span>
-        <span class="nx">res</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="nx">int</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
-    <span class="k">return</span> <span class="nx">res</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10001</span><span class="p">):</span>
-    <span class="nx">l</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">selfNum</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
-    <span class="k">if</span> <span class="nx">i</span> <span class="nx">not</span> <span class="k">in</span> <span class="nx">l</span><span class="p">:</span>
-        <span class="nx">print</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</pre></td><td class="rouge-code"><pre><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">def</span> <span class="nf">selfNum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="n">n</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">res</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10001</span><span class="p">):</span>
+    <span class="n">l</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">selfNum</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
         
@@ -442,7 +442,8 @@ S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 �
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/blog/10-post/" class="pagination--pager" title="[알고리즘 스터디] 백준 1157번
+">Next</a>
     
   </nav>
 
@@ -456,6 +457,46 @@ S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 �
     <div class="page__related">
       <h2 class="page__related-title">You may also enjoy</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/10-post/" rel="permalink">[알고리즘 스터디] 백준 1157번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">단어 공부
+</p>
+  </article>
+</div>
+
         
           
 
@@ -572,46 +613,6 @@ S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 �
 
 
     <p class="archive__item-excerpt" itemprop="description">반복문 - A+B-7
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/5-post/" rel="permalink">[알고리즘 스터디] 백준 2480번
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">조건문-주사위 세개
 </p>
   </article>
 </div>
