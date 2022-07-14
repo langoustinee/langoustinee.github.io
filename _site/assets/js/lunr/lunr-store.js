@@ -58,4 +58,10 @@ var store = [{
         "tags": ["Blog","algorithm","study","python","Backjoon"],
         "url": "/blog/10-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디] 백준 2941번",
+        "excerpt":"크로아티아 알파벳 ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다. 단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다. dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다. Input-1) ljes=njak Output-1) 6 Input-2) ddz=z=...","categories": ["Blog"],
+        "tags": ["Blog","algorithm","study","python","Backjoon"],
+        "url": "/blog/11-post/",
+        "teaser": null
       }]
