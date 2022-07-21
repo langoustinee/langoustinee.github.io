@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-14T13:29:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s blog</title><subtitle>developer</subtitle><author><name>Your Name</name></author><entry><title type="html">[알고리즘 스터디] 백준 2941번</title><link href="http://localhost:4000/blog/11-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 2941번" /><published>2022-07-14T00:00:00+09:00</published><updated>2022-07-14T00:00:00+09:00</updated><id>http://localhost:4000/blog/11-post</id><content type="html" xml:base="http://localhost:4000/blog/11-post/"><![CDATA[<h1 id="크로아티아-알파벳">크로아티아 알파벳</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-07-21T12:01:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s blog</title><subtitle>developer</subtitle><author><name>Your Name</name></author><entry><title type="html">[알고리즘 스터디] 백준 1316번</title><link href="http://localhost:4000/blog/12-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 1316번" /><published>2022-07-21T00:00:00+09:00</published><updated>2022-07-21T00:00:00+09:00</updated><id>http://localhost:4000/blog/12-post</id><content type="html" xml:base="http://localhost:4000/blog/12-post/"><![CDATA[<h1 id="그룹-단어-체커">그룹 단어 체커</h1>
+<p>그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다. 단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.</p>
+
+<blockquote>
+  <p>Input-1) <br />
+3 <br />
+happy <br />
+new <br />
+year <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-1) <br />
+3</p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2) <br />
+4 <br />
+aba <br />
+abab <br />
+abcabc <br />
+a</p>
+</blockquote>
+
+<blockquote>
+  <p>Output-2) <br />
+1</p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="접근-방식">접근 방식</h3>
+<ol>
+  <li>2글자 이하의 문자열은 무조건 조건을 충족하기에 그룹 단어로 포함한다.</li>
+  <li>3글자 이상의 문자열일 경우 별도의 조건을 통해 검증한다.
+    <ul>
+      <li>문자열 중 같은 문자가 여러개일 경우 연속된 문자인지 확인한다.</li>
+      <li>현재 문자가 뒷 문자열에 없는지 확인한다.</li>
+    </ul>
+  </li>
+  <li>2번 조건을 충족할 경우 그룹단어로 포함한다.</li>
+</ol>
+
+<p><br /></p>
+
+<h3 id="문제">문제</h3>
+<ul>
+  <li>3글자 이상의 문자열이면서, 같은 문자가 여러개 존재할 경우 조건을 일일이 부여해야 했다.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="n">group_word</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">group_word</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">group_word</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">group_word</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">if</span> <span class="n">group_word</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">group_word</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<ul>
+  <li>현재 문자 기준으로 뒷 문자와 앞 문자가 같은 경우(aba 등)는 고려할 수 있으나 같은 문자가 서로 멀리 존재할 경우(aabcbb)도 고려해야 했다.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="문제-해결">문제 해결</h3>
+<p>조건을 일일이 부여하여 검증하는 것이 아니라 슬라이싱 방식을 통해 같은 문자가 여러개 이면서 연속되었는지 여부를 검증하도록 수정하였다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="n">g_word</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_word</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="p">...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<ul>
+  <li>위와 같이 현재 문자가 현재 문자 이후의 문자열에 포함되어 있는지 여부를 통해 같은 문자가 서로 멀리 존재할 경우를 고려할 수 있다.</li>
+</ul>
+
+<p><br /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">n</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">g_word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">g_word</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">g_word</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">g_word</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># 연속된 문자일 경우
+</span>           <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">g_word</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="n">g_word</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">:]:</span> <span class="c1"># 뒷 문자열에 존재할 경우
+</span>            <span class="n">result</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">break</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Blog" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[그룹 단어 체커]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 2941번</title><link href="http://localhost:4000/blog/11-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 2941번" /><published>2022-07-14T00:00:00+09:00</published><updated>2022-07-14T00:00:00+09:00</updated><id>http://localhost:4000/blog/11-post</id><content type="html" xml:base="http://localhost:4000/blog/11-post/"><![CDATA[<h1 id="크로아티아-알파벳">크로아티아 알파벳</h1>
 <p>ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다. 단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다.</p>
 
@@ -550,31 +652,4 @@ h가 0으로 바뀔 시점에 두번째 if문도 같이 빠지게 되니 잘못�
     <span class="k">else</span><span class="p">:</span>
         <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="o">-</span><span class="mi">45</span>
 <span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Blog" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[알람시계-조건문]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 2588번</title><link href="http://localhost:4000/blog/second-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 2588번" /><published>2022-05-23T00:00:00+09:00</published><updated>2022-05-23T00:00:00+09:00</updated><id>http://localhost:4000/blog/second-post</id><content type="html" xml:base="http://localhost:4000/blog/second-post/"><![CDATA[<center><img src="https://d2gd6pc034wcta.cloudfront.net/images/logo@2x.png" /></center>
-
-<h1 id="백준-알고리즘-스터디-시작">백준 알고리즘 스터디 시작!</h1>
-<p>코딩테스트 준비를 위해 백준에서 알고리즘 공부를 시작했다.
-1단계 사칙연산 풀이의 마지막 문제인 2588번 곱셈문제 풀이를 기록한다.</p>
-
-<center><img src="/assets/images/1.png" /></center>
-
-<p>(1)과 (2)위치에 들어갈 세 자리 자연수가 주어질 때 (3), (4), (5), (6)위치에 들어갈 값을 구하는 프로그램을 작성하시오.</p>
-
-<p>문제: 입력받은 세자리수의 인덱스를 찾아서 곱해줘야 하는데 어떻게 인덱싱을 하여 곱해줄지가 문제였다.</p>
-
-<p>해결: 반복문을 통해 두번째 세자리수(B)를 거꾸로 반복하여 첫번째 세자리수(A)를 반복할 때마다 곱해주니 3, 4, 5 위치의 값을 알 수 있었다.
-<script src="https://gist.github.com/Jooney-95/c01302e3e30577e135f9027b28acf655.js"></script></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="nb">input</span><span class="p">())),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="nb">input</span><span class="p">()))</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Blog" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[코딩테스트 준비를 위해 백준에서 알고리즘 공부를 시작했다.]]></summary></entry></feed>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Blog" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[알람시계-조건문]]></summary></entry></feed>
