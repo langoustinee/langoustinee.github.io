@@ -66,7 +66,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[알고리즘 스터디] 백준 1316번",
-        "excerpt":"인덱싱도 중요하지만, 슬라이싱 문법도 꼭 사용할줄 알아야 한다! 그룹 단어 체커 그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가...","categories": ["Blog"],
+        "excerpt":"1316번 문제를 통해 인덱싱도 중요하지만, 슬라이싱 문법에 대해 확실하게 복습할 수 있었다. 그룹 단어 체커 그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서...","categories": ["Blog"],
         "tags": ["Blog","algorithm","study","python","Backjoon"],
         "url": "/blog/12-post/",
         "teaser": null
