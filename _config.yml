@@ -282,7 +282,7 @@ defaults:
       toc_sticky: true
 
 
-#theme: jekyll-theme-minimal
+theme: jekyll-theme-minimal
 
 markdown: kramdown
 kramdown:
