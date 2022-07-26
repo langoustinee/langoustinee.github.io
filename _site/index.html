@@ -9,18 +9,18 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>lango's blog</title>
+<!-- begin _includes/seo.html --><title>lango's DevLog</title>
 <meta name="description" content="developer">
 
 
-  <meta name="author" content="Your Name">
+  <meta name="author" content="lango">
   
 
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="lango's blog">
-<meta property="og:title" content="lango’s blog">
+<meta property="og:site_name" content="lango's DevLog">
+<meta property="og:title" content="lango’s DevLog">
 <meta property="og:url" content="http://localhost:4000/">
 
 
@@ -45,8 +45,6 @@
 
 
 
-  <link rel="next" href="http://localhost:4000/page2/">
-
 
 <script type="application/ld+json">
   {
@@ -69,7 +67,7 @@
 
 
 
-  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="lango's blog Feed">
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="lango's DevLog Feed">
 
 
 <!-- https://t.co/dKP3o1e -->
@@ -89,6 +87,13 @@
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/assets/logo.ico/site.webmanifest">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 
 <!-- end custom head snippets -->
 
@@ -115,10 +120,18 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          lango's blog
-          <span class="site-subtitle">찍먹? 부먹? 난 부먹 개발자.</span>
+          lango's DevLog
+          <span class="site-subtitle"></span>
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%22">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/algorithm/">Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -145,14 +158,20 @@
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
 
   
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/my.jpg" alt="lango" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
 
   <div class="author__content">
     <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Your Name</a>
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">lango</a>
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>I am an <strong>amazing</strong> person.</p>
+        <p>찍먹? 부먹? <br /> 난 <strong>부먹</strong> 개발자.</p>
 
       </div>
     
@@ -162,21 +181,19 @@
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
-        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Somewhere</span>
-        </li>
-      
 
       
         
           
-        
+            <li><a href="mailto:xmun777@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
           
         
           
-        
+            <li><a href="https://github.com/Jooney-95" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
+          
+            <li><a href="https://velog.io/@langoustine" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Velog</span></a></li>
           
         
           
@@ -242,6 +259,58 @@
   </div>
 </div>
   
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <a href="/about/"><span class="nav__sub-title">Introduce</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          <a href="/categories/%22"><span class="nav__sub-title">Category</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          <a href="/algorithm/"><span class="nav__sub-title">Algorithm</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          <a href="/tags/"><span class="nav__sub-title">Tags</span></a>
+        
+
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
   </div>
 
 
@@ -268,7 +337,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/12-post/" rel="permalink">[알고리즘 스터디] 백준 1316번
+        <a href="/algorithm/12-post/" rel="permalink">[알고리즘 스터디] 백준 1316번
 </a>
       
     </h2>
@@ -459,51 +528,288 @@
 </div>
 
   
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/7-post/" rel="permalink">[알고리즘 스터디] 백준 1110번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">반복문 - 더하기 사이클
+</p>
+  </article>
 </div>
 
-
-<nav class="pagination">
   
-  <ul>
-    
-    
-    <li><a href="#" class="disabled"><span aria-hidden="true">Previous</span></a></li>
     
 
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
-    
-      <li><a href="#" class="disabled current">1</a></li>
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/6-post/" rel="permalink">[알고리즘 스터디] 백준 11021번
+</a>
+      
+    </h2>
     
 
-    
+  <p class="page__meta">
     
 
-    
-    
     
 
     
       
-        
-        
-        
-        <li><a href="/page2/">2</a></li>
       
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">반복문 - A+B-7
+</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/5-post/" rel="permalink">[알고리즘 스터디] 백준 2480번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
     
 
     
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">조건문-주사위 세개
+</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/4-post/" rel="permalink">[알고리즘 스터디] 백준 2525번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
     
 
     
-      <li><a href="/page3/">3</a></li>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">오븐시계-조건문
+</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/3-post/" rel="permalink">[알고리즘 스터디] 백준 2884번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
     
 
     
+
     
-      <li><a href="/page2/">Next</a></li>
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
     
-  </ul>
-</nav>
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">알람시계-조건문
+</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/second-post/" rel="permalink">[알고리즘 스터디] 백준 2588번
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">코딩테스트 준비를 위해 백준에서 알고리즘 공부를 시작했다.
+</p>
+  </article>
+</div>
+
+  
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/first-post/" rel="permalink">벡엔드 개발자란?(작성중)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">GitHub Blog에서 포스팅을 시작하기로 하였다.
+</p>
+  </article>
+</div>
+
+  
+</div>
+
 
 
 
@@ -529,15 +835,15 @@
     
       
         
-      
+          <li><a href="mailto:xmun777@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
         
       
         
-      
+          <li><a href="https://github.com/Jooney-95" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
         
       
         
-      
+          <li><a href="https://velog.io/@langoustine" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Velog</a></li>
         
       
     

@@ -9,19 +9,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 2588번 - lango’s blog</title>
+<!-- begin _includes/seo.html --><title>[알고리즘 스터디] 백준 2588번 - lango’s DevLog</title>
 <meta name="description" content="코딩테스트 준비를 위해 백준에서 알고리즘 공부를 시작했다.">
 
 
-  <meta name="author" content="Your Name">
+  <meta name="author" content="lango">
   
-  <meta property="article:author" content="Your Name">
+  <meta property="article:author" content="lango">
   
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="lango's blog">
+<meta property="og:site_name" content="lango's DevLog">
 <meta property="og:title" content="[알고리즘 스터디] 백준 2588번">
 <meta property="og:url" content="http://localhost:4000/blog/second-post/">
 
@@ -71,7 +71,7 @@
 
 
 
-  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="lango's blog Feed">
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="lango's DevLog Feed">
 
 
 <!-- https://t.co/dKP3o1e -->
@@ -91,6 +91,13 @@
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/assets/logo.ico/site.webmanifest">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 
 <!-- end custom head snippets -->
 
@@ -117,10 +124,18 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          lango's blog
-          <span class="site-subtitle">찍먹? 부먹? 난 부먹 개발자.</span>
+          lango's DevLog
+          <span class="site-subtitle"></span>
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%22">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/algorithm/">Algorithm</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -147,14 +162,20 @@
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
 
   
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/my.jpg" alt="lango" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
 
   <div class="author__content">
     <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Your Name</a>
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">lango</a>
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>I am an <strong>amazing</strong> person.</p>
+        <p>찍먹? 부먹? <br /> 난 <strong>부먹</strong> 개발자.</p>
 
       </div>
     
@@ -164,21 +185,19 @@
     <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
-        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Somewhere</span>
-        </li>
-      
 
       
         
           
-        
+            <li><a href="mailto:xmun777@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
           
         
           
-        
+            <li><a href="https://github.com/Jooney-95" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
+          
+            <li><a href="https://velog.io/@langoustine" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Velog</span></a></li>
           
         
           
@@ -244,6 +263,58 @@
   </div>
 </div>
   
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <a href="/about/"><span class="nav__sub-title">Introduce</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          <a href="/categories/%22"><span class="nav__sub-title">Category</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          <a href="/algorithm/"><span class="nav__sub-title">Algorithm</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          <a href="/tags/"><span class="nav__sub-title">Tags</span></a>
+        
+
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
   </div>
 
 
@@ -289,7 +360,7 @@
         
           <aside class="sidebar__right sticky">
             <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> On this page</h4></header>
               <ul class="toc__menu"><li><a href="#백준-알고리즘-스터디-시작">백준 알고리즘 스터디 시작!</a></li></ul>
 
             </nav>
@@ -339,15 +410,15 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">algorithm</a><span class="sep">, </span>
+      <a href="/tags/algorithm" class="page__taxonomy-item p-category" rel="tag">algorithm</a><span class="sep">, </span>
     
-      <a href="/tags/#backjoon" class="page__taxonomy-item p-category" rel="tag">Backjoon</a><span class="sep">, </span>
+      <a href="/tags/backjoon" class="page__taxonomy-item p-category" rel="tag">Backjoon</a><span class="sep">, </span>
     
-      <a href="/tags/#blog" class="page__taxonomy-item p-category" rel="tag">Blog</a><span class="sep">, </span>
+      <a href="/tags/blog" class="page__taxonomy-item p-category" rel="tag">Blog</a><span class="sep">, </span>
     
-      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+      <a href="/tags/python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
     
-      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+      <a href="/tags/study" class="page__taxonomy-item p-category" rel="tag">study</a>
     
     </span>
   </p>
@@ -364,7 +435,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">Blog</a>
+      <a href="/categories/blog" class="page__taxonomy-item p-category" rel="tag">Blog</a>
     
     </span>
   </p>
@@ -421,7 +492,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/12-post/" rel="permalink">[알고리즘 스터디] 백준 1316번
+        <a href="/algorithm/12-post/" rel="permalink">[알고리즘 스터디] 백준 1316번
 </a>
       
     </h2>
@@ -597,15 +668,15 @@
     
       
         
-      
+          <li><a href="mailto:xmun777@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
         
       
         
-      
+          <li><a href="https://github.com/Jooney-95" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
         
       
         
-      
+          <li><a href="https://velog.io/@langoustine" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Velog</a></li>
         
       
     
