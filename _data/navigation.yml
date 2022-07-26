@@ -3,11 +3,8 @@ main:
   - title: "Introduce"
     url: /about/
   
-  - title: "Category"
+  - title: "Algorithm"
     url: /categories/
-  
-  # - title: "Algorithm"
-  #   url: /categories/algorithm/
-  
+
   - title: "Tags"
     url: /tags/
