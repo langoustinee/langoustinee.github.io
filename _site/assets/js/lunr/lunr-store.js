@@ -74,6 +74,12 @@ var store = [{
         "title": "[알고리즘 스터디 - Java] 백준 10951번",
         "excerpt":"A+B - 4 두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오. 입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 테스트 케이스는 한 줄로 이루어져 있으며, 각 줄에 A와 B가 주어진다. (0 &lt; A, B &lt; 10) Input-1) 1 1 2 3 3 4 9 8 5 2 Output-1)...","categories": ["Java"],
         "tags": ["Blog","algorithm","study","java","Backjoon"],
-        "url": "/java/12-post/",
+        "url": "/java/13-post/",
+        "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 1110번",
+        "excerpt":"Input-1) 26 Output-1) 4 Input-2) 55 Output-2) 3 접근 방식 주어진 수를 N, 새로운 수를 T라고 가정하자. N의 일의 자리가 T의 십의 자리수가 되고, N을 합한 수의 일의 자리가 T의 일의 자리수가 된다. N[0] + N[1] = T[ N[1] + (N[0]+N[1])[1] ] N과 T의 자리수를 파악할 수 있게 2칸 크기의...","categories": ["Java"],
+        "tags": ["Blog","algorithm","study","java","Backjoon"],
+        "url": "/java/14-post/",
         "teaser": null
       }]

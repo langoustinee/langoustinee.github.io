@@ -1,0 +1,163 @@
+I"�5<p><br /></p>
+
+<center><img src="/assets/images/backjoon/1110.png" /></center>
+
+<blockquote>
+  <p>Input-1) <br />
+26 <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-1) <br />
+4 <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2) <br />
+55 <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-2) <br />
+3 <br /></p>
+</blockquote>
+
+<h3 id="접근-방식">접근 방식</h3>
+<p>주어진 수를 N, 새로운 수를 T라고 가정하자.<br />
+<strong>N의 일의 자리가 T의 십의 자리수가 되고, N을 합한 수의 일의 자리가 T의 일의 자리수가 된다.</strong></p>
+<ul>
+  <li>N[0] + N[1] = T[ N[1] + (N[0]+N[1])[1] ]</li>
+</ul>
+
+<p>N과 T의 자리수를 파악할 수 있게 2칸 크기의 문자열 배열을 통해 위 패턴을 구현하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nc">String</span> <span class="n">b_n</span><span class="o">[]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span> <span class="c1">// 입력 숫자 배열 - before</span>
+<span class="nc">String</span> <span class="n">a_n</span><span class="o">[]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span> <span class="c1">// 입력 숫자 합 배열 - after</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>또한 T를 만들려면 N의 합이 필요하기에 N의 합을 구한 뒤</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">sum</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">b_n</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+<span class="k">if</span><span class="o">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">a_n</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+    <span class="n">a_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">sum</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">)[</span><span class="mi">1</span><span class="o">];</span>
+<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+    <span class="n">a_n</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+    <span class="n">a_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="문제-해결">문제 해결</h3>
+<ol>
+  <li>N의 초기값이 10 이하인 수라면 반복문에서 예외가 발생한다.<br />
+<strong>N이 10 이하일 경우 앞에 “0”을 붙이도록 수정하였다.</strong></li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">n</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">)</span> <span class="n">n</span> <span class="o">=</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">n</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="작성코드">작성코드</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStreamWriter</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        <span class="nc">String</span> <span class="n">n</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">f_n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">n</span><span class="o">);</span> <span class="c1">// 최초 입력 숫자 저장</span>
+        <span class="k">if</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">n</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">)</span> <span class="n">n</span> <span class="o">=</span> <span class="s">"0"</span> <span class="o">+</span> <span class="n">n</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">b_n</span><span class="o">[]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span> <span class="c1">// 입력 숫자 배열</span>
+        <span class="nc">String</span> <span class="n">a_n</span><span class="o">[]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span> <span class="c1">// 입력 숫자 합 배열</span>
+        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">n</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">b_n</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">a_n</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+                <span class="n">a_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">sum</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">)[</span><span class="mi">1</span><span class="o">];</span>
+            <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                <span class="n">a_n</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+                <span class="n">a_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">b_n</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">a_n</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+            <span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">a_n</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+            <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">b_n</span><span class="o">[</span><span class="mi">0</span><span class="o">])*</span><span class="mi">10</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">b_n</span><span class="o">[</span><span class="mi">1</span><span class="o">])</span> <span class="o">==</span> <span class="n">f_n</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>    
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">cnt</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="회고">회고</h2>
+<ul>
+  <li></li>
+</ul>
+:ET

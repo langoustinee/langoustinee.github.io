@@ -1,0 +1,103 @@
+I"V	<p><br /></p>
+
+<center><img src="/assets/images/backjoon/1110.png" /></center>
+
+<blockquote>
+  <p>Input-1) <br />
+26 <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-1) <br />
+4 <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2) <br />
+55 <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-2) <br />
+3 <br /></p>
+</blockquote>
+
+<h3 id="접근-방식">접근 방식</h3>
+
+<pre>
+주어진 수를 N, 새로운 수를 T라고 가정하자.
+**N의 일의 자리가 T의 십의 자리수가 되고, N을 합한 수의 일의 자리가 T의 일의 자리수가 된다.**
+- N[0] + N[1] = T[ N[1] + (N[0]+N[1])[1] ]
+
+
+
+### 문제 해결 과정
+1. N의 초기값이 10 이하인 수라면 반복문에서 예외가 발생한다.
+&gt; N이 10 이하일 경우 앞에 "0"을 붙이도록 수정하였다. 
+
+```java
+if(Integer.parseInt(n) &lt; 10) n = "0" + n;
+```
+
+2. 
+
+
+
+
+<br />
+
+### 문제 해결 과정
+
+<br />
+
+
+#### 작성코드
+```java
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String n = br.readLine();
+        int sum, cnt = 0;
+        int f_n = Integer.parseInt(n); // 최초 입력 숫자 저장
+        if(Integer.parseInt(n) &lt; 10) n = "0" + n;
+        String b_n[] = n.split(""); // 입력 숫자 배열
+        String a_n[] = n.split(""); // 입력 숫자 합 배열
+        while (true) {
+            if(Integer.parseInt(n) == 0) {
+                cnt = 1;
+                break;
+            }
+            sum = Integer.parseInt(b_n[0]) + Integer.parseInt(b_n[1]);
+            if(sum &gt;= 10) {
+                a_n[0] = b_n[1];
+                a_n[1] = String.valueOf(sum).split("")[1];
+            }else {
+                a_n[0] = b_n[1];
+                a_n[1] = String.valueOf(sum);
+            }
+            b_n[0] = a_n[0];
+            b_n[1] = a_n[1];
+            cnt += 1;
+            if (Integer.parseInt(b_n[0])*10 + Integer.parseInt(b_n[1]) == f_n) break;    
+        }
+        bw.write(cnt + "\n");
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+}
+```
+
+<br />
+
+## 회고
+- 
+</pre>
+:ET
