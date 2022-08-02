@@ -82,4 +82,10 @@ var store = [{
         "tags": ["Blog","algorithm","study","java","Backjoon"],
         "url": "/java/14-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 2577번",
+        "excerpt":"Input-1) 150 266 427 Output-1) 3 1 0 2 0 0 0 2 0 0 접근 방식 a, b, c를 곱한 값을 arr(배열)로 가지고 있다고 하면, 0부터 9까지의 인덱스가 arr의 값과 중복되는지를 검증하여 세면 될 것이라 생각했다. 먼저 a, b, c를 곱하여 arr이라는 배열로 파싱한다. 1 2 // 세 수를...","categories": ["Java"],
+        "tags": ["Blog","algorithm","study","java","Backjoon"],
+        "url": "/java/15-post/",
+        "teaser": null
       }]
