@@ -1,0 +1,138 @@
+I"� <p><br /></p>
+
+<center><img src="/assets/images/backjoon/8958.png" /></center>
+
+<blockquote>
+  <p>Input-1) <br />
+5 <br />
+OOXXOXXOOO <br />
+OOXXOOXXOO <br />
+OXOXOXOXOXOXOX <br />
+OOOOOOOOOO <br />
+OOOOXOOOOXOOOOX <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-1) <br />
+10 <br />
+9 <br />
+7 <br />
+55 <br />
+30 <br /></p>
+</blockquote>
+
+<h3 id="접근-방식">접근 방식</h3>
+<p>OX 퀴즈 결과 문자열을 순회하며 아래의 조건을 통해 점수를 계산하였다.</p>
+<ul>
+  <li>O인 경우 점수를 1 증가시킨다.</li>
+  <li>X인 경우 점수를 증가시키지 않는다.</li>
+  <li>점수가 계산될 떄마다 해당 점수를 합한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="o">(</span><span class="n">ox_arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>하나의 OX퀴즈 문자열 점수 계산이 끝나고 합을 구했다면 별도의 합 점수 배열에 담는다.</p>
+
+<p><br /></p>
+
+<h4 id="작성코드">작성코드</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStreamWriter</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">,</span> <span class="n">score</span><span class="o">;</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">ox_arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ox_scores</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">ox_arr</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">ox_arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">ox_arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">ox_scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">ox_score</span> <span class="o">:</span> <span class="n">ox_scores</span><span class="o">)</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ox_score</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+:ET

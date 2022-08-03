@@ -88,4 +88,10 @@ var store = [{
         "tags": ["Blog","algorithm","study","java","Backjoon"],
         "url": "/java/15-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 8958번",
+        "excerpt":"Input-1) 5 OOXXOXXOOO OOXXOOXXOO OXOXOXOXOXOXOX OOOOOOOOOO OOOOXOOOOXOOOOX Output-1) 10 9 7 55 30 접근 방식 OX 퀴즈 결과 문자열을 순회하며 아래의 조건을 통해 점수를 계산하였다. 1) O인 경우 점수를 1 증가시킨다. 2) X인 경우 점수를 증가시키지 않는다. 3) 점수가 계산될 떄마다 해당 점수를 합한다. 하나의 OX퀴즈 문자열 점수 계산이 끝나고...","categories": ["Java"],
+        "tags": ["Blog","algorithm","study","java","Backjoon"],
+        "url": "/java/16-post/",
+        "teaser": null
       }]
