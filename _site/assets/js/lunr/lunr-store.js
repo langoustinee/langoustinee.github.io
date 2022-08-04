@@ -112,4 +112,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/19-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 1157번",
+        "excerpt":"Input-1 Mississipi Output-1 ? Input-2 zZa Output-2 Z Input-3 baaa Output-3 A 문제 풀이 알파벳 대소문자로된 단어가 주어지면 해당 단어의 범위는 아래와 같다. a~z 또는 A~Z 이 문제의 핵심은 문자의 인코딩 값을 다루는 것이다. 먼저 각 알파벳 별로 사용된 빈도수를 측정하기 위한 배열을 선언한다. 1 int[] alph_list = new int[26];...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/20-post/",
+        "teaser": null
       }]
