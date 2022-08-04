@@ -102,8 +102,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[알고리즘 스터디 - Java] 백준 1065번",
-        "excerpt":"Input-1 110 Output-1 99 Input-2 210 Output-2 105 Input-1 1000 Output-1 144 문제 풀이 문제 풀이에 앞서 한수가 무엇인지 이해가 잘 되지 않았다. 한수를 알려면 등차수열에 대해서도 알아야 한다. 한수란? 어떤 정수 A의 각 자리수가 등차수열을 이루는 수이다. 등차수열이란? 연속된 두 개의 수의 차이가 일정한 수열을 말한다. 그러면 1부터 9까지는...","categories": ["Java"],
+        "excerpt":"Input-1 110 Output-1 99 Input-2 210 Output-2 105 Input-3 1000 Output-3 144 문제 풀이 문제 풀이에 앞서 한수가 무엇인지 이해가 잘 되지 않았다. 한수를 알려면 등차수열에 대해서도 알아야 한다. 한수란? 어떤 정수 A의 각 자리수가 등차수열을 이루는 수이다. 등차수열이란? 연속된 두 개의 수의 차이가 일정한 수열을 말한다. 그러면 1부터 9까지는...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/18-post/",
+        "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 2675번",
+        "excerpt":"Input 2 3 ABC 5 /HTP Output AAABBBCCC /////HHHHHTTTTTPPPPP 문제 풀이 테스트케이스의 수를 T, T별로 반복할 횟수를 R, 주어진 문자열을 S, 새로운 문자열을 P라고 해보자. 여기서 테스트케이스만큼 입력받는 동안 S의 각 문자를 R번 반복한 P로 만들어 출력하면 된다. 먼저 T를 입력받고 T만큼 반복하며 입력받은 줄에서 R과 S를 추려낸다. 그리고 S의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/19-post/",
         "teaser": null
       }]
