@@ -1,4 +1,337 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-04T00:06:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[알고리즘 스터디 - Java] 백준 4673번</title><link href="http://localhost:4000/java/17-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 4673번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/17-post</id><content type="html" xml:base="http://localhost:4000/java/17-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-04T14:29:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[알고리즘 스터디 - Java] 백준 1065번</title><link href="http://localhost:4000/java/18-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1065번" /><published>2022-08-04T00:00:00+09:00</published><updated>2022-08-04T00:00:00+09:00</updated><id>http://localhost:4000/java/18-post</id><content type="html" xml:base="http://localhost:4000/java/18-post/"><![CDATA[<p><br /></p>
+
+<center><img src="/assets/images/backjoon/1065.png" /></center>
+
+<blockquote>
+  <p>Input-1 <br />
+110 <br />
+Output-1 <br />
+99</p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+210 <br />
+Output-2 <br />
+105</p>
+</blockquote>
+
+<blockquote>
+  <p>Input-1 <br />
+1000 <br />
+Output-1 <br />
+144</p>
+</blockquote>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>문제 풀이에 앞서 한수가 무엇인지 이해가 잘 되지 않았다.<br />
+한수를 알려면 등차수열에 대해서도 알아야 한다.</p>
+
+<blockquote>
+  <p><strong>한수란?</strong><br />
+어떤 정수 A의 각 자리수가 등차수열을 이루는 수이다.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>등차수열이란?</strong><br />
+연속된 두 개의 수의 차이가 일정한 수열을 말한다.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>그러면 1부터 9까지는 항이 하나뿐인데 등차수열인가?<br />
+1~9까지는 하나의 등차수열로 본다.</p>
+  </li>
+  <li>
+    <p>그러면 10부터 99까지는 항이 두개인데 등차수열인가?<br />
+10의 경우 길이가 2이고 첫번째 항이 1, 두번째 항이 0이며 공차가 -1인 등차수열로 볼 수 있다.</p>
+  </li>
+</ol>
+
+<p>두자리수인 <strong>99까지는 모두 등차수열</strong>인 것이다.</p>
+
+<p>자 그러면 <strong>100부터 주어진 수(N)의 자리수별 차이가 같은 수</strong>를 찾으면 된다.</p>
+
+<p>주어진 수가 100 이상이라면 각 자리수를 구하여 첫째항과 둘째항의 차와 둘째항과 셋째항의 차가 같은지 검증하는 로직을
+<strong>checkHansoo 함수에 작성</strong>하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">checkHansoo</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 주어진 수(n)의 자리수를 구해 list에 저장</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="o">);</span>
+            <span class="n">n</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">;</span>    
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">((</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)-</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span> <span class="o">==</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)-</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">)))</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>마지막은 결국 주어진 수까지 한수의 개수를 구하는 것이기에 주어진 수(N)만큼 반복하며 한수의 개수를 측정하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">)</span> <span class="n">hs</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span> <span class="c1">// 1부터 99까지는 모두 한수</span>
+<span class="k">else</span> <span class="o">{</span> <span class="c1">// 100부터 1000까지</span>
+    <span class="n">hs</span> <span class="o">=</span> <span class="mi">99</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">hs</span> <span class="o">+=</span> <span class="n">checkHansoo</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>        
+    <span class="o">}</span>   
+    <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1000</span><span class="o">)</span> <span class="n">hs</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span> 
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">hs</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">)</span> <span class="n">hs</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">hs</span> <span class="o">=</span> <span class="mi">99</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">hs</span> <span class="o">+=</span> <span class="n">checkHansoo</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>        
+            <span class="o">}</span>   
+            <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1000</span><span class="o">)</span> <span class="n">hs</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span> 
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">hs</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">checkHansoo</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        
+        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="o">);</span>
+            <span class="n">n</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">;</span>    
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">((</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)-</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span> <span class="o">==</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)-</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">)))</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>4673번 셀프넘버 문제에서도 정수의 자리수를 알아야 했는데 이번 1065 문제에서도 동일한 요구사항이 있었던 것으로 보아 자리수 별로 접근하는 방식을 명확하게 알고 있어야 한다고 느꼈다.</li>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[한수]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 8958번</title><link href="http://localhost:4000/java/16-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 8958번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/16-post</id><content type="html" xml:base="http://localhost:4000/java/16-post/"><![CDATA[<p><br /></p>
+
+<center><img src="/assets/images/backjoon/8958.png" /></center>
+
+<blockquote>
+  <p>Input-1) <br />
+5 <br />
+OOXXOXXOOO <br />
+OOXXOOXXOO <br />
+OXOXOXOXOXOXOX <br />
+OOOOOOOOOO <br />
+OOOOXOOOOXOOOOX <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Output-1) <br />
+10 <br />
+9 <br />
+7 <br />
+55 <br />
+30 <br /></p>
+</blockquote>
+
+<h3 id="접근-방식">접근 방식</h3>
+<p>OX 퀴즈 결과 문자열을 순회하며 아래의 조건을 통해 점수를 계산하였다.</p>
+<ul>
+  <li>1) O인 경우 점수를 1 증가시킨다.</li>
+  <li>2) X인 경우 점수를 증가시키지 않는다.</li>
+  <li>3) 점수가 계산될 떄마다 해당 점수를 합한다.</li>
+</ul>
+
+<p>하나의 OX퀴즈 문자열 점수 계산이 끝나고 합을 구했다면 4) 별도의 합 점수 배열에 담는다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">ox_arr</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span> <span class="c1">// 입력받을 OX퀴즈 문자열</span>
+    <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 문자열 점수들의 합</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 해당 문자열의 점수</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">ox_arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">ox_arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span> <span class="c1">// 1번</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> 
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span> <span class="c1">// 3번</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span> <span class="c1">// 2번</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span> <span class="c1">// 3번</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">ox_scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span> <span class="c1">// 4번</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStreamWriter</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">sum</span><span class="o">,</span> <span class="n">score</span><span class="o">;</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">ox_arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">ox_scores</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">ox_arr</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">ox_arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">ox_arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">ox_scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">ox_score</span> <span class="o">:</span> <span class="n">ox_scores</span><span class="o">)</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ox_score</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[OX 퀴즈]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 4673번</title><link href="http://localhost:4000/java/17-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 4673번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/17-post</id><content type="html" xml:base="http://localhost:4000/java/17-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/backjoon/4673.png" /></center>
 
@@ -183,159 +516,7 @@
 <ul>
   <li>셀프넘버를 구하는 로직을 별도로 함수를 작성하여 핵심 비즈니스 로직을 분리함으로 깔끔한 코드를 작성할 수 있다는 것을 알게되었다.</li>
   <li>효율적인 알고리즘 패턴을 우선적으로 찾지 않고 코딩부터 시작하였는데, 더 효율적인 패턴을 찾게되면 로직을 변경해야 하는 경우가 생겨 불필요한 시간을 소모하였다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 8958번</title><link href="http://localhost:4000/java/16-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 8958번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/16-post</id><content type="html" xml:base="http://localhost:4000/java/16-post/"><![CDATA[<p><br /></p>
-
-<center><img src="/assets/images/backjoon/8958.png" /></center>
-
-<blockquote>
-  <p>Input-1) <br />
-5 <br />
-OOXXOXXOOO <br />
-OOXXOOXXOO <br />
-OXOXOXOXOXOXOX <br />
-OOOOOOOOOO <br />
-OOOOXOOOOXOOOOX <br /></p>
-</blockquote>
-
-<blockquote>
-  <p>Output-1) <br />
-10 <br />
-9 <br />
-7 <br />
-55 <br />
-30 <br /></p>
-</blockquote>
-
-<h3 id="접근-방식">접근 방식</h3>
-<p>OX 퀴즈 결과 문자열을 순회하며 아래의 조건을 통해 점수를 계산하였다.</p>
-<ul>
-  <li>1) O인 경우 점수를 1 증가시킨다.</li>
-  <li>2) X인 경우 점수를 증가시키지 않는다.</li>
-  <li>3) 점수가 계산될 떄마다 해당 점수를 합한다.</li>
-</ul>
-
-<p>하나의 OX퀴즈 문자열 점수 계산이 끝나고 합을 구했다면 4) 별도의 합 점수 배열에 담는다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">ox_arr</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span> <span class="c1">// 입력받을 OX퀴즈 문자열</span>
-    <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 문자열 점수들의 합</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 해당 문자열의 점수</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">ox_arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">ox_arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span> <span class="c1">// 1번</span>
-            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> 
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span> <span class="c1">// 3번</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span> <span class="c1">// 2번</span>
-            <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span> <span class="c1">// 3번</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="n">ox_scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span> <span class="c1">// 4번</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p><br /></p>
-
-<h3 id="작성코드">작성코드</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.OutputStreamWriter</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        
-        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
-
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="n">sum</span><span class="o">,</span> <span class="n">score</span><span class="o">;</span>
-        <span class="nc">String</span><span class="o">[]</span> <span class="n">ox_arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">ox_scores</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">ox_arr</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
-            <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">ox_arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">ox_arr</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"O"</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
-                    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
-                <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
-                    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-                    <span class="n">sum</span> <span class="o">+=</span> <span class="n">score</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="n">ox_scores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
-        <span class="o">}</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">ox_score</span> <span class="o">:</span> <span class="n">ox_scores</span><span class="o">)</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ox_score</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-        
-        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[OX 퀴즈]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 1110번</title><link href="http://localhost:4000/java/14-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1110번" /><published>2022-08-02T00:00:00+09:00</published><updated>2022-08-02T00:00:00+09:00</updated><id>http://localhost:4000/java/14-post</id><content type="html" xml:base="http://localhost:4000/java/14-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 1110번</title><link href="http://localhost:4000/java/14-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1110번" /><published>2022-08-02T00:00:00+09:00</published><updated>2022-08-02T00:00:00+09:00</updated><id>http://localhost:4000/java/14-post</id><content type="html" xml:base="http://localhost:4000/java/14-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/backjoon/1110.png" /></center>
 
@@ -1122,99 +1303,4 @@ S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 �
     <span class="n">l</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">selfNum</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry><entry><title type="html">[알고리즘 문제] 괄호 문자열 검증</title><link href="http://localhost:4000/javascript/8-post/" rel="alternate" type="text/html" title="[알고리즘 문제] 괄호 문자열 검증" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/javascript/8-post</id><content type="html" xml:base="http://localhost:4000/javascript/8-post/"><![CDATA[<h1 id="괄호-문자열-검증">괄호 문자열 검증</h1>
-<p>’(‘, ‘)’, ‘{‘, ‘}’, ‘[’ 및 ‘]’ 만 포함하는 문자열이 주어지면 입력 문자열이 유효한지 확인하자.
-다음과 같은 경우 입력 문자열이 유효합니다.
-열린 괄호와 동일한 유형의 괄호로 닫아야 합니다.
-열린 괄호는 올바른 순서로 닫아야 합니다.
-유효하면 true, 아니면 false를 리턴합니다.</p>
-
-<blockquote>
-  <p>Input) <br />
-() <br />
-Output) <br />
-true</p>
-</blockquote>
-
-<blockquote>
-  <p>Input) <br />
-()[]{} <br />
-Output) <br />
-true</p>
-</blockquote>
-
-<blockquote>
-  <p>Input) <br />
-(] <br />
-Output) <br />
-false</p>
-</blockquote>
-
-<blockquote>
-  <p>Input) <br />
-(([])) <br />
-Output) <br />
-true</p>
-</blockquote>
-
-<h2 id="접근방식">접근방식</h2>
-<p>열린, 닫힌 괄호를 객체로 생성하여 두고, 입력 문자열을 반복하며 현재요소가 괄호객체에 key, value 값으로 존재하는지 여부를 확인하여 검증하는 방식으로 접근하였다.</p>
-
-<h3 id="문제">문제</h3>
-<ul>
-  <li>단순히 t배열이 빈배열을 만들면 될 것이라 생각했는데, ‘())’의 경우 앞의 ‘()’를 통해 빈배열을 만들 수 있지만 남은 ‘)’ 때문에 문제가 발생하였다.</li>
-  <li>t배열의 마지막요소를 key값으로 value값을 찾을 때 괄호 유형이 다를 경우 문제가 발생하였다. ex) ‘([)]’
-    <h3 id="문제해결">문제해결</h3>
-    <p>ele(현재요소)가 t배열의 마지막원소를 key값으로 조회한 value값과 일치하지 않는 경우 false를 반환하도록 구현하였다.</p>
-  </li>
-</ul>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">bracket_input</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">map</span><span class="o">=</span><span class="p">{</span> <span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">{</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">}</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">[</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">]</span><span class="dl">'</span> <span class="p">},</span> <span class="nx">keys</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">map</span><span class="p">),</span> <span class="nx">l</span><span class="o">=</span><span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">''</span><span class="p">),</span> <span class="nx">t</span><span class="o">=</span><span class="p">[],</span> <span class="nx">result</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">ele</span> <span class="k">of</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">ele</span><span class="p">))</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span> 
-            <span class="k">if</span><span class="p">(</span><span class="nx">ele</span> <span class="o">===</span> <span class="nx">map</span><span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span> <span class="nx">result</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span> <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span> 
-    <span class="c1">// input값이 유효하다면 t배열은 빈 배열이 되고(true), 배열에 값이 있다면 짝이 안맞는 괄호값이 존재(false)</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="nx">result</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="소스-리뷰">소스 리뷰</h2>
-<h3 id="4-line">4 line</h3>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">ele</span> <span class="k">of</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">keys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">ele</span><span class="p">))</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
-    <span class="p">...</span>
-<span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<blockquote>
-  <p>ele(현재요소)가 map(괄호객체)에 key값으로 존재한다면 t(빈배열) 맨뒤에 값을 넣음.</p>
-</blockquote>
-
-<h3 id="6-line">6 line</h3>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="p">(</span><span class="nx">ele</span> <span class="o">===</span> <span class="nx">map</span><span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span> <span class="p">{</span> <span class="nx">t</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span> <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<blockquote>
-  <p>ele(현재요소)가 조회한 value값과 일치하면 괄호의 짝이 맞으므로 t배열에서 마지막요소 삭제함.</p>
-</blockquote>]]></content><author><name>lango</name></author><category term="JavaScript" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="js" /><summary type="html"><![CDATA[괄호 '(',')','{','}','[',']' 문자열 검증]]></summary></entry></feed>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry></feed>

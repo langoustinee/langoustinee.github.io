@@ -100,4 +100,10 @@ var store = [{
         "tags": ["Blog","algorithm","study","java","Backjoon"],
         "url": "/java/17-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 1065번",
+        "excerpt":"Input-1 110 Output-1 99 Input-2 210 Output-2 105 Input-1 1000 Output-1 144 문제 풀이 문제 풀이에 앞서 한수가 무엇인지 이해가 잘 되지 않았다. 한수를 알려면 등차수열에 대해서도 알아야 한다. 한수란? 어떤 정수 A의 각 자리수가 등차수열을 이루는 수이다. 등차수열이란? 연속된 두 개의 수의 차이가 일정한 수열을 말한다. 그러면 1부터 9까지는...","categories": ["Java"],
+        "tags": ["Blog","algorithm","study","java","Backjoon"],
+        "url": "/java/18-post/",
+        "teaser": null
       }]
