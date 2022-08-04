@@ -7,7 +7,7 @@ categories:
 - Python
 
 tags: 
-- [Blog, algorithm, study, python, Backjoon]
+- [Blog, algorithm, study, python, baekjoon]
 
 toc: true
 toc_sticky: true

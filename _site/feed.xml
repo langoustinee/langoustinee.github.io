@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-04T14:29:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[알고리즘 스터디 - Java] 백준 1065번</title><link href="http://localhost:4000/java/18-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1065번" /><published>2022-08-04T00:00:00+09:00</published><updated>2022-08-04T00:00:00+09:00</updated><id>http://localhost:4000/java/18-post</id><content type="html" xml:base="http://localhost:4000/java/18-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-08-04T15:26:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[알고리즘 스터디 - Java] 백준 1065번</title><link href="http://localhost:4000/java/18-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1065번" /><published>2022-08-04T00:00:00+09:00</published><updated>2022-08-04T00:00:00+09:00</updated><id>http://localhost:4000/java/18-post</id><content type="html" xml:base="http://localhost:4000/java/18-post/"><![CDATA[<p><br /></p>
 
-<center><img src="/assets/images/backjoon/1065.png" /></center>
+<center><img src="/assets/images/baekjoon/1065.png" /></center>
 
 <blockquote>
   <p>Input-1 <br />
@@ -179,9 +179,9 @@ Output-1 <br />
 <h3 id="회고">회고</h3>
 <ul>
   <li>4673번 셀프넘버 문제에서도 정수의 자리수를 알아야 했는데 이번 1065 문제에서도 동일한 요구사항이 있었던 것으로 보아 자리수 별로 접근하는 방식을 명확하게 알고 있어야 한다고 느꼈다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[한수]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 8958번</title><link href="http://localhost:4000/java/16-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 8958번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/16-post</id><content type="html" xml:base="http://localhost:4000/java/16-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[한수]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 8958번</title><link href="http://localhost:4000/java/16-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 8958번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/16-post</id><content type="html" xml:base="http://localhost:4000/java/16-post/"><![CDATA[<p><br /></p>
 
-<center><img src="/assets/images/backjoon/8958.png" /></center>
+<center><img src="/assets/images/baekjoon/8958.png" /></center>
 
 <blockquote>
   <p>Input-1) <br />
@@ -331,9 +331,9 @@ OOOOXOOOOXOOOOX <br /></p>
         <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[OX 퀴즈]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 4673번</title><link href="http://localhost:4000/java/17-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 4673번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/17-post</id><content type="html" xml:base="http://localhost:4000/java/17-post/"><![CDATA[<p><br /></p>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[OX 퀴즈]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 4673번</title><link href="http://localhost:4000/java/17-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 4673번" /><published>2022-08-03T00:00:00+09:00</published><updated>2022-08-03T00:00:00+09:00</updated><id>http://localhost:4000/java/17-post</id><content type="html" xml:base="http://localhost:4000/java/17-post/"><![CDATA[<p><br /></p>
 
-<center><img src="/assets/images/backjoon/4673.png" /></center>
+<center><img src="/assets/images/baekjoon/4673.png" /></center>
 
 <blockquote>
   <p>Output</p>
@@ -516,9 +516,9 @@ OOOOXOOOOXOOOOX <br /></p>
 <ul>
   <li>셀프넘버를 구하는 로직을 별도로 함수를 작성하여 핵심 비즈니스 로직을 분리함으로 깔끔한 코드를 작성할 수 있다는 것을 알게되었다.</li>
   <li>효율적인 알고리즘 패턴을 우선적으로 찾지 않고 코딩부터 시작하였는데, 더 효율적인 패턴을 찾게되면 로직을 변경해야 하는 경우가 생겨 불필요한 시간을 소모하였다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 1110번</title><link href="http://localhost:4000/java/14-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1110번" /><published>2022-08-02T00:00:00+09:00</published><updated>2022-08-02T00:00:00+09:00</updated><id>http://localhost:4000/java/14-post</id><content type="html" xml:base="http://localhost:4000/java/14-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 1110번</title><link href="http://localhost:4000/java/14-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 1110번" /><published>2022-08-02T00:00:00+09:00</published><updated>2022-08-02T00:00:00+09:00</updated><id>http://localhost:4000/java/14-post</id><content type="html" xml:base="http://localhost:4000/java/14-post/"><![CDATA[<p><br /></p>
 
-<center><img src="/assets/images/backjoon/1110.png" /></center>
+<center><img src="/assets/images/baekjoon/1110.png" /></center>
 
 <blockquote>
   <p>Input-1) <br />
@@ -698,9 +698,9 @@ T가 구해지면 N값으로 대체하도록 하였다.</p>
 <ul>
   <li>1110번 문제의 알고리즘 패턴의 경우 생각보다는 단순해보였는데, 실제로 해당 로직을 구현하고 보니, 더 좋은 패턴으로 풀 수 있었을 것 같다.</li>
   <li>십의 자리수와 일의 자리수 조합을 아름답게 사용하면 코드길이를 대폭 줄일 수 있을 것 같다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[더하기 사이클]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 2577번</title><link href="http://localhost:4000/java/15-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 2577번" /><published>2022-08-02T00:00:00+09:00</published><updated>2022-08-02T00:00:00+09:00</updated><id>http://localhost:4000/java/15-post</id><content type="html" xml:base="http://localhost:4000/java/15-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[더하기 사이클]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 2577번</title><link href="http://localhost:4000/java/15-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 2577번" /><published>2022-08-02T00:00:00+09:00</published><updated>2022-08-02T00:00:00+09:00</updated><id>http://localhost:4000/java/15-post</id><content type="html" xml:base="http://localhost:4000/java/15-post/"><![CDATA[<p><br /></p>
 
-<center><img src="/assets/images/backjoon/2577.png" /></center>
+<center><img src="/assets/images/baekjoon/2577.png" /></center>
 
 <blockquote>
   <p>Input-1) <br />
@@ -826,7 +826,7 @@ T가 구해지면 N값으로 대체하도록 하였다.</p>
         <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[숫자의 개수]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 10951번</title><link href="http://localhost:4000/java/13-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 10951번" /><published>2022-08-01T00:00:00+09:00</published><updated>2022-08-01T00:00:00+09:00</updated><id>http://localhost:4000/java/13-post</id><content type="html" xml:base="http://localhost:4000/java/13-post/"><![CDATA[<p><br /></p>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[숫자의 개수]]></summary></entry><entry><title type="html">[알고리즘 스터디 - Java] 백준 10951번</title><link href="http://localhost:4000/java/13-post/" rel="alternate" type="text/html" title="[알고리즘 스터디 - Java] 백준 10951번" /><published>2022-08-01T00:00:00+09:00</published><updated>2022-08-01T00:00:00+09:00</updated><id>http://localhost:4000/java/13-post</id><content type="html" xml:base="http://localhost:4000/java/13-post/"><![CDATA[<p><br /></p>
 
 <h1 id="ab---4">A+B - 4</h1>
 <p>두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
@@ -993,7 +993,7 @@ nextInt()를 통해 정수를 입력받으니 hasNextInt()를 사용하였다.
 <ul>
   <li>Python으로는 손쉽게 풀수 있었으나 Java로 풀어보니 EOF를 고려하지 않을 수 없었다. 그래서 EOF에 대해서 다시 복습할 수 있었다.</li>
   <li>그리고 입력값이 많아질수록 Scanner보다 BufferedReader가 실행 속도에 있어서 메리트가 있음을 알게 되었다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="Backjoon" /><summary type="html"><![CDATA[A+B - 4]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 1316번</title><link href="http://localhost:4000/python/12-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 1316번" /><published>2022-07-21T00:00:00+09:00</published><updated>2022-07-21T00:00:00+09:00</updated><id>http://localhost:4000/python/12-post</id><content type="html" xml:base="http://localhost:4000/python/12-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[A+B - 4]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 1316번</title><link href="http://localhost:4000/python/12-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 1316번" /><published>2022-07-21T00:00:00+09:00</published><updated>2022-07-21T00:00:00+09:00</updated><id>http://localhost:4000/python/12-post</id><content type="html" xml:base="http://localhost:4000/python/12-post/"><![CDATA[<p><br /></p>
 
 <h1 id="그룹-단어-체커">그룹 단어 체커</h1>
 <p>그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다. 단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.</p>
@@ -1100,7 +1100,7 @@ a</p>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="회고">회고</h2>
-<p>1316번 문제를 통해 인덱싱도 중요하지만, 슬라이싱 문법에 대해 확실하게 복습할 수 있었다.</p>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[그룹 단어 체커]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 2941번</title><link href="http://localhost:4000/python/11-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 2941번" /><published>2022-07-14T00:00:00+09:00</published><updated>2022-07-14T00:00:00+09:00</updated><id>http://localhost:4000/python/11-post</id><content type="html" xml:base="http://localhost:4000/python/11-post/"><![CDATA[<h1 id="크로아티아-알파벳">크로아티아 알파벳</h1>
+<p>1316번 문제를 통해 인덱싱도 중요하지만, 슬라이싱 문법에 대해 확실하게 복습할 수 있었다.</p>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="baekjoon" /><summary type="html"><![CDATA[그룹 단어 체커]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 2941번</title><link href="http://localhost:4000/python/11-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 2941번" /><published>2022-07-14T00:00:00+09:00</published><updated>2022-07-14T00:00:00+09:00</updated><id>http://localhost:4000/python/11-post</id><content type="html" xml:base="http://localhost:4000/python/11-post/"><![CDATA[<h1 id="크로아티아-알파벳">크로아티아 알파벳</h1>
 <p>ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다. 단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다.</p>
 
@@ -1178,7 +1178,7 @@ Output-2) <br />
 <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
 <span class="n">cnt</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[크로아티아 알파벳]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 1157번</title><link href="http://localhost:4000/python/10-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 1157번" /><published>2022-07-12T00:00:00+09:00</published><updated>2022-07-12T00:00:00+09:00</updated><id>http://localhost:4000/python/10-post</id><content type="html" xml:base="http://localhost:4000/python/10-post/"><![CDATA[<h1 id="단어-공부">단어 공부</h1>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="baekjoon" /><summary type="html"><![CDATA[크로아티아 알파벳]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 1157번</title><link href="http://localhost:4000/python/10-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 1157번" /><published>2022-07-12T00:00:00+09:00</published><updated>2022-07-12T00:00:00+09:00</updated><id>http://localhost:4000/python/10-post</id><content type="html" xml:base="http://localhost:4000/python/10-post/"><![CDATA[<h1 id="단어-공부">단어 공부</h1>
 <p>알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오. 단, 대문자와 소문자를 구분하지 않는다.</p>
 
 <blockquote>
@@ -1230,7 +1230,7 @@ A</p>
     <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">rs</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">rs</span><span class="p">))])</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'?'</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[단어 공부]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 4673번</title><link href="http://localhost:4000/python/9-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 4673번" /><published>2022-06-24T00:00:00+09:00</published><updated>2022-06-24T00:00:00+09:00</updated><id>http://localhost:4000/python/9-post</id><content type="html" xml:base="http://localhost:4000/python/9-post/"><![CDATA[<h1 id="셀프-넘버">셀프 넘버</h1>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="baekjoon" /><summary type="html"><![CDATA[단어 공부]]></summary></entry><entry><title type="html">[알고리즘 스터디] 백준 4673번</title><link href="http://localhost:4000/python/9-post/" rel="alternate" type="text/html" title="[알고리즘 스터디] 백준 4673번" /><published>2022-06-24T00:00:00+09:00</published><updated>2022-06-24T00:00:00+09:00</updated><id>http://localhost:4000/python/9-post</id><content type="html" xml:base="http://localhost:4000/python/9-post/"><![CDATA[<h1 id="셀프-넘버">셀프 넘버</h1>
 <p>셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
 양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), …과 같은 무한 수열을 만들 수 있다. 
 예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. 이런식으로 다음과 같은 수열을 만들 수 있다.
@@ -1303,4 +1303,4 @@ S 수를 배열에 넣어두고, S 수로 이루어진 배열에 포함되지 �
     <span class="n">l</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">selfNum</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="Backjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry></feed>
+</pre></td></tr></tbody></table></code></pre></div></div>]]></content><author><name>lango</name></author><category term="Python" /><category term="Blog" /><category term="algorithm" /><category term="study" /><category term="python" /><category term="baekjoon" /><summary type="html"><![CDATA[셀프 넘버]]></summary></entry></feed>
