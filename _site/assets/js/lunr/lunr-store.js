@@ -124,4 +124,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/21-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 1316번",
+        "excerpt":"Input-1 3 happy new year Output-1 3 Input-2 4 aba abab abcabc a Output-2 1 Input-3 5 ab aa aca ba bb Output-3 4 문제 풀이 주어진 단어를 순회하며 문자별로 그룹단어인지 검증하기 위해서는 아래의 조건이 검증되어야 한다. 문자가 중복으로 입력되었을 경우(단, 연속된 문자는 예외) 상기 조건이 충족되는 경우 그룹단어가 아닌...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/22-post/",
+        "teaser": null
       }]
