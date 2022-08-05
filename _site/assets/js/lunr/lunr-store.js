@@ -118,4 +118,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/20-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 2941번",
+        "excerpt":"Input-1 ljes=njak Output-1 6 Input-2 ddz=z= Output-2 3 Input-3 nljj Output-3 3 문제 풀이 주어진 단어배열의 인덱스로 접근하는 방식과 주어진 단어에서 크로아티아 알파벳을 찾아 치환하는 방식 2가지로 문제를 풀어보았다. 배열의 인덱스로 접근하는 방식 배열의 인덱스별로 크로아티아 알파벳의 첫 문자와 같다면 그 다음문자도 같은 방식으로 검증해보자. 주어진 알파벳 단어를 S라 하고...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/21-post/",
+        "teaser": null
       }]
