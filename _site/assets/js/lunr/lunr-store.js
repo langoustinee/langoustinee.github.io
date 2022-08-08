@@ -130,4 +130,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/22-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 1712번",
+        "excerpt":"Input-1 1000 70 170 Output-1 11 Input-2 3 2 1 Output-2 -1 Input-3 2100000000 9 10 Output-3 2100000001 문제 풀이 이 문제에서 중요하게 봐야할 핵심은 아래와 같다. 주어진 수가 21억 이하의 자연수이기에 int형을 사용하면 안된다. 손익분기점이 존재하지 않으면 -1를 출력한다. 실행 속도가 0.35초 이내여야 한다. 먼저 int형의 경우 -2,147,483,648 ~...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/23-post/",
+        "teaser": null
       }]
