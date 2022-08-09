@@ -137,6 +137,12 @@ var store = [{
         "url": "/java/23-post/",
         "teaser": null
       },{
+        "title": "[알고리즘 스터디 - Java] 백준 2292번",
+        "excerpt":"Input-1 13 Output-1 3 문제 풀이 이 문제는 특정 로직을 잘 파악하여 패턴을 나열하며 풀어야 한다. 먼저 1부터 N까지의 최소 루트를 구하는 것이니 N이 1일 경우엔 1이면 된다. N이 2이상일 경우에는 아래와 같은 패턴을 유추해볼 수 있다. N의 범위 벌집의 개수 최소 루트 2 ~ 7 6 2 8 ~...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/26-post/",
+        "teaser": null
+      },{
         "title": "[알고리즘 스터디 - Java] 프로그래머스 - 두 개 뽑아서 더하기",
         "excerpt":"Input-1 [2,1,3,4,1] Output-1 [2,3,4,5,6,7] Input-2 [5,0,2,7] Output-2 [2,5,7,9,12] 문제 풀이 이 문제를 풀때 주의할 점은 아래와 같다. 배열의 인덱스별로 더할 때 본인 인덱스와는 더할 필요가 없다. 배열의 인덱스별로 더하여 배열에 담을 때 중복값이 없어야 한다. 담은 배열을 오름차순으로 정렬해야 한다. 중첩 반복문으로 인덱스 별로 더한 값을 알 수 있는데, 본인...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
