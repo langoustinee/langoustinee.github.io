@@ -1,0 +1,105 @@
+I"�"<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220809_02.png" /></center>
+
+<blockquote>
+  <p>Input-1 <br /></p>
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">arr1</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">],[</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">]]</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">],[</span><span class="mi">5</span><span class="o">,</span><span class="mi">6</span><span class="o">]]</span>
+</pre></td></tr></tbody></table></code></pre></div>  </div>
+  <p>Output-1 <br /></p>
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">answer</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">4</span><span class="o">,</span><span class="mi">6</span><span class="o">],[</span><span class="mi">7</span><span class="o">,</span><span class="mi">9</span><span class="o">]]</span> <span class="c1">// arr1 + arr2</span>
+</pre></td></tr></tbody></table></code></pre></div>  </div>
+</blockquote>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>2차원 배열을 활용해 행렬의 같은 행과 같은 열의 값을 더한 행렬을 구해야 한다. <br />
+더해질 두 행렬은 행과 열의 크기가 같기에 중첩 반복문을 활용해 행과 열만큼 반복하여 더하는 방식으로 접근하자.</p>
+
+<ul>
+  <li>바깥 반복문은 배열의 행(가로)만큼 반복한다.</li>
+  <li>안쪽 반복문은 배열의 열(세로)만큼 반복한다.</li>
+</ul>
+
+<p>예를들어 i가 0,1 행의 인덱스만큼 순회할 때 열의 인덱스를 접근하려면 j가 i[0 or 1].length 값이어야 한다. <br /></p>
+
+<p>한번 테스트케이스에 대입해보자. <br />
+첫번째 순회시 i가 0이면 해당 행의 값은 1이고 arr[0].length는 1이기에 둘째 행의 값은 3이다. <br />
+두번째 순회시는 같은 방식으로 2, 4 행 값이 나오게 된다.</p>
+
+<p>행과 열로써 보면 아래과 같이 순회한다고 볼 수 있다. <br />
+그렇다면 같은 행과 같은 열의 값에 접근할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span><span class="o">[][]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">arr1</span><span class="o">;</span> <span class="c1">// answer에 첫번째 행렬 저장</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="c1">// 행렬의 행만큼 순회</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">arr1</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span> <span class="c1">//행렬의 열만큼 순회</span>
+        <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="n">arr2</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span> <span class="c1">// answer에 arr1값이 있기에 arr2값을 더해줌</span>
+    <span class="o">}</span> 
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>중첩 반복문으로 같은 행과 같은열을 더하여 answer에 대입하는 코드는 위와 같다.</p>
+
+<p><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">1</span><span class="o">},</span> <span class="o">{</span><span class="mi">2</span><span class="o">}};</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">3</span><span class="o">},</span> <span class="o">{</span><span class="mi">4</span><span class="o">}};</span>
+        <span class="c1">// int[][] arr1 = {{1,2}, {2,3}};</span>
+        <span class="c1">// int[][] arr2 = {{3,4}, {5,6}};</span>
+        
+        <span class="n">solution</span><span class="o">(</span><span class="n">arr1</span><span class="o">,</span> <span class="n">arr2</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">arr1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">arr2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">arr1</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">arr1</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="n">arr2</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+            <span class="o">}</span> 
+        <span class="o">}</span>        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>Set 인터페이스에서 구현한 HastSet의 역할이 무엇인지 어떠한 상황에서 사용하는 것이 바람직한지 조금은 알게되었다.</li>
+  <li>알고리즘 문제를 푸는 과정에서 배열을 어떻게 정렬하냐에 따라서 풀이속도가 달라지는 것을 느꼈다.</li>
+</ul>
+:ET

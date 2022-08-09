@@ -142,4 +142,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/24-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 행렬의 덧셈",
+        "excerpt":"Input-1 1 2 arr1 = [[1,2],[2,3]] arr2 = [[3,4],[5,6]] Output-1 1 answer = [[4,6],[7,9]] // arr1 + arr2 문제 풀이 2차원 배열을 활용해 행렬의 같은 행과 같은 열의 값을 더한 행렬을 구해야 한다. 더해질 두 행렬은 행과 열의 크기가 같기에 중첩 반복문을 활용해 행과 열만큼 반복하여 더하는 방식으로 접근하자. 바깥...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/25-post/",
+        "teaser": null
       }]
