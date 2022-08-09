@@ -136,4 +136,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/23-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 두 개 뽑아서 더하기",
+        "excerpt":"Input-1 [2,1,3,4,1] Output-1 [2,3,4,5,6,7] Input-2 [5,0,2,7] Output-2 [2,5,7,9,12] 문제 풀이 이 문제를 풀때 주의할 점은 아래와 같다. 배열의 인덱스별로 더할 때 본인 인덱스와는 더할 필요가 없다. 배열의 인덱스별로 더하여 배열에 담을 때 중복값이 없어야 한다. 담은 배열을 오름차순으로 정렬해야 한다. 중첩 반복문으로 인덱스 별로 더한 값을 알 수 있는데, 본인...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/24-post/",
+        "teaser": null
       }]
