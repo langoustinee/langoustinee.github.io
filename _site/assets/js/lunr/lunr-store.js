@@ -154,4 +154,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/25-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 백준 1193번",
+        "excerpt":"Input-1 1 Output-1 1/1 Input-2 2 Output-2 1/2 Input-3 5 Output-3 2/2 Input-4 9 Output-4 3/2 문제 풀이 먼저 배열의 행들을 대각선으로 바라보고 접근하면 더욱 이해가 빠를 것이다. 본인은 문제를 이해하는 데도 상당히 오래 걸렸다.. 입력받은 수를 X라 하면 특정 패턴을 통해 X번째의 분수값을 찾아야 한다. X가 몇번째 행인지(몇번째 대각선...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/27-post/",
+        "teaser": null
       }]
