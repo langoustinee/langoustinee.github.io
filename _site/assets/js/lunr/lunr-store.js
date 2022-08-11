@@ -160,4 +160,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/27-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 최대공약수와 최소공배수",
+        "excerpt":"Input-1 1 n = 3, m = 12 Output-1 1 [3, 12] Input-2 1 n = 2, m = 5 Output-2 1 [1, 10] 문제 풀이 최대공약수와 최소공배수를 구하는 문제이다. 최대공약수(Greatest Common Divisor)란? 0이 아닌 두개이 상의 정수의 공통된 약수중 가장 큰 수이다. 일반적으로 푸는 방식과 유클리드 호제법을 통해 푸는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/28-post/",
+        "teaser": null
       }]
