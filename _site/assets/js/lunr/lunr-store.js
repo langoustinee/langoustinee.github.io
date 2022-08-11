@@ -166,4 +166,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/28-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 이상한 문자 만들기",
+        "excerpt":"Input-1 “try hello world” Output-1 “TrY HeLlO WoRlD” Input-2 “ABC aBc abC “ Output-2 “Abc Abc Abc “ 문제 풀이 문제 설명을 보면 주어진 문자열은 한개 이상의 단어로 구성되어 있으며, 각 단어는 하나 이상의 공백문자로 구분된다고 한다. 각 단어별로 짝수번째 인덱스의 단어는 대문자로, 홀수번째 인덱스의 단어는 소문자로 변경된 문자열을 반환해야...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/29-post/",
+        "teaser": null
       }]
