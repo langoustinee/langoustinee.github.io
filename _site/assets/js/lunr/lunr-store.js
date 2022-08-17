@@ -172,4 +172,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/29-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 시저 암호",
+        "excerpt":"Input-1 “AB” Output-1 “BC” Input-2 “a B z” Output-2 “b C a” 문제 풀이 주어진 문자열에서 대소문자 알파벳을 하나씩 앞으로 밀어낸 알파벳을 찾아야 한다. 먼저 아래의 조건을 검증해보자. 주어진 문자열 중에서 공백값은 밀어내지 않고 그대로 담는다. 주어진 문자열 중에서 대소문자를 구분한다. // ascii code의 경우 65~90이 대문자, 97~122가 소문자 대문자...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/30-post/",
+        "teaser": null
       }]
