@@ -178,4 +178,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/30-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 소수 찾기",
+        "excerpt":"Input-1 10 Output-1 4 Input-2 5 Output-2 3 문제 풀이 먼저 n까지의 수 중 소수를 찾아야 한다. 소수란? 2, 3, 5, 7, 11, 13, 17 … 약수가 1과 자신 뿐인 수이다. 어떻게 소수를 구할 수 있을까? n까지의 수중에서 n보다 작은 수를 나눠지는 수가 있다면 소수가 아니다. 즉, 어떤 수의 배수이면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/31-post/",
+        "teaser": null
       }]

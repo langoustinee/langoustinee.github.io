@@ -1,0 +1,81 @@
+I"<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220818_01.png" /></center>
+
+<blockquote>
+  <p>Input-1 <br />
+10 <br />
+Output-1 <br />
+4</p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+5 <br />
+Output-2 <br />
+3</p>
+</blockquote>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>먼저 n까지의 수 중 소수를 찾아야 한다. <br /></p>
+
+<blockquote>
+  <p>소수란?
+2, 3, 5, 7, 11, 13, 17 … <br />
+약수가 1과 자신 뿐인 수이다.</p>
+</blockquote>
+
+<h4 id="어떻게-소수를-구할-수-있을까">어떻게 소수를 구할 수 있을까?</h4>
+<p>n까지의 수중에서 n보다 작은 수를 나눠지는 수가 있다면 소수가 아니다. <br />
+즉, 어떤 수의 배수이면 소수가 아니라는 것이다. <br /></p>
+
+<p>여기까지 이해하였으면 무작정 코딩을 시작해보자. <br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="c1">// 소수가 아닌 0과 1을 제외한 n까지의 수</span>
+<span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">isPrime</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">i</span><span class="o">;</span> <span class="n">x</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 소수 X</span>
+            <span class="n">isPrime</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">continue</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">isPrime</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="n">answer</span><span class="o">++;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>바깥의 while문을 통해 2부터 n까지 순회하는데 <br />
+안쪽의 for문을 통해 i별로 x를 i로 나눠지는 수가 있다면 소수가 아니다. <br />
+또한 소수가 아니라면 반복문의 끝까지 순회할 필요가 없고 수행시간이 오래 걸리기에 break문을 추가하였다.</p>
+
+<p>그렇게 불필요한 반복을 줄일 수 있었지만 테스트케이스 11, 12에서 시간초과 문제가 발생하였다.</p>
+
+<h4 id="수행시간을-줄이는-방법은">수행시간을 줄이는 방법은?</h4>
+
+<p><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET
