@@ -184,4 +184,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/31-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 문자열 내 마음대로 정렬하기",
+        "excerpt":"Input-1 strings = [sun, bed, car] n = 1 Output-1 [car, bed, sun] Input-2 strings = [abce, abcd, cdx] n = 2 Output-2 [abcd, abce, cdx] 문제 풀이 기준 문자열의 인덱스를 순서대로 본 문자열을 정렬해야 한다. 나는 소문자 전체를 돌며 검증하는 방식으로 풀었는데 다른 분의 풀이를 보고 부족함을 많이 느꼈다.....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/32-post/",
+        "teaser": null
       }]
