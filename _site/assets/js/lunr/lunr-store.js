@@ -190,4 +190,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/32-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 가운데 글자 가져오기",
+        "excerpt":"Input-1 abced Output-1 c Input-2 abcd Output-2 bc 문제 풀이 주어진 문자열의 길이가 홀수냐 짝수냐에 따라 검증방식을 다르게 접근해야 한다. 홀수일 경우 가운데 문자를 반환한다. 문자열을 순회하며 주어진 문자열의 길이를 반으로 나눈 수와 같은 수를 찾으면 된다. 짝수일 경우 가운데 2개의 문자를 반환한다. 문자열을 반으로 나눈 수의 인덱스와 인덱스+1의 수를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/33-post/",
+        "teaser": null
       }]

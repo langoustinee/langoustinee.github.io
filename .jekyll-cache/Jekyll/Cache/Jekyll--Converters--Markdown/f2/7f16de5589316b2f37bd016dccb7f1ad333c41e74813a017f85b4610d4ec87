@@ -1,0 +1,79 @@
+I"�<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220824_02.png" width="600" /></center>
+
+<blockquote>
+  <p>Input-1 <br />
+abced <br />
+Output-1 <br />
+c</p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+abcd
+Output-2 <br />
+bc</p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>주어진 문자열의 길이가 홀수냐 짝수냐에 따라 검증방식을 다르게 접근해야 한다. <br /></p>
+
+<p><strong>홀수일 경우</strong></p>
+<ul>
+  <li>가운데 문자를 반환한다.</li>
+  <li>문자열을 순회하며 주어진 문자열의 길이를 반으로 나눈 수와 같은 수를 찾으면 된다.</li>
+</ul>
+
+<p><strong>짝수일 경우</strong></p>
+<ul>
+  <li>가운데 2개의 문자를 반환한다.</li>
+  <li>문자열을 반으로 나눈 수의 인덱스와 인덱스+1의 수를 찾으면 된다.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()/</span><span class="mi">2</span><span class="o">)-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()/</span><span class="mi">2</span><span class="o">);</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="nc">Math</span><span class="o">.</span><span class="na">round</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()/</span><span class="mi">2</span><span class="o">))</span> <span class="n">answer</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>무작정 풀이를 위한 코드보다 간결하게 작성할 수 있는지도 함께 고려할 수 있는 스킬을 길러야 겠다고 느꼈다.</li>
+</ul>
+:ET
