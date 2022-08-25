@@ -1,0 +1,287 @@
+I"ܬ<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220825_02.png" width="700" /></center>
+
+<blockquote>
+  <p>문제 요구사항 <br /></p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>1. 다트 게임은 총 3번의 기회로 구성된다.
+2. 각 기회마다 얻을 수 있는 점수는 0점에서 10점까지이다.
+3. 점수와 함께 Single(S), Double(D), Triple(T) 영역이 존재하고 각 영역 당첨 시 점수에서 1제곱, 2제곱, 3제곱 (점수1 , 점수2 , 점수3 )으로 계산된다.
+4. 옵션으로 스타상(*) , 아차상(#)이 존재하며 스타상(*) 당첨 시 해당 점수와 바로 전에 얻은 점수를 각 2배로 만든다. 아차상(#) 당첨 시 해당 점수는 마이너스된다.
+5. 스타상(*)은 첫 번째 기회에서도 나올 수 있다. 이 경우 첫 번째 스타상(*)의 점수만 2배가 된다. (예제 4번 참고)
+6. 스타상(*)의 효과는 다른 스타상(*)의 효과와 중첩될 수 있다. 이 경우 중첩된 스타상(*) 점수는 4배가 된다. (예제 4번 참고)
+7. 스타상(*)의 효과는 아차상(#)의 효과와 중첩될 수 있다. 이 경우 중첩된 아차상(#)의 점수는 -2배가 된다. (예제 5번 참고)
+8. Single(S), Double(D), Triple(T)은 점수마다 하나씩 존재한다.
+9. 스타상(*), 아차상(#)은 점수마다 둘 중 하나만 존재할 수 있으며, 존재하지 않을 수도 있다.
+10. 0~10의 정수와 문자 S, D, T, *, #로 구성된 문자열이 입력될 시 총점수를 반환하는 함수를 작성하라.
+</pre></td></tr></tbody></table></code></pre></div>  </div>
+</blockquote>
+
+<blockquote>
+  <p>Input-1 <br />
+<strong>1S2D*3T</strong> <br />
+Output-1 <br />
+<strong>37</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>1D2S#10S</strong> <br />
+Output-2 <br />
+<strong>9</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-3 <br />
+<strong>1S<em>2T</em>3S</strong> <br />
+Output-3 <br />
+<strong>23</strong>
+<br /></p>
+</blockquote>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>주어진 문자열을 통해 먼저 점수와 보너스, 옵션들을 어떻게 구분할까?</p>
+<ul>
+  <li>문자열을 순회하며 보너스 문자열에서는 이전 문자열이 점수임을 알 수 있다.</li>
+  <li>문자열을 순회하며 스타상(*)과 아차상(#)의 인덱스를 통해 첫번째,두번째,세번째 기회마다 옵션을 알 수 있다.</li>
+</ul>
+
+<p>점수는 0~10까지의 범위기에 두자리수인 10도 문자열에 포함될 수 있다. <br />
+두자리 수이기에 인덱스로 접근하기 위해 한자리 문자열(본인의 경우는 ^)로 치환하여 사용하였다. <br />
+문자열 처리 전에 치환해놓고 처리할 반복문을 동작하게끔 작성하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">dartResult</span> <span class="o">=</span> <span class="n">dartResult</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"10"</span><span class="o">,</span> <span class="s">"^"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>거의 40줄 가량을 첫번쨰, 두번째, 세번째 기회마다 보너스별로 점수를 계산하는 로직을 작성했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">dartResult</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'S'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'^'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'D'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'^'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">2</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">2</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'T'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'^'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">3</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">3</span><span class="o">);</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">// 생략</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span> <span class="n">dartResult</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">third</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">dartResult</span> <span class="o">=</span> <span class="n">dartResult</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"10"</span><span class="o">,</span> <span class="s">"^"</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">dartResult</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'S'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'^'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span><span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">1</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">1</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'D'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'^'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">2</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">2</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">2</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'T'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'^'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="n">first</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">3</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">3</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">4</span><span class="o">)</span> <span class="n">second</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">3</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">5</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">third</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">i</span><span class="o">)),</span> <span class="mi">3</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'*'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="n">first</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">first</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+                    <span class="n">second</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">7</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">8</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">second</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+                    <span class="n">third</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'#'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="n">first</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="o">)</span> <span class="n">second</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">6</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">7</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">8</span><span class="o">)</span> <span class="n">third</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span> <span class="o">+</span> <span class="n">third</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>조건들을 그룹화하여 같은 코드를 줄일 수 있는 능력이 정말 중요하다고 느낀 문제였다.</li>
+</ul>
+:ET

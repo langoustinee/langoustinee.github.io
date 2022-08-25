@@ -202,4 +202,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/34-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 다트 게임",
+        "excerpt":"문제 요구사항 1 2 3 4 5 6 7 8 9 10 1. 다트 게임은 총 3번의 기회로 구성된다. 2. 각 기회마다 얻을 수 있는 점수는 0점에서 10점까지이다. 3. 점수와 함께 Single(S), Double(D), Triple(T) 영역이 존재하고 각 영역 당첨 시 점수에서 1제곱, 2제곱, 3제곱 (점수1 , 점수2 , 점수3 )으로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/35-post/",
+        "teaser": null
       }]
