@@ -196,4 +196,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/33-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 예산",
+        "excerpt":"Input-1 d = [1, 3, 2, 5, 4] budget = 9 Output-1 3 Input-2 d = [2, 2, 3, 3] budget = 10 Output-2 4 문제 풀이 부서별 신청금액 배열(d)의 원소별로 예산(budget)을 어떻게 나눠줄 수 있을까? budget에서 d의 원소별로 뺼셈하여 양수인지 음수인지를 검증하면 된다. 먼저 budget에서 d 중의 작은 수부터...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/34-post/",
+        "teaser": null
       }]
