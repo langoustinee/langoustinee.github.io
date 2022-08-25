@@ -208,4 +208,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/35-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 비밀 지도",
+        "excerpt":"입출력 예제 문제 풀이 두개의 배열은 모두 주어진 n만큼의 길이를 가지고 있다. 두개의 배열을 순회하며 arr1, arr2의 원소마다 2진수로 변환하면 되는데 2진수로 변환하고 다시 10진수로 변환하는 과정을 잘 고려하며 접근해야 한다. 먼저 반복문에서 두 배열의 원소를 2진수로 변환하여 합쳐보자. 1 2 3 4 5 for(int i=0; i&lt;n; i++) { String...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/36-post/",
+        "teaser": null
       }]
