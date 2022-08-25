@@ -1,0 +1,142 @@
+I"�9<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220825_03-1.png" width="700" /></center>
+<p><br /></p>
+<center><img src="/assets/images/programmers/20220825_03-2.png" width="300" /></center>
+
+<blockquote>
+  <p>입출력 예제</p>
+</blockquote>
+<left><img src="/assets/images/programmers/20220825_03-3.png" width="400" /></left>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>두개의 배열은 모두 주어진 n만큼의 길이를 가지고 있다. <br /> 
+두개의 배열을 순회하며 arr1, arr2의 원소마다 2진수로 변환하면 되는데 <strong>2진수로 변환하고 다시 10진수로 변환하는 과정을 잘 고려</strong>하며 접근해야 한다.</p>
+
+<p>먼저 반복문에서 두 배열의 원소를 2진수로 변환하여 합쳐보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">num1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">arr1</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+    <span class="nc">String</span> <span class="n">num2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">arr2</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+    <span class="nc">String</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%0"</span><span class="o">+</span><span class="n">n</span><span class="o">+</span><span class="s">"d"</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">num1</span><span class="o">)+</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">num2</span><span class="o">));</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Integer.toBinaryString() 메서드로 10진수를 2진수로 변환할 수 있다. <br />
+(참고로 Integer.toString() 메서드로도 2진수 변환이 가능하다.)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="c1">// 생략</span>
+    <span class="n">row_res</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">sum</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">sum</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">j</span><span class="o">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="n">row_res</span> <span class="o">+=</span> <span class="s">"#"</span><span class="o">;</span>
+        <span class="k">else</span> <span class="n">row_res</span> <span class="o">+=</span> <span class="s">" "</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">row_res</span><span class="o">;</span>   
+<span class="o">}</span>
+<span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">row_res</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>그리고 합친 원소별로 중첩하여 순회하면서 각 자리가 0이면 공백값을 0보다 크면 #을 넣은 문자열을 배열에 추가하였다.</p>
+
+<p>두 배열의 원소별로 num1과 num2로 저정하고 sum으로 합치는 과정에서 int형으로 변환하였는데 <strong>테스트케이스 2, 6에서 런타임에러가 발생</strong>하였다. <br />
+int형의 범위를 벗어나는 것이라 생각했고, <strong>long형으로 변환</strong>하도록 작성하니 테스트케이스 2, 6 모두 정상적으로 통과하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1">// num1 + num2의 값을 long으로 변환</span>
+<span class="nc">String</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%0"</span><span class="o">+</span><span class="n">n</span><span class="o">+</span><span class="s">"d"</span><span class="o">,</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">num1</span><span class="o">)+</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">num2</span><span class="o">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="o">{</span><span class="mi">9</span><span class="o">,</span><span class="mi">20</span><span class="o">,</span><span class="mi">28</span><span class="o">,</span><span class="mi">18</span><span class="o">,</span><span class="mi">11</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="o">{</span><span class="mi">30</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">21</span><span class="o">,</span><span class="mi">17</span><span class="o">,</span><span class="mi">28</span><span class="o">};</span>
+        <span class="c1">// int[] arr1 = {46, 33, 33, 22, 31, 50};</span>
+        <span class="c1">// int[] arr2 = {27, 56, 19, 14, 14, 10};</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">arr1</span><span class="o">,</span> <span class="n">arr2</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arr1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arr2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="nc">String</span> <span class="n">row_res</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">num1</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">arr1</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="nc">String</span> <span class="n">num2</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">arr2</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="nc">String</span> <span class="n">sum</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%0"</span><span class="o">+</span><span class="n">n</span><span class="o">+</span><span class="s">"d"</span><span class="o">,</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">num1</span><span class="o">)+</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">num2</span><span class="o">));</span>
+            <span class="n">row_res</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">sum</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">sum</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">j</span><span class="o">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="n">row_res</span> <span class="o">+=</span> <span class="s">"#"</span><span class="o">;</span>
+                <span class="k">else</span> <span class="n">row_res</span> <span class="o">+=</span> <span class="s">" "</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">row_res</span><span class="o">;</span>   
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>Integer.toString() 메서드의 인자를 넣어 진수 변환을 할 수 있음을 처음 알게 되었다. 또한 Integer.toBinaryString() 메서드에 대해서도 공부할 수 있었다.</li>
+  <li>int형과 long형의 제공되는 범위를 적절히 활용해야 한다고 느꼈다.</li>
+</ul>
+:ET
