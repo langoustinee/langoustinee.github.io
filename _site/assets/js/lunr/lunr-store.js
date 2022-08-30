@@ -214,4 +214,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/36-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 체육복",
+        "excerpt":"Input-1 n=5, lost=[2,4], reserve=[1,3,5] Output-1 5 Input-2 n=5, lost=[2,4], reserve=[3] Output-2 4 문제 풀이 이 문제의 경우 그리디 알고리즘을 활용하여 접근하였다. 그리디 알고리즘이란? 가장 직관적인 알고리즘 설계 패러타임 중 하나이며, 매번 단계에서 선택할 때마다 가장 좋은 답을 선택하는 기법이다. 지금 선택한 것을 앞으로의 남은 선택에 영향을 끼칠지 고려하지 않는다는 전제이며,...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/37-post/",
+        "teaser": null
       }]
