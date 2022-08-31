@@ -143,13 +143,13 @@ var store = [{
         "url": "/java/26-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 두 개 뽑아서 더하기",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 두 개 뽑아서 더하기",
         "excerpt":"Input-1 [2,1,3,4,1] Output-1 [2,3,4,5,6,7] Input-2 [5,0,2,7] Output-2 [2,5,7,9,12] 문제 풀이 이 문제를 풀때 주의할 점은 아래와 같다. 배열의 인덱스별로 더할 때 본인 인덱스와는 더할 필요가 없다. 배열의 인덱스별로 더하여 배열에 담을 때 중복값이 없어야 한다. 담은 배열을 오름차순으로 정렬해야 한다. 중첩 반복문으로 인덱스 별로 더한 값을 알 수 있는데, 본인...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/24-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 행렬의 덧셈",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 행렬의 덧셈",
         "excerpt":"Input-1 1 2 arr1 = [[1,2],[2,3]] arr2 = [[3,4],[5,6]] Output-1 1 answer = [[4,6],[7,9]] // arr1 + arr2 문제 풀이 2차원 배열을 활용해 행렬의 같은 행과 같은 열의 값을 더한 행렬을 구해야 한다. 더해질 두 행렬은 행과 열의 크기가 같기에 중첩 반복문을 활용해 행과 열만큼 반복하여 더하는 방식으로 접근하자. 바깥...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/25-post/",
@@ -161,81 +161,87 @@ var store = [{
         "url": "/java/27-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 최대공약수와 최소공배수",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 최대공약수와 최소공배수",
         "excerpt":"Input-1 1 n = 3, m = 12 Output-1 1 [3, 12] Input-2 1 n = 2, m = 5 Output-2 1 [1, 10] 문제 풀이 최대공약수와 최소공배수를 구하는 문제이다. 최대공약수(Greatest Common Divisor)란? 0이 아닌 두개이 상의 정수의 공통된 약수중 가장 큰 수이다. 일반적으로 푸는 방식과 유클리드 호제법을 통해 푸는...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/28-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 이상한 문자 만들기",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 이상한 문자 만들기",
         "excerpt":"Input-1 “try hello world” Output-1 “TrY HeLlO WoRlD” Input-2 “ABC aBc abC “ Output-2 “Abc Abc Abc “ 문제 풀이 문제 설명을 보면 주어진 문자열은 한개 이상의 단어로 구성되어 있으며, 각 단어는 하나 이상의 공백문자로 구분된다고 한다. 각 단어별로 짝수번째 인덱스의 단어는 대문자로, 홀수번째 인덱스의 단어는 소문자로 변경된 문자열을 반환해야...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/29-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 시저 암호",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 시저 암호",
         "excerpt":"Input-1 “AB” Output-1 “BC” Input-2 “a B z” Output-2 “b C a” 문제 풀이 주어진 문자열에서 대소문자 알파벳을 하나씩 앞으로 밀어낸 알파벳을 찾아야 한다. 먼저 아래의 조건을 검증해보자. 주어진 문자열 중에서 공백값은 밀어내지 않고 그대로 담는다. 주어진 문자열 중에서 대소문자를 구분한다. // ascii code의 경우 65~90이 대문자, 97~122가 소문자 대문자...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/30-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 소수 찾기",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 소수 찾기",
         "excerpt":"Input-1 10 Output-1 4 Input-2 5 Output-2 3 문제 풀이 먼저 n까지의 수 중 소수를 찾아야 한다. 소수란? 2, 3, 5, 7, 11, 13, 17 … 약수가 1과 자신 뿐인 수이다. 어떻게 소수를 구할 수 있을까? n까지의 수중에서 n보다 작은 수를 나눠지는 수가 있다면 소수가 아니다. 즉, 어떤 수의 배수이면...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/31-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 문자열 내 마음대로 정렬하기",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 문자열 내 마음대로 정렬하기",
         "excerpt":"Input-1 strings = [sun, bed, car] n = 1 Output-1 [car, bed, sun] Input-2 strings = [abce, abcd, cdx] n = 2 Output-2 [abcd, abce, cdx] 문제 풀이 기준 문자열의 인덱스를 순서대로 본 문자열을 정렬해야 한다. 나는 소문자 전체를 돌며 검증하는 방식으로 풀었는데 다른 분의 풀이를 보고 부족함을 많이 느꼈다.....","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/32-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 가운데 글자 가져오기",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 가운데 글자 가져오기",
         "excerpt":"Input-1 abced Output-1 c Input-2 abcd Output-2 bc 문제 풀이 주어진 문자열의 길이가 홀수냐 짝수냐에 따라 검증방식을 다르게 접근해야 한다. 홀수일 경우 가운데 문자를 반환한다. 문자열을 순회하며 주어진 문자열의 길이를 반으로 나눈 수와 같은 수를 찾으면 된다. 짝수일 경우 가운데 2개의 문자를 반환한다. 문자열을 반으로 나눈 수의 인덱스와 인덱스+1의 수를...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/33-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 예산",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 예산",
         "excerpt":"Input-1 d = [1, 3, 2, 5, 4] budget = 9 Output-1 3 Input-2 d = [2, 2, 3, 3] budget = 10 Output-2 4 문제 풀이 부서별 신청금액 배열(d)의 원소별로 예산(budget)을 어떻게 나눠줄 수 있을까? budget에서 d의 원소별로 뺼셈하여 양수인지 음수인지를 검증하면 된다. 먼저 budget에서 d 중의 작은 수부터...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/34-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 다트 게임",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 다트 게임",
         "excerpt":"문제 요구사항 1 2 3 4 5 6 7 8 9 10 1. 다트 게임은 총 3번의 기회로 구성된다. 2. 각 기회마다 얻을 수 있는 점수는 0점에서 10점까지이다. 3. 점수와 함께 Single(S), Double(D), Triple(T) 영역이 존재하고 각 영역 당첨 시 점수에서 1제곱, 2제곱, 3제곱 (점수1 , 점수2 , 점수3 )으로...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/35-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 비밀 지도",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 비밀 지도",
         "excerpt":"입출력 예제 문제 풀이 두개의 배열은 모두 주어진 n만큼의 길이를 가지고 있다. 두개의 배열을 순회하며 arr1, arr2의 원소마다 2진수로 변환하면 되는데 2진수로 변환하고 다시 10진수로 변환하는 과정을 잘 고려하며 접근해야 한다. 먼저 반복문에서 두 배열의 원소를 2진수로 변환하여 합쳐보자. 1 2 3 4 5 for(int i=0; i&lt;n; i++) { String...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/36-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 체육복",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 체육복",
         "excerpt":"Input-1 n=5, lost=[2,4], reserve=[1,3,5] Output-1 5 Input-2 n=5, lost=[2,4], reserve=[3] Output-2 4 문제 풀이 이 문제의 경우 그리디 알고리즘을 활용하여 접근하였다. 그리디 알고리즘이란? 가장 직관적인 알고리즘 설계 패러타임 중 하나이며, 매번 단계에서 선택할 때마다 가장 좋은 답을 선택하는 기법이다. 지금 선택한 것을 앞으로의 남은 선택에 영향을 끼칠지 고려하지 않는다는 전제이며,...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/37-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 모의고사",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 모의고사",
         "excerpt":"입출력 예시 Input-1 [1,2,3,4,5] Output-1 [1] Input-2 [1,3,2,4,2] Output-2 [1,2,3] 문제 풀이 해당 문제는 완전 탐색 알고리즘으로 접근해야 한다. 먼저 완전 탐색 알고리즘이 뭔지 알아보자. 완전탐색(브루트포스)이란? 간단히 가능한 모든 경우의 수를 다 체크해서 정답을 찾는 방법이다. 무식하게 가능한 거 다 해보겠다는 방법을 의미하며 브루트포스(Brute Force)라고도 부른다. 이 방법은 직관적이어서 이해하기...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/38-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - K번째수",
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - K번째수",
         "excerpt":"입출력 예시 Input array = [1, 5, 2, 6, 3, 7, 4] commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]] Output [5, 6, 3] 문제 풀이 주어진 array 배열을 commands 2차원 배열의 각 [i,j,k] 별로 정해진 연산을 행해야 한다. 나름대로 접근방식을 정해보았다. commands 배열의 각 [i,j,k]별로 i부터...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/39-post/",
         "teaser": null
       },{
-        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 완주하지 못한 선수",
-        "excerpt":"입출력 예시 Input-1 participant = [“leo”, “kiki”, “eden”] completion = [“eden”, “kiki”] Output-1 “leo” Input-2 participant = [“marina”, “josipa”, “nikola”, “vinko”, “filipa”] completion = [“josipa”, “filipa”, “marina”, “nikola”] Output-2 “vinko” Input-1 participant = [“mislav”, “stanko”, “mislav”, “ana”] completion = [“stanko”, “ana”, “mislav”] Output-1 “mislav” 문제 풀이 이 문제를 배열을 정렬하여...","categories": ["Java"],
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level1) - 완주하지 못한 선수",
+        "excerpt":"입출력 예시 Input-1 participant = [“leo”, “kiki”, “eden”] completion = [“eden”, “kiki”] Output-1 “leo” Input-2 participant = [“marina”, “josipa”, “nikola”, “vinko”, “filipa”] completion = [“josipa”, “filipa”, “marina”, “nikola”] Output-2 “vinko” Input-3 participant = [“mislav”, “stanko”, “mislav”, “ana”] completion = [“stanko”, “ana”, “mislav”] Output-3 “mislav” 문제 풀이 이 문제를 배열을 정렬하여...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/40-post/",
+        "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-2) - N개의 최소공배수",
+        "excerpt":"입출력 예시 Input-1 [2, 6, 8, 14] Output-1 168 Input-2 [1, 2, 3] Output-2 6 문제 풀이 문제의 핵심은 앞의 두 수를 가지고 구한 최소공배수를 가지고 다음 수와의 최소공배수를 구하는 방식으로 구해나가야 한다는 것이다. 먼저 최소공배수의 경우 두 수의 곱을 두수의 최대공약수로 나누면 된다. 최대공약수의 경우는 유클리드 호제법 함수를 통해...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/41-post/",
         "teaser": null
       }]

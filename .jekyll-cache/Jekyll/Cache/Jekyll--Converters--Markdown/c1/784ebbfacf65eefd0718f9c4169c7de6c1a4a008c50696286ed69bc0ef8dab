@@ -1,0 +1,154 @@
+I"�&<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220901_01.png" width="700" /></center>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>[2, 6, 8, 14]</strong> <br />
+Output-1 <br />
+<strong>168</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>[1, 2, 3]</strong> <br />
+Output-2 <br />
+<strong>6</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p><del>이전에 두수의 최소공배수를 구하는 문제는 풀어보았는데 많이 도움이 되었다.</del></p>
+
+<p>문제의 핵심은 <strong>앞의 두 수를 가지고 구한 최소공배수를 가지고 다음 수와의 최소공배수를 구하는 방식</strong>으로 구해나가야 한다는 것이다.</p>
+
+<p>먼저 최소공배수의 경우 두 수의 곱을 두수의 최대공약수로 나누면 된다. <br />
+최대공약수의 경우는 유클리드 호제법 함수를 통해 구하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">gcd</span><span class="o">(</span><span class="kt">int</span> <span class="n">bn</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sn</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 유클리드 호제법을 통해 최대공약수 찾기</span>
+    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bn</span> <span class="o">%</span> <span class="n">sn</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">sn</span><span class="o">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="nf">gcd</span><span class="o">(</span><span class="n">sn</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다음으로 N번째까지의 최소공배수를 구하기 위해 아래의 작업을 반복해야 한다. <br /></p>
+<ul>
+  <li>(이전 최소 공배수 * 다음 수) / GCD(이전 최소 공배수, 다음 수)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="o">(</span><span class="n">answer</span> <span class="o">*</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">/</span> <span class="n">gcd</span><span class="o">(</span><span class="n">answer</span><span class="o">,</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>위 코드는 최소공배수를 구해나가는 과정을 작성한 것이다. <br />
+첫번째 수의 값을 answer에 담아서 반복문 내에서</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>arr [2, 6, 8, 14]
+
+i = 1 //6일 때
+    answer = arr[0] = 2
+    gcd = (2,6) = 2
+    answer = (2*6)/2 = 6
+i = 2 //8일 때
+    answer = 6
+    gcd = (6,8) = 2
+    answer = (6*8)/2 = 24
+i = 3 //14일 때
+    answer = 24
+    gcd = (24,14) = 2
+    answer = (24*14)/2 = 168
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>        
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">14</span><span class="o">};</span>
+        <span class="c1">// int[] arr = {1,2,3};</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="o">(</span><span class="n">answer</span> <span class="o">*</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">/</span> <span class="n">gcd</span><span class="o">(</span><span class="n">answer</span><span class="o">,</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">gcd</span><span class="o">(</span><span class="kt">int</span> <span class="n">bn</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sn</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 유클리드 호제법을 통해 최대공약수 찾기</span>
+        <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bn</span> <span class="o">%</span> <span class="n">sn</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">sn</span><span class="o">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="nf">gcd</span><span class="o">(</span><span class="n">sn</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET
