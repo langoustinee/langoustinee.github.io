@@ -226,4 +226,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/38-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - K번째수",
+        "excerpt":"입출력 예시 Input array = [1, 5, 2, 6, 3, 7, 4] commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]] Output [5, 6, 3] 문제 풀이 주어진 array 배열을 commands 2차원 배열의 각 [i,j,k] 별로 정해진 연산을 행해야 한다. 나름대로 접근방식을 정해보았다. commands 배열의 각 [i,j,k]별로 i부터...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/39-post/",
+        "teaser": null
       }]
