@@ -1,0 +1,156 @@
+I"�1<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220831_03-1.png" width="700" /></center>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>participant = [“leo”, “kiki”, “eden”]</strong> <br />
+<strong>completion = [“eden”, “kiki”]</strong> <br />
+Output-1 <br />
+<strong>“leo”</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>participant = [“marina”, “josipa”, “nikola”, “vinko”, “filipa”]</strong> <br />
+<strong>completion = [“josipa”, “filipa”, “marina”, “nikola”]</strong> <br />
+Output-2 <br />
+<strong>“vinko”</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-1 <br />
+<strong>participant = [“mislav”, “stanko”, “mislav”, “ana”]</strong> <br />
+<strong>completion = [“eden”, “kiki”]</strong> <br />
+Output-1 <br />
+<strong>“leo”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>주어진 array 배열을 commands 2차원 배열의 각 [i,j,k] 별로 정해진 연산을 행해야 한다.</p>
+
+<p>나름대로 접근방식을 정해보았다.</p>
+<ul>
+  <li>commands 배열의 각 [i,j,k]별로 i부터 j까지 array 배열을 자른다.</li>
+  <li>자른 array 배열을 오름차순 정렬한다.</li>
+  <li>정렬된 array 배열의 k번째 수를 반환할 answer 배열에 담는다.</li>
+</ul>
+
+<p>먼저 commands 2차원 배열의 껍데기를 벗기고 안쪽 [i,j,j] 배열에 접근하자. <br />
+그리고 안쪽 반복문의 인덱스가 0이면 i, 1이면 j, 2이면 k이다.</p>
+
+<p>안쪽 반복문의 인덱스가 0과 1일때는 array 배열을 i부터 j까지 잘라야한다. <br />
+조건문으로 자르기 시작할 위치 start와 끝낼 위치 end 변수를 저장한다.</p>
+
+<h4 id="배열을-어떻게-자를까">배열을 어떻게 자를까?</h4>
+<p><strong>Arrays.copyOfRange()</strong> 메서드를 통해 원본배열과 시작인덱스와 종료인덱스를 넘겨주면 원하는대로 배열을 자를 수 있다.</p>
+
+<p>다음으로 안쪽 반복문의 인덱스가 2일 때는 i와 j대로 자른 array 배열(이하 split 배열)을 정렬하고 k번째 수를 알아내야 한다. <br />
+안쪽 반복분 인덱스가 2일 때 commands[i][j]의 수는 k이다. <br />
+오름차순으로 정렬된 split배열에서 commands[i][j]를 인덱스로 대입하여 k번째 수를 찾을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">commands</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">start</span> <span class="o">=</span> <span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">end</span> <span class="o">=</span> <span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">split</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
+            <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">split</span><span class="o">);</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">split</span><span class="o">[</span><span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="o">}</span>   
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">7</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">commands</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">2</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">3</span><span class="o">},{</span><span class="mi">4</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">1</span><span class="o">},{</span><span class="mi">1</span><span class="o">,</span><span class="mi">7</span><span class="o">,</span><span class="mi">3</span><span class="o">}};</span>
+        
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">commands</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">commands</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">commands</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        
+        <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">commands</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">start</span> <span class="o">=</span> <span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">end</span> <span class="o">=</span> <span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="kt">int</span><span class="o">[]</span> <span class="n">split</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOfRange</span><span class="o">(</span><span class="n">array</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
+                    <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">split</span><span class="o">);</span>
+                    <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">split</span><span class="o">[</span><span class="n">commands</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]-</span><span class="mi">1</span><span class="o">];</span>
+                <span class="o">}</span>   
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>copyOfRange() 메서드를 통해 배열을 원하는대로 자를 수 있음을 알게되었다.</li>
+</ul>
+:ET

@@ -232,4 +232,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/39-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 완주하지 못한 선수",
+        "excerpt":"입출력 예시 Input-1 participant = [“leo”, “kiki”, “eden”] completion = [“eden”, “kiki”] Output-1 “leo” Input-2 participant = [“marina”, “josipa”, “nikola”, “vinko”, “filipa”] completion = [“josipa”, “filipa”, “marina”, “nikola”] Output-2 “vinko” Input-1 participant = [“mislav”, “stanko”, “mislav”, “ana”] completion = [“stanko”, “ana”, “mislav”] Output-1 “mislav” 문제 풀이 이 문제를 배열을 정렬하여...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/40-post/",
+        "teaser": null
       }]
