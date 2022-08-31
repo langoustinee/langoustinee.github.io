@@ -220,4 +220,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/37-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스 - 모의고사",
+        "excerpt":"입출력 예시 Input-1 [1,2,3,4,5] Output-1 [1] Input-2 [1,3,2,4,2] Output-2 [1,2,3] 문제 풀이 해당 문제는 완전 탐색 알고리즘으로 접근해야 한다. 먼저 완전 탐색 알고리즘이 뭔지 알아보자. 완전탐색(브루트포스)이란? 간단히 가능한 모든 경우의 수를 다 체크해서 정답을 찾는 방법이다. 무식하게 가능한 거 다 해보겠다는 방법을 의미하며 브루트포스(Brute Force)라고도 부른다. 이 방법은 직관적이어서 이해하기...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/38-post/",
+        "teaser": null
       }]
