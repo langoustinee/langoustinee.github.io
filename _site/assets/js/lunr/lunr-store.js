@@ -244,4 +244,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/41-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 폰켓몬",
+        "excerpt":"제약 사항 nums는 폰켓몬의 종류 번호가 담긴 1차원 배열입니다. nums의 길이(N)는 1 이상 10,000 이하의 자연수이며, 항상 짝수로 주어집니다. 폰켓몬의 종류 번호는 1 이상 200,000 이하의 자연수로 나타냅니다. 가장 많은 종류의 폰켓몬을 선택하는 방법이 여러 가지인 경우에도, 선택할 수 있는 폰켓몬 종류 개수의 최댓값 하나만 return 하면 됩니다. 입출력 예시...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/42-post/",
+        "teaser": null
       }]
