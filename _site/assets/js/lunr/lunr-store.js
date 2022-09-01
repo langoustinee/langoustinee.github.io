@@ -250,4 +250,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/42-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 소수 만들기",
+        "excerpt":"입출력 예시 Input-1 [1, 2, 3, 4] Output-1 1 Input-2 [1, 2, 7, 6, 4] Output-2 4 문제 풀이 조합을 활용해 nums배열 중 3개의 원소를 뽑아야 한다. 핵심은 뽑은 원소가 중복되면 안되기 때문에 앞에서부터 차례대로 원소를 뽑아보는 것이다. 3개를 뽑는다고 정해놨기 때문에 단순하게 반복문을 3번 돌면 된다. 1 2 3...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/43-post/",
+        "teaser": null
       }]
