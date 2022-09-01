@@ -256,4 +256,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/43-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-2) - JadenCase 문자열 만들기",
+        "excerpt":"입출력 예시 Input-1 “3people unFollowed me” Output-1 “3people Unfollowed Me” Input-2 “for the last week” Output-2 “For The Last Week” 문제 풀이 주어진 문자열에서 단어의 첫문자를 대문자로 바꾸어 반환해야 한다. 이 때, 첫 문자는 숫자가 아니어야 한다. 그리고 단어 중 첫 문자가 아닌 문자가 대문자일 땐 소문자로 변환해야 한다. 먼저...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/44-post/",
+        "teaser": null
       }]

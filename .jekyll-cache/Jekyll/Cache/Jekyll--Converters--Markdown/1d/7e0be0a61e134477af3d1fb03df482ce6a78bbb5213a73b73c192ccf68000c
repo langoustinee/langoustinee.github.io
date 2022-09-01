@@ -1,0 +1,158 @@
+I"�8<p><br /></p>
+
+<center><img src="/assets/images/programmers/20220901_04.png" width="700" /></center>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>“3people unFollowed me”</strong> <br />
+Output-1 <br />
+<strong>“3people Unfollowed Me”</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>“for the last week”</strong> <br />
+Output-2 <br />
+<strong>“For The Last Week”</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>주어진 문자열에서 단어의 첫문자를 대문자로 바꾸어 반환해야 한다. <br />
+이 때, 첫 문자는 숫자가 아니어야 한다. <br />
+그리고 단어 중 첫 문자가 아닌 문자가 대문자일 땐 소문자로 변환해야 한다.</p>
+
+<p>먼저 주어진 문자열을 모두 소문자로 변경하면 첫문자가 아닌 문자를 일일이 소문자로 변환할 필요가 없다. <br />
+주어진 문자열 s를 char형 배열로 변환하여 공백을 제외한 모든 문자를 소문자로 변환하여 저장하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kt">char</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>        
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="sc">' '</span><span class="o">)</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="sc">' '</span><span class="o">;</span>
+    <span class="k">else</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이제 첫 문자가 아닌 문자가 대문자일 경우를 고려하지 않아도 된다. <br />
+다음으로 소문자로 변환된 arr을 반복하며 단어의 첫문자일 때 대문자로만 변경해주면 된다.</p>
+
+<h4 id="어떻게-단어의-첫문자인지-알-수-있을까">어떻게 단어의 첫문자인지 알 수 있을까?</h4>
+<p>주어진 문자열 “for the last week”로 예를 들어서 설명하자면, <br />
+arr 배열에는 [‘f’,’o’,’r’,’ ‘,’t’,’h’,’e’,’ ‘,’w’,’e’,’e’,’k’]로 담길 것이다. <br />
+이 arr 배열을 순회하며 현재 인덱스의 값이 ‘ ‘(공백)이라면 다음 인덱스의 값을 대문자로 변환하면 되고 <br />
+위 조건을 만족하지 못했다면 현재 인덱스 값을 그대로 넣으면 될 것이라 생각했다. <br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="sc">' '</span> <span class="o">&amp;&amp;</span> <span class="nc">Character</span><span class="o">.</span><span class="na">isLowerCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span> <span class="c1">// 첫 단어 검증</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="s">" "</span> <span class="o">+</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]);</span>
+            <span class="n">i</span><span class="o">+=</span><span class="mi">2</span><span class="o">;</span> 
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nc">Character</span><span class="o">.</span><span class="na">isLowerCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]))</span> <span class="n">answer</span> <span class="o">+=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span> <span class="c1">// 제일 첫번째 글자</span>
+    <span class="k">else</span> <span class="n">answer</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위 코드와 같이 배열에서 공백값을 검증하여 다음 문자를 대문자로 변환하여 answer에 담도록 하였다. <br />
+그러나, 다른 테스트케이스를 테스트하며 문제가 있음을 알게 되었다.</p>
+
+<h4 id="문제-발견">문제 발견</h4>
+<p>위 코드 반복문 내에서 첫 단어를 검증할 때 단어의 첫문자를 대문자를 변환하여 저장하고 <strong>인덱스를 증가</strong>시킨다.
+<strong>이 인덱스를 증가시키고 맨 위 if문부터 수행문이 동작되는줄 알았지만, 아니었다.</strong></p>
+
+<h4 id="문제-해결">문제 해결</h4>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="sc">' '</span><span class="o">)</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="sc">' '</span><span class="o">;</span>
+            <span class="k">else</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">isLowerCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]))</span> <span class="n">answer</span> <span class="o">+=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> 
+        <span class="k">else</span> <span class="n">answer</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">isLowerCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]==</span><span class="sc">' '</span><span class="o">)</span> <span class="n">answer</span> <span class="o">+=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span> 
+            <span class="k">else</span> <span class="n">answer</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>여러개의 공백까지 포함된 문자열을 String[] arr = str.split(“”, -1)식의 방법도 있겠지만, char형 배열을 활용해 대문자 및 소문자 제어가 편하도록 하였다.</li>
+  <li>for문 내 조건문에서 인덱스를 증가시키면 처음부터 수행문을 다시 수행하는 줄 알았는데 아니었다. 반복문 내에서 인덱스를 증가시킬 때 유의해서 사용해야 겠다.</li>
+</ul>
+:ET
