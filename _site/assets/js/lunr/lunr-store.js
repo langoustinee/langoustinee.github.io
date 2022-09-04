@@ -262,4 +262,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/44-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 크레인 인형뽑기 게임",
+        "excerpt":"상세한 문제 내용은 여기에서 확인 바랍니다. 입출력 예시 Input board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]] moves = [1,5,3,5,1,2,1,4] Output 4 문제 풀이 문제 풀이를 위해 다음과 같은 아이디어를 도출하였다. 주어진 크레인 2차원 배열을 그대로 쓰는 것보단 인형뽑기를 하기 쉽도록 2차원 배열을 회전하여 활용하자. 인형뽑기하여 담는 바구니는 스택을 활용하여 구현하자. 2차원 배열 회전하기 먼저...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/45-post/",
+        "teaser": null
       }]
