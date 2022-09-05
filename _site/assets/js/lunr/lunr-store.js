@@ -274,4 +274,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/46-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-2) - 행렬의 곱셈",
+        "excerpt":"입출력 예시 Input-1 arr1 = [[1, 4], [3, 2], [4, 1]] arr2 = [[3, 3], [3, 3]] Output-1 [[15, 15], [15, 15], [15, 15]] Input-2 arr1 = [[2, 3, 2], [4, 2, 4], [3, 1, 4]] arr2 = [[5, 4, 3], [2, 4, 1], [3, 1, 1]] Output-2 [[22, 22,...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/47-post/",
+        "teaser": null
       }]
