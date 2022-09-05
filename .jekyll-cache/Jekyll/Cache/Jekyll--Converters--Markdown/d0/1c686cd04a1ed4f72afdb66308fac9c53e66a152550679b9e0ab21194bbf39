@@ -1,0 +1,116 @@
+I"�<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/2869.png" /></center>
+
+<p><br /></p>
+
+<p><strong>입출력예제</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>2 1 5</strong> <br />
+Output-1 <br />
+<strong>4</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>5 1 6</strong> <br />
+Output-2 <br />
+<strong>2</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-3 <br />
+<strong>100 99 1000000000</strong> <br />
+Output-3 <br />
+<strong>999999901</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>낮에 A미터를 이동하고 밤에 B미터가 미끄러지며 V미터에 도달하는데 걸리는 일수를 구해야 한다. <br />
+주어진 예제대로 A를 2, B를 1, V를 5라고 해보자.</p>
+<ul>
+  <li>1일차: (A-B) = (2-1) = 1</li>
+  <li>2일차: (A-B)+(A-B) = (2-1)+(2-1) = 2</li>
+  <li>3일차: (A-B)+(A-B)+(A-B) = (2-1)+(2-1)+(2-1) = 3</li>
+  <li>4일차: (A-B)+(A-B)+(A-B)+A = (2-1)+(2-1)+(2-1)+2 = 5</li>
+</ul>
+
+<p>위 식대로 정상에 도달하게 되면 미끄러지지 않기 때문에 4일차 낮에 목표 V에 도달할 수 있다. <br />
+그렇게 일자별로 낮 연산만 수행하여 V에 도달하는지를 검증하면 된다.</p>
+
+<p>이 문제는 <strong>0.15초</strong>의 시간제한이 걸려있다. <br />
+그렇기에 단순한 반복문으로 접근하게 되면 시간초과가 발생한다. <br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">up</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">up</span> <span class="o">+=</span> <span class="no">A</span><span class="o">;</span>
+    <span class="n">day</span><span class="o">++;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">up</span> <span class="o">&gt;=</span> <span class="no">V</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">up</span><span class="o">&lt;</span><span class="no">V</span><span class="o">)</span> <span class="n">up</span> <span class="o">-=</span> <span class="no">B</span><span class="o">;</span>            
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        
+        <span class="kt">int</span> <span class="no">A</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">B</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">V</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+        <span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="kt">double</span><span class="o">)(</span><span class="no">V</span><span class="o">-</span><span class="no">B</span><span class="o">)</span> <span class="o">/</span> <span class="o">(</span><span class="no">A</span><span class="o">-</span><span class="no">B</span><span class="o">));</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">day</span><span class="o">));</span>
+        
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET

@@ -269,6 +269,12 @@ var store = [{
         "url": "/java/45-post/",
         "teaser": null
       },{
+        "title": "[알고리즘 스터디 - Java] 백준 2869번 - 달팽이는 올라가고 싶다",
+        "excerpt":"입출력예제 Input-1 2 1 5 Output-1 4 Input-2 5 1 6 Output-2 2 Input-3 100 99 1000000000 Output-3 999999901 문제 풀이 낮에 A미터를 이동하고 밤에 B미터가 미끄러지며 V미터에 도달하는데 걸리는 일수를 구해야 한다. 먼저 단순한 반복문을 활용해 코드를 작성하였다. up에 A를 더하고 B를 빼가며 목표 V에 도달했을 때의 날짜수(day)를 구하도록...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/48-post/",
+        "teaser": null
+      },{
         "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 키패드 누르기",
         "excerpt":"상세한 문제 내용은 여기에서 확인 바랍니다. 입출력 예시 Input-1 numbers = [1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5] hand = “right” Output-1 “LRLLLRLLRRL” Input-2 numbers = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2] hand = “left” Output-2 “LRLLRRLLLRR” Input-3 numbers = [1,...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
