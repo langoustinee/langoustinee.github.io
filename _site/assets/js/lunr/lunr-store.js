@@ -268,4 +268,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/45-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 키패드 누르기",
+        "excerpt":"상세한 문제 내용은 여기에서 확인 바랍니다. 입출력 예시 Input-1 numbers = [1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5] hand = “right” Output-1 “LRLLLRLLRRL” Input-2 numbers = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2] hand = “left” Output-2 “LRLLRRLLLRR” Input-3 numbers = [1,...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/46-post/",
+        "teaser": null
       }]
