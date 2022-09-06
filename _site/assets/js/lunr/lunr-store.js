@@ -292,4 +292,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/49-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 신규 아이디 추천",
+        "excerpt":"입출력 예시 Input-1 “…!@BaT#*..y.abcdefghijklm” Output-1 “bat.y.abcdefghi” Input-2 “z-+.^.” Output-2 “z–“ Input-3 ”=.=” Output-3 “aaa” Input-4 “abcdefghijklmn.p” Output-4 “abcdefghijklmn” 문제 풀이 주어진 입력문자열을 단계별로 검증하고 변경해야 한다. 그럼 단계별로 순차적으로 아이디를 검증해보자. 단계별 풀이 1단계 문자열을 순회하며 대문자가 있을 경우 소문자로 변환하여 저장하자. 1 2 3 4 5 char[] new_id_arr =...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/50-post/",
+        "teaser": null
       }]
