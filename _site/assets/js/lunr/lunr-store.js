@@ -286,4 +286,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/47-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-1) - 숫자 문자열과 영단어",
+        "excerpt":"각 숫자에 대응되는 영단어 표 숫자 영단어 0 zero 1 one 2 two 3 three 4 four 5 five 6 six 7 seven 8 eight 9 nine 입출력 예시 Input-1 “one4seveneight” Output-1 1478 Input-2 “23four5six7” Output-2 234567 Input-3 “2three45sixseven” Output-3 234567 Input-4 123 Output-4 123 문제 풀이 이 문제는 두가지...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/49-post/",
+        "teaser": null
       }]
