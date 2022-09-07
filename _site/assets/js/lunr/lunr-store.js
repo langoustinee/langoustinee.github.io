@@ -298,4 +298,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/50-post/",
         "teaser": null
+      },{
+        "title": "[알고리즘 스터디 - Java] 프로그래머스(level-2) - 피보나치 수",
+        "excerpt":"입출력 예시 Input-1 3 Output-1 2 Input-2 5 Output-2 5 문제 풀이 문제 풀이에 앞서 피보나치 수에 대해서 알아보자. 피보나치(Fibonnaci)란? 피보나치 수열은 0과 1로 시작하며, 앞의 두 수를 더해서 다음 수를 만들어 나가는 수열이다. F(n) = F(n-1) + F(n-2) 라는 식으로 볼 수 있다. EX) 1,1,2,3,5,8,13,12 … 피보나치 수열이 만들어지는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/51-post/",
+        "teaser": null
       }]
