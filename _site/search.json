@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-1) - 최소직사각형",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/53-post/",
+        "date"     : "2022-09-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-1) - 같은 숫자는 싫어",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

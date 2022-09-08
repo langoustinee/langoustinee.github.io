@@ -310,4 +310,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/52-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 최소직사각형",
+        "excerpt":"입출력 예시 Input-1 [[60, 50], [30, 70], [60, 30], [80, 40]] Output-1 4000 Input-2 [[10, 7], [12, 3], [8, 15], [14, 7], [5, 15]] Output-2 120 Input-3 [[14, 4], [19, 6], [6, 16], [18, 7], [7, 11]] Output-3 133 문제 풀이 주어진 2차원 배열에서 명함의 가로와 세로길이 [w, h]에서 w와...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/53-post/",
+        "teaser": null
       }]
