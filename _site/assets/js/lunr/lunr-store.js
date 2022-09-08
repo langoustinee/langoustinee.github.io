@@ -316,4 +316,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/53-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 최댓값과 최솟값",
+        "excerpt":"입출력 예시 Input-1 “1 2 3 4” Output-1 “1 4” Input-2 “-1 -2 -3 -4” Output-2 “-4 -1” Input-3 “-1 -1” Output-3 “-1 -1” 문제 풀이 주어진 문자열의 숫자 중에서 최솟값과 최댓값을 찾아야 한다. 문자열을 순회하며 현재 수와 비교하여 가장 크고, 가장 작은 값을 구하면 된다. 한 번 코드로 작성해보자....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/54-post/",
+        "teaser": null
       }]
