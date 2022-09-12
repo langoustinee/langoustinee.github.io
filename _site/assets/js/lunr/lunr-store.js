@@ -328,4 +328,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/55-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 이진 변환 반복하기",
+        "excerpt":"입출력 예시 Input-1 “110010101001” Output-1 [3, 8] Input-2 “01110” Output-2 [3, 3] Input-3 “1111111” Output-3 [4, 1] 문제 풀이 주어진 문자열이 1이 될 때까지 이진 변환을 반복해야 하기 때문에 재귀함수를 활용하여 풀어보았다. 재귀함수에서 진행해야할 이진 변환 내용을 코드로 작성해보자. 문자열의 모든 0을 제거하기 1 2 3 4 5 StringBuilder sb...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/56-post/",
+        "teaser": null
       }]

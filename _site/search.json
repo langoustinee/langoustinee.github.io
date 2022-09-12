@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 이진 변환 반복하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/56-post/",
+        "date"     : "2022-09-12 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-1) - 로또의 최고 순위와 최저 순위",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
