@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Java] 프로그래머스(level-2) - 숫자의 표현 - lango’s DevLog</title>
-<meta name="description" content="level 2 - 숫자의 표현">
+<!-- begin _includes/seo.html --><title>[Java] 프로그래머스(level-2) - 다음 큰 숫자 - lango’s DevLog</title>
+<meta name="description" content="level 2 - 다음 큰 숫자">
 
 
   <meta name="author" content="lango">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="lango's DevLog">
-<meta property="og:title" content="[Java] 프로그래머스(level-2) - 숫자의 표현">
+<meta property="og:title" content="[Java] 프로그래머스(level-2) - 다음 큰 숫자">
 <meta property="og:url" content="http://localhost:4000/java/60-post/">
 
 
-  <meta property="og:description" content="level 2 - 숫자의 표현">
+  <meta property="og:description" content="level 2 - 다음 큰 숫자">
 
 
 
@@ -320,8 +320,8 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Java] 프로그래머스(level-2) - 숫자의 표현">
-    <meta itemprop="description" content="level 2 - 숫자의 표현">
+    <meta itemprop="headline" content="[Java] 프로그래머스(level-2) - 다음 큰 숫자">
+    <meta itemprop="description" content="level 2 - 다음 큰 숫자">
     <meta itemprop="datePublished" content="2022-09-13T00:00:00+09:00">
     
 
@@ -329,7 +329,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/java/60-post/" class="u-url" itemprop="url">[Java] 프로그래머스(level-2) - 숫자의 표현
+            <a href="http://localhost:4000/java/60-post/" class="u-url" itemprop="url">[Java] 프로그래머스(level-2) - 다음 큰 숫자
 </a>
           </h1>
           
@@ -361,33 +361,93 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-bars"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#문제-풀이">문제 풀이</a><ul><li><a href="#연속된-자연수-합과-비교하기">연속된 자연수 합과 비교하기</a></li><li><a href="#등차수열-활용-접근">등차수열 활용 접근</a></li></ul></li><li><a href="#작성-코드">작성 코드</a></li><li><a href="#회고">회고</a></li></ul>
+              <ul class="toc__menu"><li><a href="#문제-풀이">문제 풀이</a><ul><li><a href="#integerbitcount-메서드-활용">Integer.bitCount() 메서드 활용</a></li></ul></li><li><a href="#작성-코드">작성 코드</a></li><li><a href="#회고">회고</a></li></ul>
 
             </nav>
           </aside>
         
         <p><br /></p>
-<center><img src="/assets/images/programmers/20220913_04.png" width="700" /></center>
+<center><img src="/assets/images/programmers/20220913_05.png" width="700" /></center>
 <p><br /></p>
 
 <p><strong>입출력 예시</strong></p>
 <blockquote>
-  <p>Input <br />
+  <p>Input-1 <br />
+<strong>78</strong> <br />
+Output-1 <br />
+<strong>83</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
 <strong>15</strong> <br />
-Output <br />
-<strong>4</strong></p>
+Output-2 <br />
+<strong>23</strong></p>
 </blockquote>
 
 <p><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 <hr />
-<p>연속된 자연수들의 합으로 n을 만들수 있을 때 몇개의 방법으로 n을 만들 수 있는지를 알아야 한다. <br /></p>
+<p>주어진 n을 2진수로 변환한 후 1의 개수를 cnt라고 하면 <br />
+n+1, n+2 ••• n+n n보다 큰 수 중 2진수로 변환한 후의 1의 개수가 cnt와 같은 수를 구해야 하며, n보다 크면서 가장 작은 수여야 한다.</p>
 
-<h4 id="연속된-자연수-합과-비교하기">연속된 자연수 합과 비교하기</h4>
-<p>먼저 중첩 반복문을 활용해 i를 1~15까지 j를 i~15까지 순회하며 <strong>j를 누적해서 더한 값이 n이 된다면 연속된 자연수</strong>들로 이루어진 합이 된다.</p>
+<p>백문이 불여일견, 한 번 코드로 작성해보자. <br />
+입력 숫자 n을 2진수로 변환하고 2진수 n을 순회하며 1일 때의 카운트를 cnt에 담는다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nc">String</span> <span class="n">first</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">first</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">first</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">)</span> <span class="n">cnt</span><span class="o">++;</span> 
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>한 번 코드로 작성해보자.</p>
+<p>그리고 n을 1씩 증가시키면서 2진수로 변환한 후 1의 개수가 cnt와 같은지를 비교한다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">nextCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">while</span><span class="o">(</span><span class="n">nextCnt</span><span class="o">!=</span><span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">idx</span><span class="o">++;</span>
+    <span class="n">nextCnt</span> <span class="o">=</span> <span class="n">nextOneCount</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>n보다 큰 수를 2진수로 변환한 후 1의 개수를 세는 nextOneCount 함수를 작성하였다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">nextOneCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">numberToBinaryString</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">numberToBinaryString</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">numberToBinaryString</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">)</span> <span class="n">cnt</span><span class="o">++;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">cnt</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="integerbitcount-메서드-활용">Integer.bitCount() 메서드 활용</h4>
+<p>위에서 작성한 코드도 모든 테스트케이스를 통과했지만, 코드를 간결하고 가독성이 좋도록 작성할 수 없을까 고민하던중 Integer 클래스의 bitCount() 메서드를 알게되었다.</p>
+
+<blockquote>
+  <p><strong>bitCount(int n)</strong> 메서드란? <br />
+주어진 n을 <strong>2진수로 변환한 후 1의 개수</strong>를 구해준다.</p>
+</blockquote>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -397,55 +457,30 @@ Output <br />
 7
 8
 9
-</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">sum</span><span class="o">;</span>
-<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="n">sum</span> <span class="o">+=</span> <span class="n">j</span><span class="o">;</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="n">n</span><span class="o">)</span> <span class="n">answer</span><span class="o">++;</span>
-        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">first</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">bitCount</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">nextCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">nextCnt</span><span class="o">!=</span><span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">idx</span><span class="o">++;</span>
+        <span class="n">nextCnt</span> <span class="o">=</span> <span class="n">nextOneCount2</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
     <span class="o">}</span>
+    <span class="k">return</span> <span class="n">idx</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">nextOneCount2</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">bitCount</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
 <span class="o">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-<p>위 코드를 보면 바깥 반복문을 i만큼(1~15까지) 돌며 i마다 j를 순회하는데, i부터 시작된 j를 누적해서 sum에 더해가며 n과 같은지를 비교한다. <br />
-sum과 n이 같다면 연속된 자연수들로 이루어진 합이므로 answer를 증가시킨다. <br /> 
-만약, <strong>n과 같지 않고 커져버린다면 연속된 자연수들로 합으로 n을 만들지 못하기에</strong> 안쪽 반복문에서 탈출한다.</p>
+<p>n을 2진수로 변환한 후 1의 개수를 세는 cnt를 초기화할 때, nextOneCount() 함수에서 n보다 큰 수를 2진수로 변환하여 1의 개수를 셀 때 <br />
+bitCount() 메서드를 활용하여 푸니 더 간결한 코드를 작성할 수 있었다. <br /></p>
 
-<h4 id="등차수열-활용-접근">등차수열 활용 접근</h4>
-<p>위 방법으로 문제를 풀면서 종이에 끄적끄적 그린 그림을 보니 등차수열과 같은 모양을 하고 있었다. <br />
-등차수열의 원리를 활용하여 풀어보니 동일하게 정답을 낼 수 있었다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre>15 % 1 == 0 // -1
-14 % 2 == 0 // -2
-12 % 3 == 0 //-3
-9 % 4 != 0 // -4
-5 % 5 == 0 //-5
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>위 내용을 보면 모두 -1이라는 공차를 가진 등차수열임을 알 수 있다.</p>
-
-<p>이 원리를 적용하여 풀어보자.</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">answer</span><span class="o">++;</span>
-    <span class="n">n</span><span class="o">-=</span><span class="n">idx</span><span class="o">;</span>
-    <span class="n">idx</span><span class="o">++;</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>위 코드를 보면 while문을 순회하며 n을 idx(인덱스)로 나눈 나머지가 0이라면 answer를 증가시키고 n에서 idx를 뺀다. <br />
-위 과정을 반복하며 n이 0보다 작거나 같아지면 while문을 탈출한다.</p>
+<p>bitCount() 메서드를 접목한 코드도 제출하니 모든 테스트케이스와 효율성 테스트를 통과하였다.</p>
 
 <p><br /></p>
 
@@ -489,7 +524,6 @@ sum과 n이 같다면 연속된 자연수들로 이루어진 합이므로 answer
 36
 37
 38
-39
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
 <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
@@ -498,42 +532,41 @@ sum과 n이 같다면 연속된 자연수들로 이루어진 합이므로 answer
         <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
 
         <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-        <span class="n">solution2</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
         <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span> 
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">sum</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="n">sum</span> <span class="o">+=</span> <span class="n">j</span><span class="o">;</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="n">n</span><span class="o">)</span> <span class="n">answer</span><span class="o">++;</span>
-                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
-            <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">first</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">bitCount</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">nextCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">nextCnt</span><span class="o">!=</span><span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">idx</span><span class="o">++;</span>
+            <span class="n">nextCnt</span> <span class="o">=</span> <span class="n">nextOneCount2</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
         <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution2</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">answer</span><span class="o">++;</span>
-            <span class="n">n</span><span class="o">-=</span><span class="n">idx</span><span class="o">;</span>
-            <span class="n">idx</span><span class="o">++;</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">nextOneCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">numberToBinaryString</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">numberToBinaryString</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">numberToBinaryString</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">)</span> <span class="n">cnt</span><span class="o">++;</span>
         <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">cnt</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">nextOneCount2</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">bitCount</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li>등차수열 등과 같은 수학적 원리를 통해 문제를 더 간단하게 풀 수 있었다.</li>
+  <li>2진수로 변환한 후 1의 개수를 구해주는 Integer 클래스의 bitCount() 메서드에 대해 공부할 수 있었다.</li>
 </ul>
 
         
@@ -593,7 +626,7 @@ sum과 n이 같다면 연속된 자연수들로 이루어진 합이므로 answer
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BJava%5D+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%28level-2%29+-+%EC%88%AB%EC%9E%90%EC%9D%98+%ED%91%9C%ED%98%84%20http%3A%2F%2Flocalhost%3A4000%2Fjava%2F60-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BJava%5D+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%28level-2%29+-+%EB%8B%A4%EC%9D%8C+%ED%81%B0+%EC%88%AB%EC%9E%90%20http%3A%2F%2Flocalhost%3A4000%2Fjava%2F60-post%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fjava%2F60-post%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
