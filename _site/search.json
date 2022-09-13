@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 올바른 괄호",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/58-post/",
+        "date"     : "2022-09-13 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 최솟값 만들기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

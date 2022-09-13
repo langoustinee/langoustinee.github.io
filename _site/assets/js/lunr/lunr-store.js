@@ -340,4 +340,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/57-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 올바른 괄호",
+        "excerpt":"입출력 예시 Input-1 ”()()” Output-1 true Input-2 )()( Output-2 false 문제 풀이 이 문제의 경우 스택(Stack)으로 접근하여 푸는 것이 가장 쉽기에 스택을 활용하여 풀어보았다. 괄호만으로 이루어진 문자열을 순회하며 ”(“일 때는 스택에 “(“를 추가하고, “)”일 때는 “(“를 꺼내는 과정을 통해 스택의 empty 유무를 통해 괄호문자열을 검증할 수 있다. 한 번 코드로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/58-post/",
+        "teaser": null
       }]
