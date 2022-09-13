@@ -346,4 +346,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/58-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 성격 유형 검사하기",
+        "excerpt":"입출력 예시 Input-1 survey = [“AN”, “CF”, “MJ”, “RT”, “NA”] choices = [5, 3, 2, 7, 5] Output-1 TCMA Input-2 survey = [“AN”, “CF”, “MJ”, “RT”, “NA”] choices = [5, 3, 2, 7, 5] Output-2 RCJA 문제 풀이 이 문제는 HashMap에 지표별 유형과 점수를 저장하는 것이 중요하다고 생각한다. 지표 배열...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/59-post/",
+        "teaser": null
       }]
