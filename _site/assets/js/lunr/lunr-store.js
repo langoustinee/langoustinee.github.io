@@ -348,8 +348,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Java] 프로그래머스(level-1) - 성격 유형 검사하기",
-        "excerpt":"입출력 예시 Input-1 survey = [“AN”, “CF”, “MJ”, “RT”, “NA”] choices = [5, 3, 2, 7, 5] Output-1 TCMA Input-2 survey = [“AN”, “CF”, “MJ”, “RT”, “NA”] choices = [5, 3, 2, 7, 5] Output-2 RCJA 문제 풀이 이 문제는 HashMap에 지표별 유형과 점수를 저장하는 것이 중요하다고 생각한다. 지표 배열...","categories": ["Java"],
+        "excerpt":"상세한 문제 내용은 여기에서 확인 바랍니다. 입출력 예시 Input-1 survey = [“AN”, “CF”, “MJ”, “RT”, “NA”] choices = [5, 3, 2, 7, 5] Output-1 TCMA Input-2 survey = [“AN”, “CF”, “MJ”, “RT”, “NA”] choices = [5, 3, 2, 7, 5] Output-2 RCJA 문제 풀이 이 문제는 HashMap에 지표별 유형과 점수를...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/59-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 숫자의 표현",
+        "excerpt":"입출력 예시 Input 15 Output 4 문제 풀이 연속된 자연수들의 합으로 n을 만들수 있을 때 몇개의 방법으로 n을 만들 수 있는지를 알아야 한다. 연속된 자연수 합과 비교하기 먼저 중첩 반복문을 활용해 i를 1~15까지 j를 i~15까지 순회하며 j를 누적해서 더한 값이 n이 된다면 연속된 자연수들로 이루어진 합이 된다. 한 번 코드로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/60-post/",
         "teaser": null
       }]
