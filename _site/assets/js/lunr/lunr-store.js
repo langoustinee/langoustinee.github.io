@@ -334,4 +334,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/56-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 최솟값 만들기",
+        "excerpt":"입출력 예시 Input-1 A = [1, 4, 2] B = [5, 4, 4] Output-1 29 Input-2 A = [1, 2] B = [3, 4] Output-2 10 문제 풀이 A와 B 배열에서 두 수 를 뽑아 곱한 값을 누적하여 더할 때, 최소로 되도록 해야한다. 그렇다면 두 수의 차가 클 수록 곱한...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/57-post/",
+        "teaser": null
       }]

@@ -1,0 +1,139 @@
+I"�(<p><br /></p>
+<center><img src="/assets/images/programmers/20220913_01.png" width="700" /></center>
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>A = [1, 4, 2]</strong> <br />
+<strong>B = [5, 4, 4]</strong> <br />
+Output-1 <br />
+<strong>29</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>A = [1, 2]</strong> <br />
+<strong>B = [3, 4]</strong> <br />
+Output-2 <br />
+<strong>10</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<p>A와 B 배열에서 두 수 를 뽑아 곱한 값을 누적하여 더할 때, 최소로 되도록 해야한다. <br />
+그렇다면 <strong>두 수의 차가 클 수록</strong> 곱한 값은 작아지기에 최소로 만들 수 있다. <br />
+어떻게 두 수의 차가 큰 수를 뽑을 수 있을까?</p>
+
+<p><strong>A배열은 오름차순으로, B배열은 내림차순으로 정렬</strong>하여 순서대로 뽑는다면 A배열에서 가장 작은수와 B배열에서 가장 큰 수를 뽑을 수 있다.</p>
+
+<p>한 번 코드로 작성해보자.<br /></p>
+<h4 id="a배열-오름차순-정렬">A배열 오름차순 정렬</h4>
+<p>먼저, A배열을 오름차순으로 정렬하자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="no">A</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="b배열-내림차순-정렬">B배열 내림차순 정렬</h4>
+<p>그리고 B배열을 내림차순으로 정렬하자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nc">Integer</span><span class="o">[]</span> <span class="n">reverse_B</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="no">B</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="nc">Integer</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span> 
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">reverse_B</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote>
+  <p>스트림 활용 내림차순 정렬 방식 - <strong>Arrays.stream(B).boxed().toArray(Integer[]::new)</strong> <br /></p>
+  <ol>
+    <li>기본형 배열을 스트림 형태로 변경 : Arrays.stream(B)</li>
+    <li>int -&gt; Integer (객체 형태로 변환) : boxed()
+ -&gt; 내부 코드는 아래와 같은 식이다.
+      <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre> <span class="kd">public</span> <span class="kd">final</span> <span class="nc">Stream</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">boxed</span><span class="o">()</span> <span class="o">{</span>
+     <span class="k">return</span> <span class="nf">mapToObj</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">valueOf</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+ <span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>      </div>
+    </li>
+    <li>객체 스트림 형태를 배열의 형태로 변경 
+ Stream.toArray(Type[]::new)  =&gt; toArray(Integer[]::new);</li>
+  </ol>
+</blockquote>
+
+<h5 id="효울성-테스트-시간초과">효울성 테스트 시간초과</h5>
+<p><img src="/assets/images/programmers/20220913_01-2.png" width="300" />
+<br />
+스트림으로 내림차순 정렬을 하니 효율성 테스트에서 시간초과가 발생하였다.</p>
+
+<h5 id="정렬-방식-변경">정렬 방식 변경</h5>
+<p>A와 B배열 모두 오름차순 정렬 후 <strong>A배열은 오름차순 인덱스로 접근하고, B배열은 내림차순 인덱스로 접근</strong>하였다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="no">A</span><span class="o">);</span>
+<span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="no">B</span><span class="o">);</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">answer</span> <span class="o">+=</span> <span class="no">A</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="no">B</span><span class="o">[</span><span class="no">B</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="no">A</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="no">B</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">};</span>
+
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution2</span><span class="o">(</span><span class="no">A</span><span class="o">,</span><span class="no">B</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution2</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="no">A</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="no">B</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="no">A</span><span class="o">);</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="no">B</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="no">A</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="no">B</span><span class="o">[</span><span class="no">B</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET
