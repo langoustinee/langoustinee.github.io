@@ -358,4 +358,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/60-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준 11659번 - 구간 합 구하기 4",
+        "excerpt":"입출력 예시 Input 5 3 5 4 3 2 1 1 3 2 4 5 5 Output 12 9 1 문제 풀이 이 문제는 구간 합 알고리즘을 활용해 합배열을 만들어서 풀어야 한다. 먼저 n개의 수들의 합배열을 만들어보자. 합배열 만들기 n개의 수를 5,4,3,2,1 라고 한다면, 합배열은 각 수의 합을 더해 나가면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/61-post/",
+        "teaser": null
       }]
