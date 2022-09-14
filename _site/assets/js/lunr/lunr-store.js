@@ -353,15 +353,21 @@ var store = [{
         "url": "/java/59-post/",
         "teaser": null
       },{
+        "title": "[Java] 프로그래머스(level-2) - 숫자의 표현",
+        "excerpt":"입출력 예시 Input-1 15 Output-1 4 문제 풀이 연속된 자연수들의 합으로 n을 만들수 있을 때 몇개의 방법으로 n을 만들 수 있는지를 알아야 한다. 연속된 자연수 합과 비교하기 먼저 중첩 반복문을 활용해 i를 1~15까지 j를 i~15까지 순회하며 j를 누적해서 더한 값이 n이 된다면 연속된 자연수들로 이루어진 합이 된다. 한 번 코드로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/60-post/",
+        "teaser": null
+      },{
         "title": "[Java] 프로그래머스(level-2) - 다음 큰 숫자",
         "excerpt":"입출력 예시 Input-1 78 Output-1 83 Input-2 15 Output-2 23 문제 풀이 주어진 n을 2진수로 변환한 후 1의 개수를 cnt라고 하면 n+1, n+2 ••• n+n n보다 큰 수 중 2진수로 변환한 후의 1의 개수가 cnt와 같은 수를 구해야 하며, n보다 크면서 가장 작은 수여야 한다. 백문이 불여일견, 한 번 코드로...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
-        "url": "/java/60-post/",
+        "url": "/java/61-post/",
         "teaser": null
       },{
         "title": "[Java] 백준 11659번 - 구간 합 구하기 4",
         "excerpt":"입출력 예시 Input 5 3 5 4 3 2 1 1 3 2 4 5 5 Output 12 9 1 문제 풀이 이 문제는 구간 합 알고리즘을 활용해 합배열을 만들어서 풀어야 한다. 먼저 n개의 수들의 합배열을 만들어보자. 합배열 만들기 n개의 수를 5,4,3,2,1 라고 한다면, 합배열은 각 수의 합을 더해 나가면...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
-        "url": "/java/61-post/",
+        "url": "/java/62-post/",
         "teaser": null
       }]
