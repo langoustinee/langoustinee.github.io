@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 영어 끝말잇기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/64-post/",
+        "date"     : "2022-09-14 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준 2018번 - 수들의 합 5",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

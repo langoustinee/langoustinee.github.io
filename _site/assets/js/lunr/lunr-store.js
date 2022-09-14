@@ -376,4 +376,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/63-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 영어 끝말잇기",
+        "excerpt":"제한사항 끝말잇기에 참여하는 사람의 수 n은 2 이상 10 이하의 자연수입니다. words는 끝말잇기에 사용한 단어들이 순서대로 들어있는 배열이며, 길이는 n 이상 100 이하입니다. 단어의 길이는 2 이상 50 이하입니다. 모든 단어는 알파벳 소문자로만 이루어져 있습니다. 끝말잇기에 사용되는 단어의 뜻(의미)은 신경 쓰지 않으셔도 됩니다. 정답은 [ 번호, 차례 ] 형태로 return...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/64-post/",
+        "teaser": null
       }]

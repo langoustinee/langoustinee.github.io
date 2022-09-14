@@ -1,0 +1,146 @@
+I"�)<p><br /></p>
+<center><img src="/assets/images/programmers/20220914_01.png" width="700" /></center>
+<p><br /></p>
+
+<p><strong>제한사항</strong></p>
+<ul>
+  <li>끝말잇기에 참여하는 사람의 수 n은 2 이상 10 이하의 자연수입니다.</li>
+  <li>words는 끝말잇기에 사용한 단어들이 순서대로 들어있는 배열이며, 길이는 n 이상 100 이하입니다.</li>
+  <li>단어의 길이는 2 이상 50 이하입니다.</li>
+  <li>모든 단어는 알파벳 소문자로만 이루어져 있습니다.</li>
+  <li>끝말잇기에 사용되는 단어의 뜻(의미)은 신경 쓰지 않으셔도 됩니다.</li>
+  <li>정답은 [ 번호, 차례 ] 형태로 return 해주세요.</li>
+  <li>만약 주어진 단어들로 탈락자가 생기지 않는다면, [0, 0]을 return 해주세요.</li>
+</ul>
+
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>78</strong> <br />
+Output-1 <br />
+<strong>83</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>15</strong> <br />
+Output-2 <br />
+<strong>23</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>끝말잇기 배열에서 n번째마다 돌아가며 n번째 사람의 끝말잇기가 틀렸을 때를 알아야 한다. <br />
+그리고 이전 끝말잇기 단어의 마지막 글자와 현재 끝말잇기 단어의 첫글자가 같은지도 검증해야 한다.</p>
+
+<h4 id="n번째-순서-구하기">n번째 순서 구하기</h4>
+<p>먼저, 끝말잇기 단어 배열을 순회하며 n명이 돌아가며 단어를 주고받도록 해야한다. <br />
+예시의 words배열의 경우 9번의 단어를 주고받는데 3명이서 돌아가며 주고받는다. <br />
+n이 3이고, 9번 끝말잇기 단어를 주고받는다고 하면 <strong>i를 n으로 즉, 3으로 나눈 나머지</strong>를 통해 알 수 있다.</p>
+<ul>
+  <li><strong>n번째 사람 = i % n</strong></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="o">{</span><span class="s">"tank"</span><span class="o">,</span> <span class="s">"kick"</span><span class="o">,</span> <span class="s">"know"</span><span class="o">,</span> <span class="s">"wheel"</span><span class="o">,</span> <span class="s">"land"</span><span class="o">,</span> <span class="s">"dream"</span><span class="o">,</span> <span class="s">"mother"</span><span class="o">,</span> <span class="s">"robot"</span><span class="o">,</span> <span class="s">"tank"</span><span class="o">};</span>
+
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">n</span><span class="o">,</span><span class="n">words</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">words</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">fail</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">words</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">i</span><span class="o">%</span><span class="n">n</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">cnt</span><span class="o">++;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span> <span class="o">{</span>
+                <span class="n">fail</span> <span class="o">=</span> <span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">beforelastLetter</span> <span class="o">=</span> <span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">].</span><span class="na">substring</span><span class="o">(</span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">].</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">,</span> <span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">].</span><span class="na">length</span><span class="o">());</span>
+                <span class="nc">String</span> <span class="n">nowFirstLetter</span> <span class="o">=</span> <span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">beforelastLetter</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nowFirstLetter</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">fail</span> <span class="o">=</span> <span class="n">num</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">fail</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{</span><span class="n">fail</span><span class="o">,</span> <span class="n">cnt</span><span class="o">};</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>2진수로 변환한 후 1의 개수를 구해주는 Integer 클래스의 bitCount() 메서드에 대해 공부할 수 있었다.</li>
+</ul>
+:ET
