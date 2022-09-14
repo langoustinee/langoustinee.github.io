@@ -370,4 +370,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/62-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준 2018번 - 수들의 합 5",
+        "excerpt":"입출력 예시 Input 15 Output 4 문제 풀이 이 문제는 주어진 n의 최댓값이 10,000,000이기에 빠른 시간복잡도를 가진 알고리즘으로 풀어야 한다. 연속된 자연수들의 합을 시작 인덱스(start_idx)와 종료 인덱스(end-idx)를 지정하여 표현해보자. 투 포인터 활용(시작인덱스와 종료인덱스) 먼저 입력받을 n과 사용할 변수들을 초기화하자. start_idx와 end_idx의 경우 1부터 n까지 탐색할 것이기에 1로 초기화한다. 그리고 cnt를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/63-post/",
+        "teaser": null
       }]
