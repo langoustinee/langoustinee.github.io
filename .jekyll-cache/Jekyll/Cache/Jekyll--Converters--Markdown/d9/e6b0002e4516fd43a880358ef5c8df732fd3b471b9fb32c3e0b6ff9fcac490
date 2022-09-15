@@ -1,0 +1,241 @@
+I"�:<p><br /></p>
+<center><img src="/assets/images/programmers/20220915_01.png" width="700" /></center>
+<p><br /></p>
+
+<p><strong>제한사항</strong></p>
+<ul>
+  <li>갈색 격자의 수 brown은 8 이상 5,000 이하인 자연수입니다.</li>
+  <li>노란색 격자의 수 yellow는 1 이상 2,000,000 이하인 자연수입니다.</li>
+  <li>카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 깁니다.</li>
+</ul>
+
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>brown=10</strong> <br />
+<strong>yellow=2</strong> <br />
+Output-1 <br />
+<strong>[4,3]</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>brown=8</strong> <br />
+<strong>yellow=1</strong> <br />
+Output-2 <br />
+<strong>[3,3]</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-3 <br />
+<strong>brown=24</strong> <br />
+<strong>yellow=24</strong> <br />
+Output-3 <br />
+<strong>[8,6]</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>brown과 yellow의 약수를 활용해 접근하였다. <br /></p>
+
+<p><strong>왜 약수를 통해 접근하였을까?</strong> <br />
+brown을 b, yellow를 y라 하고 가로크기를 w, 세로크기를 h라 하자.<br />
+b+y 값은 w와 h의 곱과 같음을 알 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>b b b b 
+b y y b
+b b b b
+- b=10, y=2, b+y=12
+- w=4, h=3, w*h=12
+
+b b b
+b y b
+b b b
+- b=8, y=1, b+y=9
+- w=3, h=3, w*h=9
+
+b b b b b b b b
+b y y y y y y b
+b y y y y y y b
+b y y y y y y b
+b y y y y y y b
+b b b b b b b b
+- b=24, y=24, b+y=48
+- w=8, h=6, w*h=48
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>그리고 b와 y는 b+y의 약수중 하나의 수로 구성되어 있다. <br />
+b+y의 약수들 중에 w와 h를 찾으면 된다.</p>
+
+<h4 id="w와-h-구하기">w와 h 구하기</h4>
+<p>b+y를 sum이라 하면, sum의 약수들을 구하고 sum만큼 반복하며 <strong>sum과 두 약수의 곱이 같을 때</strong> 두 약수가 w와 h가 된다. <br /></p>
+
+<p>그런데, 아래 예를 보자.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>b=10, y=2, sum=12, divisor=[1,2,3,4,6,12] 일 떄
+i=1이면, 1*12 = 12
+i=2이면, 2*6 = 12
+i=3이면, 3*4 = 12
+...
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>각 i별로 매칭되는 i를 곱하면 모든 수가 sum의 약수이기에 모두 sum을 구할 수 있다. <br />
+그렇기에 가로와 세로크기를 구할 때 아래 식을 검증해야 한다.</p>
+<ul>
+  <li><strong>(w-2)(h-2) = yellow</strong></li>
+</ul>
+
+<p><strong>w와 h에 각각 2를 빼고 곱한값</strong>이 세로크기 즉, yellow 값이 되어야 한다. <br />
+이 식을 대입해서 생각해보면 (w-2)(h-2) == 6을 만족해야 한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>i=1이면, (1-2)*(12-2) = -10
+i=2이면, (2-2)*(6-2) = 0
+i=3이면, (3-2)*(4-2) = 2 (=yellow)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>위와 같이 i가 3일 때 조건을 만족하는 것을 알 수 있다.</p>
+
+<p>이제 카펫의 가로와 세로크기를 구하는 방법을 알았으니, 코드로 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">div</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span> <span class="c1">// 약수를 담을 리스트</span>
+<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">brown</span><span class="o">+</span><span class="n">yellow</span><span class="o">;</span> <span class="c1">// brown+yellow</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span> <span class="c1">// return 배열</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">sum</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">sum</span><span class="o">%</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">div</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="c1">// 약수만 div에 저장</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>약수들을 담을 ArrayList div 리스트, brown과 yellow의 합을 담을 sum 변수, 가로크기와 세로크기를 담아 반환할 answer 배열을 초기화하였다. <br />
+그리고 sum만큼 반복하며 약수들을 div에 담았다. <strong>이때, 약수를 담을 div를 int배열로 만들지않고 ArrayList로 선언한 이유는, 약수의 개수를 미리 알 수 없기 때문이다.</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">div</span><span class="o">.</span><span class="na">size</span><span class="o">()/</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="c1">// div의 반만큼만 반복</span>
+    <span class="k">if</span><span class="o">((</span><span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)-</span><span class="mi">2</span><span class="o">)*(</span><span class="n">sum</span><span class="o">/</span><span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)-</span><span class="mi">2</span><span class="o">)</span> <span class="o">==</span> <span class="n">yellow</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">/</span><span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>약수리스트인 div의 반만큼만 반복하며, 위에서 구한 식을 대입하여 작성하였다. <strong>div의 반만큼만 반복하는 이유는 반만큼만 돌아도 [sum/현재약수] 하여 모든 약수를 알 수 있기 때문이다.</strong></p>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">b</span><span class="o">,</span><span class="n">y</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">brown</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yellow</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">div</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">brown</span><span class="o">+</span><span class="n">yellow</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">sum</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">sum</span><span class="o">%</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">div</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">div</span><span class="o">.</span><span class="na">size</span><span class="o">()/</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">((</span><span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)-</span><span class="mi">2</span><span class="o">)*(</span><span class="n">sum</span><span class="o">/</span><span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)-</span><span class="mi">2</span><span class="o">)</span> <span class="o">==</span> <span class="n">yellow</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">/</span><span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">div</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET

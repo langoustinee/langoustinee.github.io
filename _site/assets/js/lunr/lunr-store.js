@@ -382,4 +382,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/64-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 카펫",
+        "excerpt":"제한사항 갈색 격자의 수 brown은 8 이상 5,000 이하인 자연수입니다. 노란색 격자의 수 yellow는 1 이상 2,000,000 이하인 자연수입니다. 카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 깁니다. 입출력 예시 Input-1 brown=10 yellow=2 Output-1 [4,3] Input-2 brown=8 yellow=1 Output-2 [3,3] Input-3 brown=24 yellow=24 Output-3 [8,6] 문제 풀이 brown과 yellow의 약수를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/65-post/",
+        "teaser": null
       }]
