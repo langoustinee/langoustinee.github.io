@@ -1,0 +1,196 @@
+I"�=<p><br /></p>
+<center><img src="/assets/images/programmers/20220915_02.png" width="700" /></center>
+<p><br /></p>
+
+<p>상세한 문제 내용은 <a href="https://school.programmers.co.kr/learn/courses/30/lessons/92334">여기</a>에서 확인 바랍니다.
+<br /></p>
+
+<p><strong>제한사항</strong></p>
+<ul>
+  <li>2 ≤ id_list의 길이 ≤ 1,000
+    <ul>
+      <li>1 ≤ id_list의 원소 길이 ≤ 10</li>
+      <li>id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>id_list에는 같은 아이디가 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ report의 길이 ≤ 200,000
+    <ul>
+      <li>3 ≤ report의 원소 길이 ≤ 21</li>
+      <li>report의 원소는 “이용자id 신고한id”형태의 문자열입니다.</li>
+      <li>예를 들어 “muzi frodo”의 경우 “muzi”가 “frodo”를 신고했다는 의미입니다.</li>
+      <li>id는 알파벳 소문자로만 이루어져 있습니다.</li>
+      <li>이용자id와 신고한id는 공백(스페이스)하나로 구분되어 있습니다.</li>
+      <li>자기 자신을 신고하는 경우는 없습니다.</li>
+    </ul>
+  </li>
+  <li>1 ≤ k ≤ 200, k는 자연수입니다.</li>
+  <li>return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 결과 메일 수를 담으면 됩니다.</li>
+</ul>
+
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>id_list = [“muzi”, “frodo”, “apeach”, “neo”]</strong> <br />
+<strong>report = [“muzi frodo”,”apeach frodo”,”frodo neo”,”muzi neo”,”apeach muzi”]</strong> <br />
+<strong>k = 2</strong> <br />
+Output-1 <br />
+<strong>[2,1,1,0]</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>id_list = [“con”, “ryan”]</strong> <br />
+<strong>report = [“ryan con”, “ryan con”, “ryan con”, “ryan con”]</strong> <br />
+<strong>k = 3</strong> <br />
+Output-2 <br />
+<strong>[0,0]</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>사용자가 들어있는 배열 id_list과, [신고자 피신고자] 배열인 report에서 k번 이상 신고되어 정지된 피신고자를 신고한 사용자를 구해야 한다. <br />
+이를 위해 도출한 아이디어는 아래와 같다.</p>
+<ol>
+  <li>신고자 신고메일 수신횟수를 담을 LinkedHashMap인 result을 선언하고 id:0으로 초기화한다.</li>
+  <li>같은 id가 같은 id를 신고하는 건 1번으로 처리한다 -&gt; report를 중복없는 HashSet으로 저장한다.</li>
+  <li>reportSet을 돌며 신고당한자와 신고횟수를 HashMap에 저장한다.</li>
+  <li>reportSet의 신고자:피신고자돌며 reportMap의 피신고자:신고횟수와 비교하여 k이상이면 result에서 신고자 메일 수신횟수를 증가시킨다.</li>
+</ol>
+
+<p>위 아이디어를 코드로 작성해보자.</p>
+
+<h4 id="1번-linkedhaspmap-초기화">1번. LinkedHaspMap 초기화</h4>
+<p>먼저, 신고하여 정지된 사용자마다 메일을 받기 위해 id_list의 순서대로 [id:메일횟수] 형식을 지켜 저장하기 위해 <strong>LinkedHashMap을</strong> 활용했다. <br />
+id_list를 순회하며 LinkedHashMap인 result을 id:0으로 초기화했다.</p>
+<blockquote>
+  <p><strong>LinkedHashMap</strong>이란? <br />
+HashMap을 상속받아 만들어졌으며, 순서가 유지되는 HashMap이다.</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nc">LinkedHashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
+<span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span> <span class="o">:</span> <span class="n">id_list</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">id_list</span> <span class="o">=</span> <span class="o">{</span><span class="s">"muzi"</span><span class="o">,</span> <span class="s">"frodo"</span><span class="o">,</span> <span class="s">"apeach"</span><span class="o">,</span> <span class="s">"neo"</span><span class="o">};</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">report</span> <span class="o">=</span> <span class="o">{</span><span class="s">"muzi frodo"</span><span class="o">,</span><span class="s">"apeach frodo"</span><span class="o">,</span><span class="s">"frodo neo"</span><span class="o">,</span><span class="s">"muzi neo"</span><span class="o">,</span><span class="s">"apeach muzi"</span><span class="o">};</span>
+        <span class="c1">// String[] id_list = {"con", "ryan"};</span>
+        <span class="c1">// String[] report = {"ryan con", "ryan con", "ryan con", "ryan con"};</span>
+        <span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span>
+
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">id_list</span><span class="o">,</span> <span class="n">report</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">id_list</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">report</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 아이디어 </span>
+        <span class="c1">// 1.1 신고자 신고메일 수신횟수를 담을 LinkedHashMap인 result을 선언하고 id:0으로 초기화한다.</span>
+        <span class="c1">// 1.2 같은 id가 같은 id를 신고하는 건 1번으로 처리한다 -&gt; report를 중복없는 HashSet으로 저장한다.</span>
+        <span class="c1">// 1.3 reportSet을 돌며 신고당한자와 신고횟수를 HashMap에 저장한다.</span>
+        <span class="c1">// 1.4 reportSet의 신고자:피신고자돌며 reportMap의 피신고자:신고횟수와 비교하여 k이상이면 result에서 신고자 메일 수신횟수를 증가시킨다.</span>
+        <span class="nc">LinkedHashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span> <span class="o">:</span> <span class="n">id_list</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">reportSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">report</span><span class="o">)</span> <span class="n">reportSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">reportMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">reportSet</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">reported</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">];</span>
+            <span class="n">reportMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">reported</span><span class="o">,</span> <span class="n">reportMap</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">reported</span><span class="o">,</span> <span class="mi">0</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">reportSet</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">reporter</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">0</span><span class="o">];</span>
+            <span class="nc">String</span> <span class="n">reported</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">];</span>
+            <span class="k">for</span><span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">reportMap</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">reported</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">())</span> <span class="o">&amp;&amp;</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">()&gt;=</span><span class="n">k</span><span class="o">)</span> <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">reporter</span><span class="o">,</span> <span class="n">result</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">reporter</span><span class="o">,</span> <span class="mi">0</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">id_list</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cnt</span> <span class="o">:</span> <span class="n">result</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">;</span>
+            <span class="n">idx</span><span class="o">++;</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">answer</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>LinkedHashMap, HashMap을 활용하여 [key,value] 대로 접근하는 방법을 제대로 복습하고 익힐 수 있었다.</li>
+  <li>드디어 프로그래머스 레벨 1 문제들을 모두 풀었다. 레벨 2 문제들도 같이 병행하여 풀고있었는데, 코딩테스트까지 남은 이틀 레벨 2 문제 열심히 풀어야겠다.</li>
+</ul>
+:ET

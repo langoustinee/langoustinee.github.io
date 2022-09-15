@@ -388,4 +388,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/65-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 신고 결과 받기",
+        "excerpt":"상세한 문제 내용은 여기에서 확인 바랍니다. 제한사항 2 ≤ id_list의 길이 ≤ 1,000 1 ≤ id_list의 원소 길이 ≤ 10 id_list의 원소는 이용자의 id를 나타내는 문자열이며 알파벳 소문자로만 이루어져 있습니다. id_list에는 같은 아이디가 중복해서 들어있지 않습니다. 1 ≤ report의 길이 ≤ 200,000 3 ≤ report의 원소 길이 ≤ 21 report의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/66-post/",
+        "teaser": null
       }]
