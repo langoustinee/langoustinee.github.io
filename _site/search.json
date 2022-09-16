@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(데모) - 나머지 한 점",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/70-post/",
+        "date"     : "2022-09-16 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 멀리 뛰기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
@@ -17,7 +25,7 @@
         } ,
     
         {
-        "title"    : "[Java] 백준 1874번 - 스택 수열",
+        "title"    : "[Java] 백준(실버-2) 1874번 - 스택 수열",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
         "url"      : "/java/69-post/",

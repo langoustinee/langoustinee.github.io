@@ -395,7 +395,7 @@ var store = [{
         "url": "/java/66-post/",
         "teaser": null
       },{
-        "title": "[Java] 백준 1874번 - 스택 수열",
+        "title": "[Java] 백준(실버-2) 1874번 - 스택 수열",
         "excerpt":"입출력 예시 Input 8 4 3 6 8 7 5 2 1 Output + + + + - - + + - + + - - - - - 문제 풀이 문제 제목에도 나와있듯이, 자료구조중 하나인 스택(Stack)을 활용해야 한다. 입력값마다 스택에 push 및 pop을 하여 수열을 만들 수 있는지 검증해야...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/69-post/",
@@ -411,5 +411,11 @@ var store = [{
         "excerpt":"입출력 예시 Input-1 4 Output-1 5 Input-2 3 Output-2 3 문제 풀이 나머지연산의 시점 이 문제내용을 잘 보면 “효진이가 끝에 도달하는 방법이 몇 가지인지 알아내, 여기에 1234567를 나눈 나머지를 리턴하는 함수” 를 작성해야 한다고 한다. 구한 정답에서 1234567을 MOD연산하여 반환하는것이 아니라 단계마다 MOD연산을 해야 한다고 알고 있었다. 그러니 문제를 풀어가며...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/68-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(데모) - 나머지 한 점",
+        "excerpt":"입출력 예시 Input-1 v = [[1, 4], [3, 4], [3, 10]] Output-1 [1, 10] Input-2 v = [[1, 1], [2, 2], [1, 2]] Output-2 [2, 1] 문제 풀이 이 문제는 직사각형에서 3개의 좌표를 가지고 나머지 한 좌표를 구해야 한다. 조건문 및 비트연산자를 활용하여 풀어봤다. 1. 조건문 활용 조건문을 활용한 풀이는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/70-post/",
         "teaser": null
       }]

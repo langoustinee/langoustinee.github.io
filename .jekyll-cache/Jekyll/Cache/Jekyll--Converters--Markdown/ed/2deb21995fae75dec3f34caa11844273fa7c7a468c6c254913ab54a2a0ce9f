@@ -1,0 +1,182 @@
+I"�Q<p><br /></p>
+<center><img src="/assets/images/programmers/20220916_03.png" width="700" /></center>
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>v = [[1, 4], [3, 4], [3, 10]]</strong> <br />
+Output-1 <br />
+<strong>[1, 10]</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>v = [[1, 1], [2, 2], [1, 2]]</strong> <br />
+Output-2 <br />
+<strong>[2,1]</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이 문제는 직사각형에서 3개의 좌표를 가지고 나머지 한 좌표를 구해야 한다. <br />
+조건문 및 비트연산자를 활용하여 풀어봤다.</p>
+
+<h4 id="1-조건문-활용">1. 조건문 활용</h4>
+<p>조건문을 활용한 풀이는 간단한데, 먼저 x좌표와 y좌표를 구분된 조건으로 구해보자. <br />
+2차원 배열이고, 세 점은 이미 주어졌기에 <strong>3개의 좌표를 모두 돌면서 중복되지 않은 x좌표와 y좌표</strong>를 찾으면 된다.</p>
+
+<p>코드로 작성해보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// x좌표 </span>
+<span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="n">x</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="n">x</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="n">x</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+<span class="c1">// y좌표</span>
+<span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>이미 세 점의 위치를 알고 있기에 별도로 반복문을 돌릴 필요없이 x좌표가 존재하는 v[0][0], v[1][0], v[2][0]을 모두 확인하여 중복되지 않은 좌표가 x좌표가 된다. y좌표도 동일하게 v[0][0], v[0][1], v[0][2]을 모두 확인하여 중복되지 않은 y좌표를 찾으면 된다.</p>
+
+<h4 id="2-반복문-내-조건문-활용">2. 반복문 내 조건문 활용</h4>
+<p>그런데, x좌표와 y좌표를 1번 풀이처럼 하드코딩으로 작성하는 것이 아니라 반복문에서 인덱스를 통해 접근해서 찾을 수 있지 않을까? 한 번 반복문에서 나머지 한 좌표를 구해보자. <br /></p>
+
+<p>예를들어 v[0][i], v[1][i]가 같다면 v[2][i]</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">answer</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">])</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="n">i</span><span class="o">])</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="n">i</span><span class="o">])</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="3-비트연산자-활용">3. 비트연산자 활용</h4>
+
+<p><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">v</span> <span class="o">=</span> <span class="o">{{</span><span class="mi">1</span><span class="o">,</span><span class="mi">4</span><span class="o">},{</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">},{</span><span class="mi">3</span><span class="o">,</span><span class="mi">10</span><span class="o">}};</span>
+        <span class="c1">// int[][] v ={{1,1},{2,2},{1,2}};</span>
+
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution3</span><span class="o">(</span><span class="n">v</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="c1">// 1. 조건문 활용</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="n">x</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="n">x</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="n">x</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">])</span> <span class="n">y</span><span class="o">=</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">};</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// 2. 반복문 내 조건문 활용</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution2</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">answer</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">])</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="n">i</span><span class="o">])</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="n">i</span><span class="o">])</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// 3. 비트연산자 활용</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution3</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">v</span> <span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+
+        <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">^</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">^</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+        <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">^</span> <span class="n">v</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">^</span> <span class="n">v</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>프로그래머스 데브코스 코딩테스트 사전 테스트 중 나온 문제인데, 풀이 방법에 따라 가독성이 점점 좋아지는 풀이라 재미있게 풀었다.</li>
+</ul>
+:ET
