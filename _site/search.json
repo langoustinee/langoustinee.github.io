@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 멀리 뛰기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/68-post/",
+        "date"     : "2022-09-16 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 구명보트",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

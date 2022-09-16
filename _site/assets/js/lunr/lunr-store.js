@@ -400,4 +400,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/67-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 멀리 뛰기",
+        "excerpt":"입출력 예시 Input-1 4 Output-1 5 Input-2 3 Output-2 3 문제 풀이 나머지연산의 시점 이 문제내용을 잘 보면 “효진이가 끝에 도달하는 방법이 몇 가지인지 알아내, 여기에 1234567를 나눈 나머지를 리턴하는 함수” 를 작성해야 한다고 한다. 구한 정답에서 1234567을 MOD연산하여 반환하는것이 아니라 단계마다 MOD연산을 해야 한다고 알고 있었다. 그러니 문제를 풀어가며...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/68-post/",
+        "teaser": null
       }]
