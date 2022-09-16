@@ -17,6 +17,14 @@
         } ,
     
         {
+        "title"    : "[Java] 백준 1874번 - 스택 수열",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/69-post/",
+        "date"     : "2022-09-16 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-1) - 신고 결과 받기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
