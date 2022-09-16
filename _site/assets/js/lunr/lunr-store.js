@@ -394,4 +394,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/66-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 구명보트",
+        "excerpt":"입출력 예시 Input-1 people = [70, 50, 80, 50] limit = 100 Output-1 3 Input-2 people = [70, 80, 50] limit = 100 Output-2 3 문제 풀이 먼저, 보트에는 단 2명만 탈 수 있다는 점을 유의해야 한다. 문제를 풀기 위한 아이디어 자체는 간단하다. 초안 아이디어 무게제한/2 을 넘는 사람이면, 한...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/67-post/",
+        "teaser": null
       }]
