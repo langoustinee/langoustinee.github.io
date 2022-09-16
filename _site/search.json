@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - H-index",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/72-post/",
+        "date"     : "2022-09-17 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(데모) - 나머지 한 점",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

@@ -424,4 +424,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/70-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - H-index",
+        "excerpt":"입출력 예시 Input-1 citations = [3, 0, 6, 1, 5] Output-1 3 문제 풀이 문제 풀이에 앞서 H-index가 뭔지 짚고 넘어가자. h-index란? 위키피디아에 기재된 내용을 보면 “h-index는 주어진 저자/저널이 각각 최소 h회 인용된 최소 h개의 논문을 출판 한 h의 최대값으로 정의됩니다.” 라고 한다. 위키피디아 내용을 보면 내림차순으로 정렬된 배열이 있어야...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/72-post/",
+        "teaser": null
       }]
