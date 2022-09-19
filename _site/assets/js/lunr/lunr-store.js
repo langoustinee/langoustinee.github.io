@@ -430,4 +430,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/72-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 전화번호 목록",
+        "excerpt":"입출력 예시 Input-1 phone_book = [“119”, “97674223”, “1195524421”] Output-1 false Input-2 phone_book = [“123”,”456”,”789”] Output-2 true Input-1 phone_book = [“12”,”123”,”1235”,”567”,”88”] Output-1 false 문제 풀이 이 문제는 처음엔 이중 반복문으로 풀어봤는데 효율성 테스트에서 시간초과가 발생되어 반복문을 한 번만 돌려서 해결해야 했다. 또한 phone_book의 각 원소들의 접두사 포함여부를 검증하기 위해 contains나 indexOf를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/73-post/",
+        "teaser": null
       }]
