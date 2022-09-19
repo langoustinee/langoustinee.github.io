@@ -436,4 +436,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/73-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 10250번 - ACM 호텔",
+        "excerpt":"입출력 예시 Input 2 6 12 10 30 50 72 Output 402 1203 문제 풀이 이 문제는 조건식을 잘 세워야 한다. 호텔의 방을 배정할 조건을 정해보자. 엘리베이터에서 가까운 순으로 방을 배정한다. 거리가 같다면, 낮은 층수부터 방을 배정한다. 아래 예시를 보면 빠르게 이해할 수 있다. 방 번호의 경우 YYX 또는 YYXX...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/74-post/",
+        "teaser": null
       }]
