@@ -442,4 +442,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/74-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-1) 2275번 - 부녀회장이 될테야",
+        "excerpt":"제한 사항 1 ≤ k, n ≤ 14 입출력 예시 Input 2 1 3 2 3 Output 6 10 문제 풀이 이 문제는 주어진 k,n을 가지고 k층에 n호에 몇명이 거주하는지 구해야 한다. 0층에는 i호에 i명이 거주함을 보고 0층부터 k층의 n호까지 구해나가야 함을 알 수 있다. k층의 n호는 전층 즉, k-1층의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/75-post/",
+        "teaser": null
       }]

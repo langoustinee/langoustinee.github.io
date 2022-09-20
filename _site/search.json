@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-1) 2275번 - 부녀회장이 될테야",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/75-post/",
+        "date"     : "2022-09-20 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-2) 10250번 - ACM 호텔",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
