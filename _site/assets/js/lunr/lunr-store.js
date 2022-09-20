@@ -448,4 +448,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/75-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 예상 대진표",
+        "excerpt":"입출력 예시 Input N=8, A=4, B=7 Output 3 문제 풀이 이 문제는 토너먼트에서 경쟁자인 a와 b가 몇번째 라운드에서 만나는지 구해야 한다. 2명씩 대전해가며 특정 라운드에서 서로 만나려면 a가 b보다 1크거나, 1작아야 한다. 어떤 상황에서 a가 b보다 1이 작거나, 1이 클수가 있을까? a가 짝수라면 a-1의 수가 b이어야 한다. a가 홀수라면 a+1의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/76-post/",
+        "teaser": null
       }]
