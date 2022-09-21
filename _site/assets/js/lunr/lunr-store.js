@@ -454,4 +454,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/76-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 2839번 - 설탕 배달",
+        "excerpt":"입출력 예시 Input-1 18 Output-1 4 Input-2 6 Output-2 2 Input-3 11 Output-3 3 문제 풀이 이 문제는 반복문과 조건문을 활용한 두 가지 방식으로 풀어보았다. 이 문제의 핵심은 N이 5의 배수로 이루어질 때 봉지의 수가 최소가 된다는 점이다. 그리고 N이 4일 때와 7일 때는 애초에 봉지의 개수를 구할 수 없기에...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/77-post/",
+        "teaser": null
       }]

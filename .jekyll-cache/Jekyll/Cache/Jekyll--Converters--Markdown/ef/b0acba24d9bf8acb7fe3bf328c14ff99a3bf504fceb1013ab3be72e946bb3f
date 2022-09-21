@@ -1,0 +1,306 @@
+I"�=<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/2839.png" /></center>
+
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br />
+<strong>18</strong> <br />
+Output-1<br />
+<strong>4</strong> <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-2 <br />
+<strong>6</strong> <br />
+Output-2<br />
+<strong>2</strong> <br /></p>
+</blockquote>
+
+<blockquote>
+  <p>Input-3 <br />
+<strong>11</strong> <br />
+Output-3<br />
+<strong>3</strong> <br /></p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이 문제는 반복문과 조건문을 활용한 두 가지 방식으로 풀어보았다. <br />
+이 문제의 핵심은 <strong>N이 5의 배수로 이루어질 때 봉지의 수가 최소</strong>가 된다는 점이다. <br />
+그리고 <strong>N이 4일 때와 7일 때는 애초에 봉지의 개수를 구할 수 없기에 -1을 반환</strong>해야 함을 유의해야 한다.</p>
+
+<p><br /></p>
+
+<h4 id="반복문-활용-풀이">반복문 활용 풀이</h4>
+<p>먼저 반복문을 활용해 풀어보자. <br />
+단순하게 <strong>N이 5의 배수가 될때까지 3을 빼주는 과정을 반복</strong>하면 된다. <br />
+N이 5의 배수라면 봉지의 개수는 N/5 개가 된다. 아니라면, N을 3씩 빼준다. <br />
+위 과정을 반복하며 N이 0보다 작아진다면 반복문을 탈출한다.</p>
+
+<p>그렇다면 반복문을 활용하여 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">loop</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">while</span><span class="o">(</span><span class="no">N</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">cnt</span> <span class="o">+=</span> <span class="no">N</span><span class="o">/</span><span class="mi">5</span><span class="o">;</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="no">N</span> <span class="o">-=</span> <span class="mi">3</span><span class="o">;</span>
+            <span class="n">cnt</span><span class="o">++;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">cnt</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>while문에서 N이 5의 배수라면 봉지의 개수 cnt에 N/5개를 더해주고, 5의 배수가 아니라면 3씩 빼주면서 봉지의 개수를 1씩 증가시킨다. <br />
+N을 3씩 빼주다가 0보다 작아지면 while문을 탈출한다.</p>
+
+<p><br /><br /></p>
+
+<h4 id="조건문-활용-풀이">조건문 활용 풀이</h4>
+<p>반복문을 사용하지 않고도 풀 수 없을까 고민하며 손으로 적어가던 중 하나의 패턴을 발견했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">N</th>
+      <th style="text-align: center">봉지의 개수</th>
+      <th style="text-align: center">N/5</th>
+      <th style="text-align: center">N%5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">-1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>6</strong></td>
+      <td style="text-align: center"><strong>2</strong></td>
+      <td style="text-align: center"><strong>1</strong></td>
+      <td style="text-align: center"><strong>1</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">-1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>8</strong></td>
+      <td style="text-align: center"><strong>2</strong></td>
+      <td style="text-align: center"><strong>1</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>11</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+      <td style="text-align: center"><strong>2</strong></td>
+      <td style="text-align: center"><strong>1</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>13</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+      <td style="text-align: center"><strong>2</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">14</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>16</strong></td>
+      <td style="text-align: center"><strong>4</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+      <td style="text-align: center"><strong>1</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">17</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>18</strong></td>
+      <td style="text-align: center"><strong>4</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+      <td style="text-align: center"><strong>3</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 표를 보면 N이 <strong>5의배수+1이거나 5의배수+3</strong> 일때 봉지의 수가 같고, N이 <strong>5의배수+2이거나 5의배수+4</strong> 일때 봉지의 수가 같음을 알 수 있다. <br />
+5의 배수를 기준으로 1~4까지의 차에 따라 봉지의 개수를 구할 수 있다.</p>
+<ul>
+  <li>5의배수일 때, 봉지의 개수 = N/5</li>
+  <li>5의배수+1 또는 5의배수+3일 때, 봉지의 개수 = <strong>(N/5)+1</strong></li>
+  <li>5의배수+2 또는 5의배수+4일 때, 봉지의 개수 = <strong>(N/5)+2</strong></li>
+</ul>
+
+<p>위에서 구한 조건을 활용해 코드를 작성해보자.</p>
+
+<p><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="no">N</span><span class="o">==</span><span class="mi">4</span> <span class="o">||</span> <span class="no">N</span><span class="o">==</span><span class="mi">7</span><span class="o">)</span> <span class="n">cnt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// cnt = loop(N, cnt);</span>
+            <span class="n">cnt</span> <span class="o">=</span> <span class="n">condi</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="n">cnt</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">cnt</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">loop</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="no">N</span><span class="o">/</span><span class="mi">5</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="no">N</span> <span class="o">-=</span> <span class="mi">3</span><span class="o">;</span>
+                <span class="n">cnt</span><span class="o">++;</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="no">N</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">cnt</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">condi</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">cnt</span> <span class="o">=</span> <span class="no">N</span><span class="o">/</span><span class="mi">5</span><span class="o">;</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="n">cnt</span> <span class="o">=</span> <span class="o">(</span><span class="no">N</span><span class="o">/</span><span class="mi">5</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">||</span> <span class="no">N</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span><span class="o">)</span> <span class="n">cnt</span> <span class="o">=</span> <span class="o">(</span><span class="no">N</span><span class="o">/</span><span class="mi">5</span><span class="o">)+</span><span class="mi">2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">cnt</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET
