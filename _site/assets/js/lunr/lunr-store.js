@@ -460,4 +460,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/77-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-5) 10757번 - 큰 수 A+B",
+        "excerpt":"입출력 예시 Input 9223372036854775807 9223372036854775808 Output 18446744073709551615 문제 풀이 이 문제에서 주어지는 입력값의 경우 최대 10의 10000승으로 일반적으로 큰 값에 활욛되는 long 타입의 범위를 초과한다. 문자열을 입력받아 직접 덧셈을 구현하는 방식과 BigInteger 클래스를 활용하는 방식 두가지로 풀어보았다. BigInteger 활용 보통 정수는 int를 많이 사용하고, int의 표현 범위를 넘어서면 long형을 사용해야...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/78-post/",
+        "teaser": null
       }]
