@@ -467,6 +467,12 @@ var store = [{
         "url": "/java/78-post/",
         "teaser": null
       },{
+        "title": "[Java] 백준(실버-5) 1978번 - 소수 찾기",
+        "excerpt":"입출력 예시 Input 4 1 3 5 7 Output 3 문제 풀이 이 문제는 주어진 N개 수중에서 소수의 개수를 구해야 한다. 소수 자체를 찾는건 어느 정도 공부하였으니, 각 N마다 소수인지를 판별하면 된다. 소수는 1과 자기 자신만을 약수로 가지기 때문에, N이 1과 자기 자신으로만 나누어 떨어지면 소수이다. 그렇다면 코드를 작성해보자. 1...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/80-post/",
+        "teaser": null
+      },{
         "title": "[Java] 프로그래머스(level-2) - 점프와 순간 이동",
         "excerpt":"입출력 예시 Input-1 5 Output-1 2 Input-2 6 Output-2 2 Input-3 5000 Output-3 5 문제 풀이 이 문제는 N의 범위가 최대 10억이기에 효율성을 잘 고려해야 한다. n을 2로 나눠가며 건전지 카운트를 세는 방식과 n을 2진수로 변환한 후 1의 개수를 세는 두가지 방식으로 풀어보았다. 먼저 문제에서 순간이동하고 K번 점프하는 패턴을 살펴보자....","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
