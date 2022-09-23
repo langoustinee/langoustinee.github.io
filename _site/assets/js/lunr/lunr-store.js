@@ -478,4 +478,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/79-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 캐시",
+        "excerpt":"입출력 예시 Input-1 cacheSize=3, cities=[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”, “Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”] Output-1 50 Input-2 cacheSize=3, cities=[“Jeju”, “Pangyo”, “Seoul”, “Jeju”, “Pangyo”, “Seoul”, “Jeju”, “Pangyo”, “Seoul”] Output-2 21 Input-3 cacheSize=0, cities=[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”] Output-3 25 문제 풀이 문제를 풀기에 앞서 캐시와 캐시 교체 정책에 대해서 알아보자. 캐시란?...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/81-post/",
+        "teaser": null
       }]
