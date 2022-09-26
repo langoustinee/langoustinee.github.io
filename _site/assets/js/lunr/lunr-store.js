@@ -490,4 +490,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/82-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-1) 11653번 - 소인수분해",
+        "excerpt":"입출력 예시 Input-1 72 Output-1 2 2 2 3 3 Input-2 9991 Output-2 97 103 문제 풀이 문제를 풀기 앞서 소인수분해가 뭔지 알아보자. 소인수분해란? 1보다 큰 자연수를 소인수(소수인 인수)들만의 곱으로 나타내는 것 또는 합성수를 소수의 곱으로 나타내는 방법을 말한다. 쉽게 말하자면 소수들의 곱으로 어떠한 수를 표현하는 것이다. 1 2 3...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/83-post/",
+        "teaser": null
       }]
