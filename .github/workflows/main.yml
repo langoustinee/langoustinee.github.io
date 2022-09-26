@@ -10,5 +10,9 @@ jobs:
 
       - name: Run cd _posts/algorithm
         run: cd _posts/algorithm
+        
       - name: Run ls -al
         run: ls -al
+        
+      - name: Run cd and ls
+        run: cd _posts/algorithm; ls -al;
