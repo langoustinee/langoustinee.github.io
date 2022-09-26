@@ -484,4 +484,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/81-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 2581번 - 소수",
+        "excerpt":"입출력 예시 Input-1 60 100 Output-1 620 61 Input-2 64 65 Output-2 -1 문제 풀이 이 문제는 간단하게 M부터 N까지의 수중에서 소수를 찾아, 소수 중 최소값과 소수들의 합을 구하면 된다. ArrayList를 활용하여 소수들을 찾아 담아 최소값과 소수의 합을 구할 수 있다. 코드를 작성해보자. 1 2 3 4 int M =...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/82-post/",
+        "teaser": null
       }]
