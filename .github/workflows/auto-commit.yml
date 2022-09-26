@@ -1,4 +1,4 @@
-name: github-actions-demo
+name: auto commit
 on: [push]
 
 jobs:
@@ -19,5 +19,12 @@ jobs:
 
       - name: search programmers dir post
         run: find _posts/algorithm/programmers/ -type f -ctime -1
+      
+      - name: post .md file auto commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: ${{ env.TODAY_DATE }} 문제 풀이 기록
+          commit_user_name: lango, TAEJUN, MUN
+          commit_author: "lango, TAEJUN, MUN"
         
         
