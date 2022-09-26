@@ -15,9 +15,9 @@ jobs:
         run: ls -al
         
       - name: search baekjoon dir post
-        run: find _posts/algorithm/baekjoon/ -type f -ctime -1;
+        run: find _posts/algorithm/baekjoon/ -type f -ctime -1
 
       - name: search programmers dir post
-        run: find _posts/algorithm/programmers/ -type f -ctime -1;
+        run: find _posts/algorithm/programmers/ -type f -ctime -1
         
         
