@@ -1,5 +1,9 @@
 name: auto commit
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -42,7 +46,7 @@ jobs:
           commit_author: "lango, TAEJUN, MUN"
           file_pattern: '*.md'
           disable_globbing: true
-          commit_options: '--amend --no-edit'
-          push_options: --force
+#           commit_options: '--amend --no-edit'
+#           push_options: --force
         
         
