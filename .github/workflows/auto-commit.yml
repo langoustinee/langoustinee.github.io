@@ -18,11 +18,11 @@ jobs:
           
       # 커밋을 수정한다.
       - name: post auto commit
-        run: |
-          git config --global user.name 'Jooney-95'
-          git config --global user.email 'xmun777@naver.com'
-          git commit -am "${{ env.DATE }} 알고리즘 문제풀이"
-          git push
+        run:
+          git config --global user.name 'Jooney-95';
+          git config --global user.email 'xmun777@naver.com';
+          git commit -am "${{ env.DATE }} 알고리즘 문제풀이";
+          git push;
       
       
       
