@@ -9,14 +9,8 @@ jobs:
       - name: Date setting
         run: echo DATE=$(date +'%Y년-%m월-%d일') >> $GITHUB_ENV
       
-      - name: repo checkout
-        uses: actions/checkout@v2
-          
-      - name: post auto commit
-        run: |
-          git config --global user.name 'lango'
-          git config --global user.email 'xmun777@naver.com'
-          git commit -am "${{ env.DATE }} 알고리즘 문제풀이"
-          git push
+      - uses: actions/checkout@v2
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
 
         
