@@ -41,5 +41,6 @@ jobs:
           commit_user_name: lango, TAEJUN, MUN
           commit_author: "lango, TAEJUN, MUN"
           commit_options: '--amend --no-edit'
+          push_options: --force
         
         
