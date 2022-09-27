@@ -5,8 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    env:
-      DATE: $(date +'%Y-%m-%d')
+#     env:
+#       DATE: $(date +'%Y-%m-%d')
       
     steps:
       - name: repo checkout
