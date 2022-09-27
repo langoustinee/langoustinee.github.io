@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-27T15:20:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-3) 1929번 - 소수 구하기</title><link href="http://localhost:4000/java/84-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-3) 1929번 - 소수 구하기" /><published>2022-09-26T00:00:00+09:00</published><updated>2022-09-26T00:00:00+09:00</updated><id>http://localhost:4000/java/84-post</id><content type="html" xml:base="http://localhost:4000/java/84-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-27T23:49:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-3) 1929번 - 소수 구하기</title><link href="http://localhost:4000/java/84-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-3) 1929번 - 소수 구하기" /><published>2022-09-27T00:00:00+09:00</published><updated>2022-09-27T00:00:00+09:00</updated><id>http://localhost:4000/java/84-post</id><content type="html" xml:base="http://localhost:4000/java/84-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/1929.png" /></center>
 
@@ -7,7 +7,7 @@
 <p><strong>입출력 예시</strong></p>
 <blockquote>
   <p>Input <br />
-<strong>3 16</strong> <br /></p>
+<strong>3 16</strong></p>
 </blockquote>
 
 <blockquote>
@@ -138,7 +138,7 @@
 <h3 id="회고">회고</h3>
 <ul>
   <li>O(NloglogN)의 시간복잡도를 가진 에라토스테네스의 체를 활용해 제한시간 2초에 맞춰 문제를 풀 수 있었다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[기본수학2 - 실버3 - 소수 구하기(1929번)]]></summary></entry><entry><title type="html">[Java] 백준(실버-5) 2581번 - 소수</title><link href="http://localhost:4000/java/82-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-5) 2581번 - 소수" /><published>2022-09-26T00:00:00+09:00</published><updated>2022-09-26T00:00:00+09:00</updated><id>http://localhost:4000/java/82-post</id><content type="html" xml:base="http://localhost:4000/java/82-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[실버3 - 1929번 - 소수 구하기]]></summary></entry><entry><title type="html">[Java] 백준(실버-5) 2581번 - 소수</title><link href="http://localhost:4000/java/82-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-5) 2581번 - 소수" /><published>2022-09-26T00:00:00+09:00</published><updated>2022-09-26T00:00:00+09:00</updated><id>http://localhost:4000/java/82-post</id><content type="html" xml:base="http://localhost:4000/java/82-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/2581.png" /></center>
 
