@@ -15,8 +15,6 @@ jobs:
       # repository 정보를 읽어온다.
       - name: repo checkout
         uses: actions/checkout@v2
-#         with:
-#           ref: ${{ github.head_ref }}
           
       # 커밋을 수정한다.
       - name: EndBug/add-and-commit@v9
