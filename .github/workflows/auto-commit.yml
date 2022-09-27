@@ -15,9 +15,9 @@ jobs:
       - name: repo checkout
         uses: actions/checkout@v2
           
-      - name: Commit changes
-        run: |
-          git config --global user.name 'lango'
-          git config --global user.email 'xmun777@naver.com'
-          git commit -am "${{ env.DATE }} 알고리즘 문제풀이"
-          git push
+      - name: overlap commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: ${{ env.DATE }} 문제 풀이 기록
+          commit_user_name: lango
+          commit_author: "xmun777@naver.com"
