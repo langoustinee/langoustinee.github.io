@@ -40,5 +40,6 @@ jobs:
           commit_message: ${{ env.DATE }} 알고리즘 문제풀이
           commit_user_name: lango, TAEJUN, MUN
           commit_author: "lango, TAEJUN, MUN"
+          commit_options: '--amend --no-edit'
         
         
