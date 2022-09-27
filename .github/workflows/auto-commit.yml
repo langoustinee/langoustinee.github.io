@@ -13,6 +13,9 @@ jobs:
 
       - name: Date setting
         run: echo DATE=$(date + %Y년\ %m월\ %d일) >> $GITHUB_ENV
+      
+      - name: Date print
+        run: echo env.DATE
 
 #       - name: Run cd _posts/algorithm
 #         run: cd _posts/algorithm
@@ -26,11 +29,11 @@ jobs:
 #       - name: search programmers dir post
 #         run: find _posts/algorithm/programmers/ -type f -ctime -1
       
-      - name: post .md file auto commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: ${{ env.TODAY_DATE }} 알고리즘 문제풀이
-          commit_user_name: lango, TAEJUN, MUN
-          commit_author: "lango, TAEJUN, MUN"
+#       - name: post .md file auto commit
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           commit_message: ${{ env.DATE }} 알고리즘 문제풀이
+#           commit_user_name: lango, TAEJUN, MUN
+#           commit_author: "lango, TAEJUN, MUN"
         
         
