@@ -12,6 +12,6 @@ jobs:
       - name: repo checkout
         uses: actions/checkout@v2
 
-      - name: print git log
-        run: echo git log
+      - name: run ls -al
+        run: ls -al
 
