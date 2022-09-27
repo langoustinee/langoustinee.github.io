@@ -13,8 +13,11 @@ jobs:
 #       - name: Date setting
 #         run: echo DATE=$(date + %Y년\ %m월\ %d일) >> $GITHUB_ENV
 
+      - name: github head ref print
+        run: echo ${{ github.head_ref }}
+
       - name: Date setting
-        run: echo DATE=$(date +'%Y-%m-%d') >> $GITHUB_ENV
+        run: echo DATE=$(date +'%Y년-%m월-%d일') >> $GITHUB_ENV
 
       - name: Date print-nv
         run: echo "오늘은 ${{ env.DATE }} 입니다."
@@ -31,7 +34,7 @@ jobs:
 #       - name: search programmers dir post
 #         run: find _posts/algorithm/programmers/ -type f -ctime -1
       
-      - name: post .md file auto commit
+      - name: post auto commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: ${{ env.DATE }} 알고리즘 문제풀이
