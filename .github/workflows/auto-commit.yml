@@ -15,9 +15,8 @@ jobs:
           
       # 커밋을 수정한다.
       - name: post auto commit
-        run:  |
-          git config --global user.name 'Jooney-95'
-          git config --global user.email 'xmun777@naver.com'
-          git add -A
-          git commit -am "${{ env.DATE }} 알고리즘 문제풀이"
-          git push
+        uses: EndBug/add-and-commit@v8
+        with:
+          author_name: lango
+          author_email: xmun777@naver.com
+          message: '${{ env.DATE }} 알고리즘 문제풀이'
