@@ -6,6 +6,7 @@ on:
 
 jobs:
   post-auto-commit:
+    name: "금일 알고리즘 문제 풀이"
     runs-on: ubuntu-latest
     steps:
 #       - name: Date setting
