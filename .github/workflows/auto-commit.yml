@@ -4,8 +4,10 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     env:
       DATE: $(date +'%Y-%m-%d')
+      
     steps:
       - name: repo checkout
         uses: actions/checkout@v3
@@ -16,7 +18,7 @@ jobs:
 #         run: echo DATE=$(date + %Y년\ %m월\ %d일) >> $GITHUB_ENV
       
       - name: Date print
-        run: echo "오늘은 $DATE 입니다."
+        run: echo "오늘은 $(date +'%Y-%m-%d') 입니다."
 
 #       - name: Run cd _posts/algorithm
 #         run: cd _posts/algorithm
