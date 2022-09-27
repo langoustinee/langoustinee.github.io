@@ -2,24 +2,15 @@ name: auto commit
 on:
   push:
     branches:
-      - main
+      - "main"
 
 jobs:
   post-auto-commit:
     name: "금일 알고리즘 문제 풀이"
     runs-on: ubuntu-latest
     steps:
-#       - name: Date setting
-#         run: echo DATE=$(date + %Y년\ %m월\ %d일) >> $GITHUB_ENV
-
-      - name: github head ref print
-        run: echo ${{ github.head_ref }}
-
       - name: Date setting
         run: echo DATE=$(date +'%Y년-%m월-%d일') >> $GITHUB_ENV
-
-      - name: Date print-nv
-        run: echo "오늘은 ${{ env.DATE }} 입니다."
       
       # repository 정보를 읽어온다.
       - name: repo checkout
