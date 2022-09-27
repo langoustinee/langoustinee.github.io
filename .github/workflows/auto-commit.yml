@@ -1,8 +1,5 @@
 name: auto commit
-on:
-  push:
-    branches:
-      - "main"
+on: push
 
 jobs:
   post-auto-commit:
@@ -18,32 +15,9 @@ jobs:
           
       # 커밋을 수정한다.
       - name: post auto commit
-        run: git config --global user.name 'Jooney-95';
-          git config --global user.email 'xmun777@naver.com';
-          git commit -am "${{ env.DATE }} 알고리즘 문제풀이";
-          git push;
-      
-      
-      
-#       - name: post auto comiit (Add & Commit)
-#         uses: EndBug/add-and-commit@v9.1.0
-#         with:
-#           message: ${{ env.DATE }} 알고리즘 문제풀이
-#           author_name: lango, TAEJUN, MUN
-#           author_email: xmun777@naver.com
-          
-#       - name: post auto commit
-#         uses: stefanzweifel/git-auto-commit-action@v4
-#         with:
-#           commit_message: ${{ env.DATE }} 알고리즘 문제풀이
-#           commit_user_name: lango, TAEJUN, MUN
-#           commit_author: "lango, TAEJUN, MUN"
-#           branch: main
-
-#           status_options: '--untracked-files=no'
-#           file_pattern: '*.md'
-#           disable_globbing: true
-#           commit_options: '--amend --no-edit'
-#           push_options: --force
-        
-        
+        run:  |
+          git config --global user.name 'Jooney-95'
+          git config --global user.email 'xmun777@naver.com'
+          git add -A
+          git commit -am "${{ env.DATE }} 알고리즘 문제풀이"
+          git push
