@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-3) 1929번 - 소수 구하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/84-post/",
+        "date"     : "2022-09-26 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-1) 11653번 - 소인수분해",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

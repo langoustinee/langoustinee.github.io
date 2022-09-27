@@ -496,4 +496,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/83-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 1929번 - 소수 구하기",
+        "excerpt":"입출력 예시 Input 3 16 Output 3 5 7 11 13 문제 풀이 이 문제에서는 M과 N의 범위(최대 1,000,000) 및 제한 시간(2초)을 생각했을 때 완전탐색을 활용해 2부터 하나하나 나눠보는 것은 O(N^2)의 시간복잡도를 기지므로 시간초과가 발생하게 된다. 완전탐색 보다는 소수를 구할 때 효울적인 ‘에라토스테네스의 체’ 알고리즘을 활용해야 한다. 에라토스테네스의 체를 활용해...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/84-post/",
+        "teaser": null
       }]
