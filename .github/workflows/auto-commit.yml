@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DATE: date
+      DATE: $(date)
     steps:
       - name: repo checkout
         uses: actions/checkout@v3
