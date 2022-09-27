@@ -15,8 +15,11 @@ jobs:
 
       - name: Date setting-2
         run: echo $GITHUB_ENV; echo DATE=$(date +'%Y-%m-%d') >> $GITHUB_ENV;
-      
-      - name: Date print
+
+      - name: Date print-nv
+        run: echo "오늘은 ${{ env.DATE }} 입니다."
+
+      - name: Date print-no env
         run: echo "오늘은 $(date +'%Y-%m-%d') 입니다."
 
 #       - name: Run cd _posts/algorithm
