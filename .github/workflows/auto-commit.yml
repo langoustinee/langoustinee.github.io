@@ -12,8 +12,15 @@ jobs:
       - name: git status
         run: echo git status
 
-#       - uses: actions/checkout@v2
-      
-#       - uses: stefanzweifel/git-auto-commit-action@v4
-
-        
+      - name: repo checkout
+        uses: actions/checkout@v2
+          
+      - name: Commit changes
+        run: |
+          git config --global user.name 'lango'
+          git config --global user.email 'xmun777@naver.com'
+          git remote add origin https://github.com/${{ github.repository }}
+          git config --global push.default current
+          git remote set-url origin https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "${{ env.DATE }} 알고리즘 문제풀이"
+          git push
