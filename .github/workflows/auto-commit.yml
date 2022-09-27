@@ -15,17 +15,24 @@ jobs:
       # repository 정보를 읽어온다.
       - name: repo checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
+#         with:
+#           ref: ${{ github.head_ref }}
           
       # 커밋을 수정한다.
-      - name: post auto commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: EndBug/add-and-commit@v9
         with:
-          commit_message: ${{ env.DATE }} 알고리즘 문제풀이
-          commit_user_name: lango, TAEJUN, MUN
-          commit_author: "lango, TAEJUN, MUN"
-          branch: main
+          message: ${{ env.DATE }} 알고리즘 문제풀이
+          author_name: lango, TAEJUN, MUN
+          author_email: xmun777@naver.com
+          commit: --signoff
+          
+#       - name: post auto commit
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           commit_message: ${{ env.DATE }} 알고리즘 문제풀이
+#           commit_user_name: lango, TAEJUN, MUN
+#           commit_author: "lango, TAEJUN, MUN"
+#           branch: main
 
 #           status_options: '--untracked-files=no'
 #           file_pattern: '*.md'
