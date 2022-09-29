@@ -502,4 +502,16 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/84-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 4948번 - 베르트랑 공준",
+        "excerpt":"입출력 예시 Input 1 10 13 100 1000 10000 100000 0 Output 1 4 3 21 135 1033 8392 문제 풀이 먼저 베르트랑 공준이 무엇인지 궁금하여 찾아보았다. 베르트랑 공준이란? 2 이상의 임의의 정수 n에 대해서 아래 식을 만족하는 소수 p는 항상 존재한다. 1 n &lt; p &lt; 2n 문제에서는 베르트랑...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/85-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 9020번 - 골드바흐의 추측",
+        "excerpt":"입출력 예시 Input 3 8 10 16 Output 3 5 5 5 5 11 문제 풀이 골드바흐의 추측이 뭔지 위키를 찾아보았다. 골드바흐의 추측이란? 이전부터 알려진 정수론의 미해결 문제로, 2보다 큰 모든 짝수는 두 개의 소수의 합으로 표시할 수 있다는 것이다. 이때 하나의 소수를 두 번 사용하는 것을 허용한다. 골드바흐의 강한...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/86-post/",
+        "teaser": null
       }]
