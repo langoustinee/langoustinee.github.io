@@ -13,18 +13,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-          
-      - name: "git changes?"
-        if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        run: echo "Changes!"
-
-      - name: "git no changes!"
-        if: steps.auto-commit-action.outputs.changes_detected == 'false'
-        run: echo "No Changes!"
-          
-      - name: overlap commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: ${{ env.DATE }} 문제 풀이 기록
-          commit_user_name: langoustine
-          commit_author: "xmun777@naver.com"
+          file_pattern: '*.md'
+          disable_globbing: true   
+        
+        
+        
+#       - name: overlap commit
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           commit_message: ${{ env.DATE }} 문제 풀이 기록
+#           commit_user_name: langoustine
+#           commit_author: "xmun777@naver.com"
