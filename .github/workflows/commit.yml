@@ -10,7 +10,7 @@ jobs:
         run: echo DATE=$(date +'%Y년-%m월-%d일') >> $GITHUB_ENV
 
       - name: repo checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: print git log
         run: echo $(git log -5 --oneline)
