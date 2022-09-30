@@ -514,4 +514,28 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/86-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 2751번 - 수 정렬하기 2",
+        "excerpt":"입출력 예시 Input 5 5 4 3 2 1 Output 1 2 3 4 5 문제 풀이 이 문제는 sort() 메소드를 이용해 오름차순 정렬을 해야 한다. 먼저 단순하게 Arrays.sort() 메소드를 이용해 문제를 풀어보니, 정답 처리가 되었다. Arrays.sort()의 정답처리? 이전의 백준에서는 Java, Java(Open JDK), Java11로 언어 분류가 나뉘어 있었는데, 최근에 Java가...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/87-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-1) 10989번 - 수 정렬하기 3",
+        "excerpt":"입출력 예시 Input 10 5 2 3 1 4 2 3 5 1 7 Output 1 1 2 2 3 3 4 5 5 7 문제 풀이 문제에서 요구하는 시간제한은 3초이다. Arrays.sort() 메소드를 이용해도 풀 수 있지만, 시간 제한은 마지노선으로 보인다. 그래서 정렬 알고리즘 중에서 O(n)으로 가장 빠른 시간복잡도를 가지는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/88-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 25305번 - 커트라인",
+        "excerpt":"입출력 예시 Input 5 2 100 76 85 93 98 Output 98 문제 풀이 문제의 요구사항을 잘 보면 주어진 점수들을 내림차순으로 정렬한 후 k번째 점수를 구해야 한다. 여기서 주어진 점수들을 내림차순으로 정렬하는 것이 핵심이다. 내림차순으로 정렬하는 다양한 방식 중에서 int 배열을 이용한 방식과 Integer 배열을 이용한 방식 두가지로 풀어보았다. int...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/89-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 2108번 - 통계학",
+        "excerpt":"입출력 예시 Input-1 5 1 3 8 -2 2 Output-1 2 2 1 10 Input-2 5 -1 -2 -3 -1 -2 Output-2 -2 -2 -1 2 문제 풀이 N개의 수들을 입력받아 산술평균, 중앙값, 최빈값, 범위 총 4가지를 구해야한다. 위 4가지 연산결과를 구하기 위해 N개의 수를 배열에 저장해두자. 유의할 점은 N개의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/90-post/",
+        "teaser": null
       }]

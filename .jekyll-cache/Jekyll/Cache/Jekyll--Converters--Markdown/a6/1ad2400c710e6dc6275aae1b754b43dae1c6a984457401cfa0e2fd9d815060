@@ -1,0 +1,66 @@
+I"g<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/2108.png" /></center>
+
+<p><br /></p>
+
+<p><strong>입출력 예시</strong></p>
+<blockquote>
+  <p>Input-1 <br /></p>
+</blockquote>
+<pre>
+5
+1
+3
+8
+-2
+2
+</pre>
+<blockquote>
+  <p>Output-1 <br /></p>
+</blockquote>
+<pre>
+2
+2
+1
+10
+</pre>
+
+<p><br /></p>
+
+<blockquote>
+  <p>Input-2 <br /></p>
+</blockquote>
+<pre>
+5
+-1
+-2
+-3
+-1
+-2
+</pre>
+<blockquote>
+  <p>Output-2 <br /></p>
+</blockquote>
+<pre>
+-2
+-2
+-1
+2
+</pre>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>아직까지는 Integer 등 래퍼클래스를 이용한 정렬방식보다는 int 등의 기본배열을 활용하는 것이 더 익숙하지만, 상황에 따라 다양한 내림차순 방법을 잘 활용해야겠다.</li>
+</ul>
+:ET

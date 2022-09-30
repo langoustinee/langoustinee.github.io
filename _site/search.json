@@ -1,6 +1,38 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-3) 2108번 - 통계학",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/90-post/",
+        "date"     : "2022-09-30 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(브론즈-2) 25305번 - 커트라인",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/89-post/",
+        "date"     : "2022-09-30 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(브론즈-1) 10989번 - 수 정렬하기 3",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/88-post/",
+        "date"     : "2022-09-29 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(실버-5) 2751번 - 수 정렬하기 2",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/87-post/",
+        "date"     : "2022-09-29 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-2) 9020번 - 골드바흐의 추측",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
