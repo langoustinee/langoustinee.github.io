@@ -11,19 +11,6 @@ jobs:
 
       - name: repo checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
         
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: '*.md'
-          disable_globbing: true   
-        
-        
-        
-#       - name: overlap commit
-#         uses: stefanzweifel/git-auto-commit-action@v4
-#         with:
-#           commit_message: ${{ env.DATE }} 문제 풀이 기록
-#           commit_user_name: langoustine
-#           commit_author: "xmun777@naver.com"
+      - name: print git log
+        run: echo $(git log -5 --oneline)
