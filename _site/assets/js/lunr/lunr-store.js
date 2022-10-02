@@ -546,8 +546,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Java] 백준(실버-5) 11650번 - 좌표 정렬하기",
-        "excerpt":"문제 풀이 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 import java.io.*; import java.util.*; class Main { public static void main(String[]...","categories": ["Java"],
+        "excerpt":"문제 풀이 문제를 보고 먼저 2차원 배열을 이용할 수 있다고 느꼈다. 그런데 2차원 배열을 정렬할 때 Arrays.sort() 로는 정렬할 수 없기에 다른 방법을 찾아야 했다. 2차원 배열을 정렬하는 방법을 찾아보니, Arrays.sort() 메서드를 확장하여 람다식을 이용해야 함을 알게되었다. 람다식이란? 람다 함수라고도 불리는 람다식은 프로그래밍 언어에서 사용되는 개념으로 익명 함수(Anonymous functions)를 지칭하는...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/92-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 11651번 - 좌표 정렬하기 2",
+        "excerpt":"문제 풀이 이 문제는 이전 문제인 11650번 좌표 정렬하기 문제를 조금 변형하여 풀 수 있다. 11650번 문제는 x, y 좌표가 있을 때 x좌표를 기준으로 오름차순 정렬하였지만, 이 문제는 y좌표를 기준으로 오름차순 정렬을 해야한다. 동일하게 Arrays.sort() 메서드를 확장하여 Comparator 메서드를 람다식으로 표현하여 작성하는데, 두 원소를 비교할 때 첫번째 원소 기준이 아닌...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/93-post/",
         "teaser": null
       }]
