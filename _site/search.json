@@ -1,6 +1,22 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-5) 11650번 - 좌표 정렬하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/92-post/",
+        "date"     : "2022-10-01 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(실버-5) 1427번 - 소트인사이드",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/91-post/",
+        "date"     : "2022-10-01 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-3) 2108번 - 통계학",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

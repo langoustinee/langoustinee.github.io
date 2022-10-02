@@ -538,4 +538,16 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/90-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 1427번 - 소트인사이드",
+        "excerpt":"문제 풀이 이 문제는 쉽게 풀 수 있었다. 단순하게 주어진 N의 각 자리수별로 저장한 후 내림차순으로 정렬하면 된다. 생각해낸 아이디어는 다음과 같다. charAt() 메서드를 활용하여 N의 자리수별로 접근하자. 자리수별로 int 형으로 형변환하여 별도의 배열에 저장한다. N의 자리수별로 저장된 배열을 내림차순으로 정렬한다. 그럼 코드를 작성해보자. 1 2 3 4 5 6...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/91-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 11650번 - 좌표 정렬하기",
+        "excerpt":"문제 풀이 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 import java.io.*; import java.util.*; class Main { public static void main(String[]...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/92-post/",
+        "teaser": null
       }]
