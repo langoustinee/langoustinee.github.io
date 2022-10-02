@@ -556,4 +556,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/93-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 1181번 - 단어 정렬",
+        "excerpt":"문제 풀이 이 문제를 풀기 위해 생각한 아이디어는 다음과 같다. 길이가 짧은 순 정렬 -&gt; 같은 길이의 단어는 사전 순 정렬 -&gt; 중복 제거 -&gt; 출력 Arrays.sort() 함수는 두 객체를 비교하여 위치 정렬을 하는데, 특정 규칙을 만들어 비교하기 위해서 앞서 많이 사용하였던 Comparator를 활용하려 한다. 입력받은 단어들을 String 배열에 담아서...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/94-post/",
+        "teaser": null
       }]
