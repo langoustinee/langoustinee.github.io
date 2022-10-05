@@ -1,0 +1,248 @@
+I"�O<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/10814.png" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>나이 순으로 정렬하면서 나이가 같은 사람일 경우 먼저 입력받은 순으로 정렬해야 한다. <br />
+여기서 주의 할 점은 <strong>나이가 같을 때 입력받은 순으로 정렬</strong>해야 한다는 점이다.</p>
+
+<p>이 문제는 2차원 배열을 이용하여 정렬하는 방법과 클래스 객체를 통해 정렬하는 방법 두가지 방식으로 풀어보았다. <br />
+두 풀이 모두 Arrays.sort() 함수를 확장하여 Comparator의 compare 메소드를 구현하여 정렬하였다.</p>
+
+<p><br /></p>
+
+<h4 id="2차원-배열-활용">2차원 배열 활용</h4>
+<p>나이와 이름 두가지를 입력받을 때부터 2차원 배열을 활용할 수 있음을 알 수 있었다. <br />
+나이를 오름차순으로 정렬해가며 <strong>나이가 같을 경우는 compare 메소드에서 0을 반환하기 때문에 입력순서를 보장받을 수 있다.</strong></p>
+
+<p>코드를 작성해보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span> <span class="c1">// age</span>
+    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span> <span class="c1">// name</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>N을 입력받고 [나이, 이름]의 배열을 N개 가지는 2차원 배열 arr를 선언한다. <br />
+그리고 나이와 이름을 입력받으며</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">[]&gt;()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o1</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">-</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o2</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h4 id="클래스-객체-활용">클래스 객체 활용</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">People</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">People</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">peoples</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">People</span><span class="o">&gt;()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">People</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">People</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">-</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+    <span class="o">}</span>            
+<span class="o">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<h4 id="작성코드---2차원-배열-활용">작성코드 - 2차원 배열 활용</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span> <span class="c1">// age</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span> <span class="c1">// name</span>
+        <span class="o">}</span>
+
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o1</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">-</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o2</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="o">});</span>
+
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="작성코드---클래스-객체-활용">작성코드 - 클래스 객체 활용</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">People</span><span class="o">[]</span> <span class="n">peoples</span> <span class="o">=</span>  <span class="k">new</span> <span class="nc">People</span><span class="o">[</span><span class="no">N</span><span class="o">];</span>
+
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="n">peoples</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">People</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()),</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">peoples</span><span class="o">,</span> <span class="o">(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">o1</span><span class="o">.</span><span class="na">age</span> <span class="o">-</span> <span class="n">o2</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+        <span class="o">});</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="nc">People</span> <span class="n">people</span> <span class="o">:</span> <span class="n">peoples</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">people</span><span class="o">.</span><span class="na">age</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">people</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">People</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">People</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>-</li>
+</ul>
+:ET

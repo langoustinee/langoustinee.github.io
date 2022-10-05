@@ -562,4 +562,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/94-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 10814번 - 나이순 정렬",
+        "excerpt":"문제 풀이 나이 순으로 정렬하면서 나이가 같은 사람일 경우 먼저 입력받은 순으로 정렬해야 한다. 여기서 주의 할 점은 나이가 같을 때 입력받은 순으로 정렬해야 한다는 점이다. 이 문제는 2차원 배열을 이용하여 정렬하는 방법과 클래스 객체를 통해 정렬하는 방법 두가지 방식으로 풀어보았다. 두 풀이 모두 Arrays.sort() 함수를 확장하여 Comparator의 compare 메소드를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/95-post/",
+        "teaser": null
       }]
