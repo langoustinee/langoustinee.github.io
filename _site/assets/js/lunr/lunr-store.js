@@ -568,4 +568,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/95-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 18870번 - 좌표 압축",
+        "excerpt":"문제 풀이 좌표 압축이라고 해서 문제 내용을 이해하는데 시간이 좀 걸렸지만, 테스트케이스를 보고서 유추를 할 수 있었다. 바로 원소들의 순위를 매겨 정해진 순위를 출력하는 것이다. 예시를 들어서 보면 이해하기 아주 쉽다. 1 2 3 4 5 6 arr = [2,4,-10,4,-9] -10: 0순위 -9: 1순위 2: 2순위 4: 3순위 4: 3순위...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/96-post/",
+        "teaser": null
       }]
