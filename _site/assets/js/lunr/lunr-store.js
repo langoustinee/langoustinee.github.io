@@ -574,4 +574,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/96-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-5) 10872번 - 팩토리얼",
+        "excerpt":"문제 풀이 이 문제는 재귀 알고리즘으로 접근해야 한다. 재귀란? 자신을 정의할 때 자기 자신을 다시 참조하는 방식을 재귀라고 한다. 재귀를 구현하며 유의할 점 재귀가 반복적으로 호출되면 자바에서는 Stack OverFlow 에러가 발생하게 된다. 재귀함수는 반복적으로 호출하는 만큼 메모리를 차지하기 때문에 매우 느리기 때문에 재귀함수는 평상시 자주 쓰이지는 않는다. 재귀 함수의 종료...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/97-post/",
+        "teaser": null
       }]
