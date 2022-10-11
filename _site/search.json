@@ -1,6 +1,30 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-2) 25501번 - 재귀의 귀재",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/99-post/",
+        "date"     : "2022-10-11 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(브론즈-2) 10870번 - 피보나치 수 5",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/98-post/",
+        "date"     : "2022-10-11 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(실버-4) 24060번 - 병합정렬 1",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/100-post/",
+        "date"     : "2022-10-11 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-5) 10872번 - 팩토리얼",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
