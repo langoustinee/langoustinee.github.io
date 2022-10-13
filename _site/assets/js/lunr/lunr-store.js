@@ -598,4 +598,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/99-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 11729번 - 하노이의 탑 이동 순서",
+        "excerpt":"문제 풀이 하노이의 탑에서 원판을 이동시키는 원리는 워낙 유명했지만 잘 기억이 안나서 다시 찾아보았다. 하노이의 탑 원판 이동 조건 하노이의 탑은 위 그림과 같이 크기 가 다른 원반이 한 기둥에 놓여져 있고 원반을 모두 왼쪽에서 오른쪽으로 옮겨야 한다. 원반은 큰 것이 아래로 가게 쌓아야 하며 작은 원반 위에 큰 원반이...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/101-post/",
+        "teaser": null
       }]

@@ -1,0 +1,205 @@
+I"><p><br /></p>
+
+<center><img src="/assets/images/baekjoon/11729.png" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>하노이의 탑에서 원판을 이동시키는 원리는 워낙 유명했지만 잘 기억이 안나서 다시 찾아보았다. <br /></p>
+
+<blockquote>
+  <p>하노이의 탑 원판 이동 조건 <br /></p>
+  <ul>
+    <li>하노이의 탑은 위 그림과 같이 크기 가 다른 원반이 한 기둥에 놓여져 있고 원반을 모두 왼쪽에서 오른쪽으로 옮겨야 한다.</li>
+    <li>원반은 큰 것이 아래로 가게 쌓아야 하며 작은 원반 위에 큰 원반이 올 수 없다.</li>
+    <li>원반을 옮길 때에는 가장 위에 쌓여있는 원반 부터 옮겨야 한다.</li>
+  </ul>
+</blockquote>
+
+<p>문제 카테고리에서 주어진 대로 <strong>재귀 알고리즘을 이용해 3개의 탑에서 N개의 원판이 주어지면 첫번째 탑에서 마지막 탑까지 N개의 원판을 이동</strong>시켜야 한다. <br />
+하노이탑 이동조건에서의 핵심은 <strong>“작은 원판 위에 큰 원판은 올 수 없다.”</strong>라는 조건이다. <br /></p>
+
+<p><br /></p>
+
+<h4 id="하노이탑-이동-원리">하노이탑 이동 원리</h4>
+<p>간단히 이동 원리를 살펴보자면, <br /></p>
+<ol>
+  <li><strong>첫번째 탑의 가장 큰 원판을 마지막 탑으로 옮기기 위해서는 N-1개의 원판이 첫번째 탑에서 중간 탑으로로 가야한다.</strong></li>
+  <li><strong>그러면 첫번째 탑에 있는 가장 큰 원판이 마지막 탑으로 이동할 수 있다.</strong></li>
+  <li><strong>가장 큰 원판이 마지막 탑으로 옮겨지면, 중간 탑에 있는 N-1개의 원판을 마지막 탑로 이동시키면 된다.</strong></li>
+</ol>
+
+<p><br /></p>
+
+<h4 id="재귀함수-활용하기">재귀함수 활용하기</h4>
+<p>재귀를 어떻게 활용해야할지 처음엔 감이 안잡혔지만, 곰곰히 생각해보니 단순하게 풀 수 있었다. <br />
+첫번째 탑에서 두번째 탑으로 이동해야할 N-1개의 원판들을 재귀함수를 호출하여 이동시키고, 남은 1개의 원판을 이동시킨 후 다시 재귀함수를 호출하면 된다.</p>
+
+<p>말로 설명하자면 너무 어려운데, 간단히 의사코드를 작성하여 살펴보자. <br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>하노이 함수(첫번째탑, 중간탑, 마지막탑, N) {
+    if(옮겨야할 원판이 1개라면) { // 2
+        이동 횟수 1증가
+        첫번째탑 마지막탑 출력
+    }
+    else {
+        하노이 함수(첫번째탑, 마지막탑, 중간탑, N-1) // 1
+        이동 횟수 1증가
+        첫번째탑 마지막탑 출력
+        하노이 함수(중간탑, 첫번째탑, 마지막탑, N-1) // 3
+    }
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>위왁 같이 계속 <strong>(1)첫번째 탑에서 중간 탑으로 이동하는 함수를 재귀호출하여 N-1개 원판을 이동</strong>하면 <strong>(2)이동해야 할 원판이 1개</strong>가 남고, <br />
+그 때 첫번째탑에서 마지막탑으로 이동했다는 것을 출력하고, <strong>(3)마지막으로 중간탑에 있는 N-1개의 원판을 마지막탑으로 이동하는 함수를 재귀호출</strong>하면 된다.</p>
+
+<p><br />
+자 이제 위에서 작성한 의사코드를 통해 문제 솔루션 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">static</span> <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+<span class="kd">static</span> <span class="kt">int</span> <span class="n">moveCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>먼저 탑 이동 과정을 함수 수행후 출력해야 하기에 StringBuilder을 사용할 것이다. 그리고 원판 이동 횟수를 담을 moveCnt 변수를 만들자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>        
+<span class="n">hanoi</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="no">N</span><span class="o">);</span>
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">moveCnt</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>원판 갯수 N을 입력받고 탑은 3개로 고정이니, hanoi 함수에 첫번째 탑 1, 중간 탑 2, 마지막 탑 3, N을 인자로 실행한다. <br />
+그리고 함수 수행 후 하노이탑 원판 이동횟수와 함수 내에서 StringBuilder에 담은 수행 과정을 출력하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">hanoi</span><span class="o">(</span><span class="kt">int</span> <span class="n">first</span><span class="o">,</span> <span class="kt">int</span> <span class="n">center</span><span class="o">,</span> <span class="kt">int</span> <span class="n">last</span><span class="o">,</span> <span class="kt">int</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">moveCnt</span><span class="o">++;</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">first</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">last</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span>
+        <span class="n">hanoi</span><span class="o">(</span><span class="n">first</span><span class="o">,</span> <span class="n">last</span><span class="o">,</span> <span class="n">center</span><span class="o">,</span> <span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">moveCnt</span><span class="o">++;</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">first</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">last</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="n">hanoi</span><span class="o">(</span><span class="n">center</span><span class="o">,</span> <span class="n">first</span><span class="o">,</span> <span class="n">last</span><span class="o">,</span> <span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>마지막으로 hanoi 함수를 살펴보자. 의사코드에서 작성한 것과 동일하다. <br />
+예를 들어 hanoi(1,2,3,N=3)을 실행한다면, 2개의 원판을 중간 탑에 이동시킬 때까지 재귀호출을 하고, (이때 2개 원판을 이동시킬 때마다 이동횟수를 1씩 증가시키고 수행과정을 출력한다.) <br />
+2개의 원판을 모두 중간탑으로 이동시키고 원판이 1개 남는다면 마지막 탑으로 이동시키고 중간 탑에 있는 2개의 원판을 마지막 탑으로 옮기는 함수를 호출하면 된다.</p>
+
+<blockquote>
+  <p>여기서 중요한 점은 <strong>원판이 1개가 남을 때까지 재귀호출을 통해 이동시킨다는 점</strong>이다. 이 원리는 문제를 풀 때 정말 큰 도움이 되었다.</p>
+</blockquote>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    
+    <span class="kd">static</span> <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">moveCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>        
+
+        <span class="n">hanoi</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="no">N</span><span class="o">);</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">moveCnt</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>   
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">hanoi</span><span class="o">(</span><span class="kt">int</span> <span class="n">first</span><span class="o">,</span> <span class="kt">int</span> <span class="n">center</span><span class="o">,</span> <span class="kt">int</span> <span class="n">last</span><span class="o">,</span> <span class="kt">int</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">moveCnt</span><span class="o">++;</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">first</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">last</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">hanoi</span><span class="o">(</span><span class="n">first</span><span class="o">,</span> <span class="n">last</span><span class="o">,</span> <span class="n">center</span><span class="o">,</span> <span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">moveCnt</span><span class="o">++;</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">first</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">last</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+            <span class="n">hanoi</span><span class="o">(</span><span class="n">center</span><span class="o">,</span> <span class="n">first</span><span class="o">,</span> <span class="n">last</span><span class="o">,</span> <span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>하노이의 탑의 원판이 이동하는 원리를 제대로 알고 있지 않아 원리 자체를 다시 공부하였다.</li>
+  <li><strong>재귀 알고리즘을 통해 가장 작은 함수까지 재귀로 파고 들어가는 원리</strong>를 이해하면 쉽게 풀 수 있는 문제라고 생각이 들었다.</li>
+  <li>쌓인 순서대로 이동시켜야 한다는 점에서 stack을 활용해서도 풀 수 있는 문제라고 생각하여 추후 스택으로도 풀어봐야겠다.</li>
+</ul>
+:ET

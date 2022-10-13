@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-1) 11729번 - 하노이의 탑 이동 순서",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/101-post/",
+        "date"     : "2022-10-13 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-2) 25501번 - 재귀의 귀재",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
