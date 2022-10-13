@@ -604,4 +604,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/101-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 2447번 - 별 찍기 - 10",
+        "excerpt":"문제 풀이 *로 이루어진 사각형의 패턴이 무엇인지 파악해보자. N이 3이라면 가운데 한칸이 공백인 사각형을 나타냄을 알 수 있다. 1 2 3 4 N=3 *** * * *** 그러면 N이 3보다 큰 거듭제곱일 경우는 어떨까? N이 9일 경우와 27일 경우에 별이 출력되는 패턴을 살펴보자. (보기 편하도록 * 사이에 공백을 추가한 사진을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/102-post/",
+        "teaser": null
       }]
