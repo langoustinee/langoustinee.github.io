@@ -610,4 +610,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/102-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 삼총사",
+        "excerpt":"문제 풀이 int형 배열 numbers에서 3개의 원소를 뽑아 합이 0일 경우에만 카운트를 하면 되는 문제이다. 간단한 조합공식을 활용해서 3개의 수를 뽑을 수 있다. 조합을 활용해 접근할 수 있는 아이디어를 생각해보자. 문제에서 3개의 수를 뽑는다고 정해놨기 때문에 단순하게 반복문을 3번 돌면 된다. 뽑은 수를 또 뽑으면 안되니(중복되면 안됨) 앞에서부터 차례대로 뽑으면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/103-post/",
+        "teaser": null
       }]
