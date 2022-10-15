@@ -616,4 +616,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/103-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 숫자 짝꿍",
+        "excerpt":"문제 풀이 주어진 X와 Y 문자열에서 공통되는 문자들을 찾아 가장 큰 수로 만들어야 한다. 초기 아이디어 도출 X와 Y를 각각 순회하며 동일한 값들을 별도로 저장한다. 이 때, 연속으로 같은 수가 올 수 있음을 염두해야 한다. 별도로 저장한 문자들을 가장 큰 수, 즉 내림차순으로 만들어 반환한다. 먼저 X와 Y에서 동일한 문자를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/104-post/",
+        "teaser": null
       }]
