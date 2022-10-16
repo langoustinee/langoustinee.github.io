@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-2) 2798번 - 블랙잭",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/105-post/",
+        "date"     : "2022-10-16 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-1) - 숫자 짝꿍",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

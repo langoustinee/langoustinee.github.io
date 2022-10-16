@@ -622,4 +622,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/104-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 2798번 - 블랙잭",
+        "excerpt":"문제 풀이 이 문제는 브루트포스, 즉 완전탐색 알고리즘을 활용하여 푸는 대표적인 문제라고 한다. 완전탐색 알고리즘은 가능한 모든 경우의 수를 다 체크해서 정답을 찾는 방법이다. 아이디어 도출 N개의 카드중에서 3장을 택하여 M과 같거나 가장 가까운 수를 만들어야 한다. M과 같거나 근접한 수를 만들기 위해 생각한 아이디어는 다음과 같다. N개의 카드들 중에서...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/105-post/",
+        "teaser": null
       }]
