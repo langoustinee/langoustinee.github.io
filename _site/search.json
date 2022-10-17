@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-2) 2231번 - 분해합",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/106-post/",
+        "date"     : "2022-10-17 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-2) 2798번 - 블랙잭",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

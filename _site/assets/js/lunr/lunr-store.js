@@ -628,4 +628,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/105-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 2231번 - 분해합",
+        "excerpt":"문제 풀이 이 문제는 완전탐색 알고리즘을 활용하여 N의 생성자가 되는 모든 경우를 탐색해야 한다. N까지의 수들 중에서 [자기 자신 + 자기 자신의 각 자리수의 합] 이 N이 되는 수를 찾으면 된다. 아이디어 도출 N의 범위는 1부터 1,000,000 이기에 1부터 N까지 순회하며 분해합을 통해 N을 만들 수 있는 수를 찾는다. N의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/106-post/",
+        "teaser": null
       }]
