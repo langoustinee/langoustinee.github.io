@@ -1,6 +1,7 @@
-I")<p><br /></p>
+I"
+)<p><br /></p>
 
-<center><img src="/assets/images/baekjoon/2231.png" /></center>
+<center><img src="/assets/images/baekjoon/7568.png" /></center>
 
 <p><br /><br /></p>
 
@@ -146,6 +147,5 @@ N까지의 수들 중에서 <strong>[자기 자신 + 자기 자신의 각 자리
 <h3 id="회고">회고</h3>
 <ul>
   <li>주어진 N의 범위에 비해 간단한 아이디어로 쉽게 접근하여 풀 수 있었던 문제였다.</li>
-  <li></li>
 </ul>
 :ET
