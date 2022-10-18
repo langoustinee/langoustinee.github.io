@@ -636,7 +636,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Java] 백준(실버-5) 7568번 - 덩치",
-        "excerpt":"문제 풀이 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 import java.io.*; import java.util.*; class Main {...","categories": ["Java"],
+        "excerpt":"문제 풀이 이 문제는 N명의 키와 몸무게를 통해 덩치 순위를 구해야한다. 처음엔 HashMap으로 풀다가, 문제 요구사항을 보니 같은 키와 같은 몸무게를 가진 사람도 입력으로 받을 수 있어 같은 키를 가질 수 없는 HashMap이 아닌 2차원 배열을 활용하여 풀었다. 아이디어 도출 2차원 배열에서 N명의 키와 몸무게를 통해 덩치를 구하는 아이디어를 생각해보았다....","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/107-post/",
         "teaser": null
