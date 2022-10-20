@@ -1,0 +1,151 @@
+I">(<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/1436.png" width="100%" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이 문제는 단순하게 생각하면 더 쉽게 풀 수 있다. <br />
+먼저 <strong>N의 범위는 1&lt;=N&lt;=10000</strong>이며 <strong>N번째로 큰 “666”이 포함되는 수</strong>를 찾아야 한다.</p>
+
+<h4 id="초기-아이디어">초기 아이디어</h4>
+<ul>
+  <li>완전탐색 알고리즘을 활용한다.</li>
+  <li><strong>N 번만큼 반복</strong>하며 666부터 1씩 증가시키며, “666”이 포함되는 수를 찾는다.</li>
+</ul>
+
+<p><br />
+이제 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">666</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">nextNum</span><span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>main 메서드에서는 N을 입력받고, 666 정수를 담을 num 변수와 최종 N번째로 구할 수를 담을 res 변수를 선언하였다. <br />
+N번만큼 반복하면서 newtNum() 함수를 통해 N번째 종말의 수를 구해오도록 하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">nextNum</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">cnt</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">n</span><span class="o">++;</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">n</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">"666"</span><span class="o">))</span> <span class="k">break</span><span class="o">;</span>   
+        <span class="o">}</span>
+    <span class="o">}</span>  
+    <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>nextNum() 함수의 내용이다. 이중으로 i번만큼 반복하면서 현재 num을 N번만큼 증가시키며 666, 1666, 2666 등으로 만들어야 하기 때문에 이중 for문을 통해</p>
+
+<h4 id="메모리-초과">메모리 초과?</h4>
+<p>이중 for문에서 while문까지 실행하니 당연히 발생할 수 있었다. <br />
+다시 처음부터 아이디어를 곰곰히 생각해보니, 작성한 이중 for문을 없애도 충분하였다.</p>
+
+<h4 id="문제-해결을-위한-아이디어-및-코드-변경">문제 해결을 위한 아이디어 및 코드 변경</h4>
+<ul>
+  <li>완전탐색 알고리즘을 활용하여 666부터 1씩 증가하면서 “666”이 포함되는 수인지를 확인한다.</li>
+  <li>“666”이 포함될 때마다 카운트를 세어 카운트가 N가 같을 때의 수를 반환하면 된다.</li>
+</ul>
+
+<p>하나의 while문에서</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">666</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+<span class="k">while</span><span class="o">(</span><span class="n">cnt</span> <span class="o">!=</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">num</span><span class="o">++;</span>
+    <span class="k">if</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">"666"</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+<span class="o">}</span>
+
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">num</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">666</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        
+        <span class="k">while</span><span class="o">(</span><span class="n">cnt</span> <span class="o">!=</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">num</span><span class="o">++;</span>
+            <span class="k">if</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">num</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">"666"</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">num</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>   
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET

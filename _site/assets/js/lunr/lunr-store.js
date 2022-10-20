@@ -647,8 +647,8 @@ var store = [{
         "url": "/java/108-post/",
         "teaser": null
       },{
-        "title": "[Java] 백준(실버-4) 1436번 - 영화감독 슘",
-        "excerpt":"문제 풀이 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 import java.io.*; import java.util.*;...","categories": ["Java"],
+        "title": "[Java] 백준(실버-4) 1436번 - 영화감독 숌",
+        "excerpt":"문제 풀이 이 문제는 단순하게 생각하면 더 쉽게 풀 수 있다. 먼저 N의 범위는 1&lt;=N&lt;=10000이며 N번째로 큰 “666”이 포함되는 수를 찾아야 한다. 초기 아이디어 완전탐색 알고리즘을 활용한다. N 번만큼 반복하며 666부터 1씩 증가시키며, “666”이 포함되는 수를 찾는다. 이제 코드를 작성해보자. 1 2 3 4 5 6 7 int N =...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/109-post/",
         "teaser": null
