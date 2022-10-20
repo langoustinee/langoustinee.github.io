@@ -640,4 +640,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/107-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1018번 - 체스판 다시 칠하기",
+        "excerpt":"자세한 테스트케이스 데이터는 문제링크를 참고하자. 문제 풀이 이 문제는 이해하는 것부터 어려움이 있었다. 8X8 크기의 정사각형을 아무데서나 골라서 가장 적게 칠해야할 횟수를 구해야 하는데 잘 생각해보니 결국 NXM 크기의 정사각형에서 8X8 크기의 정삭각형 범위만큼 탐색해야 했다. 모든 8X8 정사각형을 탐색하면서 블랙체스판일 때 칠해야할 횟수와 화이트체스판일 때 칠해야할 횟수를 비교하여 더...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/108-post/",
+        "teaser": null
       }]

@@ -1,0 +1,444 @@
+I"Z�<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/1018.png" /></center>
+<p><br />
+자세한 테스트케이스 데이터는 <a href="https://www.acmicpc.net/problem/1018">문제링크</a>를 참고하자.</p>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이 문제는 이해하는 것부터 어려움이 있었다. <br />
+8X8 크기의 정사각형을 아무데서나 골라서 가장 적게 칠해야할 횟수를 구해야 하는데 잘 생각해보니 결국 NXM 크기의 정사각형에서 8X8 크기의 정삭각형 범위만큼 탐색해야 했다. <br /></p>
+
+<p>모든 8X8 정사각형을 탐색하면서 <strong>블랙체스판일 때 칠해야할 횟수와 화이트체스판일 때 칠해야할 횟수를 비교하여 더 적은 횟수를 구하면 된다.</strong></p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+<ul>
+  <li>주어진 NXM 크기의 정사각형을 2차원 배열에 담는다.</li>
+  <li>NXM 크기의 정사각형에서 8X8 정사각형 범위만큼 순회한다.</li>
+  <li>8X8 정사각형에서 블랙체스판, 화이트체스판 2가지 경우일 때 칠해야 할 횟수를 비교하여 더 적은 횟수를 구한다.
+    <ul>
+      <li>8X8 정사각형에서 <strong>(0,0) 값이 “B”이면 블랙체스판, “W”라면 화이트체스판으로 간주</strong>하자.</li>
+      <li>블랙 체스판 일 경우 짝수행(0,2,4,6)이 “BWBWBWBW”이고, 홀수행(1,3,5,7)이 “WBWBWBWB”이어야 한다.
+        <ul>
+          <li>주어진 행 값과 블랙체스판이 되어야 할 문자열 “BWBWBWBW”을 비교하여 다른 문자열이 있다면 칠해야할 횟수를 1 증가시킨다.</li>
+        </ul>
+      </li>
+      <li>화이트 체스판 일 경우 짝수행(0,2,4,6)이 “WBWBWBWB”이고, 홀수행(1,3,5,7)이 “BWBWBWBW”이어야 한다.
+        <ul>
+          <li>주어진 행 값과 화이트체스판이 되어야 할 문자열 “WBWBWBWB”을 비교하여 다른 문자열이 있다면 칠해야할 횟수를 1 증가시킨다.</li>
+        </ul>
+      </li>
+      <li>블랙체스판이나 화이트체스판일 경우의 칠해야할 횟수 중 더 작은 값으로 반환한다.</li>
+    </ul>
+  </li>
+  <li>NXM 크기의 정사각형에서 8X8 크기의 정사각형만큼 돌면서 가장 최소값으로 칠해야 할 횟수를 구한다.</li>
+</ul>
+
+<p>겉으로 보기엔 복잡해보이지만 아이디어는 단순하다. <br />
+말 그대로 NXM 크기의 2차원 배열에서 8X8 크기만큼 순회하는데, <br />
+여기서 핵심은 <strong>8X8 정사각형에서 블랙체스판, 화이트체스판 2가지 경우의 수를 비교</strong>하는 것이다. <br />
+그래서 결국 8X8 정사각형에서 칠해야할 횟수를 구해가며 더 적게 칠해야할 횟수를 구할 수 있게 된다.</p>
+
+<p><br /></p>
+
+<p>이제 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+<span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+<span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>먼저 N과 M을 입력받고, 2차원 String 배열 arr를 NXM 크기로 선언하자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">strs</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">strs</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>그리고 arr에 입력받은 NXM 크기의 정사각형 원소들을 저장한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">getMinCnt</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">-</span><span class="mi">7</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">cnt</span><span class="o">,</span> <span class="n">getMinCnt</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">cnt</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>NXM 크기의 정사각형에서 8X8 크기의 정사각형만큼 돌면서 각 <strong>8X8 정사각형마다의 칠해야 할 횟수를 getMinCnt() 함수를 통해 구하여 cnt에 저장</strong>해나간다. <br />
+<strong>8X8 정사각형마다 구해진 칠해야할 횟수가 더 적은 횟수로 cnt를 최신화</strong>하면 NXM 정사각형에서 다시 칠해야할 최소 횟수를 구할 수 있다.</p>
+
+<blockquote>
+  <p>이중 for문을 돌며 NXM 정사각형에서 8X8 크기의 정사각형만큼 순회하기 위해 i와 j는 8만큼 반복한다.</p>
+</blockquote>
+
+<p><br />
+이제 8X8 정사각형에서 다시 칠해야할 최소 횟수를 구하는 getMinCnt() 함수를 살펴보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getMinCnt</span><span class="o">(</span><span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start_x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start_y</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">chess</span> <span class="o">=</span> <span class="o">{</span><span class="s">"BWBWBWBW"</span><span class="o">,</span><span class="s">"WBWBWBWB"</span><span class="o">};</span>
+    <span class="kt">int</span> <span class="n">end_x</span> <span class="o">=</span> <span class="n">start_x</span><span class="o">+</span><span class="mi">8</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">start_y</span><span class="o">+</span><span class="mi">8</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="kt">boolean</span> <span class="no">BW</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">start_x</span><span class="o">][</span><span class="n">start_y</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"W"</span><span class="o">))</span> <span class="no">BW</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">else</span> <span class="no">BW</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">start_x</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">end_x</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">row</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">start_y</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">end_y</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">row</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+        <span class="o">}</span>
+
+        <span class="cm">/* 8X8 사각형의 (0,0) 값이 B, 블랙 체스판 일 경우
+            * 0,2,4,6 행이 BWBWBWBW 이어야 함.
+            * 1,3,5,7 행이 WBWBWBWB 이어야 함.
+            *
+        */</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">BW</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">]))</span> <span class="o">{</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="cm">/* 8X8 사각형의 (0,0) 값이 W, 화이트 체스판 일 경우
+            * 0,2,4,6 행이 WBWBWBWB 이어야 함.
+            * 1,3,5,7 행이 BWBWBWBW 이어야 함.
+            *
+        */</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(!</span><span class="no">BW</span><span class="o">)</span> <span class="o">{</span> 
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">]))</span> <span class="o">{</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">// 블랙체스판 이라면 칠해야할 횟수와 화이트체스판의 칠해야할 횟수(64 - 블랙체스판 횟수)를 비교하여 적은 값을 반환한다. </span>
+    <span class="c1">// 반대로 화이트체스판 이라면 칠해야할 횟수와 블랙체스판의 칠해야할 횟수(64 - 화이트체스판 횟수)를 비교하여 적은 값을 반환한다.</span>
+    <span class="k">return</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">cnt</span><span class="o">,</span> <span class="mi">64</span><span class="o">-</span><span class="n">cnt</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>먼저 8X8 정사각형에서 (0,0) 값을 통해 블랙체스판인지 화이트체스판인지를 구분한다. <br /></p>
+
+<p>그리고 NXM에서 인덱스를 하나씩 옮겨가며 8X8 정사각형들을 탐색해야하기 때문에 <strong>(0~7,0~7), (0~7, 1~8), (0~7, 2~9) …</strong> 등의 인덱스로 접근해야 한다.
+main 메서드에서 getMinCnt() 함수의 인자로 넘겨준 <strong>i와 j 값부터 각각 8씩 증가시켜 탐색하여 8X8 정사각형들을 찾을 수 있다.</strong></p>
+
+<p>만약 현재 탐색된 8X8 정사각형이 블랙 체스판이라면 짝수행이 “BWBWBWBW”인지 검증하고, 홀수행이 “WBWBWBWB”인지 검증한다. <br />
+반대로 화이트체스판이라면 짝수행이 “WBWBWBWB”인지 검증하고, 홀수행이 “BWBWBWBW”인지 검증한다. <br />
+위 <strong>2가지 비교검증을 통해서 다른 문자열이 있다면 칠해야할 횟수를 1 증가</strong>시킨다.</p>
+
+<p>마지막으로 각 8X8 정사각형에서 체스판 여부와 칠해야할 횟수를 구했으니, <strong>반대되는 체스판 칠해야할 횟수와 비교하여 더 적게 칠해야할 횟수를 반환</strong>하면 된다.
+예를 들어 현재 탐색된 정사각형이 블랙체스판이고 12번의 칠해야할 횟수를 구했다면, 화이트체스판일 때는 52(64-12)번만큼 칠해야 하기 때문에 블랙체스판 일때의 칠해야할 횟수 12번을 반환하면 되는 것이다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+        <span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">strs</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">strs</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">getMinCnt</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">7</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">length</span><span class="o">-</span><span class="mi">7</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">cnt</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">cnt</span><span class="o">,</span> <span class="n">getMinCnt</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">cnt</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getMinCnt</span><span class="o">(</span><span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start_x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start_y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">chess</span> <span class="o">=</span> <span class="o">{</span><span class="s">"BWBWBWBW"</span><span class="o">,</span><span class="s">"WBWBWBWB"</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">end_x</span> <span class="o">=</span> <span class="n">start_x</span><span class="o">+</span><span class="mi">8</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">start_y</span><span class="o">+</span><span class="mi">8</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="kt">boolean</span> <span class="no">BW</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">start_x</span><span class="o">][</span><span class="n">start_y</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"W"</span><span class="o">))</span> <span class="no">BW</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">else</span> <span class="no">BW</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">start_x</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">end_x</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">row</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+            
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">start_y</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">end_y</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">row</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+            <span class="o">}</span>
+
+            <span class="cm">/* 8X8 사각형의 (0,0) 값이 B, 블랙 체스판 일 경우
+             * 0,2,4,6 행이 BWBWBWBW 이어야 함.
+             * 1,3,5,7 행이 WBWBWBWB 이어야 함.
+             *
+            */</span>
+            <span class="k">if</span><span class="o">(</span><span class="no">BW</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">]))</span> <span class="o">{</span>
+                        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
+                        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="cm">/* 8X8 사각형의 (0,0) 값이 W, 화이트 체스판 일 경우
+             * 0,2,4,6 행이 WBWBWBWB 이어야 함.
+             * 1,3,5,7 행이 BWBWBWBW 이어야 함.
+             *
+            */</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(!</span><span class="no">BW</span><span class="o">)</span> <span class="o">{</span> 
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">]))</span> <span class="o">{</span>
+                        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(!</span><span class="n">row</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">]))</span> <span class="o">{</span>
+                        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">row</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                            <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">)</span> <span class="o">!=</span> <span class="n">chess</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">charAt</span><span class="o">(</span><span class="n">k</span><span class="o">))</span> <span class="n">cnt</span><span class="o">++;</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">cnt</span><span class="o">,</span> <span class="mi">64</span><span class="o">-</span><span class="n">cnt</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>문제를 풀기 위한 아이디어는 생각해냈지만, 2차원 배열을 통해서 생각한대로 구현하는게 만만치 않았다. 2차원 배열을 활용해 특정 인덱스별로 바뀌며 탐색해야 하는 방식을 더 공부하고 2차원 배열 관련 문제를 더 풀어야겠다.</li>
+  <li></li>
+</ul>
+:ET

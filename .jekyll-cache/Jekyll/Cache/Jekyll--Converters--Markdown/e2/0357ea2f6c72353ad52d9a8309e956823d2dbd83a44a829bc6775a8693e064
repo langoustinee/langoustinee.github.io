@@ -1,0 +1,176 @@
+I"B<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/1018.png" /></center>
+
+<p><br /></p>
+
+<p>문제의 입출력 데이터는 <a href="https://www.acmicpc.net/problem/1018">문제링크</a>를 참고합시다.
+<br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이 문제는 N명의 키와 몸무게를 통해 덩치 순위를 구해야한다. <br />
+처음엔 HashMap으로 풀다가, 문제 요구사항을 보니 <br />
+<strong>같은 키와 같은 몸무게를 가진 사람도 입력으로 받을 수 있어 같은 키를 가질 수 없는 HashMap이 아닌 2차원 배열을 활용</strong>하여 풀었다.</p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+<p>2차원 배열에서 N명의 키와 몸무게를 통해 덩치를 구하는 아이디어를 생각해보았다.</p>
+
+<ul>
+  <li>N명의 키와 몸무게를 입력받아 2차원 배열에 저장하고, 2차원 배열에서 모든 사람의 키와 몸무게를 비교한다.</li>
+  <li>자기 자신보다 덩치가 큰 사람이 있다면 순위가 1씩 밀린다.</li>
+</ul>
+
+<p><br /></p>
+
+<p>이제 코드를 작성해보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">];</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>먼저 N을 입력받고, N명의 순위를 저장할 rank 배열과 N명의 키와 몸무게를 저장할 2차원 배열 arr를 선언하자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>그리고 N번만큼 받복하며 각 N명들의 키와 몸무게를 입력받아 arr에 저장한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">winCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">((</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="mi">1</span><span class="o">]))</span> <span class="n">winCnt</span><span class="o">++;</span>
+        <span class="o">}</span>   
+    <span class="o">}</span>
+    <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+=</span> <span class="n">winCnt</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>2차원 배열에 N명의 키와 몸무게를 모두 담았으니, 이제 덩치에 따른 순위를 구하면 된다. <br />
+순위를 1로 초기화 한 후 이중 for문을 돌며 모든 사람들과 덩치를 비교하여 <strong>더 큰 덩치를 가진 사람이 있다면 자기 자신의 순위를 1씩 증가</strong>시킨다. <br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">user</span> <span class="o">:</span> <span class="n">rank</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">user</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>마지막으로 N명의 순위를 공백 기준으로 한 줄에 출력해야 하기에 StringBuilder에 담아 출력하도록 하였다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">rank</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">winCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">((</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="mi">1</span><span class="o">]))</span> <span class="n">winCnt</span><span class="o">++;</span>
+                <span class="o">}</span>   
+            <span class="o">}</span>
+            <span class="n">rank</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+=</span> <span class="n">winCnt</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">user</span> <span class="o">:</span> <span class="n">rank</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">user</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>   
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>처음엔 HashMap을 활용하여 접근했으나, HashMap의 중복 허용이 안되는 점을 다시 한번 깨닫고, 2차원 배열을 활용하여 문제를 풀었다.</li>
+  <li>문제를 단순하게 풀기에 2차원 배열을 활용하는게 더 도움이 되었다.</li>
+</ul>
+:ET
