@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-4) 1436번 - 영화감독 슘",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/109-post/",
+        "date"     : "2022-10-20 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1018번 - 체스판 다시 칠하기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
