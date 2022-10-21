@@ -652,4 +652,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/109-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 콜라 문제",
+        "excerpt":"자세한 문제 내용은 콜라 문제 링크를 참고하자. 문제 풀이 이 문제는 나눗셈과 나머지연산을 잘 활용하면 쉽게 풀 수 있다. 먼저 어떤 패턴으로 답을 요구하는지 알아보자. 문제의 이미지를 보면 20병을 가져가서 10병을, 10병을 가져가서 5병을, 5병을 가져가서 2병을(나머지 1병이 남음), 2병을 가져가서 1병을 가져와 남은 1병과 함께 다시 1병을 받아온다. 잘...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/110-post/",
+        "teaser": null
       }]
