@@ -658,4 +658,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/110-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 10815번 - 숫자 카드",
+        "excerpt":"문제 풀이 M개의 확인해야할 카드 중에서 N개의 카드들이 존재하는지 확인해야 한다. 나는 O(1)의 시간복잡도를 가지는 HashSet을 활용하여 N개의 카드중에 M개의 카드 각각이 존재하는지 여부를 따져서 정답을 낼 수 있었다. 이 문제는 선형탐색을 이용하면 시간복잡도가 O(n) 이기에 시간초과가 발생한다고 한다. 그렇기에 시간복잡도가 O(nlogn)인 이분탐색을 활용해야 한다고 한다. 그래서 이번 문제는 HashSet과...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/111-post/",
+        "teaser": null
       }]
