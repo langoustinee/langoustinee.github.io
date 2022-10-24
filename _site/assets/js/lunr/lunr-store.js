@@ -664,4 +664,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/111-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 14425번 - 문자열 집합",
+        "excerpt":"문제 풀이 이 문제는 문자열 배열과 HashMap을 활용하는 두 가지 방식으로 풀어보았다. 요구되는 아이디어는 단순한 편이라고 생각이 들었다. 아이디어 도출 N개의 문자열을 별도의 집합 S로 저장한다. M개의 문자열을 입력받으며 집합 S에 포함되는지 확인한다. 문자열 배열 활용 먼저 단순하게 N개의 문자열을 입력받아 집합 S를 만들고 M개의 문자열을 입력받으며 S에 존재하는지 확인하면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/112-post/",
+        "teaser": null
       }]
