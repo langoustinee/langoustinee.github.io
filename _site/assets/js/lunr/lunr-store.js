@@ -670,4 +670,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/112-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1620번 - 나는야 포켓몬 마스터 이다솜",
+        "excerpt":"문제 풀이 이번 문제는 입력받은 포켓문 문자열과 포켓몬 번호가 쌍으로 존재해야 한다. 여기선 HashMap을 활용하면 포켓몬 이름과 번호를 쉽게 쌍으로 연결지어 만들 수 있다. 아이디어 도출 시간제한은 2초, N의 범위는 최대 10만개, M의 범위도 최대 10만개로 이중 for문을 사용할 경우 시간제한이 발생할 가능성이 높다. N개의 포켓몬 문자열을 입력받으며 포켓몬 이름...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/113-post/",
+        "teaser": null
       }]
