@@ -676,4 +676,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/113-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 10816번 - 숫자 카드 2",
+        "excerpt":"문제 풀이 이번 문제는 이전에 풀었던 숫자 카드 문제에서 확장된 문제이다. 이분탐색을 활용해 푸는 대표적 방법도 있겠지만, 아직 이분 탐색에 대해서 제대로 공부가 되지 않아 HashMap을 활용해 풀어보았다. 아이디어 도출 입력으로 받는 N개의 숫자 카드를 나온 횟수별로 HashMap에 숫자카드를 key값으로, 횟수를 value값으로 쌓는다. M개의 숫자 카드를 입력받으며 HashMap에 존재하는 값이라면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/114-post/",
+        "teaser": null
       }]
