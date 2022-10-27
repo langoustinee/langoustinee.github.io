@@ -682,4 +682,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/114-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1764번 - 듣보잡",
+        "excerpt":"문제 풀이 이번 문제는 N명의 듣도 못한 사람과 M명의 보도 못한 사람 중에서 중복되는 사람의 명수와 사람을 나열해서 출력해야 한다. 입출력 테스트케이스를 유심히 보면 첫째줄엔 듣보잡의 수와 명단을 사전순으로 출력해야 함을 주의해야 한다. 아이디어 도출 이분탐색을 활용하여 N명과 M명의 사람중에서 중복된 사람을 찾는다. 중복된 사람을 별도의 리스트로 저장해두고, 오름차순(사전순)으로 정렬한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/115-post/",
+        "teaser": null
       }]
