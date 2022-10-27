@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-4) 1269번 - 대칭 차집합",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/116-post/",
+        "date"     : "2022-10-27 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1764번 - 듣보잡",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

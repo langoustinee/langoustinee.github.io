@@ -688,4 +688,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/115-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1269번 - 대칭 차집합",
+        "excerpt":"문제 풀이 이번 문제는 집합과 맵 카테고리인만큼, HashMap을 활용한다면 손쉽게 풀 수 있다. 두 집합 A, B를 HashMap으로 받아서 서로의 중복원소를 카운트하면 대칭 차집합 원소 개수를 구할 수 있다. 아이디어 도출 두개의 A와 B 집합을 HashMap으로 만든다. (key값은 입력값, value값은 0) A에서 B를, B에서 A를 비교하여 중복원소를 카운트하여 value값을 카운트한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/116-post/",
+        "teaser": null
       }]
