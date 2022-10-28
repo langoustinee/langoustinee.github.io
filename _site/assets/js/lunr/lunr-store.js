@@ -694,4 +694,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/116-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 11478번 - 서로 다른 부분 문자열의 개수",
+        "excerpt":"문제 풀이 주어진 문자열에서 부분 문자열을 탐색해가며 서로 다른 부분 문자열의 개수만 세어야 한다. 서로 다른 부분 문자열만 센다는 것은 중복되는 부분 문자열은 세지 않는다는 것과 동일하다. 아이디어 도출 주어진 문자열 S의 모든 부분 문자열이 만들어지는 경우를 탐색하며 부분 문자열을 구한다. 구한 부분 문자열을 HashSet에 저장해가며 중복을 제거한다. 이중 for문...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/117-post/",
+        "teaser": null
       }]

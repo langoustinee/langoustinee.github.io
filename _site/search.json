@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-3) 11478번 - 서로 다른 부분 문자열의 개수",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/117-post/",
+        "date"     : "2022-10-28 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1269번 - 대칭 차집합",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
