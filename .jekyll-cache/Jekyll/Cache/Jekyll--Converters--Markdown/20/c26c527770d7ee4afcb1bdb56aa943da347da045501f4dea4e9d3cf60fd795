@@ -1,6 +1,6 @@
-I"#%<p><br /></p>
+I"�&<p><br /></p>
 
-<center><img src="/assets/images/baekjoon/11478.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/2587.png" width="100%" /></center>
 
 <p><br /><br /></p>
 
@@ -19,7 +19,7 @@
 
 <p><br /></p>
 
-<p>간단한 예시를 들어서 살펴보자.</p>
+<p>이중 for문 안에서 부분 문자열을 구하는 과정을 살펴보면 다음과 같다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -101,7 +101,8 @@ i=4,
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>그리고 이중 for문으로 문자열 S를 순회화며 위 예시와 같이 부분 문자열이 만들어지는 경우를 탐색하여 부분 문자열을 구한다. <br />
-구한 부분 문자열을 HashSet에 저장해나가면, <strong>서로 다른 부분 문자열만 HashSet에 저장</strong>된다.</p>
+구한 부분 문자열을 HashSet에 저장해나가면, <strong>서로 다른 부분 문자열만 HashSet에 저장</strong>된다. <br />
+문제 요구사항은 서로 다른 부분 문자열의 개수이니, HastSet의 size를 출력해주면 정답을 낼 수 있다.</p>
 
 <p><br /><br /></p>
 
@@ -162,6 +163,6 @@ i=4,
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li></li>
+  <li>이중 for문을 통해 부분 문자열을 구하는 과정이 조금 헷갈렸지만, 중복을 제거할 수 있는 HashSet은 바로 생각이 났기애 솔루션 코드에 접목할 수 있었다.</li>
 </ul>
 :ET

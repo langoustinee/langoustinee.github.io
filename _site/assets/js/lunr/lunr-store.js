@@ -700,4 +700,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/117-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 2587번 - 대표값2",
+        "excerpt":"문제 풀이 문제의 요구사항은 주어진 5개의 값들의 평균값과 중앙값을 구하는 것이다. 값들을 더해 평균을 구하고 값들이 정렬된 상태에서 중앙값을 구하는 것은 크게 어렵지 않다. 아이디어 도출 주어진 5개의 값들을 배열로 만든다. 5개의 값들을 더하고, 5로 나누어 평균값을 구한다. 5개의 값이 들어있는 배열을 오름차순으로 정렬하고, 세번째 인덱스로 접근하여 중앙값을 구한다. 아이디어는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/118-post/",
+        "teaser": null
       }]
