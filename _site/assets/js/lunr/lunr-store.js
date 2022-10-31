@@ -706,4 +706,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/118-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-5) 2738번 - 행렬 덧셈",
+        "excerpt":"문제 풀이 2차원 배열 분야가 부족한 것 같아 2차원 배열 카테고리의 문제를 풀어보기로 하였다. 이번 문제는 2차원 배열을 활용해 A 행렬과 B 행렬의 덧셈 연산을 하면 된다. 아이디어 도출 공백 기준으로 입력받은 A 행렬과 B 행렬의 값을 각각 2차원 배열로 만들어 저장한다. 이중 for문을 통해 A, B 행렬을 순회하며 각...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/119-post/",
+        "teaser": null
       }]

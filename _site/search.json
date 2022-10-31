@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-5) 2738번 - 행렬 덧셈",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/119-post/",
+        "date"     : "2022-10-31 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-2) 2587번 - 대표값2",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
