@@ -712,4 +712,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/119-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-3) 2566번 - 최댓값",
+        "excerpt":"문제 풀이 9X9 격자판 크기에 주어지는 값들 중 최댓값을 찾고, 최댓값이 어느 행, 어느 열에 위치하는지를 구해야 한다. 중첩 반복문으로 2차원 배열을 활용해 접근하면 손쉽게 알아낼 수 있다. 아이디어 도출 격자판에 주어지는 9X9 크기의 입력값들을 2차원 배열에 저장한다. 위에서 만든 2차원 배열을 순회하며 최댓값을 찾는다. 아이디어대로 코드를 작성해보자. 1 2...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/120-post/",
+        "teaser": null
       }]
