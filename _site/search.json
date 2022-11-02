@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-5) 2563번 - 색종이",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/121-post/",
+        "date"     : "2022-11-02 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-3) 2566번 - 최댓값",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

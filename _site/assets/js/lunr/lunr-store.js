@@ -718,4 +718,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/120-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 2563번 - 색종이",
+        "excerpt":"문제 풀이 이 문제는 최대한 단순하게 풀기 위한 아이디어를 생각해야 한다. 처음엔 주어진 x와 y 좌표마다 +10을 한 후 뺄셈한 결과가 10 이상이어야 하는 등 복잡한 조건을 걸어야 한다고 생각했지만, 더 쉽게 풀 수 있는 방법이 있었다. 바로 100X100 크기의 도화지에서 색종이가 붙여진 자리마다 마킹을 하여 마킹한 자리의 갯수를 세면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/121-post/",
+        "teaser": null
       }]
