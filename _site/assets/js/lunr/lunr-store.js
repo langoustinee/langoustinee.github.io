@@ -724,4 +724,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/121-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 푸드 파이트 대회",
+        "excerpt":"문제 풀이 문재의 지문은 어려워 보이지만 테스트케이스를 잘 보면 쉽게 풀 수 있다. 요구하는 내용을 잘 살펴보면 1번, 2번, 3번 음식을 몇 번 먹었는지를 ‘데칼코마니’처럼 “0”을 사이에 두고 출력하면 된다. 아이디어 도출 food 배열의 1번째 음식인 1번째 원소부터 2명이서 나누어 먹을 수 있는지를 확인하며 남는 음식은 신경쓰지 않고 2명에게 분배한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/122-post/",
+        "teaser": null
       }]

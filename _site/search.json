@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-1) - 푸드 파이트 대회",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/122-post/",
+        "date"     : "2022-11-03 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-5) 2563번 - 색종이",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
