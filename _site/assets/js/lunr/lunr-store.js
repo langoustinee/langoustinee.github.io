@@ -730,4 +730,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/122-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 옹알이 (2)",
+        "excerpt":"문제 풀이 이 문제는 주어진 옹알이 단어중에서 “aya”, “ye”, “woo”, “ma” 4가지 조합의 발음만을 하는지를 검증해야 한다. 위의 4가지 발음이 연속으로 조합된다거나, 단어 사이에 조합된다면 올바른 발음이 되지 않음을 유의해야 한다. 최초 아이디어 도출 옹알이 단어 배열을 두어, 주어진 발음에서 옹알이 단어가 나오는지 확인한다. 또한, 연속으로 옹알이 단어가 나오는지 확인하기...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/123-post/",
+        "teaser": null
       }]

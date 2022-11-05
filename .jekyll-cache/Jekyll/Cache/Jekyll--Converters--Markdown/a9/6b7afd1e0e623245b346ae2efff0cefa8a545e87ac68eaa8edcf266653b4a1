@@ -1,0 +1,109 @@
+I"<p><br /></p>
+<center><img src="/assets/images/programmers/20221105_01.png" width="100%" /></center>
+<p><br /></p>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이 문제는 주어진 옹알이 단어중에서 “aya”, “ye”, “woo”, “ma” 4가지 조합의 발음만을 하는지를 검증해야 한다. <br /></p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p><br /></p>
+
+<h4 id="불가능한-발음의-존재">불가능한 발음의 존재</h4>
+
+<p><br /><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">// String[] babbling = {"aya", "yee", "u", "maa"};</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">babbling</span> <span class="o">=</span> <span class="o">{</span><span class="s">"ayaye"</span><span class="o">,</span> <span class="s">"uuu"</span><span class="o">,</span> <span class="s">"yeye"</span><span class="o">,</span> <span class="s">"yemawoo"</span><span class="o">,</span> <span class="s">"ayaayaa"</span><span class="o">,</span> <span class="s">"mwooa"</span><span class="o">};</span>
+        
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">babbling</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">babbling</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">realBabbling</span> <span class="o">=</span> <span class="o">{</span><span class="s">"aya"</span><span class="o">,</span> <span class="s">"ye"</span><span class="o">,</span> <span class="s">"woo"</span><span class="o">,</span> <span class="s">"ma"</span><span class="o">};</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">dupBabbling</span> <span class="o">=</span> <span class="o">{</span><span class="s">"ayaaya"</span><span class="o">,</span> <span class="s">"yeye"</span><span class="o">,</span> <span class="s">"woowoo"</span><span class="o">,</span> <span class="s">"mama"</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">bab</span> <span class="o">:</span> <span class="n">babbling</span><span class="o">)</span> <span class="o">{</span>  
+
+            <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">dbab</span> <span class="o">:</span> <span class="n">dupBabbling</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">bab</span> <span class="o">=</span> <span class="n">bab</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">dbab</span><span class="o">,</span> <span class="s">"*"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">rbab</span> <span class="o">:</span> <span class="n">realBabbling</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">bab</span> <span class="o">=</span> <span class="n">bab</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">rbab</span><span class="o">,</span> <span class="s">"O"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="kt">boolean</span> <span class="n">babPossiable</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">bab</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">bab</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">!=</span> <span class="sc">'O'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">babPossiable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">babPossiable</span><span class="o">)</span> <span class="n">answer</span><span class="o">++;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>  
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+:ET
