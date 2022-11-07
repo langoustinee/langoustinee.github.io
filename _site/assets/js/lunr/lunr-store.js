@@ -736,4 +736,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/123-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 10828번 - 스택",
+        "excerpt":"자세한 입출력 테스트케이스는 문제 링크를 참고하자. 문제 풀이 이 문제는 스택의 각종 기능을 활용해 스택에 데이터를 삽입 및 추출하면 된다. 복잡한 로직 없이 순수한 스택의 기능만으로 쉽게 구현이 가능하다. 아이디어 도출 주어지는 명령어대로 스택을 처리하면 된다. 명령어에 “push” 문자열이 있다면 “push [num]”의 num 값을 스택에 삽입한다. 이 때 별도로 출력할...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/124-post/",
+        "teaser": null
       }]
