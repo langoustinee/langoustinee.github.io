@@ -742,4 +742,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/124-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 10773번 - 제로",
+        "excerpt":"자세한 입출력 테스트케이스는 문제 링크를 참고하자. 문제 풀이 이번 문제는 스택의 후입 선출(LIFO) 구조를 활용하면 손쉽게 풀 수 있다. K개의 주어지는 정수가 0 이상이면 스택에 저장하고, 0이라면 맨 위 값을 추출하면 된다. 아이디어 도출 주어지는 정수가 0보다 크면 스택에 삽입한다.(push연산) 주어지는 정수가 0이라면 스택에서 추출한다.(pop연산) 모든 정수 입력이 끝나면 스택에...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/125-post/",
+        "teaser": null
       }]

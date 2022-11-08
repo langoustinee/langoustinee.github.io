@@ -1,6 +1,6 @@
-I"?<p><br /></p>
+I"�?<p><br /></p>
 
-<center><img src="/assets/images/baekjoon/10828.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/10773.png" width="100%" /></center>
 <p><br />
 자세한 입출력 테스트케이스는 <a href="https://www.acmicpc.net/problem/10828">문제 링크</a>를 참고하자.</p>
 
@@ -200,6 +200,6 @@
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li></li>
+  <li>스택에서 제공하는 각종 기능들을 활용해 복잡한 알고리즘 없이 순수한 스택을 활용하여 문제를 풀 수 있었다.</li>
 </ul>
 :ET

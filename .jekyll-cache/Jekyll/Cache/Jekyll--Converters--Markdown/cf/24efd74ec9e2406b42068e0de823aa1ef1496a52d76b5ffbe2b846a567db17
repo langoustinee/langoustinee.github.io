@@ -1,8 +1,8 @@
-I"C=<p><br /></p>
+I"�?<p><br /></p>
 
-<center><img src="/assets/images/baekjoon/10828.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/10773.png" width="100%" /></center>
 <p><br />
-자세한 입출력 테스트케이스는 <a href="https://www.acmicpc.net/problem/10828">문제 링크</a>를 참고하자.</p>
+자세한 입출력 테스트케이스는 <a href="https://www.acmicpc.net/problem/10773">문제 링크</a>를 참고하자.</p>
 
 <p><br /><br /></p>
 
@@ -66,24 +66,24 @@
 28
 </pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
     <span class="nc">String</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"push"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"push"</span><span class="o">))</span> <span class="o">{</span> <span class="c1">// 1</span>
         <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">]);</span>
         <span class="n">st</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
     <span class="o">}</span>
     <span class="k">else</span> <span class="o">{</span>
         <span class="k">switch</span><span class="o">(</span><span class="n">cmd</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">case</span> <span class="s">"pop"</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">"pop"</span><span class="o">:</span> <span class="c1">// 2</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">empty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">pop</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">break</span><span class="o">;</span>
-            <span class="k">case</span> <span class="s">"top"</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">"top"</span><span class="o">:</span> <span class="c1">// 3</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">empty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">peek</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">break</span><span class="o">;</span>
-            <span class="k">case</span> <span class="s">"size"</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">"size"</span><span class="o">:</span> <span class="c1">// 4</span>
                 <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">size</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">break</span><span class="o">;</span>
-            <span class="k">case</span> <span class="s">"empty"</span><span class="o">:</span>
+            <span class="k">case</span> <span class="s">"empty"</span><span class="o">:</span> <span class="c1">// 5</span>
                 <span class="k">if</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">empty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"0"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
                 <span class="k">break</span><span class="o">;</span>
@@ -97,7 +97,9 @@
 <ol>
   <li>push [num] 일 때는 cmd에 “push” 문자열이 있는지 확인하여 num값을 스택에 삽입한다.</li>
   <li>pop일 때는 스택이 비어있는지 확인 후 pop 연산을 하여 삭제된 값을 출력한다.</li>
-  <li>top일 때는</li>
+  <li>top일 때는 peek() 메서드를 활용하여 스택의 맨 위 값을 출력한다. 역시나 스택이 비어있다면 -1을 출력하면 된다.</li>
+  <li>size일 때는 스택의 값 개수를 출력하면 된다.</li>
+  <li>empty일 때는 값 유무에 따라 비어있다면 1, 비어있지 않다면 0을 출력하면 된다.</li>
 </ol>
 
 <p><br /><br /></p>
@@ -198,6 +200,6 @@
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li></li>
+  <li>스택에서 제공하는 각종 기능들을 활용해 복잡한 알고리즘 없이 순수한 스택을 활용하여 문제를 풀 수 있었다.</li>
 </ul>
 :ET

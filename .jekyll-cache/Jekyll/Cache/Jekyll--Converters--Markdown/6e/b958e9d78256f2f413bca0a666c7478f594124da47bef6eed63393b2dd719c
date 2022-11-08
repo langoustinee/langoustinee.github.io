@@ -1,29 +1,13 @@
-I"*#<p><br /></p>
+I"E <p><br /></p>
 
-<center><img src="/assets/images/baekjoon/10828.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/10773.png" width="100%" /></center>
 <p><br />
-자세한 입출력 테스트케이스는 <a href="https://www.acmicpc.net/problem/10828">문제 링크</a>를 참고하자.</p>
+자세한 입출력 테스트케이스는 <a href="https://www.acmicpc.net/problem/10773">문제 링크</a>를 참고하자.</p>
 
 <p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 <hr />
-<p>이 문제는 스택의 각종 기능을 활용해 스택에 데이터를 삽입 및 추출하면 된다. <br />
-복잡한 로직 없이 순수한 스택의 기능만으로 쉽게 구현이 가능하다.</p>
-
-<p><br /></p>
-
-<h4 id="아이디어-도출">아이디어 도출</h4>
-<ul>
-  <li>주어지는 명령어대로 스택을 처리하면 된다.
-    <ul>
-      <li>명령어에 “push” 문자열이 있다면 “push [num]”의 num 값을 스택에 삽입한다. 이 때 별도로 출력할 필요는 없다.</li>
-      <li>“pop”이라면 스택에서 pop연산을 하여 삭제된 값을 출력한다. 이 때 스택이 비어있는지 확인 후 비어있다면 -1을 출력해야한다.</li>
-      <li>“size”라면 스택의 존재하는 값 개수를 출력한다.</li>
-      <li>“empty”라면 스택이 비어있는지 확인하여</li>
-    </ul>
-  </li>
-</ul>
 
 <p><br /><br /></p>
 
@@ -123,6 +107,6 @@
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li></li>
+  <li>스택에서 제공하는 각종 기능들을 활용해 복잡한 알고리즘 없이 순수한 스택을 활용하여 문제를 풀 수 있었다.</li>
 </ul>
 :ET
