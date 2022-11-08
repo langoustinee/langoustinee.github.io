@@ -748,4 +748,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/125-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 9012번 - 괄호",
+        "excerpt":"자세한 입출력 테스트케이스는 문제 링크를 참고하자. 문제 풀이 이번 문제는 주어지는 괄호문자열의 짝이 맞는지를 확인해야 한다. 스택을 활용하면 단일 괄호 문자열의 짝이 맞는지 쉽게 구할 수 있다. 아이디어 도출 주어지는 괄호 문자열을 순회하며 여는 괄호 “(“가 주어지면 스택에 삽입하고 닫는 괄호 “)”가 주어지면 스택에서 추출한다. 이 때, 닫는 괄호가 나오면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/126-post/",
+        "teaser": null
       }]

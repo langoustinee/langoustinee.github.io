@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-4) 9012번 - 괄호",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/126-post/",
+        "date"     : "2022-11-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 10773번 - 제로",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
