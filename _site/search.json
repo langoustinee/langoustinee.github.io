@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-4) 18258번 - 큐 2",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/128-post/",
+        "date"     : "2022-11-09 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 4949번 - 균형잡힌 세상",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

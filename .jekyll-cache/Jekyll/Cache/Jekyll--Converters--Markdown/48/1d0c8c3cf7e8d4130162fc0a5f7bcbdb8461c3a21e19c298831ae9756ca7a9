@@ -1,0 +1,134 @@
+I"'<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/18258-attach01.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/18258-attach02.png" width="100%" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">qu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">front</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">back</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"push"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">]);</span>
+                <span class="n">qu</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+                <span class="n">back</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">switch</span><span class="o">(</span><span class="n">cmd</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">case</span> <span class="s">"pop"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="o">{</span>
+                            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="o">}</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"size"</span><span class="o">:</span>
+                        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">size</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"empty"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"0"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"front"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">peek</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"back"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">back</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">default</span><span class="o">:</span>
+                        <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>단일 괄호 문자열에서 괄호의 짝을 스택만으로 구현이 가능했지만, 다중 괄호 문자열에서는 별도로 여는 괄호들의 짝이 맞는지를 알아야 하기에 괄호들의 짝을 별도로 담아둘 HashMap을 함께 활용하여 문제를 풀 수 있었다.</li>
+</ul>
+
+<h3 id="출처">출처</h3>
+<ul>
+  <li>해당 문제의 저작권은 문제만든이 자세한 내용은 <a href="https://www.acmicpc.net/problem/18258">4949번 문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

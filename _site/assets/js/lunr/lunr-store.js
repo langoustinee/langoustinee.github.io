@@ -760,4 +760,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/127-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 18258번 - 큐 2",
+        "excerpt":"문제 풀이 이제 큐,덱 카테고리 문제를 풀기 시작했다. 스택과 더불어 큐 문제 풀 때는 구현과정이 직관적(?)으로 느껴져 재밌게 풀고 있는 것 같다. 이번 문제는 시간 제한이 1초로 빡센 편이니 Scanner보다는 BufferedReader 및 BufferedWriter를 활용하는게 시간 단축에 조금이나마 도움이 되지 않을까 생각한다. 일단 큐(Queue)에 대한 원리를 어느 정도 알고 있어야 한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/128-post/",
+        "teaser": null
       }]
