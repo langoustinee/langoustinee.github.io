@@ -754,4 +754,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/126-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 4949번 - 균형잡힌 세상",
+        "excerpt":"문제 풀이 이번 문제는 괄호 문자열에서 괄호 종류가 “(“와 “[“로 두가지이다. 단일 괄호 문자열과 비교하면 서로 다른 괄호의 짝이 맞는지를 검증해야한다. 아이디어 도출 ”(“는 “)”를 value값으로, “[“는 “]”를 value값으로 가지는 Map을 미리 만들어둔다. 개행 기준으로 주어지는 문자열에서 “(“나 “[“가 나온다면 스택에 삽입한다. ”)”가 나온다면 현재 닫혀야할 괄호가 “)”가 맞는지, “]”가...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/127-post/",
+        "teaser": null
       }]
