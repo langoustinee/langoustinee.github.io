@@ -1,4 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-09T23:41:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-4) 18258번 - 큐 2</title><link href="http://localhost:4000/java/128-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 18258번 - 큐 2" /><published>2022-11-09T00:00:00+09:00</published><updated>2022-11-09T00:00:00+09:00</updated><id>http://localhost:4000/java/128-post</id><content type="html" xml:base="http://localhost:4000/java/128-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-10T18:18:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-4) 2164번 - 카드2</title><link href="http://localhost:4000/java/129-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 2164번 - 카드2" /><published>2022-11-10T00:00:00+09:00</published><updated>2022-11-10T00:00:00+09:00</updated><id>http://localhost:4000/java/129-post</id><content type="html" xml:base="http://localhost:4000/java/129-post/"><![CDATA[<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/2164.png" width="100%" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이번 문제는 큐의 선입선출(FIFO) 기능을 알고 활용할 줄 알면 쉽게 풀 수 있다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+<ul>
+  <li>N을 입력받으면 1부터 N까지의 수를 Queue에 삽입한다.</li>
+  <li>큐의 삽입된 값이 1개가 될 때까지 아래 작업을 수행한다.
+    <ul>
+      <li>front(맨앞의 수)를 하나 삭제한다.</li>
+      <li><strong>front(새로운 맨앞의 수)를 추출하여 새로 삽입</strong>한다.</li>
+    </ul>
+  </li>
+  <li>위 과정을 반복하며 큐의 값이 1개가 된다면 큐의 front값을 출력한다.</li>
+</ul>
+
+<p><br />
+아이디어는 굉장히 단순하다. 중요한 부분은 front(맨 앞의 수)를 추출한 후 변경된 front값을 맨 뒤로 보내는 것이다. <br />
+바로 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">qu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">qu</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>먼저 N을 입력받고 1부터 N까지의 수를 담을 Queue를 하나 생성하자. <br />
+그리고 1부터 N까지의 수를 Queue에 삽입해둔다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">while</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">front</span> <span class="o">=</span> <span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+    <span class="n">qu</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">front</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">peek</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>마지막으로 큐의 삽입된 값이 1개가 될 때까지 큐에서 값을 2번 추출하는데, 1번째 추출은 삭제를 의미한다. <br />
+2번째 추출된 값을 큐에 다시 삽입하면 된다. 이 값을 맨 뒤로 추출하는 이유는 큐는 선입선출 방식이기에 <strong>가장 최신에 넣은 값이 결국 맨 뒤의 값이기 때문</strong>이다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">qu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">qu</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">front</span> <span class="o">=</span> <span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="n">qu</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">front</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">peek</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li><a href="https://jooney-95.github.io/java/128-post/">큐 2</a> 문제와 동일하게 Queue 인터페이스 자체로 푸는 방식도 좋지만, LinkedList나 Deque를 통해서도 꼭 풀어볼 예정이다.</li>
+</ul>
+
+<h3 id="출처">출처</h3>
+<ul>
+  <li>해당 문제의 저작권은 문제만든이 자세한 내용은 <a href="https://www.acmicpc.net/problem/2164">문제 링크</a>에서 참조바랍니다.</li>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2164번 - 카드2]]></summary></entry><entry><title type="html">[Java] 백준(실버-4) 18258번 - 큐 2</title><link href="http://localhost:4000/java/128-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 18258번 - 큐 2" /><published>2022-11-09T00:00:00+09:00</published><updated>2022-11-09T00:00:00+09:00</updated><id>http://localhost:4000/java/128-post</id><content type="html" xml:base="http://localhost:4000/java/128-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/18258-attach01.png" width="100%" /></center>
 <center><img src="/assets/images/baekjoon/18258-attach02.png" width="100%" /></center>
@@ -1701,205 +1831,4 @@ K개의 주어지는 정수가 0 이상이면 스택에 저장하고, 0이라면
 <h3 id="회고">회고</h3>
 <ul>
   <li>최댓값의 초기값이 2차원 배열을 순회하며 충족해야 하는 조건에 부합되지 않아 문제가 발생했지만, 빠르게 문제가 무엇인지 알아내어 수정할 수 있었다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2566번 - 최댓값]]></summary></entry><entry><title type="html">[Java] 백준(브론즈-5) 2738번 - 행렬 덧셈</title><link href="http://localhost:4000/java/119-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-5) 2738번 - 행렬 덧셈" /><published>2022-10-31T00:00:00+09:00</published><updated>2022-10-31T00:00:00+09:00</updated><id>http://localhost:4000/java/119-post</id><content type="html" xml:base="http://localhost:4000/java/119-post/"><![CDATA[<p><br /></p>
-
-<center><img src="/assets/images/baekjoon/2738.png" width="100%" /></center>
-
-<p><br /><br /></p>
-
-<h3 id="문제-풀이">문제 풀이</h3>
-<hr />
-<p>2차원 배열 분야가 부족한 것 같아 2차원 배열 카테고리의 문제를 풀어보기로 하였다. <br />
-이번 문제는 2차원 배열을 활용해 A 행렬과 B 행렬의 덧셈 연산을 하면 된다.</p>
-
-<p><br /></p>
-
-<h4 id="아이디어-도출">아이디어 도출</h4>
-<ul>
-  <li>공백 기준으로 입력받은 A 행렬과 B 행렬의 값을 각각 2차원 배열로 만들어 저장한다.</li>
-  <li>이중 for문을 통해 A, B 행렬을 순회하며 각 자리의 원소값을 더한다.</li>
-</ul>
-
-<p><br /></p>
-
-<p>간단한 방법으로 2차원 배열에서의 덧셈을 할 수 있다. <br />
-바로 코드로 작성해보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-<span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-<span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-
-<span class="kt">int</span><span class="o">[][]</span> <span class="no">A</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
-<span class="kt">int</span><span class="o">[][]</span> <span class="no">B</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>N*M 크기의 A와 B행렬을 만들어야 하기에 N과 M을 입력받아 NXM 크기를 가진 2차원 배열 A, B을 초기화하자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-</pre></td><td class="rouge-code"><pre><span class="c1">// A 행렬의 값을 2차원 배열에 저장</span>
-<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="no">A</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="c1">// B 행렬의 값을 2차원 배열에 저장</span>
-<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="no">B</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>문제 입력 테스트케이스를 보면 A 행렬의 값을 먼저 입력받고 B 행렬의 값을 입력받기 때문에 <br />
-A 행렬을 먼저 2차원배열에 저장해주고, 다음에 B 행렬을 2차원배열로 저장해준다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="no">A</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="no">B</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span> <span class="c1">// A 행렬에 B 행렬의 값을 덧셈</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>A와 B 행렬 모두 NXM 크기이기 때문에 <strong>이중 for문으로 NXM 만큼 순회하면서 A 행렬의 각 원소값에 B 행렬의 각 원소의 값을 덧셈</strong>해주면 된다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">:</span> <span class="no">A</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>마지막으로 A에 B 값을 더했으니 A 행렬의 값을 공백을 추가하여 출력해주면 된다.</p>
-
-<p><br /><br /></p>
-
-<h3 id="작성코드">작성코드</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
-
-        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-
-        <span class="kt">int</span><span class="o">[][]</span> <span class="no">A</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
-        <span class="kt">int</span><span class="o">[][]</span> <span class="no">B</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="no">A</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="no">B</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="no">A</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="no">B</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">:</span> <span class="no">A</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
-        <span class="o">}</span>
-
-        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>   
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="회고">회고</h3>
-<ul>
-  <li>2차원 배열 문제들을 풀어보며, 2차원 배열의 인덱스 값 접근, 값 활용 등 2차원 배열을 활용하는 문제를 많이 풀어야겠다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2738번 - 행렬 덧셈]]></summary></entry></feed>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2566번 - 최댓값]]></summary></entry></feed>

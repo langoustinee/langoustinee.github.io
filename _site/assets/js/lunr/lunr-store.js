@@ -766,4 +766,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/128-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 2164번 - 카드2",
+        "excerpt":"문제 풀이 이번 문제는 큐의 선입선출(FIFO) 기능을 알고 활용할 줄 알면 쉽게 풀 수 있다. 아이디어 도출 N을 입력받으면 1부터 N까지의 수를 Queue에 삽입한다. 큐의 삽입된 값이 1개가 될 때까지 아래 작업을 수행한다. front(맨앞의 수)를 하나 삭제한다. front(새로운 맨앞의 수)를 추출하여 새로 삽입한다. 위 과정을 반복하며 큐의 값이 1개가 된다면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/129-post/",
+        "teaser": null
       }]
