@@ -772,4 +772,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/129-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-1) 1257번 - 팰린드롬수",
+        "excerpt":"문제 풀이 이 문제는 주어지는 문자열 수들을 데칼코마니 방식으로 접근하면 쉽게 풀 수 있다. 말 그대로 첫번째 인덱스 문자와 마지막 인덱스 문자를 비교하고 그 다음 인덱스들을 비교하는 방식으로 검증하며 이 인덱스가 다르면 팰린드롬 수가 아니라고 판단하면 된다. 아이디어 도출 “0”을 입력받으면 입력을 종료한다. 첫번째 인덱스와 마지막 인덱스부터 비교하기 위해 주어진...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/130-post/",
+        "teaser": null
       }]
