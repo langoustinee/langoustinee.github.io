@@ -778,4 +778,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/130-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 2920번 - 음계",
+        "excerpt":"문제 풀이 이 문제는 ascending 계열과 descending 계열 두가지 패턴으로 주어졌을 때만 고려하면 된다. 아이디어 도출 ascending 계열 [1,2,3,4,5,6,7,8]과 descending 계열 [8,7,6,5,4,3,2,1] 두 가지 방식을 공백없는 문자열로 생성한다. 주어진 문자열과 ascending 문자열을, descending 문자열을 비교한다. 두 문자열과 다르다면 mixed를 출력하고 ascending 문자열과 같다면 ascending을, descending 문자열과 같다면 descending을 출력한다. 1...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/131-post/",
+        "teaser": null
       }]

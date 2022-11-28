@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-2) 2920번 - 음계",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/131-post/",
+        "date"     : "2022-11-28 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-1) 1257번 - 팰린드롬수",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
