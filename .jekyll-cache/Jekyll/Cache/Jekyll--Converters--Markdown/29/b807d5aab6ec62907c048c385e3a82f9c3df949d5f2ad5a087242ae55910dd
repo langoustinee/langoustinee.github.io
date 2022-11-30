@@ -1,6 +1,6 @@
-I"�<p><br /></p>
+I"r<p><br /></p>
 
-<center><img src="/assets/images/baekjoon/2920.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/1920.png" width="100%" /></center>
 
 <p><br /><br /></p>
 
@@ -18,8 +18,24 @@
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nc">String</span> <span class="n">ascending</span> <span class="o">=</span> <span class="s">"12345678"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">descending</span> <span class="o">=</span> <span class="s">"87654321"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="s">" "</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+<p>ascending과 descending 문자열을 생성하고 주어진 문자열을 공백없이 String형으로 만들자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">ascending</span><span class="o">))</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"ascending"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">descending</span><span class="o">))</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"descending"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+<span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"mixed"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>주어진 문자열이 ascending 문자열과 같다면 ascending을, descending 문자열과 같다면 descending을 출력하고 <br />
+두 문자열에 포함되지 않는다면 mixed를 출력한다.</p>
 
 <p><br /><br /></p>
 
@@ -69,7 +85,7 @@
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li>주어진 문자열의 앞 뒤부터 안쪽으로 접근하니 문제를 쉽게 풀 수 있었다.</li>
+  <li>문제에서 요구하는 ascending descending 두가지를 충족하면 되기에 미리 두가지 경우의 수를 모두 비교하여 검증할 수 있었다.</li>
 </ul>
 
 <h3 id="출처">출처</h3>

@@ -784,4 +784,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/131-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1920번 - 수 찾기",
+        "excerpt":"문제 풀이 이번 문제는 시간 제한이 1초이고, 주어지는 정수의 범위가 2의 31승 정도로 굉장히 크다. 그렇기에 중첩반복문을 사용하게 되면 시간 초과가 발생할 것이기에 O(lonN)의 시간복잡도를 가지는 이분 탐색을 활용해야 한다. 이분(이진)탐색이란? 이진 탐색(이분 탐색) 알고리즘은 정렬되어 있는 리스트에서 탐색 범위를 절반씩 좁혀가며 데이터를 탐색하는 방법이다. 변수 3개(start, end, mid)를 사용하여...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/132-post/",
+        "teaser": null
       }]
