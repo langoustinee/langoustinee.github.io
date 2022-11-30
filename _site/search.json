@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-1) 2609번 - 최대공약수와 최소공배수",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/133-post/",
+        "date"     : "2022-11-30 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1920번 - 수 찾기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

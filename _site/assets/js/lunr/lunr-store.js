@@ -790,4 +790,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/132-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-1) 2609번 - 최대공약수와 최소공배수",
+        "excerpt":"문제 풀이 이번 문제는 최대공약수를 구하는 것이 관건이다. 최대공약수를 구하는데 특정 수의 약수가 매우 많다면, 인수분해 및 두수를 비교하여 곱하는 과정에서 많은 시간이 소요된다. 그래서 유클리드 호제법을 활용하여 최대공약수를 구해야 한다. 유클리드 호제법을 활용한 풀이는 최대공약수와 최소공배수 문제에서 자세히 다루었으니 참고하자. 아이디어 도출 두 수를 입력받고 두 수 중 큰수와...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/133-post/",
+        "teaser": null
       }]
