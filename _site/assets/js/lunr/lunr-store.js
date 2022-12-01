@@ -796,4 +796,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/133-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 15828번 - Router",
+        "excerpt":"자세한 테스트케이스 데이터는 문제링크를 참고하자. 문제 풀이 이번 문제는 큐의 개념을 잘 알고 있다면 쉽게 풀 수 있는 문제이다. 아이디어 도출 양수가 주어졌을 때 큐의 크기가 버퍼 크기(N)보다 작다면 양수를 큐에 삽입한다. 0이 주어졌을 때 큐에서 값을 추출(삭제)한다. -1이 주어졌을 때 큐를 확인하여 큐가 비어있다면 “empty”를, 비어있지 않다면 큐의 원소를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/134-post/",
+        "teaser": null
       }]
