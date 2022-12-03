@@ -802,4 +802,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/134-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-3) 4153번 - 직각삼각형",
+        "excerpt":"문제 풀이 이번 문제는 피타고라스 정리의 개념만 알고 있다면 큰 문제없이 풀 수 있을 것이다. 피타고라스의 정리란? 직각을 낀 두변의 길이를 a, b라고 하고, 빗변의 길이를 c라고 했을 때 a^2 + b^2 = c^2가 성립된다. 문제에서 유의할 점은 a, b, c의 위치가 특정되지 않았기에 별도로 정렬을 해야한다. 아이디어 도출 공백을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/135-post/",
+        "teaser": null
       }]

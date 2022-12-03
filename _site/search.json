@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-3) 4153번 - 직각삼각형",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/135-post/",
+        "date"     : "2022-12-03 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 15828번 - Router",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
