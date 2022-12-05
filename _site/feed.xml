@@ -1,4 +1,224 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-12-05T13:54:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-4) 10845번 - 큐</title><link href="http://localhost:4000/java/136-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 10845번 - 큐" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/java/136-post</id><content type="html" xml:base="http://localhost:4000/java/136-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-12-05T22:42:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-4) 10866번 - 덱</title><link href="http://localhost:4000/java/137-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 10866번 - 덱" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/java/137-post</id><content type="html" xml:base="http://localhost:4000/java/137-post/"><![CDATA[<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/10866-attach01.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/10866-attach02.png" width="100%" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이번 문제는 문제에서도 나와있듯이 Deque(덱)을 이용해서 <strong>큐의 양쪽에서 삽입/삭제</strong>를 진행할 수 있기에 쉽게 풀 수 있다. <br /></p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+<p>N개의 명령어를 입력받으며 다음을 수행한다.</p>
+<ul>
+  <li>push_X [N] 명령어를 받으면 N을 큐에 삽입한다.
+    <ul>
+      <li><strong>push_front 명령어라면 N을 큐의 맨 앞에 삽입</strong>한다.</li>
+      <li><strong>push_back 명령어라면 N을 큐의 맨 뒤에 삽입</strong>한다.</li>
+    </ul>
+  </li>
+  <li>pop_X 명령어를 받으면 큐가 비어있는지 확인하고 비어있다면 “-1”, 비어있지 않다면 큐에서 값을 추출하고 출력한다.
+    <ul>
+      <li><strong>pop_front 명령어라면 큐의 맨 앞(front) 값을 추출</strong>한다.</li>
+      <li><strong>pop_back 명령어라면 큐의 맨 뒤(back) 값을 추출</strong>한다.</li>
+    </ul>
+  </li>
+  <li>size 명령어를 받으면 현재 큐의 삽입된 값의 개수를 출력한다.</li>
+  <li>empty 명령어를 받으면 큐가 비어있는지 확인하고 비어있다면 “1”, 비어있지 않다면 “0”을 출력한다.</li>
+  <li>front 명령어를 받으면 큐가 비어있는지 확인하고 비어있다면 “-1”, 비어있지 않다면 <strong>getFirst()</strong> 메서드를 이용해 현재 큐의 front(맨 앞) 값을 출력한다.</li>
+  <li>back 명령어를 받으면 큐가 비어있는지 확인하고 비어있다면 “-1”, 비어있지 않다면 <strong>getLast()</strong> 메서드를 이용해 back(맨 뒤) 값을 출력**한다.</li>
+</ul>
+
+<p><br /></p>
+
+<p>큐의 <strong>맨 앞과 맨 뒤 값에 접근해서 삽입/삭제</strong> 작업을 추가로 해줘야 한다. <br />
+이 작업을 코드로 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="c1">// push_X</span>
+<span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"push"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">]);</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"front"</span><span class="o">))</span> <span class="n">deq</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+    <span class="k">else</span> <span class="n">deq</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="c1">// pop_X</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"pop"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"front"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">pollLast</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>위 코드대로 push_front일 때는 큐의 맨 앞에 num 값을 삽입하고, push_back일 때는 큐의 맨 뒤에 num 값을 삽입한다. <br />
+또한, pop 명령어일 경우 큐가 비어있는지 확인하여 pop_front일 때는 큐의 맨 앞값을 추출하고, pop_back이라면 큐의 맨 뒤값을 추출하면 된다.</p>
+
+<p>나머지 코드는 <a href="https://jooney-95.github.io/java/136-post/">큐</a>, <a href="https://jooney-95.github.io/java/128-post/">큐2</a> 문제에서 작성한 코드와 동일하며, 전체코드는 아래에서 확인할 수 있다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">deq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"push"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">]);</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"front"</span><span class="o">))</span> <span class="n">deq</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+                <span class="k">else</span> <span class="n">deq</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"pop"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"front"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                    <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">pollLast</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">switch</span><span class="o">(</span><span class="n">cmd</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">case</span> <span class="s">"pop"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="o">{</span>
+                            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="o">}</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"size"</span><span class="o">:</span>
+                        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">size</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"empty"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"0"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"front"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">getFirst</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"back"</span><span class="o">:</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">deq</span><span class="o">.</span><span class="na">getLast</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="k">default</span><span class="o">:</span>
+                        <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>최근 큐의 맨 앞과 맨 뒤에 접근하여 삽입/삭제 작업을 진행할 수 있는 Deque(덱)을 활용하는 문제들을 여럿 풀어보고 있다. 단지 개념정도를 알고 푸는 문제들뿐 아니라 난이도가 있는 문제들도 풀어봐야겠다.</li>
+  <li>Queue를 구현하는 또 다른 방식인 LinkedList 라이브러리도 공부해야겠다.</li>
+</ul>
+
+<h3 id="출처">출처</h3>
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/10866">문제 링크</a>에서 참조바랍니다.</li>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[10866번 - 덱]]></summary></entry><entry><title type="html">[Java] 백준(실버-4) 10845번 - 큐</title><link href="http://localhost:4000/java/136-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 10845번 - 큐" /><published>2022-12-04T00:00:00+09:00</published><updated>2022-12-04T00:00:00+09:00</updated><id>http://localhost:4000/java/136-post</id><content type="html" xml:base="http://localhost:4000/java/136-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/10845-attach01.png" width="100%" /></center>
 <center><img src="/assets/images/baekjoon/10845-attach02.png" width="100%" /></center>
@@ -569,7 +789,153 @@ Deque와 LinkedList에서 맨 앞값과 맨 뒤값을 구할 때 활용한 getFi
 <h3 id="출처">출처</h3>
 <ul>
   <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/15828">문제 링크</a>에서 참조바랍니다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[15828번 - Router]]></summary></entry><entry><title type="html">[Java] 백준(실버-4) 1920번 - 수 찾기</title><link href="http://localhost:4000/java/132-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 1920번 - 수 찾기" /><published>2022-11-30T00:00:00+09:00</published><updated>2022-11-30T00:00:00+09:00</updated><id>http://localhost:4000/java/132-post</id><content type="html" xml:base="http://localhost:4000/java/132-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[15828번 - Router]]></summary></entry><entry><title type="html">[Java] 백준(브론즈-1) 2609번 - 최대공약수와 최소공배수</title><link href="http://localhost:4000/java/133-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-1) 2609번 - 최대공약수와 최소공배수" /><published>2022-11-30T00:00:00+09:00</published><updated>2022-11-30T00:00:00+09:00</updated><id>http://localhost:4000/java/133-post</id><content type="html" xml:base="http://localhost:4000/java/133-post/"><![CDATA[<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/2609.png" width="100%" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이번 문제는 최대공약수를 구하는 것이 관건이다. <br />
+최대공약수를 구하는데 특정 수의 약수가 매우 많다면, 인수분해 및 두수를 비교하여 곱하는 과정에서 많은 시간이 소요된다.<br />
+그래서 <strong>유클리드 호제법</strong>을 활용하여 최대공약수를 구해야 한다.</p>
+
+<p>유클리드 호제법을 활용한 풀이는 <a href="http://localhost:4000/java/28-post/">최대공약수와 최소공배수</a> 문제에서 자세히 다루었으니 참고하자.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+<ul>
+  <li>두 수를 입력받고 두 수 중 큰수와 작은수를 구분하여 최대공약수와 최소공배수를 구한다.</li>
+  <li>유클리드 호제법인 <strong>큰 수를 작은 수로나눈 나머지가 0보다 클 경우 재귀함수를 통해 0이 되는 시점의 작은 수을 반환</strong>하는 함수를 통해 최대공약수를 구한다.</li>
+  <li>두 수의 곱을 최대공약수로 나누어 최소공배수를 구한다.</li>
+</ul>
+
+<p><br /></p>
+
+<p>최대공약수와 최소공배수는 많이 접하고 풀어봤던 문제이기에 솝쉽게 아이디어를 낼 수 있었다. 이제 코드를 작성해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+<span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+<span class="kt">int</span> <span class="n">bn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">sn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>N과 M을 입력받고 큰 수 bn과 작은 수 sn을 정하여 저장한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">GCD</span> <span class="o">=</span> <span class="n">eucd</span><span class="o">(</span><span class="n">bn</span><span class="o">,</span> <span class="n">sn</span><span class="o">);</span> <span class="c1">// 유클리드 호제법으로 최대공약수 구함</span>
+<span class="kt">int</span> <span class="no">LCM</span> <span class="o">=</span> <span class="no">N</span> <span class="o">*</span> <span class="no">M</span> <span class="o">/</span> <span class="no">GCD</span><span class="o">;</span> <span class="c1">// 최소공배수</span>
+
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="no">GCD</span><span class="o">+</span><span class="s">"\n"</span><span class="o">+</span><span class="no">LCM</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>    
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>eucd() 메서드에 큰 수와 작은 수를 인자로 넘겨 호출하고 해당 메서드로 구한 최대공약수를 가지고 최소공배수를 구하면 된다.</p>
+
+<p><br /></p>
+
+<p>eucd 메서드를 살퍄보면 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">static</span> <span class="kt">int</span> <span class="nf">eucd</span><span class="o">(</span><span class="kt">int</span> <span class="n">bn</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sn</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bn</span> <span class="o">%</span> <span class="n">sn</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">sn</span><span class="o">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="nf">eucd</span><span class="o">(</span><span class="n">sn</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>bn을 sn으로 나눈 나머지를 r에 저장하는데 r이 0보다 클 경우 재귀함수를 통해 0이 되는 시점의 sn을 반환하게 되면 최대공약수를 구할 수 있다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+        <span class="kt">int</span> <span class="n">bn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">sn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="no">GCD</span> <span class="o">=</span> <span class="n">eucd</span><span class="o">(</span><span class="n">bn</span><span class="o">,</span> <span class="n">sn</span><span class="o">);</span> <span class="c1">// 유클리드 호제법으로 최대공약수 구함</span>
+        <span class="kt">int</span> <span class="no">LCM</span> <span class="o">=</span> <span class="no">N</span> <span class="o">*</span> <span class="no">M</span> <span class="o">/</span> <span class="no">GCD</span><span class="o">;</span> <span class="c1">// 최소공배수</span>
+        
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="no">GCD</span><span class="o">+</span><span class="s">"\n"</span><span class="o">+</span><span class="no">LCM</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>    
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>   
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">eucd</span><span class="o">(</span><span class="kt">int</span> <span class="n">bn</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sn</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bn</span> <span class="o">%</span> <span class="n">sn</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">sn</span><span class="o">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="nf">eucd</span><span class="o">(</span><span class="n">sn</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>최대공약수를 구하는 알고리즘인 유클리드 호제법을 활용할 수 있었다.</li>
+</ul>
+
+<h3 id="출처">출처</h3>
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/2609">문제 링크</a>에서 참조바랍니다.</li>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2609번 - 최대공약수와 최소공배수]]></summary></entry><entry><title type="html">[Java] 백준(실버-4) 1920번 - 수 찾기</title><link href="http://localhost:4000/java/132-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 1920번 - 수 찾기" /><published>2022-11-30T00:00:00+09:00</published><updated>2022-11-30T00:00:00+09:00</updated><id>http://localhost:4000/java/132-post</id><content type="html" xml:base="http://localhost:4000/java/132-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/1920.png" width="100%" /></center>
 
@@ -727,153 +1093,7 @@ Deque와 LinkedList에서 맨 앞값과 맨 뒤값을 구할 때 활용한 getFi
 <h3 id="출처">출처</h3>
 <ul>
   <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/1920">문제 링크</a>에서 참조바랍니다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2920번 - 음계]]></summary></entry><entry><title type="html">[Java] 백준(브론즈-1) 2609번 - 최대공약수와 최소공배수</title><link href="http://localhost:4000/java/133-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-1) 2609번 - 최대공약수와 최소공배수" /><published>2022-11-30T00:00:00+09:00</published><updated>2022-11-30T00:00:00+09:00</updated><id>http://localhost:4000/java/133-post</id><content type="html" xml:base="http://localhost:4000/java/133-post/"><![CDATA[<p><br /></p>
-
-<center><img src="/assets/images/baekjoon/2609.png" width="100%" /></center>
-
-<p><br /><br /></p>
-
-<h3 id="문제-풀이">문제 풀이</h3>
-<hr />
-<p>이번 문제는 최대공약수를 구하는 것이 관건이다. <br />
-최대공약수를 구하는데 특정 수의 약수가 매우 많다면, 인수분해 및 두수를 비교하여 곱하는 과정에서 많은 시간이 소요된다.<br />
-그래서 <strong>유클리드 호제법</strong>을 활용하여 최대공약수를 구해야 한다.</p>
-
-<p>유클리드 호제법을 활용한 풀이는 <a href="http://localhost:4000/java/28-post/">최대공약수와 최소공배수</a> 문제에서 자세히 다루었으니 참고하자.</p>
-
-<p><br /></p>
-
-<h4 id="아이디어-도출">아이디어 도출</h4>
-<ul>
-  <li>두 수를 입력받고 두 수 중 큰수와 작은수를 구분하여 최대공약수와 최소공배수를 구한다.</li>
-  <li>유클리드 호제법인 <strong>큰 수를 작은 수로나눈 나머지가 0보다 클 경우 재귀함수를 통해 0이 되는 시점의 작은 수을 반환</strong>하는 함수를 통해 최대공약수를 구한다.</li>
-  <li>두 수의 곱을 최대공약수로 나누어 최소공배수를 구한다.</li>
-</ul>
-
-<p><br /></p>
-
-<p>최대공약수와 최소공배수는 많이 접하고 풀어봤던 문제이기에 솝쉽게 아이디어를 낼 수 있었다. 이제 코드를 작성해보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-<span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-<span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-
-<span class="kt">int</span> <span class="n">bn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">sn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>N과 M을 입력받고 큰 수 bn과 작은 수 sn을 정하여 저장한다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">GCD</span> <span class="o">=</span> <span class="n">eucd</span><span class="o">(</span><span class="n">bn</span><span class="o">,</span> <span class="n">sn</span><span class="o">);</span> <span class="c1">// 유클리드 호제법으로 최대공약수 구함</span>
-<span class="kt">int</span> <span class="no">LCM</span> <span class="o">=</span> <span class="no">N</span> <span class="o">*</span> <span class="no">M</span> <span class="o">/</span> <span class="no">GCD</span><span class="o">;</span> <span class="c1">// 최소공배수</span>
-
-<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="no">GCD</span><span class="o">+</span><span class="s">"\n"</span><span class="o">+</span><span class="no">LCM</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>    
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>eucd() 메서드에 큰 수와 작은 수를 인자로 넘겨 호출하고 해당 메서드로 구한 최대공약수를 가지고 최소공배수를 구하면 된다.</p>
-
-<p><br /></p>
-
-<p>eucd 메서드를 살퍄보면 다음과 같다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="kd">static</span> <span class="kt">int</span> <span class="nf">eucd</span><span class="o">(</span><span class="kt">int</span> <span class="n">bn</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sn</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bn</span> <span class="o">%</span> <span class="n">sn</span><span class="o">;</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">sn</span><span class="o">;</span>
-    <span class="k">else</span> <span class="k">return</span> <span class="nf">eucd</span><span class="o">(</span><span class="n">sn</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>bn을 sn으로 나눈 나머지를 r에 저장하는데 r이 0보다 클 경우 재귀함수를 통해 0이 되는 시점의 sn을 반환하게 되면 최대공약수를 구할 수 있다.</p>
-
-<p><br /><br /></p>
-
-<h3 id="작성코드">작성코드</h3>
-<hr />
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
-
-        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-        <span class="kt">int</span> <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
-
-        <span class="kt">int</span> <span class="n">bn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">sn</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">M</span><span class="o">);</span>
-
-        <span class="kt">int</span> <span class="no">GCD</span> <span class="o">=</span> <span class="n">eucd</span><span class="o">(</span><span class="n">bn</span><span class="o">,</span> <span class="n">sn</span><span class="o">);</span> <span class="c1">// 유클리드 호제법으로 최대공약수 구함</span>
-        <span class="kt">int</span> <span class="no">LCM</span> <span class="o">=</span> <span class="no">N</span> <span class="o">*</span> <span class="no">M</span> <span class="o">/</span> <span class="no">GCD</span><span class="o">;</span> <span class="c1">// 최소공배수</span>
-        
-        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="no">GCD</span><span class="o">+</span><span class="s">"\n"</span><span class="o">+</span><span class="no">LCM</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>    
-
-        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>   
-
-    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">eucd</span><span class="o">(</span><span class="kt">int</span> <span class="n">bn</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sn</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bn</span> <span class="o">%</span> <span class="n">sn</span><span class="o">;</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">sn</span><span class="o">;</span>
-        <span class="k">else</span> <span class="k">return</span> <span class="nf">eucd</span><span class="o">(</span><span class="n">sn</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="회고">회고</h3>
-<ul>
-  <li>최대공약수를 구하는 알고리즘인 유클리드 호제법을 활용할 수 있었다.</li>
-</ul>
-
-<h3 id="출처">출처</h3>
-<ul>
-  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/2609">문제 링크</a>에서 참조바랍니다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2609번 - 최대공약수와 최소공배수]]></summary></entry><entry><title type="html">[Java] 백준(브론즈-2) 2920번 - 음계</title><link href="http://localhost:4000/java/131-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-2) 2920번 - 음계" /><published>2022-11-28T00:00:00+09:00</published><updated>2022-11-28T00:00:00+09:00</updated><id>http://localhost:4000/java/131-post</id><content type="html" xml:base="http://localhost:4000/java/131-post/"><![CDATA[<p><br /></p>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[2920번 - 음계]]></summary></entry><entry><title type="html">[Java] 백준(브론즈-2) 2920번 - 음계</title><link href="http://localhost:4000/java/131-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-2) 2920번 - 음계" /><published>2022-11-28T00:00:00+09:00</published><updated>2022-11-28T00:00:00+09:00</updated><id>http://localhost:4000/java/131-post</id><content type="html" xml:base="http://localhost:4000/java/131-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/2920.png" width="100%" /></center>
 
@@ -1485,225 +1705,4 @@ push 3
 <h3 id="출처">출처</h3>
 <ul>
   <li>해당 문제의 저작권은 문제를 만든이에게 있으며  자세한 내용은 <a href="https://www.acmicpc.net/problem/18258">문제 링크</a>에서 참조바랍니다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[18258번 - 큐 2]]></summary></entry><entry><title type="html">[Java] 백준(실버-4) 4949번 - 균형잡힌 세상</title><link href="http://localhost:4000/java/127-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-4) 4949번 - 균형잡힌 세상" /><published>2022-11-08T00:00:00+09:00</published><updated>2022-11-08T00:00:00+09:00</updated><id>http://localhost:4000/java/127-post</id><content type="html" xml:base="http://localhost:4000/java/127-post/"><![CDATA[<p><br /></p>
-
-<center><img src="/assets/images/baekjoon/4949-attach01.png" width="100%" /></center>
-<center><img src="/assets/images/baekjoon/4949-attach02.png" width="100%" /></center>
-
-<p><br /><br /></p>
-
-<h3 id="문제-풀이">문제 풀이</h3>
-<hr />
-<p>이번 문제는 괄호 문자열에서 괄호 종류가 “(“와 “[“로 두가지이다. <br />
-단일 괄호 문자열과 비교하면 서로 다른 괄호의 짝이 맞는지를 검증해야한다.</p>
-
-<p><br /></p>
-
-<h4 id="아이디어-도출">아이디어 도출</h4>
-<ul>
-  <li>”(“는 “)”를 value값으로, “[“는 “]”를 value값으로 가지는 Map을 미리 만들어둔다.</li>
-  <li>개행 기준으로 주어지는 문자열에서 “(“나 “[“가 나온다면 스택에 삽입한다.</li>
-  <li>”)”가 나온다면 현재 닫혀야할 괄호가 “)”가 맞는지, “]”가 나온다면 현재 닫혀야할 괄호가 “]”가 맞는지 <strong>최신 열린 괄호(스택의 맨 위 값)를 key값으로 Map에서 value값을 조회하여 확인</strong>한다.</li>
-  <li>괄호 짝 검증후 스택이 비어있다면 짝이 맞으므로 yes를 출력한다.
-    <ul>
-      <li>주어진 문자열에서 괄호가 없더라도 yes를 출력한다.</li>
-    </ul>
-  </li>
-  <li>위 괄호 짝 검증 과정 중 괄호 짝이 맞지 않는다면 NO를 출력한다.
-    <ul>
-      <li>EmptyStackException 예외가 발생할 경우 no를 출력한다.</li>
-      <li>열린 괄호와 닫혀야 할 괄호 짝이 하나라도 맞지 않는다면 no를 출력한다.</li>
-    </ul>
-  </li>
-  <li>입력 문자열이 “.”으로만 이루어져 있다면 입력의 끝으로 간주하고 입력을 종료한다.</li>
-</ul>
-
-<p><br /></p>
-
-<p>아이디어가 복잡해 보일 수 있는데, <strong>핵심은 “(“ 및 “[” 열린 괄호들이 잘 닫혀있는지 확인</strong>하는 것이다. <br />
-말로 설명하자니 길어지는 것 같아 바로 코드를 작성해보자.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Character</span><span class="o">&gt;</span> <span class="n">bracket_map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
-<span class="n">bracket_map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'('</span><span class="o">,</span> <span class="sc">')'</span><span class="o">);</span>
-<span class="n">bracket_map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'['</span><span class="o">,</span> <span class="sc">']'</span><span class="o">);</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>먼저 여는 괄호 “(“와 “[“의 짝을 미리 Map에 저장해둔다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre><span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
-    <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">bracket_list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
-    <span class="kt">boolean</span> <span class="n">brackets</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">input</span> <span class="o">==</span> <span class="s">"."</span> <span class="o">||</span> <span class="n">input</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
-    <span class="o">...</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<p>주어진 문자열을 담을 input String과 여는 괄호들을 담아둘 Stack인 bracket_list, 짝이 안맞을 경우에 상태를 변경할 boolean 변수 brackets를 선언하자. <br />
-“.” 마침표 하나가 입력문자열로 들어올 때까지 입력을 받아야 하기에 while문 내에서 탈출조건을 작성했다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-</pre></td><td class="rouge-code"><pre><span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">...</span>
-    <span class="k">try</span> <span class="o">{</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">input</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'('</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="sc">'('</span><span class="o">);</span>
-            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'['</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="sc">'['</span><span class="o">);</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">')'</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">bracket_map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">bracket_list</span><span class="o">.</span><span class="na">peek</span><span class="o">())</span> <span class="o">==</span> <span class="sc">')'</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                <span class="k">else</span> <span class="n">brackets</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">']'</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">bracket_map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">bracket_list</span><span class="o">.</span><span class="na">peek</span><span class="o">())</span> <span class="o">==</span> <span class="sc">']'</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                <span class="k">else</span> <span class="n">brackets</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">bracket_list</span><span class="o">.</span><span class="na">empty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">brackets</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"yes"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"no"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">EmptyStackException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"no"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<ol>
-  <li>EmptyStackException 예와 처리를 하기위해서 try/catch문 내에서 여는 괄호 “(“, “[“가 올 때마다 스택에 삽입해둔다. <br /></li>
-  <li>주어진 문자열에서 <strong>닫는 괄호 “)”가 나왔다면 현재 스택에 담긴 최신 값(맨 위)을 키로 Map의 value값을 조회하여 닫혀야 할 괗로가 “(“인지 확인하며, “]”도 동일하게 수행</strong>한다. <br /></li>
-</ol>
-
-<p>위 과정을 수행하며 brackets가 false이거나 스택이 비어있지 않다면 괄호 짝이 맞지 않는 것이기에 no를 출력한다. <br />
-물론 EmptyStackException 예외가 발생해도 짝이 맞지 않는 것이기에 no를 출력한다. <br />
-스택이 비어있고, brackets이 true라면 정상적으로 괄호들의 짝이 맞는 것이기 때문에 yes를 출력하면 된다.</p>
-
-<p><br /><br /></p>
-
-<h3 id="작성코드">작성코드</h3>
-<hr />
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        
-        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
-        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
-
-        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Character</span><span class="o">&gt;</span> <span class="n">bracket_map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
-        <span class="n">bracket_map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'('</span><span class="o">,</span> <span class="sc">')'</span><span class="o">);</span>
-        <span class="n">bracket_map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'['</span><span class="o">,</span> <span class="sc">']'</span><span class="o">);</span>
-
-        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
-            <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">bracket_list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
-            <span class="kt">boolean</span> <span class="n">brackets</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-
-            <span class="k">if</span><span class="o">(</span><span class="n">input</span> <span class="o">==</span> <span class="s">"."</span> <span class="o">||</span> <span class="n">input</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
-
-            <span class="k">try</span> <span class="o">{</span>
-                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">input</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-                    <span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'('</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="sc">'('</span><span class="o">);</span>
-                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'['</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="sc">'['</span><span class="o">);</span>
-                    <span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">')'</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="k">if</span><span class="o">(</span><span class="n">bracket_map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">bracket_list</span><span class="o">.</span><span class="na">peek</span><span class="o">())</span> <span class="o">==</span> <span class="sc">')'</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                        <span class="k">else</span> <span class="n">brackets</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-                    <span class="o">}</span>
-                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">']'</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="k">if</span><span class="o">(</span><span class="n">bracket_map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">bracket_list</span><span class="o">.</span><span class="na">peek</span><span class="o">())</span> <span class="o">==</span> <span class="sc">']'</span><span class="o">)</span> <span class="n">bracket_list</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                        <span class="k">else</span> <span class="n">brackets</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">bracket_list</span><span class="o">.</span><span class="na">empty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">brackets</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"yes"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-                <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"no"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-            <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">EmptyStackException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"no"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="회고">회고</h3>
-<ul>
-  <li>단일 괄호 문자열에서 괄호의 짝을 스택만으로 구현이 가능했지만, 다중 괄호 문자열에서는 별도로 여는 괄호들의 짝이 맞는지를 알아야 하기에 괄호들의 짝을 별도로 담아둘 HashMap을 함께 활용하여 문제를 풀 수 있었다.</li>
-</ul>
-
-<h3 id="출처">출처</h3>
-<ul>
-  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/4949">문제 링크</a>에서 참조바랍니다.</li>
-</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[4949번 - 균형잡힌 세상]]></summary></entry></feed>
+</ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="baekjoon" /><summary type="html"><![CDATA[18258번 - 큐 2]]></summary></entry></feed>

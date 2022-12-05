@@ -814,4 +814,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/136-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 10866번 - 덱",
+        "excerpt":"문제 풀이 이번 문제는 문제에서도 나와있듯이 Deque(덱)을 이용해서 큐의 양쪽에서 삽입/삭제를 진행할 수 있기에 쉽게 풀 수 있다. 아이디어 도출 N개의 명령어를 입력받으며 다음을 수행한다. push_X [N] 명령어를 받으면 N을 큐에 삽입한다. push_front 명령어라면 N을 큐의 맨 앞에 삽입한다. push_back 명령어라면 N을 큐의 맨 뒤에 삽입한다. pop_X 명령어를 받으면 큐가...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/137-post/",
+        "teaser": null
       }]
