@@ -810,7 +810,7 @@ var store = [{
         "teaser": null
       },{
         "title": "[Java] 백준(실버-4) 10845번 - 큐",
-        "excerpt":"문제 풀이 이제 큐,덱 카테고리 문제를 풀기 시작했다. 스택과 더불어 큐 문제 풀 때는 구현과정이 직관적(?)으로 느껴져 재밌게 풀고 있는 것 같다. 이번 문제는 시간 제한이 1초로 빡센 편이니 Scanner보다는 BufferedReader 및 BufferedWriter를 활용하는게 시간 단축에 조금이나마 도움이 되지 않을까 생각한다. 일단 큐(Queue)에 대한 원리를 어느 정도 알고 있어야 한다....","categories": ["Java"],
+        "excerpt":"문제 풀이 이번 문제는 Queue를 활용하는데, 일반적으로 Queue 인터페이스를 LinkedList로 구현하는 방식이 아닌 Deque와 LinkedList를 활용해 풀어보았다. Deque 인터페이스나 LinkedList 라이브러리는 앞에서 말한 일반적인 Queue 구현 방식보다 맨 앞과 맨 뒤의 값을 쉽게 가져올 수 있기 때문에 별도로 맨 뒤(back) 값을 구할 필요가 없다. 또한, 백준 10845번 문제와 로직 자체는...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/136-post/",
         "teaser": null

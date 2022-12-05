@@ -1,7 +1,7 @@
-I"�R<p><br /></p>
+I"�R<p><br /></p>
 
-<center><img src="/assets/images/baekjoon/10845-attach01.png" width="100%" /></center>
-<center><img src="/assets/images/baekjoon/10845-attach02.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/18258-attach01.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/18258-attach02.png" width="100%" /></center>
 
 <p><br /><br /></p>
 
@@ -198,9 +198,6 @@ push 3
 49
 50
 51
-52
-53
-54
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -216,7 +213,6 @@ push 3
 
         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
             <span class="nc">String</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
-
             <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"push"</span><span class="o">))</span> <span class="o">{</span>
                 <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">]);</span>
                 <span class="n">qu</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
@@ -226,9 +222,7 @@ push 3
                 <span class="k">switch</span><span class="o">(</span><span class="n">cmd</span><span class="o">)</span> <span class="o">{</span>
                     <span class="k">case</span> <span class="s">"pop"</span><span class="o">:</span>
                         <span class="k">if</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"-1"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
-                        <span class="k">else</span> <span class="o">{</span>
-                            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
-                        <span class="o">}</span>
+                        <span class="k">else</span> <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
                         <span class="k">break</span><span class="o">;</span>
                     <span class="k">case</span> <span class="s">"size"</span><span class="o">:</span>
                         <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">qu</span><span class="o">.</span><span class="na">size</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
@@ -259,11 +253,12 @@ push 3
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li>이전에 풀어봤던 <a href="https://jooney-95.github.io/java/128-post/">큐 2</a> 문제와 거의 비슷한 문제이기에 같은 방식이 아닌 맨 뒤값을 제공해주는 Deque, LinkedList를 활용하는 방식</li>
+  <li>스택에 이어 큐를 활용하는 문제를 푸는데 스택 문제를 풀 때와 비슷하게 재미를 느끼는 것 같다. LIFO, FIFO 같은 직관적인 속성들이 문제 접근에 도움을 주는 것 같다.</li>
+  <li>추후 맨 뒤값을 제공해주는 Deque, LinkedList를 활용하는 방식도 꼭 풀어봐야겠다.</li>
 </ul>
 
 <h3 id="출처">출처</h3>
 <ul>
-  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/10845">문제 링크</a>에서 참조바랍니다.</li>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며  자세한 내용은 <a href="https://www.acmicpc.net/problem/18258">문제 링크</a>에서 참조바랍니다.</li>
 </ul>
 :ET
