@@ -820,4 +820,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/137-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 11866번 - 요세푸스 문제 0",
+        "excerpt":"문제 풀이 1부터 N까지 나열된 수에서 K번째 수마다 차례대로 뽑아낸 수열을 출력하면 되는데, 큐를 이용하면 쉽게 풀 수 있다. 예제를 살펴보면 다음과 같다. 1 2 3 4 5 6 7 8 N=7, K=3 [1,2,[3],4,5,6,7] -&gt; [3] [1,2,4,5,[6],7] -&gt; [3,6] [1,[2],4,5,7] -&gt; [3,6,2] [1,4,5,[7]] -&gt; [3,6,2,7] [1,4,[5]] -&gt; [3,6,2,7,5] [[1],4] -&gt;...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/138-post/",
+        "teaser": null
       }]
