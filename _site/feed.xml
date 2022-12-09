@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-12-08T23:47:55+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(브론즈-1) 11050번 - 이항 계수 1</title><link href="http://localhost:4000/java/139-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-1) 11050번 - 이항 계수 1" /><published>2022-12-07T00:00:00+09:00</published><updated>2022-12-07T00:00:00+09:00</updated><id>http://localhost:4000/java/139-post</id><content type="html" xml:base="http://localhost:4000/java/139-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-12-09T23:38:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(브론즈-1) 11050번 - 이항 계수 1</title><link href="http://localhost:4000/java/139-post/" rel="alternate" type="text/html" title="[Java] 백준(브론즈-1) 11050번 - 이항 계수 1" /><published>2022-12-07T00:00:00+09:00</published><updated>2022-12-07T00:00:00+09:00</updated><id>http://localhost:4000/java/139-post</id><content type="html" xml:base="http://localhost:4000/java/139-post/"><![CDATA[<p><br /></p>
 
 <center><img src="/assets/images/baekjoon/11050.png" width="100%" /></center>
 
@@ -59,7 +59,7 @@ factorial 함수 코드의 내용은 다음과 같다.</p>
 4
 </pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="k">return</span> <span class="no">N</span> <span class="o">*</span> <span class="n">factorial</span><span class="o">(</span><span class="no">N</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="k">return</span> <span class="no">N</span> <span class="o">*</span> <span class="n">factorial</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
 <span class="o">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
@@ -77,24 +77,67 @@ factorial 함수 코드의 내용은 다음과 같다.</p>
 <p>바로 코드를 작성해보자.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">binomial</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">K</span><span class="o">)</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>binomial 함수에 N과 K를 주어 호출한다. <br />
+binomial 함수의 내용은 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
-</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binomial</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="n">k</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="k">return</span> <span class="nf">binomial</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">binomial</span><span class="o">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span>
-<span class="o">}</span>
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binomial</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">K</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="no">N</span> <span class="o">==</span> <span class="no">K</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+	    <span class="k">return</span> <span class="nf">binomial</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="no">K</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">binomial</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="no">K</span><span class="o">);</span>
+    <span class="o">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-<p>재귀로 구현한 방식인데 이 방식의 경우 N의 범위가 커질수록 <strong>O(n!)의 시간복잡도를 가지기에 제한시간이 빠듯하다면 시간초과가 발생할 가능성이 매우 높다.</strong></p>
+<p>재귀로 구현한 방식인데 이 방식의 경우 N의 범위가 커질수록 <strong>O(n!)의 시간복잡도를 가지기에 제한시간이 빠듯하다면 시간초과가 발생할 가능성이 매우 높다.</strong> <br />
+그래서 재귀를 사용하여 <strong>부분 문제</strong>를 풀 경우 중복되는 부분 문제가 나오더라도 다시 풀게 되기에 효율적이지 않다.</p>
+
+<blockquote>
+  <p><strong>메모이제이션(memoization)</strong>이란? <br />
+메모이제이션은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는 기술이다. 동적 계획법의 핵심이 되는 기술이라고 한다. - 위키백과</p>
+</blockquote>
 
 <h4 id="아아디어-도출----동적계획법-풀이dp">아아디어 도출 -  동적계획법 풀이(DP)</h4>
-<p>파스칼의 삼각형을 통해 알 수 있었는데, 이항계수를 구하는 알고리즘은 <strong>중복 부분문제와 최적 부분구조를 만족하므로 동적계획법으로 이항계수를 구할 수 있다.</strong></p>
+<p>파스칼의 삼각형을 통해, 이항계수를 구하는 알고리즘은 <strong>중복 부분문제와 최적 부분구조를 만족하므로 동적계획법으로 이항계수를 구할 수 있다.</strong> <br />
+그렇게 재귀로 풀었던 알고리즘에 동적계획법을 이용한다.</p>
+<ul>
+  <li>메모이제이셔을 할 배열을 초기에 선언한다.</li>
+  <li>재귀로 각 부분 문제들에 접근하여 문제가 풀리면 메모이제이션을 할 배열에 저장해 나가도록 구현한다.</li>
+</ul>
 
-<p>위의 코드에서 dp 라는 배열을 선언하여 각 단계에서 구한 이항계수의 값을 저장해 놓고 다음 이항계수를 구할 때 사용하고 있습니다.</p>
+<p><br /></p>
 
-<p>동적 계획법으로 이항계수 알고리즘을 구현한 경우 아래의 반복문을 이용한 동적 계획법의 구현처럼 
-O(n^2)
- 의 시간복잡도로 문제를 해결 할 수 있음을 알 수 있습니다.</p>
+<p>재귀 풀이 방식에 동적계획법을 코드로 적용해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="no">DP</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>main 메서드 바깥에, 즉 전역으로 2차원 배열 DP를 선언하자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">// main 메서드</span>
+<span class="no">DP</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="no">K</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+<span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">binomial_coefficient</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">K</span><span class="o">)+</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>그리고 main 메서드 안에서 DP 배열을 초기화한후 binomial_coefficient 함수에 N과 K를 주어 호출한다. <br />
+binomial_coefficient 함수의 내용은 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binomial_coefficient</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">];</span> <span class="c1">// recycle</span>
+    <span class="k">if</span> <span class="o">(</span><span class="no">K</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="no">N</span> <span class="o">==</span> <span class="no">K</span><span class="o">)</span> <span class="k">return</span> <span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> 
+    <span class="k">return</span> <span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">]</span> <span class="o">=</span> <span class="n">binomial_coefficient</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="no">K</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">binomial_coefficient</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="no">K</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>첫번째 if문이 중요한데, 이미 풀었던 부분 문제일 경우 값을 재활용하기 위해 해당 배열의 값을 return해야 한다.</p>
 
 <p><br /><br /></p>
 
@@ -203,10 +246,69 @@ O(n^2)
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="작성코드---동적계획법dp">작성코드 - 동적계획법(DP)</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="no">DP</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="no">K</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+        <span class="no">DP</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="no">K</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">binomial_coefficient</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="no">K</span><span class="o">)+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">binomial_coefficient</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">];</span>
+		<span class="k">if</span> <span class="o">(</span><span class="no">K</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="no">N</span> <span class="o">==</span> <span class="no">K</span><span class="o">)</span> <span class="k">return</span> <span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+		<span class="k">return</span> <span class="no">DP</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">K</span><span class="o">]</span> <span class="o">=</span> <span class="n">binomial_coefficient</span><span class="o">(</span><span class="no">N</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="no">K</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">binomial_coefficient</span><span class="o">(</span><span class="no">N</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="no">K</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="회고">회고</h3>
 <ul>
-  <li></li>
+  <li>이항계수에 대해서 알아보고 공부할 수 있었으며, nCr 공식을 통해 쉽게 문제를 풀 수 있었다.</li>
+  <li>이항계수를 구하는 점화식을 통해 팩토리얼로 푸는 방식, 재귀로 푸는 방식을 생각해낼 수 있었지만 이는 주어진 N,K의 범위가 매우 작기에 가능한 방법이었고, 성능을 향상시키기 위해선 동적계획법(DP)를 통해 중복되는 부분 문제들을 넘기고 풀도록 구현할 수 있었다.</li>
 </ul>
 
 <h3 id="출처">출처</h3>
