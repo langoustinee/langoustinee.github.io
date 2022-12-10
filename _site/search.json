@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-3) 1085번 - 직사각형에서 탈출",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/140-post/",
+        "date"     : "2022-12-10 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-1) 11050번 - 이항 계수 1",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

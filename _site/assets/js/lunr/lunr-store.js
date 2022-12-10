@@ -832,4 +832,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/139-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-3) 1085번 - 직사각형에서 탈출",
+        "excerpt":"문제 풀이 이번 문제는 따로 특정한 알고리즘을 활용할 필요가 없을 정도로 쉽다. 위 이미지와 같이 현재 한수의 위치 (X,Y)에서 직사각형을 벗어나기 위한 최소거리를 구하면 된다. 상, 하, 좌, 우로 움직여 직사각형을 벗어날 수 있는데, 결국 X, W-X, Y, H-Y 중에서 가장 작은 수가 최소거리가 된다. 아이디어 도출 X, Y, W,...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/140-post/",
+        "teaser": null
       }]
