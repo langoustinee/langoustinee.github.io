@@ -838,4 +838,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/140-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 1654번 - 랜선 자르기",
+        "excerpt":"           문제 풀이         작성코드   1    회고        출처     해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 문제 링크에서 참조바랍니다.  ","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/140-post-copy/",
+        "teaser": null
       }]

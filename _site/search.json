@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 1654번 - 랜선 자르기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/140-post-copy/",
+        "date"     : "2022-12-11 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-3) 1085번 - 직사각형에서 탈출",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
