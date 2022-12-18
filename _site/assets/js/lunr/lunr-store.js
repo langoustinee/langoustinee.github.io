@@ -840,8 +840,14 @@ var store = [{
         "teaser": null
       },{
         "title": "[Java] 백준(실버-2) 1654번 - 랜선 자르기",
+        "excerpt":"문제 풀이 이번 문제는 이분 탐색을 적절히 응용할 줄 알아야 한다. 먼저 문제의 패턴부터 살펴보자. 먼저 K개의 랜선을 동일한 길이의 N개의 랜선으로 잘라 만들어야 하는데, 이 때 최대로 가질 수 있는 길이를 구해야 한다. 예제와 같이 K=4, N=11이라고 한다면 4개의 랜선을 11개로 만들 수 있을 때 최대로 가질 수 있는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/141-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 1966번 - 프린터 큐",
         "excerpt":"           문제 풀이         작성코드   1    회고        출처     해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 문제 링크에서 참조바랍니다.  ","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","baekjoon"],
-        "url": "/java/140-post-copy/",
+        "url": "/java/142-post/",
         "teaser": null
       }]

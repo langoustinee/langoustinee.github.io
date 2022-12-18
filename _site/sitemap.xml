@@ -561,8 +561,12 @@
 <lastmod>2022-12-10T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/java/140-post-copy/</loc>
+<loc>http://localhost:4000/java/141-post/</loc>
 <lastmod>2022-12-11T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/java/142-post/</loc>
+<lastmod>2022-12-13T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/autoCommit/</loc>
