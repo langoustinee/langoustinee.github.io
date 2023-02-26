@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-1) - 크기가 작은 부분 문자열",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/142-post/",
+        "date"     : "2023-02-27 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-3) 10810번 - 공 넣기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

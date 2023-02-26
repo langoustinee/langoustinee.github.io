@@ -850,4 +850,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/142-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 크기가 작은 부분 문자열",
+        "excerpt":"문제 풀이 이번 문제는 부분 문자열을 잘 활용하는 것이 핵심이다. 아이디어 도출 t에서 p의 길이만큼 잘라가며 부분 문자열(result)을 만든다. 위에서 만든 부분 문자열(result)가 p를 정수로 변환한 값보다 작거나 같은지를 확인하여 카운트를 세면 된다. 바로 코드를 작성해보자. 1 2 3 4 int answer = 0; int len = p.length(); int result...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/142-post/",
+        "teaser": null
       }]
