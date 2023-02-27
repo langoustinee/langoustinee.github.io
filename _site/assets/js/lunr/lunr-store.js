@@ -862,4 +862,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/143-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 가장 가까운 같은 글자",
+        "excerpt":"문제 풀이 이번 문제는 HashMap을 활용한다면 간단하게 풀 수 있다. 아이디어 도출 주어진 s의 각 문자별로 HashMap에 존재여부를 검증하도록 구현하면 된다. HashMap에 존재하지 않는 문자라면, HashMap에 현재 문자와 인덱스 값을 집어넣고 answer 배열에 -1을 삽입한다. HashMap에 존재하는 문자라면, 가장 가까운 글자의 인덱스가 HashMap에 삽입되어 있을 테니 [현재 문자의 인덱스 -...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/145-post/",
+        "teaser": null
       }]
