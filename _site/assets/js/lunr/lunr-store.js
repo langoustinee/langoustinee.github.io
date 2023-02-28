@@ -868,4 +868,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/145-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 과일 장수",
+        "excerpt":"문제 풀이 이번 과일 장수 문제는 주어진 배열을 역순으로 그룹지어 접근하는 것이 핵심이다. 한 마디로 배열을 잘 다룰 줄 알아야 한다는 것이다. 아이디어 도출 처음엔 ArrayList를 활용하여 주어진 score 배열만큼 담은 다음 별도의 ArrayList에 add하고 remove하는 방식으로 접근하려 했으나 성능 이슈가 발생할 것 같아 그만두고 배열 자체를 잘 활용해보기로 하였다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/146-post/",
+        "teaser": null
       }]
