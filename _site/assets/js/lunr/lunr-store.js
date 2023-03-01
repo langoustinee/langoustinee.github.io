@@ -874,4 +874,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/146-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 명예의 전당 (1)",
+        "excerpt":"문제 풀이 이번 명예의 전당(1) 문제의 경우 많은 분들이 우선순위 큐를 많이들 사용하는 것 같았는데, 필자는 우선순위 큐에 대한 공부가 부족하여 ArrayList를 활용하여 풀었다. 일단은 ArrayList를 활용한 풀이 위주로 해설을 진행하고 추후 우선순위 큐를 학습한 후 다시 한번 풀어볼 예정이다. 아이디어 도출 주어진 score의 길이가 일차가 되고, score의 원소, 즉...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/147-post/",
+        "teaser": null
       }]

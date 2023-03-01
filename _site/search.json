@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-1) - 명예의 전당 (1)",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/147-post/",
+        "date"     : "2023-03-01 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-1) - 과일 장수",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
