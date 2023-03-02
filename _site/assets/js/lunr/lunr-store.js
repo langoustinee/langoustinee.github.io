@@ -880,4 +880,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/147-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 10811번 - 바구니 뒤집기",
+        "excerpt":"문제 풀이 이번 바구니 뒤집기 문제는 배열의 일정 인덱스의 범위만큼을 담아둘 임시 배열을 활용하여 풀 수 있었다. 아이디어 도출 N만큼의 길이를 가지는 원본 배열에서 주어지는 i와 j만큼의 범위만큼을 잘라서 역순으로 담은 임시배열을 원본 배열에 덮어씌우는 방식을 적용하였다. N과 M을 입력받고 N만큼의 길이를 가지는 배열을 생성한 뒤 1부터 N까지의 값으로 초기화한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/148-post/",
+        "teaser": null
       }]
