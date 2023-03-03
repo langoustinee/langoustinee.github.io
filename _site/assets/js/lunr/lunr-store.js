@@ -886,4 +886,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/148-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-1) - 기사단원의 무기",
+        "excerpt":"문제 풀이 이번 기사단원의 무기 문제는 전반적인 구현까지의 과정은 단순하나 중간에 필요한 약수 개수를 구하는 알고리즘을 잘 구성해야 한다. 아이디어 도출 주어진 number 만큼 1부터 number까지 배열로 만든다. 위에서 만든 배열을 순회하면서 각 요소마다 약수의 개수를 구하고 이를 공격력으로 칭한 변수에 담는다. 약수의 개수를 구하는 로직을 별도의 함수에서 수행한다. 구한...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/149-post/",
+        "teaser": null
       }]

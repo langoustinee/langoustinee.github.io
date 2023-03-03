@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-1) - 기사단원의 무기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/149-post/",
+        "date"     : "2023-03-03 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-2) 10811번 - 바구니 뒤집기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
