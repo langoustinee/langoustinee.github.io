@@ -892,4 +892,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/149-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 주식 가격",
+        "excerpt":"문제 풀이 이번 주식 가격 문제는 필자의 가독성이 부족한 것인지, 도저히 지문 자체가 이해가 안되어 지문을 이해하는 것이 더 어려웠다. 이 때, 다른 분의 지문 해석 글이 지문을 이해하는데 큰 도움이 되었기 때문에 해당 링크를 공유한다. 해당 글에서는 아래와 같이 지문을 이해하기 쉽게 알려주었다. 문제설명 n초 간의 주가를 초 단위로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/150-post/",
+        "teaser": null
       }]
