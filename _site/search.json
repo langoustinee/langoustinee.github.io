@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 괄호 회전하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/153-post/",
+        "date"     : "2023-03-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 2차원 배열 - 달팽이 만들기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
