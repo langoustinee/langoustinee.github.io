@@ -1,2 +1,14 @@
+# Jekyll build output
+_site/
+
+# Ignore Mac system files
 .DS_Store
-README.md
+
+# Ignore Vim swap files
+*.swp
+
+# Ignore the Jekyll metadata file
+.jekyll-metadata
+
+# Ignore Python virtual environment
+venv/

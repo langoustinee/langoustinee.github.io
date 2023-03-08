@@ -910,4 +910,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/152-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 괄호 회전하기",
+        "excerpt":"문제 풀이 이번 괄호 회전하기 문제는 괄호를 검증하는 것이 가장 주요하다고 볼 수 있다. 그런데, 그냥 하나의 소괄호 ()만 검증하는 것이 아니라 중괄호 {}와 대괄호 [] 까지 올바른 괄호대로 포함되어 있는지를 확인해야 한다. 아이디어 도출 먼저 주어진 괄호 문자열을 왼쪽으로 한 문자씩 문자열 길이만큼 회전시킨다. 문자열의 길이와 반복문 인덱스를 활용하여...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/153-post/",
+        "teaser": null
       }]
