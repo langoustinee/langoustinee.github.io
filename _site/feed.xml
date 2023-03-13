@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-14T02:12:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] LeetCode(Easy) - 771. Jewels and Stones</title><link href="http://localhost:4000/java/154-post/" rel="alternate" type="text/html" title="[Java] LeetCode(Easy) - 771. Jewels and Stones" /><published>2023-03-14T00:00:00+09:00</published><updated>2023-03-14T00:00:00+09:00</updated><id>http://localhost:4000/java/154-post</id><content type="html" xml:base="http://localhost:4000/java/154-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-14T02:15:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] LeetCode(Easy) - 771. Jewels and Stones</title><link href="http://localhost:4000/java/154-post/" rel="alternate" type="text/html" title="[Java] LeetCode(Easy) - 771. Jewels and Stones" /><published>2023-03-14T00:00:00+09:00</published><updated>2023-03-14T00:00:00+09:00</updated><id>http://localhost:4000/java/154-post</id><content type="html" xml:base="http://localhost:4000/java/154-post/"><![CDATA[<p><br /></p>
 <center><img src="/assets/images/leetcode/771_01.png" width="100%" /></center>
 <p><br /></p>
 
@@ -134,7 +134,7 @@
 <p><br /></p>
 
 <h3 id="실행-시간-차이">실행 시간 차이</h3>
-<p>ArrayList보다는 HashMap이 더 빠를 줄 알았으나 오히려 ArrayList가 근소핮디만 더 빠른 시간을 보여주었다.</p>
+<p>ArrayList보다는 HashMap이 더 빠를 줄 알았으나 오히려 ArrayList가 근소하지만 더 빠른 시간을 보여주었다.</p>
 
 <h4 id="arraylist">ArrayList</h4>
 <p><img src="/assets/images/leetcode/771_02.png" width="8%" /></p>
