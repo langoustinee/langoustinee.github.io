@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-14T02:02:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] LeetCode(Easy) - 771. Jewels and Stones</title><link href="http://localhost:4000/java/154-post/" rel="alternate" type="text/html" title="[Java] LeetCode(Easy) - 771. Jewels and Stones" /><published>2023-03-14T00:00:00+09:00</published><updated>2023-03-14T00:00:00+09:00</updated><id>http://localhost:4000/java/154-post</id><content type="html" xml:base="http://localhost:4000/java/154-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-14T02:12:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] LeetCode(Easy) - 771. Jewels and Stones</title><link href="http://localhost:4000/java/154-post/" rel="alternate" type="text/html" title="[Java] LeetCode(Easy) - 771. Jewels and Stones" /><published>2023-03-14T00:00:00+09:00</published><updated>2023-03-14T00:00:00+09:00</updated><id>http://localhost:4000/java/154-post</id><content type="html" xml:base="http://localhost:4000/java/154-post/"><![CDATA[<p><br /></p>
 <center><img src="/assets/images/leetcode/771_01.png" width="100%" /></center>
 <p><br /></p>
 
@@ -144,7 +144,7 @@
 
 <p>왜 HashMap이 더 느린 시간이 걸렸을까?</p>
 
-<p>이유를 찾아보니, <strong>ArrayList의 경우 내부적으로 배열을 사용</strong>하고 있기 때문에 <strong>contains 메소드는 내부적으로 순차 탐색을 수행</strong>합니다. 이 때, 이 문제에서 요구하는 문자열 길이가 짧기 때문에 한번에 비교할 수 있는 원소들이 많다. 그래서 일반적으로 <strong>원소의 개수가 적을 때는 ArrayList의 contains 메소드가 더 빠를 수 있다</strong>고 한다.</p>
+<p>이유를 찾아보니, <strong>ArrayList의 경우 내부적으로 배열을 사용</strong>하고 있기 때문에 <strong>contains 메소드는 내부적으로 순차 탐색을 수행</strong>한다. 이 때, 이 문제에서 요구하는 문자열 길이가 짧기 때문에 한번에 비교할 수 있는 원소들이 많다. 그래서 일반적으로 <strong>원소의 개수가 적을 때는 ArrayList의 contains 메소드가 더 빠를 수 있다</strong>고 한다.</p>
 
 <p>반면에, <strong>HashMap의 경우 내부적으로 해시 테이블을 사용</strong>하고 있고, <strong>해시 테이블은 해시 함수를 이용하여 원소를 저장하고 탐색</strong>한다. 이 떄, 문자열 길이가 짧아도 해시 함수를 계산하는 과정이 추가적으로 필요하기 때문에 <strong>ArrayList에 비해 성능이 떨어질 수 있다</strong>고 한다.</p>
 
