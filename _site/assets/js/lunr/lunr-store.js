@@ -916,4 +916,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/153-post/",
         "teaser": null
+      },{
+        "title": "[Java] LeetCode(Easy) - 771. Jewels and Stones",
+        "excerpt":"문제 풀이 이번 771번 문제는 단순하다. 문제에서 주어지는 문자열의 길이도 50자 이하이기 때문에 굉장히 관대하다. 아이디어 도출 jewels 문자열을 쪼개어 하나씩 보관한다. stones 문자열의 각 문자별로 순회하여 앞서 쪼갠 jewels의 문자가 포함되는지 확인한다. jewels에서 쪼갠 문자가 포함될 경우 카운트를 증가시킨다. 이번 문제에서 사용한 자료구조는 ArrayList, HashMap 2가지와 문자열 순회시 일반...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/154-post/",
+        "teaser": null
       }]
