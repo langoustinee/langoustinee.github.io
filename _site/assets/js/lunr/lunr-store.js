@@ -922,4 +922,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/154-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 2023번 - 신기한 소수",
+        "excerpt":"문제 풀이 이번 신기한 소수 문제는 소수를 구하는 방법과 재귀를 잘 고려해야 한다. 소수 판별에 에라토스테네스의 체를 이용하였고, 각 자리수별로 소수인지를 알아내기 위해서 DFS를 사용하였다. 에라토스테네스의 체 에라토스테네스의 체는 소수가 되는 수의 배수를 지우면 남은 건 소수가 된다.라는 원리의 알고리즘이라고 보면 된다. 그래서, 소수가 무엇인지 찾을 필요가 없으며 2부터 자기...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/155-post/",
+        "teaser": null
       }]
