@@ -1,0 +1,199 @@
+I"�.<p><br /></p>
+
+<center><img src="/assets/images/baekjoon/2023_attach01.png" width="100%" /></center>
+<center><img src="/assets/images/baekjoon/2023_attach0.png" width="100%" /></center>
+
+<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+<p>이번 <code class="language-plaintext highlighter-rouge">신기한 소수</code> 문제는 소수를 구하는 방법과 재귀를 잘 고려해야 한다. <br />
+소수 판별에 에라토스테네스의 체를 이용하였고, 각 자리수별로 소수인지를 알아내기 위해서 DFS를 사용하였다. <br /></p>
+
+<h4 id="문제-분석">문제 분석</h4>
+<p>이 문제의 핵심은 자릿수를 하나씩 덧붙여가는 과정에서 수 대부분을 쉽게 가지 칠 수 있다는 점이다. <br /></p>
+<ul>
+  <li>몇 자리수가 됐든, 소수가 되려면 <strong>왼쪽부터 1자리 수가 소수</strong>여야만 한다. 즉 신기한 소수의 <strong>첫째 자리 수는 소수인 <code class="language-plaintext highlighter-rouge">2,3,5,7</code> 중의 하나이고 이 경우에만 다음 자릿수를 붙여가면 된다.</strong></li>
+</ul>
+
+<p>첫째 자리 수 2에 0부터 9까지 다음 자릿수를 더해주는 경우 20,21,22,24,25,26,27,28 는 소수가 아니므로 다음 단계로 진행하지 않고 소수인 23과 29의 경우에만 다음 자릿수를 더해줍니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>1
+2 -&gt; 소수
+    20
+    21
+    22
+    23 -&gt; 소수
+    24
+    25
+    26
+    27
+    28
+    29 -&gt; 소수
+3 -&gt; 소수
+    30
+    ...
+4
+5 -&gt; 소수
+    50
+    ...
+6
+7 -&gt; 소수
+    70
+    ...
+8
+9
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이는 나머지 3,5,7의 경우에도 같게 진행합니다.</p>
+
+<p>이런 방식으로 N의 자리까지 자릿수를 덧붙여가고 어떤 수가 N자리에 도달하면 최종적으로 N자리 수가 소수인지 판별하고 만약 소수이면 신기한 소수일 수밖에 없으므로 해당 값을 출력시키면 됩니다.</p>
+
+<h4 id="에라토스테네스의-체를-활용하는-방법">에라토스테네스의 체를 활용하는 방법</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+<span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="no">N</span><span class="o">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+
+<span class="kt">boolean</span><span class="o">[]</span> <span class="n">prime_arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+<span class="n">prime_arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">prime_arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="nc">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">end</span><span class="o">);</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">prime_arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">+=</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">prime_arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위처럼 에라토스네테스의 체를 이용해 소수 배열을 만들어 두려 했으나 메모리 초과가 발생하였다.</p>
+
+<p>####</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성코드">작성코드</h3>
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">N</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="n">recursion</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 재귀를 통해 N만큼 자리수를 붙여가기</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">recursion</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+			<span class="k">return</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">isPrime</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">str</span> <span class="o">+</span> <span class="n">i</span><span class="o">)))</span> <span class="o">{</span>
+				<span class="n">recursion</span><span class="o">(</span><span class="n">str</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+    <span class="c1">// 에라토스테네스의 체로 소수 판별하기</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isPrime</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">sqrt</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">sqrt</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li></li>
+</ul>
+
+<h3 id="출처">출처</h3>
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/2023">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
