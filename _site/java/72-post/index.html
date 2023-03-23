@@ -371,6 +371,7 @@
 <p><br /></p>
 
 <p><strong>입출력 예시</strong></p>
+
 <blockquote>
   <p>Input-1 <br />
 <strong>citations = [3, 0, 6, 1, 5]</strong> <br />
@@ -381,7 +382,9 @@ Output-1 <br />
 <p><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
+
 <hr />
+
 <p>문제 풀이에 앞서 H-index가 뭔지 짚고 넘어가자.</p>
 
 <blockquote>
@@ -393,6 +396,7 @@ Output-1 <br />
 그리고 각각의 인덱스값과 인덱스에 해당하는 값을 비교해 <strong>인덱스가 인덱스에 해당하는 값보다 크거나 같으면 그 값이 h-index</strong>라고 이해하면 된다.</p>
 
 <p>말로는 잘 이해가 안되니 citations배열 [3, 0, 6, 1, 5]을 예시로 들어보자.</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -406,6 +410,7 @@ i=2, citations=5 -&gt; index&lt;citations -&gt; h-index 아님
 i=3, citations=3 -&gt; index==citations -&gt; i값이 h-index
 
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>위 과정대로 h-index를 구할 수 있다. 이제 코드를 작성해보자.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -414,13 +419,14 @@ i=3, citations=3 -&gt; index==citations -&gt; i값이 h-index
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="nc">Integer</span><span class="o">[]</span> <span class="n">cit</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">citations</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="nc">Integer</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span> 
+</pre></td><td class="rouge-code"><pre><span class="nc">Integer</span><span class="o">[]</span> <span class="n">cit</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">citations</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="nc">Integer</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
 <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">cit</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
 
 <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 <span class="kt">boolean</span> <span class="n">none</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>먼저 citations를 내림차순 정렬한 cit 배열을 초기화하고, h-index를 담을 answer와 index 값을 담을 i, h가 0으로만 존재할 때를 검증할 none 변수를 초기화했다.</p>
 
 <p><br /></p>
@@ -442,13 +448,16 @@ i=3, citations=3 -&gt; index==citations -&gt; i값이 h-index
 <span class="o">}</span>
 <span class="k">if</span><span class="o">(</span><span class="n">none</span><span class="o">==</span><span class="kc">false</span><span class="o">)</span> <span class="n">answer</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>cit에서 마지막-1까지 순회하며 현재 인덱스값이 cit값보다 작거나 같고, 다음 인덱스값이 다음 cit값보다 크면 현재 인덱스값이 h-index임을 표현하였다. <br />
 그리고 인덱스 값이 하나라도 크다면 none을 true로 변경한다. none을 통해 인덱스값이 항상 작을 때 마지막 인덱스값이 h-index임을 구할 수 있다.</p>
 
 <p><br /></p>
 
 <h3 id="작성-코드">작성 코드</h3>
+
 <hr />
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -497,12 +506,12 @@ i=3, citations=3 -&gt; index==citations -&gt; i값이 h-index
         <span class="c1">// int[] citations = {0,0,0,0,0};</span>
 
         <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-        <span class="n">solution2</span><span class="o">(</span><span class="n">citations</span><span class="o">);</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">citations</span><span class="o">);</span>
         <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n수행시간 = "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">));</span>
     <span class="o">}</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">citations</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Integer</span><span class="o">[]</span> <span class="n">cit</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">citations</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="nc">Integer</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span> 
+        <span class="nc">Integer</span><span class="o">[]</span> <span class="n">cit</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">citations</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="nc">Integer</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
         <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">cit</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
 
         <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
@@ -524,6 +533,7 @@ i=3, citations=3 -&gt; index==citations -&gt; i값이 h-index
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="회고">회고</h3>
+
 <ul>
   <li>문제를 봐도 H-index에 대해 이해가 잘 안되었는데, 링크된 <a href="https://en.wikipedia.org/wiki/H-index">위키피디아</a> 글을 보고 이해하였다.</li>
   <li>현재 작성한 코드가 맘에 안든다.. 다음에 다시 풀며 간결한 코드로 수정할 예정이다.</li>
