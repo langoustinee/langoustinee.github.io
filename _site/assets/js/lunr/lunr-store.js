@@ -934,4 +934,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/156-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 18353번 - 병사 배치하기",
+        "excerpt":"문제 분석 이번 문제는 내림차순으로 병사를 배치하기 위해서 내림차순 순서가 맞지 않는 병사들을 제외시켜야 한다. 이 때 LIS라는 최장 증가 부분 수열 알고리즘을 이용하여 정답을 구할 수 있다. 이 LIS를 구하기 위해 DP와 이분탐색 2가지 풀이 방법으로 문제를 풀어보겠다. LIS란? LIS(Longest Increasing Subsequenc)란 최장 증가 부분 수열이라고 한다. 즉 가장...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/157-post/",
+        "teaser": null
       }]

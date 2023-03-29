@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 18353번 - 병사 배치하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/157-post/",
+        "date"     : "2023-03-29 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-3) 18310번 - 안테나",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
