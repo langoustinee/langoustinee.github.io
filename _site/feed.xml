@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-31T18:00:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 프로그래머스(level-2) - 숫자 블록</title><link href="http://localhost:4000/java/159-post/" rel="alternate" type="text/html" title="[Java] 프로그래머스(level-2) - 숫자 블록" /><published>2023-05-31T00:00:00+09:00</published><updated>2023-05-31T00:00:00+09:00</updated><id>http://localhost:4000/java/159-post</id><content type="html" xml:base="http://localhost:4000/java/159-post/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-31T18:01:58+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 프로그래머스(level-2) - 숫자 블록</title><link href="http://localhost:4000/java/159-post/" rel="alternate" type="text/html" title="[Java] 프로그래머스(level-2) - 숫자 블록" /><published>2023-05-31T00:00:00+09:00</published><updated>2023-05-31T00:00:00+09:00</updated><id>http://localhost:4000/java/159-post</id><content type="html" xml:base="http://localhost:4000/java/159-post/"><![CDATA[<p><br /></p>
 <center><img src="/assets/images/programmers/ㄴ.png" width="100%" /></center>
 <p><br /></p>
 
@@ -124,6 +124,15 @@
   <li>
     <hr />
   </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
   <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://school.programmers.co.kr/learn/courses/30/lessons/12923#qna">문제 링크</a>에서 참조바랍니다.</li>
 </ul>]]></content><author><name>lango</name></author><category term="Java" /><category term="blog" /><category term="algorithm" /><category term="study" /><category term="java" /><category term="programmers" /><summary type="html"><![CDATA[level 2 - 숫자 블록]]></summary></entry><entry><title type="html">[Java] 백준(실버-2) 24479번 - 알고리즘 수업(깊이 우선 탐색 1)</title><link href="http://localhost:4000/java/158-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-2) 24479번 - 알고리즘 수업(깊이 우선 탐색 1)" /><published>2023-05-26T00:00:00+09:00</published><updated>2023-05-26T00:00:00+09:00</updated><id>http://localhost:4000/java/158-post</id><content type="html" xml:base="http://localhost:4000/java/158-post/"><![CDATA[<p><br /><br /></p>
 
