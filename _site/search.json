@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 튜플",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/160-post/",
+        "date"     : "2023-06-01 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 숫자 블록",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
