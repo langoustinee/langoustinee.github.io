@@ -958,4 +958,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/160-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 2559번 - 수열",
+        "excerpt":"문제 분석 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 // 10 5 일경우 6번 반복 // 1 2 3 4 5 // 2 3 4 5 6 // 3 4 5 6 7 // 4 5 6 7 8...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/161-post/",
+        "teaser": null
       }]
