@@ -1,6 +1,30 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 24445번 - 알고리즘 수업(너비 우선 탐색 2)",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/164-post/",
+        "date"     : "2023-06-04 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(실버-2) 24444번 - 알고리즘 수업(너비 우선 탐색 1)",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/163-post/",
+        "date"     : "2023-06-04 00:00:00 +0900"
+        } ,
+    
+        {
+        "title"    : "[Java] 백준(실버-2) 24480번 - 알고리즘 수업(깊이 우선 탐색 2)",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/162-post/",
+        "date"     : "2023-06-04 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-2) 1260번 - DFS와 BFS",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
