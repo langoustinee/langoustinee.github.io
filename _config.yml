@@ -117,9 +117,9 @@ author:
     - label: "Velog"
       icon: "fas fa-fw fa-link"
       url: "https://velog.io/@langoustine"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+    - label: "Resume"
+      icon: "fa fa-fw fa-user-circle"
+      url: "https://bit.ly/3ORnMeJ"
 
 # Site Footer
 footer:
@@ -133,6 +133,9 @@ footer:
     - label: "Velog"
       icon: "fas fa-fw fa-link"
       url: "https://velog.io/@langoustine"
+    - label: "Resume"
+      icon: "fa fa-fw fa-user-circle"
+      url: "https://bit.ly/3ORnMeJ"
 
 
 # Reading Files
