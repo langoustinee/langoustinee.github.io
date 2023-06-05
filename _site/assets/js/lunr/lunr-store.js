@@ -988,4 +988,16 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/164-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-4) 15439번 - 베라의 패션",
+        "excerpt":"문제 분석 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 import java.io.*; import java.util.*; class Main...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/165-post/",
+        "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-4) 24723번 - 녹색거탑",
+        "excerpt":"문제 분석 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 import java.io.*; import java.util.*; class Main { public static void main(String[] args) throws IOException { BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); BufferedWriter bw = new...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/166-post/",
+        "teaser": null
       }]
