@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 기능개발",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/168-post/",
+        "date"     : "2023-06-07 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-5) 1010번 - 다리놓기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
