@@ -9,6 +9,14 @@
         } ,
     
         {
+        "title"    : "[Java] 백준(실버-3) 1904번 - 01타일",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/172-post/",
+        "date"     : "2023-06-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-2) 9184번 - 신나는 함수 실행",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
