@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 9184번 - 신나는 함수 실행",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/170-post/",
+        "date"     : "2023-06-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-5) 24416번 - 알고리즘 수업(피보나치 수 1)",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
