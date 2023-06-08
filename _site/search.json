@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-5) 24416번 - 알고리즘 수업(피보나치 수 1)",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/169-post/",
+        "date"     : "2023-06-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 기능개발",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
