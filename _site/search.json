@@ -9,6 +9,14 @@
         } ,
     
         {
+        "title"    : "[Java] 백준(실버-1) 1697번 - 숨바꼭질",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/174-post/",
+        "date"     : "2023-06-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-3) 9461번 - 파도반 수열",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
