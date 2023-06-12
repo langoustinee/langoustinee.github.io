@@ -1055,6 +1055,12 @@ var store = [{
         "url": "/java/175-post/",
         "teaser": null
       },{
+        "title": "[Java] 백준(실버-1) 1303번 - 전쟁 - 전투",
+        "excerpt":"문제 분석 작성코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/177-post/",
+        "teaser": null
+      },{
         "title": "[Java] 프로그래머스(level-2) - 타겟 넘버",
         "excerpt":"문제 풀이 작성 코드 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 import java.util.*; class Solution { // 타겟이 될 경우를 카운트할...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
