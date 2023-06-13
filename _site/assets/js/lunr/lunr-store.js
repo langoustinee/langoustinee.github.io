@@ -1073,6 +1073,12 @@ var store = [{
         "url": "/java/179-post/",
         "teaser": null
       },{
+        "title": "[Java] 백준(실버-2) 1012번 - 유기농 배추",
+        "excerpt":"문제 풀이 이 문제는 BFS만 잘 숙지하고 있으면 너무 간단하게 풀 수 있다. 아이디어 도출 문제를 잘 보면 배추밭에 필요한 지렁이 개수는 연결노드의 개수와 같음을 알 수 있다. 결국, BFS 함수의 호출 횟수가 지렁이 개수가 된다. BFS 문제 중에서도 상하좌우 탐색하면서 별다른 작업을 하지 않고 BFS 함수 호출 횟수만 세면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/180-post/",
+        "teaser": null
+      },{
         "title": "[Java] 프로그래머스(level-2) - 뉴스 클러스터링",
         "excerpt":"문제 풀이 이 문제는 중복을 허용하는 다중집합을 처리할 수 있어야 한다. 아이디어 도출 HashMap을 사용하여 같은 문자열의 빈도수를 연산한다. 중복 허용 다중집합의 특성을 이용하여 교집합, 합집합 개수를 구한다. 중복을 허용하는 다중집합의 특징은 무엇일까? 중복을 허용하는 다중집합의 특징 2가지 교집합의 개수는 같은 문자열의 빈도 수 중 작은 빈도 수만큼 증가되어야 한다....","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],

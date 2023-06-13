@@ -9,6 +9,14 @@
         } ,
     
         {
+        "title"    : "[Java] 백준(실버-2) 1012번 - 유기농 배추",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/180-post/",
+        "date"     : "2023-06-13 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 2667번 - 단지번호붙이기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
