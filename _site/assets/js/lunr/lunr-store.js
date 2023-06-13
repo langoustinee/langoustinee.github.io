@@ -1066,4 +1066,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/176-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 뉴스 클러스터링",
+        "excerpt":"문제 풀이 이 문제는 중복을 허용하는 다중집합을 처리할 수 있어야 한다. 아이디어 도출 HashMap을 사용하여 같은 문자열의 빈도수를 연산한다. 중복 허용 다중집합의 특성을 이용하여 교집합, 합집합 개수를 구한다. 중복을 허용하는 다중집합의 특징은 무엇일까? 중복을 허용하는 다중집합의 특징 2가지 교집합의 개수는 같은 문자열의 빈도 수 중 작은 빈도 수만큼 증가되어야 한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/178-post/",
+        "teaser": null
       }]
