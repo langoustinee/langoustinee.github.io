@@ -1,0 +1,139 @@
+I"�!<p><br /></p>
+
+<center><img src="/assets/images/programmers/" width="100%" /></center>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+
+<p>이 문제는 DFS 재귀함수를 활용하여 풀 수 있다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>먼저 재귀함수 안에서 던전 배열 dungeons를 순회하면서 방문한 던전인지 확인한다. 그리고 방문한 던전이라면 스킵하고 다음 던전을 탐색한다.
+이떄, 각 던전에 최소 피로도와 소모 피로도를 비교하여 던전 탐색 여부를 결정한다.</p>
+
+<blockquote>
+  <p>여기서 중요한 점은 DFS 재귀를 통해 방문 여부를 체크할 때 <strong>단순히 방문한 던전을 스킵하도록 하면 모든 경우의 수를 탐색할 수 없다</strong>는 점을 유의해야 한다는 것이다.</p>
+</blockquote>
+
+<ul>
+  <li>모든 던전을 탐색할 수 있는 경우의 수에서 최소 피로도 조건을 충족하는지 확인해야 한다.</li>
+  <li>재귀 함수가 실행되는 흐름 안에서 모든 던전을 탐색하며 최소 피로도 조건을 충족했을 때 <strong>탐색까지 깊어진 재귀 횟수가 던전 탐험 횟수</strong>가 된다.</li>
+</ul>
+
+<p>boolean 타입 배열 visited를 이용한다.
+만약 방문한 던전(노드)라면, 다음 노드로 넘어간다.
+각 던전의 필요 피로도와 현재 피로도를 비교하며 던전을 탐험할 수 있는지 판단한다.</p>
+
+<p>방문한 적이 없고, 현재 피로도가 필요 피로도보다 높다면 점화식을 수행하게 된다.</p>
+
+<p>해당 던전을 방문한 것으로 처리한다.
+1 증가한 depth와 현재 피로도에서 해당 던전의 소모 피로도만큼 감소한 상태로 다음 재귀를 돌게 된다.
+해당 던전을 방문하지 않은 것으로 처리한다.
+종료 조건</p>
+
+<p>위 아이디어를 통해 작성한 코드는 아래와 같다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">dungeons</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 방문 배열 초기화</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">dungeons</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="c1">// 첫번째 던전부터 DFS 재귀함수 호출</span>
+        <span class="no">DFS</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">k</span><span class="o">,</span> <span class="n">dungeons</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">DFS</span><span class="o">(</span><span class="kt">int</span> <span class="n">depth</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">dungeons</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 각 던전마다 탐험할 수 있는 던전인지 확인하여 DFS 재귀함수 호출</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">dungeons</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">k</span><span class="o">&gt;=</span><span class="n">dungeons</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="no">DFS</span><span class="o">(</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">k</span><span class="o">-</span><span class="n">dungeons</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">],</span> <span class="n">dungeons</span><span class="o">);</span>
+                <span class="c1">// DFS 재귀함수 호출 후 해당 던전 방문 여부를 해제해주어야 한다.</span>
+                <span class="c1">// 탐색하지 않은 던전이 있을 수 있기에 모든 던전을 탐색할 수 있도록 방문할 수 있도록 해주어야 한다. </span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">answer</span><span class="o">,</span> <span class="n">depth</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span>
+        
+        <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span>  <span class="mi">80</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">dungeons</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[][]{{</span><span class="mi">80</span><span class="o">,</span><span class="mi">20</span><span class="o">},{</span><span class="mi">50</span><span class="o">,</span><span class="mi">40</span><span class="o">},{</span><span class="mi">30</span><span class="o">,</span><span class="mi">10</span><span class="o">}};</span>
+
+        <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">dungeons</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<ul>
+  <li>
+    <hr />
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://school.programmers.co.kr/learn/courses/30/lessons/87946">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

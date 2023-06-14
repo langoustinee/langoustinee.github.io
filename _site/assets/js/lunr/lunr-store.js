@@ -1090,4 +1090,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/178-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 피로도",
+        "excerpt":"문제 풀이 이 문제는 DFS 재귀함수를 활용하여 풀 수 있다. 아이디어 도출 먼저 재귀함수 안에서 던전 배열 dungeons를 순회하면서 방문한 던전인지 확인한다. 그리고 방문한 던전이라면 스킵하고 다음 던전을 탐색한다. 이떄, 각 던전에 최소 피로도와 소모 피로도를 비교하여 던전 탐색 여부를 결정한다. 탐색할 수 있는 던전이라면 아래와 같은 점화식을 처리하게 된다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/182-post/",
+        "teaser": null
       }]
