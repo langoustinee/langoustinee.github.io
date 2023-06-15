@@ -1102,4 +1102,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/183-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 2805번 - 나무 자르기",
+        "excerpt":"문제 풀이 이 문제는 이분 탐색(이진 탐색) 알고리즘을 알고 있다면 풀 수 있다. 아이디어 도출 이분탐색 진행할 때, Upper Bound 방식으로 진행하였다. 이로 인해, 원하는 탐색값의 +1이 되기에 실제 원하는 가져갈 수 있는 나무의 최대 높이값은 찾아낸 값에서 -1이 된 값이라고 볼 수 있다. 나무를 최소한으로 자를 때, 예외를 방지하기...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/184-post/",
+        "teaser": null
       }]

@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 2805번 - 나무 자르기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/184-post/",
+        "date"     : "2023-06-15 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-3) 1966번 - 프린터 큐",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
