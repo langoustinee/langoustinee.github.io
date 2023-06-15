@@ -1108,4 +1108,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/184-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 1463번 - 1로 만들기",
+        "excerpt":"문제 풀이 이번 문제는 다이나믹 프로그래밍(DP)을 이용해 풀 수 있다. 아이디어 도출 이 문제는 재귀함수를 활용해 DP 점화식을 세워 풀어보려 한다. N을 1로 만들기 위한 최소 연산 횟수를 구할 때, 꼭 3이나 2로 나누어야 최솟값이 나오는 것은 아니기에 1을 빼는 경우도 함께 고려해야 한다. 이를 통해 생각한 점화식은 다음과 같다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/185-post/",
+        "teaser": null
       }]
