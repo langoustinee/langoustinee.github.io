@@ -1096,4 +1096,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/182-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 1966번 - 프린터 큐",
+        "excerpt":"문제 풀이 이 문제는 큐(Queue) 자료구조를 잘 숙지하고 있다면 조금만 응용해서 풀 수 있다. 아이디어 도출 문제를 풀기 위해 생각해낸 아이디어는 다음과 같다. 주어지는 입력값인 N을 토대로, 0부터 N-1까지 큐에 삽입한다. 그러면 M번째 문서와 비교하기 수월하다. int 배열을 만들어 0번째 자리에는 문서, 1번째 자리에는 해당 문서의 중요도를 저장한 후 이...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/183-post/",
+        "teaser": null
       }]
