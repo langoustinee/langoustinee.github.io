@@ -1,0 +1,306 @@
+I"�^<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 <strong>너비 우선 탐색인 BFS</strong>를 잘 숙지하고 있고, 이를 응용할 수 있어야 풀 수 있다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>지훈이가 불이 번지는 것을 피해 탈출하기 까지의 최소 시간(이동횟수)를 구해야 한다. 여기서 문제의 핵심은 <strong>BFS 탐색 안에서 불이 번지는 것과 지훈이가 불을 피해 이동하는 2가지 과정을 수행</strong>해야 한다.</p>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+    <span class="c1">// 입력 N, M 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">N</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">M</span><span class="o">;</span>
+
+    <span class="c1">// 상하좌우를 탐색하기 위한 dx, dy 배열 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+
+    <span class="c1">// 불과 지훈이의 이동 여부를 담을 방문 배열 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">visited_jihun</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">visited_fire</span><span class="o">;</span>
+
+    <span class="c1">// 불과 지훈이의 위치를 담을 큐 선언</span>
+    <span class="kd">static</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">jq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+    <span class="kd">static</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">fq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="c1">// 미로 배열 선언</span>
+    <span class="kd">static</span> <span class="nc">String</span><span class="o">[][]</span> <span class="n">miro</span><span class="o">;</span>
+
+    <span class="c1">// 탈출 여부를 판단할 boolen 변수</span>
+    <span class="kd">static</span> <span class="kt">boolean</span> <span class="n">escape</span><span class="o">;</span>
+
+    <span class="c1">// 탈출 시 지훈이의 이동 시간을 출력할 변수</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">result</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="no">M</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+        <span class="c1">// 미로배열 초기화</span>
+        <span class="n">miro</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
+
+        <span class="c1">// 방문 배열 초기화</span>
+        <span class="n">visited_jihun</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
+        <span class="n">visited_fire</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">M</span><span class="o">];</span>
+        
+        <span class="c1">// 불과 지훈이의 위치를 각각 fq, jq에 담는다.</span>
+        <span class="c1">// 또한 지훈이와 불이 이동 시간을 저장하기 위해 불, 지훈, '.' 위치마다 방문 배열을 갱신한다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">miro</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">input</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">miro</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"F"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">visited_fire</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">fq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">});</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">miro</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"J"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">visited_jihun</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">jq</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">});</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">miro</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"."</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">visited_fire</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                    <span class="n">visited_jihun</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">escape</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="no">BFS</span><span class="o">();</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">escape</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">result</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"IMPOSSIBLE"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">BFS</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 1. 불이 먼저 퍼진다.</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">fq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">now</span> <span class="o">=</span> <span class="n">fq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">dir</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">dir</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">;</span> <span class="n">dir</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">dir</span><span class="o">];</span>
+                <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">dir</span><span class="o">];</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isRange</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="c1">// 벽이거나 이미 불이 번진 위치인 경우</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">visited_fire</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">miro</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"#"</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="k">continue</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="c1">// 불이 번질 수 있는 위치라면 불이 번진다.</span>
+                    <span class="n">visited_fire</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">visited_fire</span><span class="o">[</span><span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">fq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">});</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 2. 불이 퍼진 후 지훈이가 이동한다.</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">jq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">now</span> <span class="o">=</span> <span class="n">jq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">dir</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">dir</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">;</span> <span class="n">dir</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">dir</span><span class="o">];</span>
+                <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">dir</span><span class="o">];</span>
+                
+                <span class="c1">// 지훈이가 미로의 범위를 벗어난다면 탈출</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">isRange</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">escape</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">visited_jihun</span><span class="o">[</span><span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
+                    <span class="k">return</span><span class="o">;</span>
+                <span class="o">}</span>
+
+                <span class="k">if</span><span class="o">(</span><span class="n">isRange</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="c1">// 지훈이가 움직일 수 없는 위치일 경우</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">visited_jihun</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">miro</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"#"</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="k">continue</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="c1">// 이미 불이 전파되어 움직일 수 없는 경우</span>
+                    <span class="c1">// 지훈이가 이동할 시간이 더 크다면 불은 그 전 시간에 전파되었기 때문</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">visited_fire</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">visited_fire</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">visited_jihun</span><span class="o">[</span><span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]]+</span><span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="k">continue</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="c1">// 지훈이가 이동할 수 있는 위치로 이동한다.</span>
+                    <span class="n">visited_jihun</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">visited_jihun</span><span class="o">[</span><span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">jq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">});</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 좌표의 범위가 배열을 벗어났는지 확인할 함수</span>
+    <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isRange</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="mi">0</span><span class="o">&lt;=</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">y</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="o">&lt;</span><span class="no">N</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">&lt;</span><span class="no">M</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/1926">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

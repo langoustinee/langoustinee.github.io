@@ -1120,4 +1120,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/186-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 4179번 - 불!",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색인 BFS를 잘 숙지하고 있고, 이를 응용할 수 있어야 풀 수 있다. 아이디어 도출 지훈이가 불이 번지는 것을 피해 탈출하기 까지의 최소 시간(이동횟수)를 구해야 한다. 여기서 문제의 핵심은 BFS 탐색 안에서 불이 번지는 것과 지훈이가 불을 피해 이동하는 2가지 과정을 수행해야 한다. 문제 해결을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/187-post/",
+        "teaser": null
       }]
