@@ -1114,4 +1114,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/185-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1926번 - 그림",
+        "excerpt":"문제 풀이 이 문제는 너비 우선 탐색인 BFS를 통해 쉽게 풀 수 있다. 아이디어 도출 문제에서 요구하는 총 그림의 개수와 모든 그림 중 가장 큰 넓이를 구하면 된다. 이를 위해 생각한 아이디어는 다음과 같다. 입력받은 도화지 배열에서 색칠된 노드를 탐색하는데, BFS를 통해 상,하,좌,우로 탐색하며 연결된 그림을 찾는다. 이때, 새로운 그림을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/186-post/",
+        "teaser": null
       }]
