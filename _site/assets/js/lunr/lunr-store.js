@@ -1126,4 +1126,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/187-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 프로세스",
+        "excerpt":"문제 풀이 이 문제는 백준의 프린터 큐 문제와 요구사항이 동일하다. 여기서도 동일하게 큐를 잘 활용할 수 있다면 쉽게 풀 수 있다. 아이디어 도출 아이디어는 프린터 큐 문제 풀이와 동일하게 접근했기에 해당 문제 풀이를 참고하자. 문제 풀이를 위해 작성한 코드는 아래와 같다. 작성 코드 1 2 3 4 5 6 7...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/188-post/",
+        "teaser": null
       }]
