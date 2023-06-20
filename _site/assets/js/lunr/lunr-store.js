@@ -1138,4 +1138,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/189-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1822번 - 차집합",
+        "excerpt":"문제 풀이 이번 문제는 이분 탐색을 이용하면 쉽게 풀 수 있다. 아이디어 도출 입력으로 주어지는 값을 각각 A와 B 배열에 저장한다. A 배열을 순회하면서 각 원소가 B 배열에 존재하는지 이분탐색으로 찾는다. A 배열의 원소가 B 배열의 존재하지 않는다면 이분 탐색의 결과로 음수값이 반환될텐데, 음수값일때의 A배열의 원소가 정답이 된다. 결국, 이분...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/190-post/",
+        "teaser": null
       }]

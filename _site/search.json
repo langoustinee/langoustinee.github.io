@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-4) 1822번 - 차집합",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/190-post/",
+        "date"     : "2023-06-20 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(골드-4) 2295번 - 세 수의 합",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
