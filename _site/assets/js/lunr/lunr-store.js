@@ -1132,4 +1132,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/188-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 2295번 - 세 수의 합",
+        "excerpt":"문제 풀이 이번 문제를 해결하기 위해서는 이분 탐색을 이용하는 것도 중요하지만, 문제를 단순화하여 접급하는 것이 키 포인트이다. 아이디어 도출 세수의 합인 x+y+z를 일일이 구하는 것도 좋겠지만 이 식을 단순화하여 접근하면 더욱 쉬울 수 있다. x+y+z=k -&gt; x+y=k-z x+y+z=k 라는 식은 x+y=k-z 식과도 같다는 것은 누구나 알 수 있다. 이렇게 식을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/189-post/",
+        "teaser": null
       }]
