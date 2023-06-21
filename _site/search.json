@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - k진수에서 소수 개수 구하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/191-post/",
+        "date"     : "2023-06-21 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1822번 - 차집합",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

@@ -1144,4 +1144,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/190-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - k진수에서 소수 개수 구하기",
+        "excerpt":"문제 풀이 이 문제는 정수를 진수로 변환하는 방법과 소수를 판별하는 알고리즘을 잘 숙지하고 있으면 쉽게 풀 수 있다. 아이디어 도출 정수 n을 k진수로 변환한다. 문자열로 변환된 k진수에서 0을 기준으로 분할한다. 분할된 각 원소가 소수인지 확인하여 카운트한다. 위 아이디어대로 풀이방법을 자세히 살펴보자. 먼저 입력받은 정수 n을 k진수로 변환해야 한다. Java에서는 Integer.toString()...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/191-post/",
+        "teaser": null
       }]
