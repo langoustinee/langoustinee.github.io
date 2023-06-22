@@ -1162,4 +1162,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/193-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 15650번 - N과 M(2)",
+        "excerpt":"문제 풀이 이 문제는 앞서 풀었던 N과 M(1) 문제와 유사하게 백트래킹 기법을 이용하여 풀 수 있다. 아이디어 도출 문제를 살펴보면, N과 M을 입력받으면 1부터 N까지의 수 중 오름차순이면서 M의 길이까지 나열 가능한 수열이 되어야 한다. 예제 입력 3을 보면 알 수 있듯이 4 4 를 입력받을 경우, 오름차순 수열인 1...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/194-post/",
+        "teaser": null
       }]
