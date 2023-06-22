@@ -1150,4 +1150,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/191-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 14502번 - 연구소",
+        "excerpt":"문제 풀이 이번 문제는 그래프 탐색 기법인 DFS와 BFS 모두를 활용한다면 풀 수 있는 문제이다. 아이디어 도출 먼저 DFS와 BFS를 어떻게 활용할 수 있을까를 보면 다음과 같다. 주어지는 연구소 배열에서 3개의 벽을 세우는 모든 경우의 수를 구하기 위해 DFS를 활용. 3개의 벽이 세워진 후, 바이러스를 퍼뜨리기 위해 BFS를 활용. DFS를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/192-post/",
+        "teaser": null
       }]
