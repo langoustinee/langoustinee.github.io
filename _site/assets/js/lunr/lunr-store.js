@@ -1156,4 +1156,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/192-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 15649번 - N과 M(1)",
+        "excerpt":"문제 풀이 이 문제는 재귀 알고리즘 중 하나인 백트래킹 기법을 이용하여 풀 수 있다. 아이디어 도출 1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열을 모두 구해야 하는데, 중복 없이 M개의 순서에 따라 선택한 수열을 구해야 한다. 이 때, DFS를 활용한 재귀 안에서 가지치기를 하는 방식으로 백트래킹을 이용할 수 있다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/193-post/",
+        "teaser": null
       }]
