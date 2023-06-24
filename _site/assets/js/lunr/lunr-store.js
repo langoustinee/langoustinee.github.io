@@ -1168,4 +1168,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/194-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 4963번 - 섬의 개수",
+        "excerpt":"문제 풀이 이 문제는 그래프 탐색 알고리즘인 DFS나 BFS를 이용하면 쉽게 풀 수 있다. 필자는 BFS를 이용하여 풀었다. 아이디어 도출 주어지는 지도에서 연결된 섬인지를 알려면 이번 문제에서는 상,하,좌,우와 더불어 대각선으로 연결된 노드도 포함시켜서 탐색해야 한다. 대각선으로 탐색하는 것 외에는 연결된 노드의 개수를 구하면 되기에 크게 어렵진 않다. 1 2 3...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/195-post/",
+        "teaser": null
       }]
