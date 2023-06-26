@@ -1174,4 +1174,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/195-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 11399번 - ATM",
+        "excerpt":"문제 풀이 이번 문제는 그리디 알고리즘을 이용해 풀 수 있다. 아이디어 도출 중요하게 봐야할 부분은 바로 종료 시간이 아니라 대기 시간의 총합을 구하는 문제라는 점이다. 쉽게 생각해보면, 대기시간을 줄이기 위해선 앞사람이 일찍 끝나야 그만큼 최소로 하는 대기시간을 구하기 쉬워진다. 그리고 현재 차례에 사람이 인출할 때는 아무도 개입할 수 없다. 이...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/196-post/",
+        "teaser": null
       }]
