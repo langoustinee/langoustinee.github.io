@@ -1186,4 +1186,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/197-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 압축",
+        "excerpt":"문제 풀이 이 문제는 문제에서 주어지는 LZW 압축 구현 방법을 그대로 구현하면 된다. 아이디어 도출 먼저 A에서부터 Z까지의 문자는 사전이 초기화될 때 이미 존재하도록 설정해두기 때문에 A~Z에서와 다음 문자를 결합한 문자열의 사전 존재여부를 확인해야 한다. 이 과정을 간단하게 살펴보면 다음과 같다. 현재 문자나 문자열이 사전에 존재하는지 확인하고 사전에 있다면 [현재...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/198-post/",
+        "teaser": null
       }]
