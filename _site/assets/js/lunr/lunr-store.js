@@ -1180,4 +1180,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/196-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 11047번 - 동전 0",
+        "excerpt":"문제 풀이 이번 문제는 그리디 알고리즘을 이용해 풀 수 있는 단순한 문제이다. 아이디어 도출 주어지는 동전들을 보면 서로 배수 관계에 있음을 알 수 있다. 여기서 그리디 알고리즘을 어떻게 적용할 수 있을까? 여기서는 최적해를 찾아나가면 되기 때문에 K원을 만들 때 최소한의 개수를 구해야 한다. 결국, 가장 큰 가치를 지닌 동전부터 선택하고...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/197-post/",
+        "teaser": null
       }]
