@@ -1198,4 +1198,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/199-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1931번 - 회의실 배정",
+        "excerpt":"문제 풀이 이 문제는 그리디 알고리즘을 이용하는 대표적인 문제 중 하나이다. 아이디어 도출 이번 문제는 한 사람이 하나의 활동에 대해서만 작업할 수 있을 때 최대한 많은 활동을 할 수 있는 수를 선택하는 문제다. 즉, 각 회의가 겹치지 않게 최대한 많은 회의를 배정해야 한다. 이와 같이 시간표를 최대한 많이 배정하거나 선택하는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/200-post/",
+        "teaser": null
       }]
