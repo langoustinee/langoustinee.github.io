@@ -1192,4 +1192,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/198-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 7569번 - 토마토",
+        "excerpt":"문제 풀이 이번 문제는 그래프 탐색인 BFS을 활용하는데, 3차원으로 접근하여 풀 수 있다. 아이디어 도출 BFS 문제는 2차원으로 탐색하는 것이 일반적인데, 이번 문제에서는 3차원으로 그래프 탐색을 진행해야 한다. 입력으로 주어지는 [H, N, M]을 [면(z), 열(x), 행(y)] 으로 생각하고 접근하면 쉽다. 이전에 풀었던 7576번 토마토 문제에서 3차원으로 접근하기만 하면 된다. 다음으로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/199-post/",
+        "teaser": null
       }]

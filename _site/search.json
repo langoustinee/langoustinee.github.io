@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-5) 7569번 - 토마토",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/199-post/",
+        "date"     : "2023-06-27 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 압축",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
