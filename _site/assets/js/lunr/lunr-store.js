@@ -1204,4 +1204,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/200-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - N진수 게임",
+        "excerpt":"문제 풀이 이 문제는 진법 변환과 문제에서 요구하는 요구사항을 그대로 구현하면 되는 쉬운 문제이다. 아이디어 도출 먼저 핵심은 구헤야 할 문자열의 경우 t개인데, m명에 따라서 순서가 생기기 때문에 t*m만큼을 순회하며 p번째 순서의 문자를 선택해야 한다. 이를 토대로 생각해낸 아이디어는 다음과 같다. 0부터 t*m번만큼 순회하며 해당 인덱스(숫자)를 n진법으로 변환한 후, 이를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/201-post/",
+        "teaser": null
       }]
