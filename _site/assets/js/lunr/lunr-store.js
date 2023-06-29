@@ -1210,4 +1210,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/201-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 주차 요금 계산",
+        "excerpt":"문제 풀이 이 문제는 HashMap을 활용하여 문자열을 정수형으로 변환해가며 시간 계산하면 되는 문제이다. 아이디어 도출 주차장에 입차된 차는 출차가 되는 것을 입출차라고 본다면 입차만 있는 차의 경우 23:59분에 출차하는 것으로 간주해야 한다. 입차만 있는 차들을 23:59분에 출차시키는 방법을 알아보자. 차마다 입차시간과 출차시간을 HashMap(A)과 차별 총 주차시간을 담을 HashMap(B)까지 총 2개의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/202-post/",
+        "teaser": null
       }]

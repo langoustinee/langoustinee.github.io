@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 주차 요금 계산",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/202-post/",
+        "date"     : "2023-06-29 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - N진수 게임",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
