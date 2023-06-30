@@ -1222,4 +1222,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/203-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1026번 - 보물",
+        "excerpt":"문제 풀이 이 문제는 배열 정렬을 통해 풀 수 있는 간단한 문제이다. 아이디어 도출 A 배열과 B 배열을 어떻게 정렬해야 A[0]*B[0]+...+A[N]*B[N]의 값을 최소로 할 수 있을까? 조금만 생각해보면 쉽게 알 수 있다. 바로 곱해지는 수를 작게 만들면 된다. 아래 예시를 보자. 1 2 3 4 5 6 7 8 9...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/204-post/",
+        "teaser": null
       }]
