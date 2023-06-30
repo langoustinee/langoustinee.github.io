@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 1541번 - 잃어버린 괄호",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/203-post/",
+        "date"     : "2023-06-30 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 주차 요금 계산",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

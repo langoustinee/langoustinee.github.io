@@ -1216,4 +1216,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/202-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 1541번 - 잃어버린 괄호",
+        "excerpt":"문제 풀이 이 문제는 그리디 알고리즘 유형의 문제 중 하나이다. 아이디어 도출 주어진 문자열 식을 보고 괄호를 쳐서 식의 결과를 가장 최솟값으로 나오도록 해야한다. 어떻게 괄호를 쳐 식의 결과를 최소로 만들 수 있을까? 하나의 예시를 보자. 1 2 input = 30-70-20+40-10+100+30-35 30 - 70 - (20+40) - (10+100+30) - 35...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/203-post/",
+        "teaser": null
       }]
