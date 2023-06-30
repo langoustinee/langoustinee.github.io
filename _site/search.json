@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-4) 1715번 - 카드 정렬하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/205-post/",
+        "date"     : "2023-06-30 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1026번 - 보물",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

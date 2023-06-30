@@ -1228,4 +1228,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/204-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 1715번 - 카드 정렬하기",
+        "excerpt":"문제 풀이 이 문제는 우선순위 큐를 활용해 풀 수 있는 문제 중 하나이다. 아이디어 도출 먼저 카드뭉치를 비교하기 위해서는 두 수의 합을 구하고 비교해야 한다. 문제의 예제 테스트케이스를 보면 (10+20) + (30 + 40) = 100 처럼, 앞의 두 수를 더한 값을 뒤의 수와 합해가야 한다. 이로 인해, 카드 수를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/205-post/",
+        "teaser": null
       }]
