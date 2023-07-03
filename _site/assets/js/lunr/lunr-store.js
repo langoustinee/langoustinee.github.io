@@ -1234,4 +1234,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/205-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 오픈채팅방",
+        "excerpt":"문제 풀이 이 문제는 HashMap을 활용하면 풀 수 있는 간단한 문제이다. 아이디어 도출 문제를 살펴보면, 출력해야하는 채팅방 관리 기록은 사용자마다 가장 최신의 닉네임을 반영하고 있다. 여기서 바로 HashMap을 활용해 사용자마다 최신의 닉네임을 갱신해두면 된다는 것을 알 수 있다. 사용자마다 갱신한 닉네임을 구한다면 입장하는 Enter, 퇴장하는 Leave 마다 해당 닉네임으로 기록을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/206-post/",
+        "teaser": null
       }]
