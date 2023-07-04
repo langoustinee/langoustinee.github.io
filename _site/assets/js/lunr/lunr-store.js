@@ -1246,4 +1246,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/207-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 5585번 - 거스름돈",
+        "excerpt":"문제 풀이 이 문제는 그리디 알고리즘를 이용해 푸는 대표적인 문제이다. 아이디어 도출 이 문제를 풀 수 있는 솔루션은 다음과 같다. 500, 100, 50, 10, 5, 1엔으로 이루어진 동전 목록을 선언한다. 타로가 지불할 돈인 입력 값을 1000에서 뺄셈하여 반환할 거스름돈을 구한다. 500엔부터 1엔까지 순서대로 동전 목록을 순회하며 해당 동전으로 거스름돈을 나눈...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/208-post/",
+        "teaser": null
       }]
