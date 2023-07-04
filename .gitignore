@@ -11,4 +11,4 @@ _site/
 .jekyll-metadata
 
 # Ignore Python virtual environment
-venv/
+# venv/

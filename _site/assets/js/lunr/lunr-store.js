@@ -1252,4 +1252,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/208-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 2468번 - 안전 영역",
+        "excerpt":"문제 풀이 이번 문제는 BFS를 이용한 그래프 탐색을 이용해 풀 수 있다. 아이디어 도출 BFS를 통해 탐색하면서 연결된 노드의 개수를 구하는 것과 높이별로 탐색을 구분하여 진행해야 한다는 점을 유의하면 쉽게 풀 수 있다. 높이정보를 입력받으며 높이별 목록을 만든다. 구한 높이별로 배열을 탐색하며 BFS를 호출하여 연결된 노드를 구한다. 이때, 높이별로 2차원배열을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/209-post/",
+        "teaser": null
       }]

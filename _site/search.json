@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-1) 2468번 - 안전 영역",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/209-post/",
+        "date"     : "2023-07-04 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(브론즈-2) 5585번 - 거스름돈",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
