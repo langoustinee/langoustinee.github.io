@@ -1240,4 +1240,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/206-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 9095번 - 1,2,3 더하기",
+        "excerpt":"문제 풀이 이 문제는 DP를 활용해 점화식을 세워서 풀 수 있는 문제이다. 아이디어 도출 이 문제에서는 1, 2, 3의 합을 이용해 N을 구하는 경우의 수를 구해야 하기 때문에, 먼저 1, 2, 3을 만들 수 있는 경우의 수를 구해야 한다. 1 2 3 4 1 = {1} =&gt; 1개 2 =...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/207-post/",
+        "teaser": null
       }]
