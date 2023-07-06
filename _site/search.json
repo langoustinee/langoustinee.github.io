@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-4) 2110번 - 공유기 설치",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/210-post/",
+        "date"     : "2023-07-06 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 2468번 - 안전 영역",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

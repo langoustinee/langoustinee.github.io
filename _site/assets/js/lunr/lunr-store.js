@@ -1258,4 +1258,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/209-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 2110번 - 공유기 설치",
+        "excerpt":"문제 풀이 이번 문제는 이분 탐ㅐ를 잘 응용한다면 풀 수 있는 문제이다. 아이디어 도출 이분 탐색 구현도 구현이지만, N개의 집 좌표들에서 C개의 공유기를 설치하는데 최대한 설치되는 집의 거리를 벌려야 한다. 이 때, 중요한 점은 설치된 집과 설치될 집간의 최소거리를 잘 고려해야 한다. 1 1(집) 2 3 4 5(집) 6 7...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/210-post/",
+        "teaser": null
       }]
