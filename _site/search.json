@@ -9,6 +9,14 @@
         } ,
     
         {
+        "title"    : "[Java] 백준(골드-5) 15686번 - 치킨 배달",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/212-post/",
+        "date"     : "2023-07-07 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(골드-4) 2110번 - 공유기 설치",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
