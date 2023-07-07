@@ -1264,4 +1264,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/210-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 땅따먹기",
+        "excerpt":"문제 풀이 이 문제는 동적 계획법, DP 를 이용한 방법으로 적은 수의 라인으로 풀 수 있는 문제이다. 그리디? 완전탐색? 사실, 문제를 보고 그리디 알고리즘이나 완전탐색으로 접근하려 했으나 두 가지 모두 문제 통과는 어렵다고 판단하였다. 그리디 알고리즘을 적용할 경우 최선의 값을 선택하기에 좋은 솔루션으로 생각할 수도 있겠지만, 문제에서 주어지는 행에서의 최대값을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/211-post/",
+        "teaser": null
       }]

@@ -1,4 +1,4 @@
-I"þ(<p><br /></p>
+I"œ(<p><br /></p>
 
 <center><img src="/assets/images/programmers/" width="100%" /></center>
 
@@ -90,11 +90,7 @@
 53
 54
 55
-56
-57
 </pre></td><td class="rouge-code"><pre>
-<span class="kn">package</span> <span class="nn">java_study</span><span class="o">;</span>
-
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
 <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
