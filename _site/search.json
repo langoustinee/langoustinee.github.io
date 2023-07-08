@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] LeetCode(Easy) - ???. Two Sum",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, leetcode",
+        "url"      : "/java/213-post/",
+        "date"     : "2023-07-08 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 땅따먹기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
@@ -475,7 +483,7 @@
         {
         "title"    : "[Java] LeetCode(Easy) - 771. Jewels and Stones",
         "category" : "",
-        "tags"     : "blog, algorithm, study, java, programmers",
+        "tags"     : "blog, algorithm, study, java, leetcode",
         "url"      : "/java/154-post/",
         "date"     : "2023-03-14 00:00:00 +0900"
         } ,
@@ -499,7 +507,7 @@
         {
         "title"    : "[Java] LeetCode(Easy) - 819. Most Common Word",
         "category" : "",
-        "tags"     : "blog, algorithm, study, java, programmers",
+        "tags"     : "blog, algorithm, study, java, leetcode",
         "url"      : "/java/151-post/",
         "date"     : "2023-03-06 00:00:00 +0900"
         } ,

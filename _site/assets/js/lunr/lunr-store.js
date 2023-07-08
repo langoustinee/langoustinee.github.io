@@ -901,7 +901,7 @@ var store = [{
       },{
         "title": "[Java] LeetCode(Easy) - 819. Most Common Word",
         "excerpt":"문제 풀이 이번 819번 문제는 Most Common Word, 즉 가장 흔한 단어를 찾는 문제이다. 문제 풀이의 핵심은 정규식 및 Map을 활용하는 것이다. 아이디어 도출 문제 그대로 주어진 문자열을 토대로 빈도수가 많은 단어를 반환하면 되는데, 먼저 문제에서 요구하는 특정 문자열을 필터링하여 단어 배열을 만드는 것이 중요하다. 단어별로 빈도수를 담기 위해 Map을...","categories": ["Java"],
-        "tags": ["blog","algorithm","study","java","programmers"],
+        "tags": ["blog","algorithm","study","java","leetcode"],
         "url": "/java/151-post/",
         "teaser": null
       },{
@@ -919,7 +919,7 @@ var store = [{
       },{
         "title": "[Java] LeetCode(Easy) - 771. Jewels and Stones",
         "excerpt":"문제 풀이 이번 771번 문제는 단순하다. 문제에서 주어지는 문자열의 길이도 50자 이하이기 때문에 굉장히 관대하다. 아이디어 도출 jewels 문자열을 쪼개어 하나씩 보관한다. stones 문자열의 각 문자별로 순회하여 앞서 쪼갠 jewels의 문자가 포함되는지 확인한다. jewels에서 쪼갠 문자가 포함될 경우 카운트를 증가시킨다. 이번 문제에서 사용한 자료구조는 ArrayList, HashMap 2가지와 문자열 순회시 일반...","categories": ["Java"],
-        "tags": ["blog","algorithm","study","java","programmers"],
+        "tags": ["blog","algorithm","study","java","leetcode"],
         "url": "/java/154-post/",
         "teaser": null
       },{
@@ -1275,5 +1275,11 @@ var store = [{
         "excerpt":"문제 풀이 이 문제는 동적 계획법, DP 를 이용한 방법으로 적은 수의 라인으로 풀 수 있는 문제이다. 그리디? 완전탐색? 사실, 문제를 보고 그리디 알고리즘이나 완전탐색으로 접근하려 했으나 두 가지 모두 문제 통과는 어렵다고 판단하였다. 그리디 알고리즘을 적용할 경우 최선의 값을 선택하기에 좋은 솔루션으로 생각할 수도 있겠지만, 문제에서 주어지는 행에서의 최대값을...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/211-post/",
+        "teaser": null
+      },{
+        "title": "[Java] LeetCode(Easy) - ???. Two Sum",
+        "excerpt":"문제 풀이 배열의 원소를 순회하며 두 수의 합이 target이 되는지 판단하면 되는 간단한 문제이다. 아이디어 도출 nums 배열을 순회하며 자리별로 두 수의 합이 target이 되는 인덱스가 있을 경우 List에 삽입한다. 삽입된 List를 Array로 반환한다. 문제 풀이를 위해 작성한 코드는 아래와 같다. 작성코드 1 2 3 4 5 6 7 8...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","leetcode"],
+        "url": "/java/213-post/",
         "teaser": null
       }]
