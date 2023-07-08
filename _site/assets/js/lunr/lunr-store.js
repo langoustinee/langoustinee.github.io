@@ -1277,8 +1277,8 @@ var store = [{
         "url": "/java/211-post/",
         "teaser": null
       },{
-        "title": "[Java] LeetCode(Easy) - ???. Two Sum",
-        "excerpt":"문제 풀이 배열의 원소를 순회하며 두 수의 합이 target이 되는지 판단하면 되는 간단한 문제이다. 아이디어 도출 nums 배열을 순회하며 자리별로 두 수의 합이 target이 되는 인덱스가 있을 경우 List에 삽입한다. 삽입된 List를 Array로 반환한다. 문제 풀이를 위해 작성한 코드는 아래와 같다. 작성코드 1 2 3 4 5 6 7 8...","categories": ["Java"],
+        "title": "[Java] LeetCode(Easy) - 1. Two Sum",
+        "excerpt":"문제 풀이 배열의 원소를 순회하며 두 수의 합이 target이 되는지 판단하면 되는 간단한 문제이다. 필자는 완전탐색과 HashMap 2가지를 이용해서 풀어보았다. 아이디어 도출 - 완전탐색 완전탐색의 경우 문제 요구사항 그대로 구현하면 된다. nums 배열을 순회하며 자리별로 두 수의 합이 target이 되는 인덱스가 있을 경우 List에 삽입한다. 삽입된 List를 Array로 반환한다. 완전탐색을...","categories": ["Java"],
         "tags": ["blog","algorithm","study","java","leetcode"],
         "url": "/java/213-post/",
         "teaser": null
