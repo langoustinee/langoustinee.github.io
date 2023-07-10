@@ -1282,4 +1282,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","leetcode"],
         "url": "/java/213-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 방문 길이",
+        "excerpt":"문제 풀이 이 문제는 HashSet 자료구조 를 이용해 풀 수 있다. 아이디어 도출 HashSet 자료구조를 사용해보기 전에는, 단순히 상, 하, 좌, 우로 이동한 횟수를 카운트 했었는데, 이미 다녀온 중복 이동을 고려하기 어려웠다. 이를 HashSet으로 중복을 제거하여 해결할 수 있었다. 문제 풀이를 위한 아이디어는 다음과 같다. (0,0) 위치부터 dirs 문자열을 순회하여...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/214-post/",
+        "teaser": null
       }]

@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 방문 길이",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/214-post/",
+        "date"     : "2023-07-10 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] LeetCode(Easy) - 1. Two Sum",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, leetcode",
