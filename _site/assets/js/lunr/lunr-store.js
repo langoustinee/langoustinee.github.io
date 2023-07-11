@@ -1288,4 +1288,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/214-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 1475번 - 방 번호",
+        "excerpt":"문제 풀이 이번 문제는 단순한 구현 문제로 문제가 요구하는 내용을 잘 파악한다면 쉽게 풀 수 있다. 아이디어 도출 문제 풀이를 위한 생각한 아이디어는 다음과 같다. 0부터 9까지의 원소의 빈도수를 카운팅하기 위해 카운팅 배열을 이용한다. 주어진 방 번호대로 0부터 9까지 빈도수를 센 후, 6과 9는 뒤집어서 쓸 수 있기 때문에 같은...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/215-post/",
+        "teaser": null
       }]
