@@ -1294,4 +1294,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/215-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 1676번 - 팩토리얼 0의 개수",
+        "excerpt":"문제 풀이 이번 문제는 단순한 구현 문제이다. 아이디어 도출 이 문제는 단순히 N!의 값을 팩토리얼 연산을 통해 구해서 0을 구할 수 있지만, 입력값의 범위를 생각하면 출제자의 의도는 다른 것이라는 것을 알 수 있다. 최대 500! 까지의 값을 구해야 하는데 BigInteger 클래스를 사용해야만 500! 까지의 값을 구할 수 있다. 물론, BigInteger...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/216-post/",
+        "teaser": null
       }]

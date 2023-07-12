@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-5) 1676번 - 팩토리얼 0의 개수",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/216-post/",
+        "date"     : "2023-07-12 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-5) 1475번 - 방 번호",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
