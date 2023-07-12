@@ -1300,4 +1300,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/216-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(브론즈-2) 15829번 - Hashing",
+        "excerpt":"문제 풀이 이번 문제는 단순한 구현 문제이다. 아이디어 도출 이번 문제는 서브테스크 유형의 문제라 Small Case를 충족하면 50점, Large Case까지 충족하면 100점을 받을 수 있다. 처음엔 단순하게 생각하여 풀었더니 문자열 길이 50까지의 범위를 고려하지 못해 Small Case만 충족되어 50점을 달성하였다. 어떻게 Large Case까지 충족하여 100점을 받을 수 있을까 고민하고 개선하여...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/217-post/",
+        "teaser": null
       }]

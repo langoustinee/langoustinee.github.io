@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-2) 15829번 - Hashing",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/217-post/",
+        "date"     : "2023-07-12 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-5) 1676번 - 팩토리얼 0의 개수",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
