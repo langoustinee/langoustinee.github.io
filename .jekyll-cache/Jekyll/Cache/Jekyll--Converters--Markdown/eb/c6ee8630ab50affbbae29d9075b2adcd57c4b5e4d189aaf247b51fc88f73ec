@@ -1,4 +1,4 @@
-I"�&<p><br /><br /></p>
+I"q<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
@@ -10,50 +10,10 @@
 
 <h4 id="아이디어-도출">아이디어 도출</h4>
 
-<p>이번 문제는 서브테스크 유형의 문제라 Small Case를 충족하면 50점, Large Case까지 충족하면 100점을 받을 수 있다.</p>
-
-<p>처음엔 단순하게 생각하여 풀었더니 문자열 길이 50까지의 범위를 고려하지 못해 Small Case만 충족되어 50점을 달성하였다. 어떻게 Large Case까지 충족하여 100점을 받을 수 있을까 고민하고 개선하여 100점을 받았는데 그 아이디어를 살펴보자.</p>
-
-<p>문제풀이를 위한 핵심 아이디어 2가지는 다음과 같다.</p>
-
-<ol>
-  <li>모듈러 연산</li>
-  <li>수의 범위</li>
-</ol>
-
-<p><br /></p>
-
-<h4 id="모듈러-연산">모듈러 연산</h4>
-
-<p>이번 문제에서 100점을 받기 위해서는 <strong>모듈러 연산</strong>의 성질을 잘 이해해야 한다.</p>
+<p>문제에서 요구한 절사평균 30%을 적용하여 높은 값에서부터 15%, 낮은 값에서부터 15%를 제외한 후의 평균을 구하면 된다.</p>
 
 <blockquote>
-  <ol>
-    <li>(A + B) mod C = (A mod C + B mod C) mod C</li>
-    <li>(A - B) mod C = (A mod C - B mod C) mod C</li>
-    <li>(A * B) mod C = (A mod C * B mod C) mod C</li>
-  </ol>
-</blockquote>
-
-<p>위 성질을 통해 아래 연산식이 가능하다는 것을 알 수 있다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="n">a2r2</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">=</span> <span class="o">(</span><span class="n">a2</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">*</span> <span class="n">r2</span> <span class="n">mod</span> <span class="no">M</span><span class="o">)</span> <span class="n">mod</span> <span class="no">M</span>
-<span class="n">r2</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">=</span> <span class="o">(</span><span class="n">r</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">*</span> <span class="n">r</span> <span class="n">mod</span> <span class="no">M</span><span class="o">)</span> <span class="n">mod</span> <span class="no">M</span>
-<span class="n">r3</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">=</span> <span class="o">(</span><span class="n">r2</span> <span class="n">mod</span> <span class="o">*</span> <span class="n">r</span> <span class="n">mod</span> <span class="no">M</span><span class="o">)</span> <span class="n">mod</span> <span class="no">M</span>
-<span class="n">r4</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">=</span> <span class="o">(</span><span class="n">r3</span> <span class="n">mod</span> <span class="no">M</span> <span class="o">*</span> <span class="n">r</span> <span class="n">mod</span> <span class="no">M</span><span class="o">)</span> <span class="n">mod</span> <span class="no">M</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p><br /></p>
-
-<h4 id="수의-범위">수의 범위</h4>
-<p>또한, Math.pow() 메서드를 사용하여 31의 제곱수를 곱해주는 방식으로 구현했지만 Math.pow(31, 49)까지 간다면 long형의 범위도 벗어나기 때문에 해당 메소드를 사용하지 않고 <strong>pow를 일일이 곱</strong>해주면서 <strong>모듈러 연산을 통해 문제에서 제시한 M(=1234567891)보다 크기를 줄여</strong>가야 한다.</p>
-
-<blockquote>
-  <p>그래서 pow로 사용하는 변수와 해시 함수의 결과값을 더해줄 결과값 변수는 long 형으로 선언해서 사용해야 한다.</p>
+  <p>또한, 절사평균을 통해 높은 값과 낮은 값에서부터 데이터를 제외해야 한다는 것을 통해 데이터를 정렬해두고 제외해야 한다는 것을 꼭 고려해야 한다.</p>
 </blockquote>
 
 <p><br /></p>

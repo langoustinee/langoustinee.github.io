@@ -1306,4 +1306,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/217-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 18110번 - solved.ac",
+        "excerpt":"문제 풀이 이번 문제는 단순한 구현 문제이다. 아이디어 도출 문제에서 요구한 절사평균 30%을 적용하여 높은 값에서부터 15%, 낮은 값에서부터 15%를 제외한 후의 평균을 구하면 된다. 또한, 절사평균을 통해 높은 값과 낮은 값에서부터 데이터를 제외해야 한다는 것을 통해 데이터를 정렬해두고 제외해야 한다는 것을 꼭 고려해야 한다. 위 사항만 잘 고려하고, 반올림만...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/218-post/",
+        "teaser": null
       }]
