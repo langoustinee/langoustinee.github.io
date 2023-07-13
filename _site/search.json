@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-3) 1003번 - 피보나치 함수",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/220-post/",
+        "date"     : "2023-07-13 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-2) 18111번 - 마인크래프트",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

@@ -1318,4 +1318,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/219-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 1003번 - 피보나치 함수",
+        "excerpt":"문제 풀이 이번 문제는 동적계획법 DP의 대표적인 예시인 피보나치 수열을 응응하여 풀 수 있는 문제이다. 아이디어 도출 이번 문제에서는 DP를 통해 피보나치 수열을 도출해내는 동시에 fibo(0)과 fibo(1)의 호출횟수를 각각 구해야 한다. 어떻게 0과 1의 호출횟수를 구할 수 있을까? 간단한 에시를 보자. 1 2 3 4 5 N = 2 fibo(2)...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/220-post/",
+        "teaser": null
       }]
