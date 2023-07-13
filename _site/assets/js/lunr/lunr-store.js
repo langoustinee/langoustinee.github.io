@@ -1312,4 +1312,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/218-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 18111번 - 마인크래프트",
+        "excerpt":"문제 풀이 이번 문제는 완전 탐색을 이용해 풀 수 있는 문제이다. 아이디어 도출 이 문제는 완전탐색을 통해 주어진 2차원 배열을 순회하면서 조건에 부합하는지를 확인하면 된다. 문제 풀이를 위한 아이디어를 살펴보자. 땅을 평탄화하기 위해 쌓을 수 있는 최소 층과 최대 층 수를 구한다. 층별로 블록을 채우거나 제거한 후의 블록의 개수가 0개...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/219-post/",
+        "teaser": null
       }]
