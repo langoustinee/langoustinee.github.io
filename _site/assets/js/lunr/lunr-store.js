@@ -1324,4 +1324,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/220-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 게임 맵 최단거리",
+        "excerpt":"문제 풀이 이 문제는 그래프 탐색 알고리즘 를 이용해 풀 수 있는 문제이다. DFS나 BFS 모두를 이용할 수 있지만 필자는 너비우선탐색인 BFS를 이용했다. 아이디어 도출 이 문제는 BFS를 이용해 캐릭터의 위치인 (0,0) 부터 게임 맵을 탐색해가며 상대방 진영의 위치인 `(N,M) 위치까지의 최단 이동거리를 구하면 된다. 상대방 진영까지의 최단거리를 구하기 위해...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/221-post/",
+        "teaser": null
       }]
