@@ -1336,4 +1336,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/222-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 모음 사전",
+        "excerpt":"문제 풀이 이번 문제는 재귀(DFS)를 이용해 풀 수 있다. 아이디어 도출 문자가 정해진 단어 안에서 어떤 규칙이 있는지 살펴보자. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1 A 2 AA 3 AAA 4 AAAA 5 AAAAA 6 AAAAE 7 AAAAI 8 AAAAO...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/223-post/",
+        "teaser": null
       }]
