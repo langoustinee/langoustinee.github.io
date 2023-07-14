@@ -1330,4 +1330,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/221-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 스킬트리",
+        "excerpt":"문제 풀이 이번 문제는 문제의 요구사항대로 구현하면 풀 수 있는 간단한 문제이다. 아이디어 도출 사용자들이 만든 스킬트리들이 정해진 스킬트리를 잘 따랐는지를 확인하기 위한 방법은 많으나 필자가 떠올린 방법은 간단하다. 만든 스킬트리들을 순회하며 선행스킬에 포함된 스킬인지를 확인한다. 선행스킬에 포함된 스킬이라면 1번째 스킬인지, 2번째 ~ N번째 스킬인지 확인한다. 현재 스킬이 1번째 스킬이라면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/222-post/",
+        "teaser": null
       }]
