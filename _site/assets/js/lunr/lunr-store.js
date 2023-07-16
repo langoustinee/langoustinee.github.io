@@ -1342,4 +1342,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/223-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 11723번 - 집합",
+        "excerpt":"문제 풀이 이번 문제는 문제의 요구사항대로 구현만 잘 하면 풀 수 있는 문제이다. 아이디어 도출 연산마다 문자열이 주어지는데, 공백을 기준으로 첫번째 문자열은 명령, 두번째 문자열은 명령을 수행할 수가 된다. 명령이 add, remove, check, toggle, all, empty 일 때마다 다른 연산을 수행해야 하는데, 그 중 check 명령일 때만 출력을 수행한다. 명령마다...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/225-post/",
+        "teaser": null
       }]

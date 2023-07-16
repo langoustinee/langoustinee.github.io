@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-5) 11723번 - 집합",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/225-post/",
+        "date"     : "2023-07-15 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 모음 사전",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
