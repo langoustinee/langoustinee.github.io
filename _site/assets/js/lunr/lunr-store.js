@@ -1354,4 +1354,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/226-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 2630번 - 색종이 만들기",
+        "excerpt":"문제 풀이 이 문제는 재귀를 이용한 분할 정복 과정을 통해 풀 수 있는 문제 중 하나이다. 아이디어 도출 문제에서 요구하는 내용은 하얀색과 파란색 정사각형 색종이의 개수이다. 그런데, 부분 색종이는 모두 같은 색으로 이루어져야 한다. 만약, 같은 색상으로 이루어진 색종이가 아닐 경우 색종이를 잘라야 한다. 이떄, 색종이를 자를 때는 절반인 1/2...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/227-post/",
+        "teaser": null
       }]
