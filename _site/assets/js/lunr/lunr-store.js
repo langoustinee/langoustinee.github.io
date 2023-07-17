@@ -1348,4 +1348,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/225-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-5) 11726번 - 2×n 타일링",
+        "excerpt":"문제 풀이 이 문제는 동적 계획법(DP)를 이용해 푼다면 쉽게 풀 수 있는 문제이다. 아이디어 도출 주어지는 N을 통해 순서대로 패턴을 그려보면 어떤 유형으로 1X2, 2X1의 직사각형을 채울 수 있는지 알 수 있다. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/226-post/",
+        "teaser": null
       }]
