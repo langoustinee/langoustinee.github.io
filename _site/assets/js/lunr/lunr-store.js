@@ -1360,4 +1360,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/227-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 14940번 - 쉬운 최단거리",
+        "excerpt":"문제 풀이 이 문제는 너비 우선 탐색인 BFS를 이용해 풀 수 있는 문제이다. 아이디어 도출 BFS 문제를 여러 번 풀어봤다면 어떤 식으로 문제 해결을 할 수 있을지 금방 알 수 있을 것이다! 풀이를 위한 아이디어는 다음과 같다. 도달할 수 없는 땅의 위치(-1)일 경우 -1로 갱신하기 위해 미리 새로운 배열의 모든...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/228-post/",
+        "teaser": null
       }]
