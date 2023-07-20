@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-1) 1074번 - Z",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/229-post/",
+        "date"     : "2023-07-20 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 14940번 - 쉬운 최단거리",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

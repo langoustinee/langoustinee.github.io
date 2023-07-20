@@ -1366,4 +1366,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/228-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1074번 - Z",
+        "excerpt":"문제 풀이 이 문제는 분할 정복 재귀를 이용해 풀 수 있는 문제이다. 아이디어 도출 이 문제는 배열을 사분면으로 나누고, 입력받은 R, C의 위치가 몇 번째 사분면에 속하는지 알아내는 것이 중요하다. 입력받은 N을 통해 2의 거듭제곱 N 값으로 배열 한 변의 길이(size)를 구한다. 재귀를 호출하면서 현재 R, C의 위치가 몇 사분면에...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/229-post/",
+        "teaser": null
       }]
