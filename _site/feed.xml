@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-22T23:47:19+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-2) 11279번 - 최대 힙</title><link href="http://localhost:4000/java/231-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-2) 11279번 - 최대 힙" /><published>2023-07-22T00:00:00+09:00</published><updated>2023-07-22T00:00:00+09:00</updated><id>http://localhost:4000/java/231-post</id><content type="html" xml:base="http://localhost:4000/java/231-post/"><![CDATA[<p><br /><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-22T23:48:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-2) 11279번 - 최대 힙</title><link href="http://localhost:4000/java/231-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-2) 11279번 - 최대 힙" /><published>2023-07-22T00:00:00+09:00</published><updated>2023-07-22T00:00:00+09:00</updated><id>http://localhost:4000/java/231-post</id><content type="html" xml:base="http://localhost:4000/java/231-post/"><![CDATA[<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
 <hr />
 
-<p>이 문제는 주어진대로 <strong>최소 힙을 우선순위 큐를 이용</strong>해 구현하면 되는 간단한 문제이다.</p>
+<p>이 문제는 주어진대로 <strong>최대 힙을 우선순위 큐를 이용</strong>해 구현하면 되는 간단한 문제이다.</p>
 
 <p><br /></p>
 
