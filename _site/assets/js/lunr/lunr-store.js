@@ -1372,4 +1372,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/229-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 1927번 - 최소 힙",
+        "excerpt":"문제 풀이 이 문제는 주어진대로 최소 힙을 우선순위 큐를 이용해 구현하면 되는 간단한 문제이다. 아이디어 도출 이 문제에서 요구하는 최소 힙을 어떻게 우선순위 큐로 구현할 수 있는 걸까? 일반적인 큐(Queue)는 FIFO(First in - First Out) 구조로, 먼저 들어온 데이터가 먼저 나가는 구조이다. 그런데 우선순위 큐(Priority Queue)는 들어간 순서와는 상관없이 우선순위가...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/230-post/",
+        "teaser": null
       }]
