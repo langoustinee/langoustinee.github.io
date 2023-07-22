@@ -1378,4 +1378,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/230-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 11279번 - 최대 힙",
+        "excerpt":"문제 풀이 이 문제는 주어진대로 최소 힙을 우선순위 큐를 이용해 구현하면 되는 간단한 문제이다. 아이디어 도출 우선순위 큐를 이용했던 이전 문제 최소 힙과 동일한 풀이 방법으로 풀 수 있다. 최소 힙은 PriorityQueue의 기본 값으로 설정되어 있어 그냥 선언만 해도 최소 힙을 구현할 수 있었으나 최대 힙의 경우 추가적인 설정이 필요하다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/231-post/",
+        "teaser": null
       }]

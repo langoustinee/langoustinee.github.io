@@ -1,0 +1,157 @@
+I"�!<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이 문제는 주어진대로 <strong>최소 힙을 우선순위 큐를 이용</strong>해 구현하면 되는 간단한 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>우선순위 큐를 이용했던 이전 문제 <a href="https://langoustinee.github.io/java/230-post/">최소 힙</a>과 동일한 풀이 방법으로 풀 수 있다.</p>
+
+<p>최소 힙은 PriorityQueue의 기본 값으로 설정되어 있어 그냥 선언만 해도 최소 힙을 구현할 수 있었으나 최대 힙의 경우 추가적인 설정이 필요하다. 필자가 최대 힙을 구하기 위해 설정한 방법은 2가지이다.</p>
+
+<ol>
+  <li>Collections 패키지의 reverseOrder() 메소드 이용하기</li>
+  <li>Comparator 클래스를 상속받아 compare() 메소드 오버라이딩하기</li>
+</ol>
+
+<p>2가지 방법 모두 우선순위 큐의 우선순위를 높은 순으로 설정할 수 있는 방법들이니 자유롭게 원하는 것을 선택하여 풀면 된다.</p>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">result</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        
+        <span class="c1">// Collections 패키지의 reverseOrder() 메소드로 우선순위를 높은 순으로 설정할 수 있다.</span>
+        <span class="c1">// PriorityQueue&lt;Integer&gt; q = new PriorityQueue&lt;&gt;(Collections.reverseOrder());</span>
+        
+        <span class="c1">// Comparator 클래스를 상속받아 compare() 메소드를 오버라이딩하여 우선순위를 높은 순으로 설정한다.</span>
+        <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">o1</span> <span class="o">&gt;</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">o1</span> <span class="o">&lt;</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            
+        <span class="o">});</span>
+
+        <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            
+            <span class="c1">// 만약 입력값이 0보다 큰 자연수라면 우선순위 큐에 삽입.</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+                <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 0일 때 우선순위 큐가 비어있다면 0을, 비어있지 않다면 가장 높은 수를 꺼낸다.</span>
+            <span class="k">if</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">"\n"</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"0"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+            <span class="o">}</span>
+            
+        <span class="o">}</span>
+        
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/11279">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
