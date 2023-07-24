@@ -1390,4 +1390,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/232-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 11727번 - 2×n 타일링 2",
+        "excerpt":"문제 풀이 이 문제는 동적 계획법(DP)를 이용해 풀 수 있는 문제이다. 아이디어 도출 이번 문제는 이전에 풀었던 2xn 타일링 문제와 흠사한 방법으로 풀 수 있다. 2xn 타일링 문제가 피보나치 수열의 형태를 띄고있었다면 이번에는 그 형태가 다르다. 1 2 3 4 5 6 7 8 9 10 11 12 13 14...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/233-post/",
+        "teaser": null
       }]
