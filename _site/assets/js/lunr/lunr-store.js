@@ -1384,4 +1384,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/231-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 2579번 - 계단 오르기",
+        "excerpt":"문제 풀이 이 문제는 동적 계획법(DP)를 이용해 풀 수 있는 문제이다. 아이디어 도출 이 문제에서는 Top-Down 방식과 Bottom-Up 방식 중 Top-Down 방식으로 풀기 위해 재귀를 이용했다. 먼저 문제의 제약사항은 다음과 같다. 계단은 한 번에 한 계단, 두 계단씩만 오를 수 있다 연속된 3개의 계단을 밟으면 안된다 위 조건을 토대로 N번째...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/232-post/",
+        "teaser": null
       }]
