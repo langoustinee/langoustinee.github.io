@@ -1,0 +1,285 @@
+I"�T<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이 문제는 <strong>너비 우선 탐색 BFS</strong>를 이용해 풀 수 있는 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>정수를 이용하는 다른 BFS와 달리 문자열을 통해 조건을 부여해야 하는 문제이기에 조건을 잘 선정해야 한다. 필자는 <strong>일반적인 사람이 보았을 떄 구역의 개수를 먼저 센 후, 적록색약 사람이 보았을 때 구역의 개수를 세는 순서로 BFS를 이용</strong>했다.</p>
+
+<p>또한, 구역의 개수는 BFS 함수의 호출횟수가 된다. 이를 위해 생각한 아이디어는 다음과 같다.</p>
+
+<ol>
+  <li>입력 배열을 순회하며 R, G, B 구역의 개수를 BFS 탐색으로 센다.</li>
+  <li>적록색약은 R, G를 구분하지 않으니 입력 배열의 G를 R로 변경한다.</li>
+  <li>R과 B만 존재하는 배열을 순회하며 R, B 구역의 개수를 BFS 탐색으로 센다.</li>
+  <li>먼저 센 R, G, B 구역의 개수와 이후에 센 R, B 구역의 개수를 저장한 값을 출력한다.</li>
+</ol>
+
+<blockquote>
+  <p>위 아이디어를 위해 이중 for문을 여러개 쓰다보니 시간복잡도 측면에서 <code class="language-plaintext highlighter-rouge">O(4n^2)</code> 으로 좋지는 못한 것 같다.</p>
+</blockquote>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
+
+    <span class="kd">static</span> <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">visited</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="nc">String</span><span class="o">[][]</span> <span class="n">arr</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">N</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">cnt_all</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">cnt_red_green</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        
+        <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+        <span class="c1">// 입력 문자열 배열과 방문배열 선언</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">N</span><span class="o">];</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">N</span><span class="o">];</span>
+
+        <span class="c1">// 일반 구역 개수와 적녹색약의 구역 개수를 셀 변수 초기화</span>
+        <span class="n">cnt_all</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">cnt_red_green</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="c1">// 입력 배열을 채운다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">input</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 먼저 R,G,B 구역의 개수를 센다.</span>
+        <span class="c1">// 이떄, R, G, B 구역의 개수는 BFS의 호출횟수가 된다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"R"</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="no">BFS</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="s">"R"</span><span class="o">);</span>
+                        <span class="n">cnt_all</span><span class="o">++;</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"G"</span><span class="o">)){</span>
+                        <span class="no">BFS</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="s">"G"</span><span class="o">);</span>
+                        <span class="n">cnt_all</span><span class="o">++;</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"B"</span><span class="o">)){</span>
+                        <span class="no">BFS</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="s">"B"</span><span class="o">);</span>
+                        <span class="n">cnt_all</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 적녹색약 구역의 개수를 세기 위해 방문 배열을 다시 초기화한다.</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">N</span><span class="o">];</span>
+
+        <span class="c1">// 적녹색약의 구역을 세기 위해 입력배열의 G를 R로 갱신한다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"G"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="s">"R"</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 마지막으로 R,B 구역의 개수를 센다.</span>
+        <span class="c1">// R, B 구역의 개수는 BFS의 호출횟수가 된다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"R"</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="no">BFS</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="s">"R"</span><span class="o">);</span>
+                        <span class="n">cnt_red_green</span><span class="o">++;</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"B"</span><span class="o">)){</span>
+                        <span class="no">BFS</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="s">"B"</span><span class="o">);</span>
+                        <span class="n">cnt_red_green</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">cnt_all</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">cnt_red_green</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">BFS</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">});</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">now</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">dir</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">dir</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">;</span> <span class="n">dir</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">now</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">dir</span><span class="o">];</span>
+                <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">now</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">dir</span><span class="o">];</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">isRange</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="n">color</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                        <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">});</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isRange</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="mi">0</span><span class="o">&lt;=</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">y</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="o">&lt;</span><span class="no">N</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">&lt;</span><span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/10026">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

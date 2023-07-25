@@ -1396,4 +1396,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/233-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 10026번 - 적록색약",
+        "excerpt":"문제 풀이 이 문제는 너비 우선 탐색 BFS를 이용해 풀 수 있는 문제이다. 아이디어 도출 정수를 이용하는 다른 BFS와 달리 문자열을 통해 조건을 부여해야 하는 문제이기에 조건을 잘 선정해야 한다. 필자는 일반적인 사람이 보았을 떄 구역의 개수를 먼저 센 후, 적록색약 사람이 보았을 때 구역의 개수를 세는 순서로 BFS를 이용했다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/234-post/",
+        "teaser": null
       }]
