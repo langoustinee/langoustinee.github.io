@@ -1402,4 +1402,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/234-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 5430번 - AC",
+        "excerpt":"문제 풀이 이 문제는 자료구조 중 양쪽 연산이 가능한 Deque(덱)을 이용해 풀 수 있는 문제이다. 아이디어 도출 덱을 이용하는 이유는 바로 시간초과를 피하기 위함이다. 필자는 아무 생각 없이 문제 제약사항을 읽지 않고 배열을 뒤집는 R 함수의 과정에서 Collections.reverse() 메소드를 이용해 풀었더니 시간초과가 발생했다. 그런데 문제를 조금 만 더 자세히 살펴보면,...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/235-post/",
+        "teaser": null
       }]
