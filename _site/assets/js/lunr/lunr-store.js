@@ -1408,4 +1408,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/235-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 14500번 - 테트로미노",
+        "excerpt":"문제 풀이 이번 문제는 완전탐색을 이용하는데 DFS를 곁들여 풀 수 있는 문제이다. 아이디어 도출 이 문제는 주어진 배열을 완전 탐색하는데, 5가지 테트로미노를 잘 고려해야 한다. 먼저 4가지 테트로미노를 보자. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/236-post/",
+        "teaser": null
       }]

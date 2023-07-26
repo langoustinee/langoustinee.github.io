@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-4) 14500번 - 테트로미노",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/236-post/",
+        "date"     : "2023-07-26 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(골드-5) 5430번 - AC",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
