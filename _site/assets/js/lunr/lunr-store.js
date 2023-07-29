@@ -1414,4 +1414,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/236-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 11286번 - 절댓값 힙",
+        "excerpt":"문제 풀이 이번 문제는 우선순위 큐를 이용해 요구한 힙을 구현하면 되는 문제이다. 아이디어 도출 이번 문제는 최대 힙 문제와 같이 PriorityQueue를 사용해 Comparator의 compare() 메서드를 오버라이딩하여 큐에 삽입되는 데이터를 주어진 조건대로 정렬해야 한다. 문제를 잘 살펴보면, 큐의 우선순위를 절댓값이 작은 순서에서 숫자가 작은 순서로 제거해야 한다는 것을 알 수 있다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/237-post/",
+        "teaser": null
       }]
