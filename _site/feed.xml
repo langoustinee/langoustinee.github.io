@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-29T23:57:58+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-1) 11286번 - 절댓값 힙</title><link href="http://localhost:4000/java/237-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-1) 11286번 - 절댓값 힙" /><published>2023-07-29T00:00:00+09:00</published><updated>2023-07-29T00:00:00+09:00</updated><id>http://localhost:4000/java/237-post</id><content type="html" xml:base="http://localhost:4000/java/237-post/"><![CDATA[<p><br /><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-30T00:02:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-1) 11286번 - 절댓값 힙</title><link href="http://localhost:4000/java/237-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-1) 11286번 - 절댓값 힙" /><published>2023-07-29T00:00:00+09:00</published><updated>2023-07-29T00:00:00+09:00</updated><id>http://localhost:4000/java/237-post</id><content type="html" xml:base="http://localhost:4000/java/237-post/"><![CDATA[<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
@@ -13,6 +13,12 @@
 <p>이번 문제는 <a href="https://langoustinee.github.io/java/231-post/">최대 힙</a> 문제와 같이 <code class="language-plaintext highlighter-rouge">PriorityQueue</code>를 사용해 <code class="language-plaintext highlighter-rouge">Comparator</code>의 <strong>compare()</strong> 메서드를 오버라이딩하여 큐에 삽입되는 데이터를 주어진 조건대로 정렬해야 한다.</p>
 
 <p>문제를 잘 살펴보면, 큐의 우선순위를 절댓값이 작은 순서에서 숫자가 작은 순서로 제거해야 한다는 것을 알 수 있다.</p>
+
+<ol>
+  <li>두 수(o1, o2)의 절댓값이 같다면, 두 수 중 <strong>더 큰 수를 기준으로 우선순위가 높게 책정</strong>되도록 한다.</li>
+  <li>두 수의 절댓값이 다르다면, 두 수의 절댓값의 차 즉, <strong>절댓값이 작은 수의 우선순위가 높게 책정</strong>되도록 한다.</li>
+  <li>결과적으로 절댓값이 작은 순서로 정렬되도록 한다.</li>
+</ol>
 
 <p><br /></p>
 
