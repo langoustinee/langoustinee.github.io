@@ -1420,4 +1420,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/237-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 1107번 - 리모컨",
+        "excerpt":"문제 풀이 이번 문제는 완전 탐색을 이용해 풀 수 있는 문제이다. 아이디어 도출 문제 그대로 고장난 버튼을 제외한 숫자 버튼으로 N 채널로 이동하기 위한 최소 버튼 클릭 횟수를 구해야 한다. 어떻게 버튼 클릭 횟수를 구할 수 있을까? 예제를 살펴보자. 1 2 3 4 5457 3 6 7 8 누를 수...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/238-post/",
+        "teaser": null
       }]

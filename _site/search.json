@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-5) 1107번 - 리모컨",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/238-post/",
+        "date"     : "2023-07-29 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 11286번 - 절댓값 힙",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
