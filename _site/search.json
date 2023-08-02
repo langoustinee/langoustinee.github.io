@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 더 맵게",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/239-post/",
+        "date"     : "2023-08-02 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(골드-5) 1107번 - 리모컨",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

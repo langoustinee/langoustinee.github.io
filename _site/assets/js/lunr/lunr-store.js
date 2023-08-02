@@ -1426,4 +1426,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/238-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 더 맵게",
+        "excerpt":"문제 풀이 이번 문제는 우선순위 큐를 활용한 최소 힙을 구현하여 풀 수 있다. 아이디어 도출 이 문제는 힙에 대한 지식이 어느정도 필요하다. 여기서 말하는 Heap(힙)은 최소값 및 최대값을 최대한 빠르게 찾아내기 위해 특별히 고안된 자료 구조이다. Java에서는 일반적으로 우선순위 큐인 PriorityQueue를 이용해 힙을 구현한다. PriorityQueue는 우선순위 큐를 구현한 자료구조로서, 내부적으로...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/239-post/",
+        "teaser": null
       }]
