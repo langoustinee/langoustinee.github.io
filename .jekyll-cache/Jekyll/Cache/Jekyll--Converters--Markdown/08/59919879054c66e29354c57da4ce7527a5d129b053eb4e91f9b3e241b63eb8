@@ -1,0 +1,170 @@
+I"�$<p><br /></p>
+
+<center><img src="/assets/images/programmers/" width="100%" /></center>
+
+<p><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<hr />
+
+<p>이번 문제는 <strong>Stack(스택)</strong>을 활용해 시간복잡도를 줄여 풀 수 있는 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>스택을 사용하지 않고 이중 for문으로 뒷 큰수를 찾을 경우 numbers의 범위가 1,000,000이기에 시간초과가 발생한다. 시간복잡도를 O(n)으로 줄이기 위해 스택을 활용해야 한다.</p>
+
+<p>필자의 경우 스택에 [인덱스, 값] 형태를 삽입하여 현재 값과 스택의 정상값을 비교하며 뒷 큰수를 찾도록 구현하였다. 이를 위한 아이디어는 다음과 같다.</p>
+
+<ol>
+  <li>numbers 길이를 가지는 answer 배열을 선언한다.</li>
+  <li>스택에 [인덱스, 값] 형태로 삽입한 후, numbers를 순회하며 현재 값이 이전 원소인 스택의 정상값보다 큰지 확인한다.</li>
+  <li>현재 값이 스택의 정상값보다 큰지 확인하기 위해 스택이 빌 때까지 반복한다.</li>
+  <li>이때, 뒷 큰수가 된다면 해당 값을 answer 배열에 이전 원소(스택 정상값)의 인덱스 위치에 갱신한다.</li>
+  <li>현재 인덱스와 값으 스택에 삽입한다.</li>
+  <li>2-5번 과정을 반복하며 numbers 순회가 끝나고 스택에 값이 남아있다면 뒷 큰수가 되지 못하는 수가 있는 것이기 때문에, 스택이 빌때까지 값을 추출하며 answer 배열의</li>
+</ol>
+
+<p>순회하면서 현재 값 (numbers[i])이 스택에 최상단 (stack.peek()) 값보다 크면 뒤에 있는 큰 수에 해당합니다.  해당 경우에 하위 스택 원소들도 탐색해 보면서 추가로 해당하는 원소가 있는지 판별 후 있다면 pop 해주면서 인덱스에 정답 값을 넣어줍니다.</p>
+
+<p>마지막으로 뒤에 있는 큰 수가 없는 케이스를 위해 스택이 남아있는 경우 -1로 채워줍니다.</p>
+
+<p><br /></p>
+
+<p>다음으로 문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<p><br /><br /></p>
+
+<h3 id="작성-코드">작성 코드</h3>
+<hr />
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+</pre></td><td class="rouge-code"><pre>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">// 1. numbers를 순회하면서 현재 원소와 뒤의 원소들과 비교하며 더 큰수가 있는지 확인한다.</span>
+        <span class="c1">// 2. 현재 원소보다 뒤에 큰 수가 있다면, 해당 수를 결과 배열의 같은 위치에 담는다.</span>
+        <span class="c1">// 3. numbers의 범위가 최대 1.000.000이기에 시간초과를 고려해야 한다. -&gt; O(n) 수준</span>
+        <span class="c1">// 4. 이때, Stack을 활용해 현재 원소와 스택의 정상값을 비교해가며 뒷 큰수를 확인한다.</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+
+        <span class="c1">// 스택은 [인덱스: numbers값] 형식으로 담는다.</span>
+        <span class="nc">Stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// 먼저 numbers의 첫번째 값을 담는다.</span>
+        <span class="n">st</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">0</span><span class="o">,</span> <span class="n">numbers</span><span class="o">[</span><span class="mi">0</span><span class="o">]});</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            
+            <span class="c1">// 현재 인덱스의 값</span>
+            <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            
+            <span class="c1">// 현재 값(num)이 이전 원소(스택의 정상값=st.peek()[1])보다 클 경우 뒷 큰수를 충족한다.</span>
+            <span class="k">while</span><span class="o">(!</span><span class="n">st</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="n">st</span><span class="o">.</span><span class="na">peek</span><span class="o">()[</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                <span class="kt">int</span><span class="o">[]</span> <span class="n">toBig</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+                <span class="n">answer</span><span class="o">[</span><span class="n">toBig</span><span class="o">[</span><span class="mi">0</span><span class="o">]]</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 현재 인덱스와 값을 스택에 담는다.</span>
+            <span class="n">st</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">i</span><span class="o">,</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]});</span>
+
+        <span class="o">}</span>
+
+        <span class="c1">// 뒷 큰수가 존재하지 않는 값들의 위치를 -1로 갱신한다.</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">st</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">st</span><span class="o">.</span><span class="na">pop</span><span class="o">()[</span><span class="mi">0</span><span class="o">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span>
+        
+        <span class="c1">// int[] numbers = new int[]{2, 3, 3, 5};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">9</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+
+        <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="회고">회고</h3>
+<p>-
+—</p>
+
+<p><br /></p>
+
+<h3 id="출처">출처</h3>
+<p>-
+—</p>
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://school.programmers.co.kr/learn/courses/30/lessons/154539">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

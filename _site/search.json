@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 뒤에 있는 큰 수 찾기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/240-post/",
+        "date"     : "2023-08-03 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 더 맵게",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

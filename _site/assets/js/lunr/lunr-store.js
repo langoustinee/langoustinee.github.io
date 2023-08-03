@@ -1432,4 +1432,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/239-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 뒤에 있는 큰 수 찾기",
+        "excerpt":"문제 풀이 이번 문제는 Stack(스택)을 활용해 시간복잡도를 줄여 풀 수 있는 문제이다. 아이디어 도출 스택을 사용하지 않고 이중 for문으로 뒷 큰수를 찾을 경우 numbers의 범위가 1,000,000이기에 시간초과가 발생한다. 시간복잡도를 O(n)으로 줄이기 위해 스택을 활용해야 한다. 필자의 경우 스택에 [인덱스, 값] 형태를 삽입하여 현재 값과 스택의 정상값을 비교하며 뒷 큰수를 찾도록...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/240-post/",
+        "teaser": null
       }]
