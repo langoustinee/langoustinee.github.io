@@ -1444,4 +1444,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/241-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 17219번 - 비밀번호 찾기",
+        "excerpt":"문제 풀이 이번 문제는 자료구조 중 하나인 HashMap을 이용해 간단히 풀 수 있다. 아이디어 도출 문제에서 요구한 대로 입출력 속도 향상을 위해 Scanner가 아닌 BufferedReader와 BufferedWriter를 사용하여 입출력 처리를 하였다. 문제 자체는 굉장히 쉽다. N만큼의 입력을 받으며 HashMap에 사이트와 비밀번호를 담는다. M만큼의 찾고자 하는 사이트 입력을 받으며 해당 사이트가 HashMap에...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/242-post/",
+        "teaser": null
       }]

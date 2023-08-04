@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-4) 17219번 - 비밀번호 찾기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/242-post/",
+        "date"     : "2023-08-04 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-3) 9375번 - 패션왕 신해빈",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
