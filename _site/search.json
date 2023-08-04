@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-3) 9375번 - 패션왕 신해빈",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/241-post/",
+        "date"     : "2023-08-04 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 뒤에 있는 큰 수 찾기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

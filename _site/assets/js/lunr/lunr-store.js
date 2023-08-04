@@ -1438,4 +1438,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/240-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 9375번 - 패션왕 신해빈",
+        "excerpt":"문제 풀이 이번 문제는 조합과 관련된 문제로 HashMap을 이용해 간단히 풀 수 있다. 아이디어 도출 문제의 예시만 잘 살펴봐도 어떻게 풀어야 할지 쉽게 파악할 수 있다. 예시를 보자. 문제의 요구사항을 보면 위에서 두어진 2 종류와 3개의 옷가지를 통해 알몸이 되지 않는 경우의 수를 구해야 한다고 한다. 경우의 수를 바로 구해보자....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/241-post/",
+        "teaser": null
       }]

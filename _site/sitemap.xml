@@ -961,6 +961,10 @@
 <lastmod>2023-08-03T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/java/241-post/</loc>
+<lastmod>2023-08-04T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/autoCommit/</loc>
 </url>
 <url>
@@ -1022,5 +1026,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page16/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page17/</loc>
 </url>
 </urlset>

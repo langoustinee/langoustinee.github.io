@@ -1,0 +1,177 @@
+I"!(<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 <strong>완전 탐색</strong>을 이용해 풀 수 있는 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>문제 그대로 고장난 버튼을 제외한 숫자 버튼으로 <strong>N 채널로 이동하기 위한 최소 버튼 클릭 횟수</strong>를 구해야 한다.</p>
+
+<p>어떻게 버튼 클릭 횟수를 구할 수 있을까? 예제를 살펴보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="mi">5457</span>
+<span class="mi">3</span>
+<span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span>
+<span class="n">누를</span> <span class="n">수</span> <span class="n">있는</span> <span class="n">리모콘</span> <span class="nl">번호:</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">9</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>5455 버튼까지 4번을 누른 후, 5457 버튼까지 +버튼을 2번 누르면 5457 채널로 이동할 수 있다. 이 때 버튼을 누른 횟수는 총 6번이다.</p>
+
+<p>또 다른 예시를 보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="mi">1555</span>
+<span class="mi">8</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">9</span>
+<span class="n">누를</span> <span class="n">수</span> <span class="n">있는</span> <span class="n">리모콘</span> <span class="nl">번호:</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">8</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>888 버튼까지 3번을 누른 후, 1555번 채널까지 +버튼을 667번 누르면 1555번 채널로 이동할 수 있다.</p>
+
+<p><br /></p>
+
+<p>결국 이와 같이 최소 버튼 클릭 횟수를 구할 아이디어는 다음과 같다.</p>
+
+<ol>
+  <li>이동할 채널(N)이 100이라면 현재 채널이 0이기에 0번을 출력한다.</li>
+  <li>이동할 채널(N)이 100이 아니라면, N의 범위만큼 완전탐색하며 최소로 클릭되는 횟수를 구한다.</li>
+  <li>N의 범위는 500,000이지만, 9를 제외한 모든 버튼이 고장나는 경우를 대비해 <strong>999,999까지 확장</strong>하여 연산한다.</li>
+  <li>N과 유사한 버튼까지 누른 후, +버튼이나 -버튼 횟수가 추가된 값과 비교해가며 최소 버튼 클릭 횟수를 구한다.</li>
+</ol>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+        
+        <span class="kt">int</span> <span class="no">T</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="no">T</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            
+            <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">hm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+            <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+            <span class="k">while</span><span class="o">(</span><span class="no">N</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+                <span class="nc">String</span> <span class="n">cloth_type</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">)[</span><span class="mi">1</span><span class="o">];</span>
+
+                <span class="cm">/**
+                 * 같은 종류의 옷이 hashMap에 존재한다면, 해당 종류의 값을 1씩 증가시킨다.
+                 * 같은 종류의 옷이 없다면 값에 1을 삽입한다.
+                 */</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">hm</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">cloth_type</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">hm</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cloth_type</span><span class="o">,</span> <span class="n">hm</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">cloth_type</span><span class="o">,</span> <span class="mi">0</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+                <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                    <span class="n">hm</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cloth_type</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="o">}</span>
+
+            <span class="o">}</span>
+            
+            <span class="c1">// 조합을 구할 변수</span>
+            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+            <span class="c1">// 안 입는 경ㅜ를 고해 종류별로 경우의 수ㄹ 1씩 더해야 한다.</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span> <span class="o">:</span> <span class="n">hm</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">result</span> <span class="o">*=</span> <span class="o">(</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// 모두 안입은 경우의 수 1가지를 감소시킨다.</span>
+            <span class="n">result</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span>
+
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">result</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="o">}</span>
+        
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/9375">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
