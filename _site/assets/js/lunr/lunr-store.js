@@ -1456,4 +1456,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/243-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 21736번 - 헌내기는 친구가 필요해",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색 BFS를 이용해 간단하게 풀 수 있다. 아이디어 도출 너비 우선 탐색인 BFS를 잘 숙지하고 있다면 쉽게 도연이가 사람들과 만난 횟수를 구할 수 있을 것이다. 문제풀이를 위한 아이디어는 다음과 같다. 지도를 입력받고 BFS 탐색을 수행한다. BFS로 탐색하면서 벽(X)이 아닌 빈공간(0)과 사람(P)일 경우만 상,하,좌,우 탐색을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/244-post/",
+        "teaser": null
       }]
