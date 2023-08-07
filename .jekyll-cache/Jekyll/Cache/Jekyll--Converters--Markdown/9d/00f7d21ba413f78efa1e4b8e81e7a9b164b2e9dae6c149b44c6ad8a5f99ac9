@@ -1,0 +1,179 @@
+I"�)<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 얼핏 보면 그리디 알고리즘과 헷갈리지만, <strong>동적계획법 DP</strong>를 이용해 풀어야 한다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="n">개</span>
+<span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="n">개</span>
+<span class="mi">3</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">3</span><span class="n">개</span>
+<span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="n">개</span>
+<span class="mi">5</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="n">개</span>
+<span class="mi">6</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">3</span><span class="n">개</span>
+<span class="mi">7</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">4</span><span class="n">개</span>
+<span class="mi">8</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="n">개</span>
+<span class="mi">9</span> <span class="o">-&gt;</span> <span class="mi">3</span><span class="o">^</span><span class="mi">3</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="n">개</span>
+<span class="o">...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위처럼 1부터 9까지 살펴보면, N을 만들 수 있는 최소 제곱수의 개수의 패턴을 도출할 수 있다. <strong>N보다 작은 제곱수들 중에서 가장 작은 값을 가지는 D[N-제곱수] 값에 1을 더해</strong>주면 된다.</p>
+
+<p>즉 이를 통해 도출한 점화식은 다음과 같다.</p>
+
+<blockquote>
+  <p>점화식: <code class="language-plaintext highlighter-rouge">D[i] = min(D[i-j*j])+1</code></p>
+</blockquote>
+
+<p>그러면 문제풀이를 위한 아이디어를 그려보자.</p>
+
+<ol>
+  <li>DP 테이블에 D[0]을 0으로, D[1]을 1인 초기값으로 설정한다.</li>
+  <li></li>
+</ol>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="c1">// DP 테이블 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="no">D</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+
+            <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+            <span class="c1">// DP 테이블 초기화</span>
+            <span class="no">D</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+
+            <span class="c1">// 초기값 설정</span>
+            <span class="no">D</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="no">D</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+            <span class="c1">// DP 함수 실행</span>
+            <span class="no">DP</span><span class="o">(</span><span class="no">N</span><span class="o">);</span>
+            
+            <span class="c1">// DP 테이블의 N번째 값 출력</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="no">D</span><span class="o">[</span><span class="no">N</span><span class="o">]+</span><span class="s">"\n"</span><span class="o">);</span>
+            
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * DP 함수
+     * 점화식: D[i] = min(D[i-j*j])+1
+     */</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">DP</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="c1">// 2부터 N까지 완전탐색으로 순회한다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            
+            <span class="c1">// 최솟값을 비교하기 위한 변수</span>
+            <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+            
+            <span class="c1">// 1. i보다 작은 제곱수를 뺄셈한 DP 테이블의 값 중 최솟값을 구한다.</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">*</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">min</span><span class="o">,</span> <span class="no">D</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">*</span> <span class="n">j</span><span class="o">]);</span>  
+            <span class="o">}</span>
+            
+            <span class="c1">// 2. D[i]에 1을 더해준다.</span>
+            <span class="no">D</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">min</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/17219">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

@@ -1450,4 +1450,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/242-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 17626번 - Four Squares",
+        "excerpt":"문제 풀이 이번 문제는 얼핏 보면 그리디 알고리즘과 헷갈리지만, 동적계획법 DP를 이용해 풀어야 한다. 아이디어 도출 처음엔 무작정 제곱수가 큰 것부터 접근해나가려 했지만 N=12일 경우 2^2 + 2^2 + 2^2의 경우도 고려해야 하기 때문에 그리디 알고리즘이 아닌 DP로 풀어야 함을 알게 되었다. DP를 이용해 부분 문제를 구해주면, 결국 최적해를 구할...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/243-post/",
+        "teaser": null
       }]
