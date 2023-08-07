@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-5) 16928번 - 뱀과 사다리 게임",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/245-post/",
+        "date"     : "2023-08-07 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-2) 21736번 - 헌내기는 친구가 필요해",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

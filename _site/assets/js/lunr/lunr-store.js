@@ -1462,4 +1462,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/244-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 16928번 - 뱀과 사다리 게임",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색 BFS를 이용해 간단하게 풀 수 있다. 아이디어 도출 10x10 크기의 게임 보드판에서 주사위를 던져 나오는 눈의 숫자만큼 이동하면서 사다리가 나오면 넘어가고, 뱀이 나오면 돌아오면서 100번째 칸에 도달했을 때 던진 주사위 횟수를 구해야 한다. 필자는 게임 보드판을 만들 때 상,하,좌,우 탐색 이동이 없어서, 2차원...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/245-post/",
+        "teaser": null
       }]
