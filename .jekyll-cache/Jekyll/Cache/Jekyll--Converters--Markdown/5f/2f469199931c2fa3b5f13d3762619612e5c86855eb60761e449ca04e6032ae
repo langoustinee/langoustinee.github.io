@@ -1,0 +1,419 @@
+I"Zh<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 문제명인 <strong>이중 우선순위 큐를 이용하면 시간 초과가 발생</strong>하기에 <strong>TreeMap 자료구조</strong>를 이용해 풀어야 한다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>별 다른 생각없이 최소 힙, 최대 힙을 구현한 2개의 우선순위 큐를 이용하여 풀었지만, <strong>큐의 삭제 연산 remove() 메서드를 수행할 때 시간복잡도가 O(n)이기에 시간초과가 발생</strong>했다.</p>
+
+<p>이를 위해, 시간 초과가 발생하는 큐를 사용하는 것이 아니라 원소 추가 및 삭제에 <strong>O(logN)의 시간복잡도를 가지는 TreeMap</strong>를 이용하여 풀게 되었다. TreeMap을 활용해 풀 수 있는 아이디어를 다음과 같이 생각해보았다.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">I N</code> 명령일 경우, N을 TreeMap에 Key로, N의 빈도수(개수)를 Value로 삽입한다.</li>
+  <li>D 명령일 경우 TreeMap이 비어있다면 D 연산을 무시하고 넘어간다.</li>
+  <li><code class="language-plaintext highlighter-rouge">D 1</code> 명령일 경우,</li>
+  <li><code class="language-plaintext highlighter-rouge">D -1</code> 명령일 경우,</li>
+</ol>
+
+<blockquote>
+  <p>TreeMap 자료구조는 오름차순 정렬이 기본으로 설정되어있다. firstKey() 메서드와 lastKey() 메서드가 존재한다. firstKey() 메서드는 Map의 첫번째 키를, lastKey() 메서드는 Map의 마지막 키를 가져올 수 있다.</p>
+</blockquote>
+
+<p>문제는 삭제를 할 때, key 값들 중 최소 또는 최대 값을 찾아서 삭제를 해야 한다는 점입니다. 이런 불편함을 해결할 간편한 방법이 있습니다.
+TreeMap의 메소드 중에는 firstKey()와 lastKey()라는 것이 존재합니다. TreeMap은 데이터가 저장될 때, 오름차순 정렬이 기본적으로 제공되기에 이러한 메소드가 존재할 수 있습니다.
+즉, 데이터를 삭제할 때 “D -1”이 입력된다면 firstKey()를 삭제하고, “D 1”이 입력된다면 lastKey()를 삭제하면 될 것입니다.</p>
+
+<h4 id="--최소-힙-최대-힙-우선순위-큐-2개를-이용한-풀이시간초과-발생">- 최소 힙, 최대 힙 우선순위 큐 2개를 이용한 풀이(시간초과 발생)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="c1">// 1. 이중 우선순위 큐를 구현하기 위해 최소 힙, 최대 힙인 우선순위 큐 2개를 활용한다.</span>
+        <span class="c1">// 2. I 명령이면 N을 삽입하고, D 1 명령이면 큐의 최댓값 제거, D -1 명령이면 큐의 최솟값을 제거한다.</span>
+        <span class="c1">// 3. D 명령 수행시 큐가 비었다면 무시하고 진행한다.</span>
+        <span class="c1">// 4. 큐에 저장되는 정수의 범위는 -2^31 부터 2^31까지 이기에 long형 타입을 사용해야 한다.</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+            
+                <span class="kt">int</span> <span class="no">T</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+                <span class="k">while</span><span class="o">(</span><span class="no">T</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    
+                    <span class="c1">// 최솟값을 기준으로 정렬할 최소 힙 우선순위 큐 선언</span>
+                    <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">min_q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+                    
+                    <span class="c1">// 최댓값을 기준으로 정렬할 최대 힙 우선순위 큐 선언</span>
+                    <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;</span> <span class="n">max_q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;()</span> <span class="o">{</span>
+                        <span class="nd">@Override</span>
+                        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Long</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">Long</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="k">if</span><span class="o">(</span><span class="n">o1</span> <span class="o">&gt;</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                            <span class="o">}</span>
+                            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">o1</span> <span class="o">&lt;</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+                            <span class="o">}</span>
+                            <span class="k">else</span> <span class="o">{</span>
+                                <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                    <span class="o">});</span>
+
+                    <span class="kt">int</span> <span class="no">K</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                    
+                    <span class="k">while</span><span class="o">(</span><span class="no">K</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                        
+                        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                        <span class="nc">String</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span>
+                        <span class="kt">long</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+                        <span class="c1">// cmd == I</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"I"</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">min_q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="no">N</span><span class="o">);</span>
+                            <span class="n">max_q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="no">N</span><span class="o">);</span>
+                        <span class="o">}</span> 
+                        <span class="c1">// cmd == D</span>
+                        <span class="k">else</span> <span class="o">{</span>
+                            <span class="c1">// 최댓값 제거일 경우 최대 힙(max_q)에서만 제거</span>
+                            <span class="k">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="k">if</span><span class="o">(</span><span class="n">max_q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">continue</span><span class="o">;</span>
+                                <span class="kt">long</span> <span class="n">target</span> <span class="o">=</span> <span class="n">max_q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                                <span class="n">min_q</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+                            <span class="o">}</span> 
+                            <span class="c1">// 최솟값 제거일 경우 최소 힙(min_q)에서만 제거</span>
+                            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="k">if</span><span class="o">(</span><span class="n">min_q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">continue</span><span class="o">;</span>
+                                <span class="kt">long</span> <span class="n">target</span> <span class="o">=</span> <span class="n">min_q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                                <span class="n">max_q</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+
+                    <span class="o">}</span>
+
+                    <span class="cm">/**
+                     * 큐가 비어있다면 "EMPTY"를 출력하고
+                     * 비어있지 않다면, 최댓값과 최솟값을 공백을 두고 출력한다.
+                     */</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">min_q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">max_q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"EMPTY"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">max_q</span><span class="o">.</span><span class="na">peek</span><span class="o">()+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">min_q</span><span class="o">.</span><span class="na">peek</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+                    <span class="o">}</span>
+
+                <span class="o">}</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="c1">// 1. 이중 우선순위 큐를 구현하기 위해 최소 힙, 최대 힙인 우선순위 큐 2개를 활용한다.</span>
+        <span class="c1">// 2. I 명령이면 N을 삽입하고, D 1 명령이면 큐의 최댓값 제거, D -1 명령이면 큐의 최솟값을 제거한다.</span>
+        <span class="c1">// 3. D 명령 수행시 큐가 비었다면 무시하고 진행한다.</span>
+        <span class="c1">// 4. 큐에 저장되는 정수의 범위는 -2^31 부터 2^31까지 이기에 long형 타입을 사용해야 한다.</span>
+        <span class="c1">// 5. D 명령 수행시 큐 remove() 연산을 수행하게 되면 시간초과가 발생한다.</span>
+        <span class="c1">// 6. 원소의 추가, 삭제 이후에 정렬 상태를 유지하는데 O(logN)의 시간복잡도를 가지는 TreeMap 자료구조를 이용해 풀어야 한다.</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+            
+                <span class="kt">int</span> <span class="no">T</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+                <span class="k">while</span><span class="o">(</span><span class="no">T</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+
+                    <span class="c1">// 최소힙과 최대힙의 원소와 개수를 담을 TreeMap 선언</span>
+                    <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">tm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeMap</span><span class="o">&lt;&gt;();</span>
+
+                    <span class="kt">int</span> <span class="no">K</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                    
+                    <span class="k">while</span><span class="o">(</span><span class="no">K</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                        
+                        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                        <span class="nc">String</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span>
+                        <span class="kt">long</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+                        <span class="c1">// cmd == I</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"I"</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">tm</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="n">tm</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="no">N</span><span class="o">,</span> <span class="mi">0</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+                        <span class="o">}</span> 
+                        <span class="c1">// cmd == D</span>
+                        <span class="k">else</span> <span class="o">{</span>
+                            
+                            <span class="c1">// TreeMap이 비어있다면 D 연산은 무시한다.</span>
+                            <span class="k">if</span><span class="o">(</span><span class="n">tm</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">continue</span><span class="o">;</span>
+                            
+                            <span class="c1">// 최댓값 제거</span>
+                            <span class="k">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+
+                                <span class="c1">// 최댓값 key</span>
+                                <span class="kt">long</span> <span class="n">last</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="na">lastKey</span><span class="o">();</span>
+                                
+                                <span class="c1">// 1개밖에 없다면 Map에서 제거</span>
+                                <span class="k">if</span><span class="o">(</span><span class="n">tm</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">last</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="n">tm</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">last</span><span class="o">);</span>
+                                    <span class="k">continue</span><span class="o">;</span>
+                                <span class="o">}</span>
+                                
+                                <span class="c1">// 2개 이상이라면 개수 1개 차감</span>
+                                <span class="n">tm</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">last</span><span class="o">,</span> <span class="n">tm</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">last</span><span class="o">)-</span><span class="mi">1</span><span class="o">);</span>
+
+                            <span class="o">}</span> 
+                            <span class="c1">// 최솟값 제거</span>
+                            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="no">N</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                                
+                                <span class="c1">// 최솟값 key</span>
+                                <span class="kt">long</span> <span class="n">first</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="na">firstKey</span><span class="o">();</span>
+                                
+                                <span class="c1">// 1개밖에 없다면 Map에서 제거</span>
+                                <span class="k">if</span><span class="o">(</span><span class="n">tm</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">first</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="n">tm</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+                                    <span class="k">continue</span><span class="o">;</span>
+                                <span class="o">}</span>
+
+                                <span class="c1">// 2개 이상이라면 개수 1개 차감</span>
+                                <span class="n">tm</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">first</span><span class="o">,</span> <span class="n">tm</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">first</span><span class="o">)-</span><span class="mi">1</span><span class="o">);</span>
+
+
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+
+                    <span class="o">}</span>
+
+                    <span class="cm">/**
+                     * 큐가 비어있다면 "EMPTY"를 출력하고
+                     * 비어있지 않다면, 최댓값과 최솟값을 공백을 두고 출력한다.
+                     */</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">tm</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"EMPTY"</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">tm</span><span class="o">.</span><span class="na">lastKey</span><span class="o">()+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">tm</span><span class="o">.</span><span class="na">firstKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+                    <span class="o">}</span>
+
+                <span class="o">}</span>
+                
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/7662">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
