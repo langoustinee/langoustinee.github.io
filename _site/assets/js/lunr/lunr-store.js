@@ -1468,4 +1468,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/245-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 7662번 - 이중 우선순위 큐",
+        "excerpt":"문제 풀이 이번 문제는 문제명인 이중 우선순위 큐를 이용하면 시간 초과가 발생하기에 TreeMap 자료구조를 이용해 풀어야 한다. 아이디어 도출 별 다른 생각없이 최소 힙, 최대 힙을 구현한 2개의 우선순위 큐를 이용하여 풀었지만, 큐의 삭제 연산 remove() 메서드를 수행할 때 시간복잡도가 O(n)이기에 시간초과가 발생했다. 최소 힙, 최대 힙 우선순위 큐 2개를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/246-post/",
+        "teaser": null
       }]
