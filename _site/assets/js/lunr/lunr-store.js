@@ -1474,4 +1474,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/246-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 파일명 정렬",
+        "excerpt":"문제 풀이 이번 문제는 주어진 배열을 조건별로 정렬하여 풀 수 있는 문제이다. 아이디어 도출 문제에서 요구하는 정렬 기준에 따라서 정렬을 해야한다. 필자는 Java를 이용해 풀기 때문에 Comparator의 compare() 메서드를 재정의하여 커스텀 정렬을 구현하였다. 문제 풀이를 위한 아이디어는 다음과 같다. files 배열을 정렬하는 데, 파일명 별로 HEAD, NUMBER, TAIL를 분리한다. HEAD의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/247-post/",
+        "teaser": null
       }]
