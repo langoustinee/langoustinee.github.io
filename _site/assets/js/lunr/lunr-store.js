@@ -1480,4 +1480,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/247-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 6064번 - 카잉 달력",
+        "excerpt":"문제 풀이 이번 문제는 문제의 요구사항을 통해 두 수의 관계를 고려하여 나머지 연산을 활용해 풀어야 한다. 아이디어 도출 문제 요구사항을 다시 살펴보자. 만일 x &lt; M 이면 x’ = x + 1이고, 그렇지 않으면 x’ = 1이다. 같은 방식으로 만일 y &lt; N이면 y’ = y + 1이고, 그렇지 않으면...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/248-post/",
+        "teaser": null
       }]
