@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-10T23:44:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-1) 6064번 - 카잉 달력</title><link href="http://localhost:4000/java/248-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-1) 6064번 - 카잉 달력" /><published>2023-08-10T00:00:00+09:00</published><updated>2023-08-10T00:00:00+09:00</updated><id>http://localhost:4000/java/248-post</id><content type="html" xml:base="http://localhost:4000/java/248-post/"><![CDATA[<p><br /><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-10T23:52:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lango’s DevLog</title><subtitle>developer</subtitle><author><name>lango</name></author><entry><title type="html">[Java] 백준(실버-1) 6064번 - 카잉 달력</title><link href="http://localhost:4000/java/248-post/" rel="alternate" type="text/html" title="[Java] 백준(실버-1) 6064번 - 카잉 달력" /><published>2023-08-10T00:00:00+09:00</published><updated>2023-08-10T00:00:00+09:00</updated><id>http://localhost:4000/java/248-post</id><content type="html" xml:base="http://localhost:4000/java/248-post/"><![CDATA[<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
@@ -140,6 +140,9 @@
 58
 59
 60
+61
+62
+63
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -164,9 +167,12 @@
                     <span class="c1">// 최소 공배수 구해오기</span>
                     <span class="kt">int</span> <span class="n">lcm</span> <span class="o">=</span> <span class="no">LCM</span><span class="o">(</span><span class="no">M</span><span class="o">,</span> <span class="no">N</span><span class="o">);</span>
 
-                    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                    <span class="c1">// while 조건을 충족하지 않아 구할 수 없는 해라면 -1을 출력하기 위해 -1로 초기화한다.</span>
                     <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 
+                    <span class="c1">// 최소공배수의 범위를 벗어나면 구할 수 없는 해이다.</span>
+                    <span class="c1">// x값과 y값을 N으로 나눈 나머지가 y인지 확인하여 해를 구한다.</span>
+                    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
                     <span class="k">while</span><span class="o">((</span><span class="n">cnt</span> <span class="o">*</span> <span class="no">M</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">lcm</span><span class="o">)</span> <span class="o">{</span>
                         <span class="k">if</span><span class="o">(((</span><span class="n">cnt</span> <span class="o">*</span> <span class="no">M</span><span class="o">)</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">)</span> <span class="o">%</span> <span class="no">N</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">cnt</span> <span class="o">*</span> <span class="no">M</span><span class="o">)</span> <span class="o">+</span> <span class="n">x</span><span class="o">;</span>
