@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-3) 15652번 - N과 M (4)",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/250-post/",
+        "date"     : "2023-08-11 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-3) 15651번 - N과 M (3)",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

@@ -1492,4 +1492,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/249-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 15652번 - N과 M (4)",
+        "excerpt":"문제 풀이 이번 문제는 유사한 유형인 N과 M (2) 문제처럼 백트래킹을 이용해 풀 수 있다. 아이디어 도출 오름차순 수열을 유지해야 하는 N과 M (2) 문제와 유사해보이지만, 이번 문제에서는 비내림차순으로 중복 여부가 허용됨을 고려해야 한다. 재귀함수를 어떻게 짜야 할까? 여기서도 깊이를 의미하는 depth와 함께 현재 위치를 의미하는 at을 함께 사용해야 한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/250-post/",
+        "teaser": null
       }]
