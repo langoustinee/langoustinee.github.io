@@ -1498,4 +1498,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/250-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 9663번 - N-Queen",
+        "excerpt":"문제 풀이 이 문제는 백트래킹 유횽의 대표 문제 중 하나이다. 아이디어 도출 이 문제에서는 아래 두가지를 유심히 살펴봐야 한다. 재귀함수를 어떻게 호출할까? 퀸을 놓을 수 있는지 어떻게 확인할까? 예시를 살펴보자. 1 2 3 4 5 6 7 8 9 10 11 12 13 // N = 4일 때 경우의 수는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/251-post/",
+        "teaser": null
       }]

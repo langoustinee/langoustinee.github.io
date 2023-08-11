@@ -1,0 +1,184 @@
+I"�"<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이 문제는 <strong>백트래킹</strong> 유횽의 대표 문제 중 하나이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="c1">// 퀸이 서로 공격할 수 없도록 배치하는 모든 경우의 수를 구해야 한다.</span>
+
+    <span class="c1">// 게임판의 크기</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">N</span><span class="o">;</span>
+
+    <span class="c1">// 퀸을 놓을 배열 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">map</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">result</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+            
+                <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+                <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">];</span>
+
+                <span class="n">dfs</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">result</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+                
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">depth</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="c1">// 깊이가 N이 되면 즉 행을 다 채우면 카운트 1 증가시키고 재귀 종료</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">depth</span> <span class="o">==</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">++;</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 1부터 N까지의 열을 탐색하며 i번째 행에 퀸을 놓는다.</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            
+            <span class="c1">// i열 depth행에 퀸을 놓는다.</span>
+            <span class="n">map</span><span class="o">[</span><span class="n">depth</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+
+            <span class="c1">// 현재 열에서 i번째 행에 퀸을 놓을 수 있는지 확인하여 재귀 호출한다.</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">checkQueen</span><span class="o">(</span><span class="n">depth</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="c1">// 현재 위치가 퀸을 놓을 수 있는지 확인할 함수</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">checkQueen</span><span class="o">(</span><span class="kt">int</span> <span class="n">col</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">col</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            
+            <span class="c1">// 해당 열의 행과 i열의 행이 일치할 경우</span>
+            <span class="c1">// 즉, 같은 행에 퀸이 놓여있을 경우는 퀸을 놓을 수 없기에 false</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">col</span><span class="o">]</span> <span class="o">==</span> <span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 대각선 상에 퀸이 놓여있을 경우 불가하기에 false</span>
+            <span class="c1">// 열의 차와 행의 차가 같은 경우는 대각선에 놓여 있다는 뜻이다.</span>
+            <span class="c1">// col - i: 열의 차</span>
+            <span class="c1">// map[col] - map[i]: 행의 차</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">col</span> <span class="o">-</span> <span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">map</span><span class="o">[</span><span class="n">col</span><span class="o">]</span> <span class="o">-</span> <span class="n">map</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/9663">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
