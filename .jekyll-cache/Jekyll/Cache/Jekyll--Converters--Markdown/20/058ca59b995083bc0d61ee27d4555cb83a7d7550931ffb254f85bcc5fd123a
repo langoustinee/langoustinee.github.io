@@ -1,10 +1,10 @@
-I"|6<p><br /><br /></p>
+I"�7<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
 <hr />
 
-<p>이번 문제는 문제의 요구사항을 통해 두 수의 관계를 고려하여 나머지 연산을 활용해 풀어야 한다.</p>
+<p>이번 문제는 유사한 유형인 <a href="https://langoustinee.github.io/java/193-post/">N과 M (1)</a> 문제처럼 <strong>백트래킹</strong>을 이용해 풀 수 있다. 사실 저 문제보다 더 쉽게 풀 수 있다.</p>
 
 <p><br /></p>
 
@@ -69,7 +69,9 @@
 <p>문제 풀이를 위한 아이디어는 다음과 같다.</p>
 
 <ol>
-  <li></li>
+  <li>M과 N의 최소공배수를 구하여 최소공배수까지 순회한다.</li>
+  <li>순회하며 x값을 기준으로 y값도 N으로 나눈 나머지가 y가 된다면 해를 출력한다.</li>
+  <li>순회하며 2번 기준이 충족되지 않는다면 구할 수 없는 해이기에 -1을 출력한다.</li>
 </ol>
 
 <p><br /></p>
@@ -143,8 +145,6 @@
 61
 62
 63
-64
-65
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -169,8 +169,6 @@
                     <span class="c1">// 최소 공배수 구해오기</span>
                     <span class="kt">int</span> <span class="n">lcm</span> <span class="o">=</span> <span class="no">LCM</span><span class="o">(</span><span class="no">M</span><span class="o">,</span> <span class="no">N</span><span class="o">);</span>
 
-                    
-                    
                     <span class="c1">// while 조건을 충족하지 않아 구할 수 없는 해라면 -1을 출력하기 위해 -1로 초기화한다.</span>
                     <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 

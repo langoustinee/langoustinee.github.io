@@ -1486,4 +1486,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/248-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-3) 15651번 - N과 M (3)",
+        "excerpt":"문제 풀이 이번 문제는 유사한 유형인 N과 M (1) 문제처럼 백트래킹을 이용해 풀 수 있다. 사실 저 문제보다 더 쉽게 풀 수 있다. 아이디어 도출 1~N까지 길이가 M인 수열을 선택해야 한다는 조건은 N과 M (1) 문제와 동일하다. 그런데, 이번 문제에서는 수열의 중복 여부가 허용되기 때문에 더 쉽다고 볼 수 있다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/249-post/",
+        "teaser": null
       }]

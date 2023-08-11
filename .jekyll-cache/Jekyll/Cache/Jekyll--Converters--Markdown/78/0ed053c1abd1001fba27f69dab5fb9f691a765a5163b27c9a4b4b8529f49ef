@@ -1,14 +1,78 @@
-I"w"<p><br /><br /></p>
+I"�7<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
 <hr />
 
-<p>이번 문제는 문제의 요구사항을 통해 두 수의 관계를 고려하여 나머지 연산을 활용해 풀어야 한다.</p>
+<p>이번 문제는 유사한 유형인 <a href="https://langoustinee.github.io/java/193-post/">N과 M (1)</a> 문제처럼 백트래킹을 이용해 풀 수 있다.</p>
 
 <p><br /></p>
 
 <h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>문제 요구사항을 다시 살펴보자.</p>
+
+<blockquote>
+  <p>만일 x &lt; M 이면 x’ = x + 1이고, 그렇지 않으면 x’ = 1이다. 같은 방식으로 만일 y &lt; N이면 y’ = y + 1이고, 그렇지 않으면 y’ = 1이다.</p>
+</blockquote>
+
+<p>그렇다면 예를 들어보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// &lt;M, N&gt;이 &lt;10, 12&gt;일 때</span>
+<span class="mi">1</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">&gt;</span>
+<span class="mi">2</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="mi">10</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">&gt;</span>
+<span class="mi">11</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">,</span> <span class="mi">11</span><span class="o">&gt;</span>
+<span class="mi">12</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">,</span> <span class="mi">12</span><span class="o">&gt;</span>
+<span class="mi">13</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위처럼 x가 M, y가 N에 도달하는 순간 1로 변경된다.</p>
+
+<blockquote>
+  <p>여기서 완전탐색을 통해 하나씩 모두 계산할 경우 O(nm)의 시간복잡도를 가지기에 시간초과가 발생할 수 있다.</p>
+</blockquote>
+
+<p>문제를 풀기 위한 아이디어는 바로 <strong>나머지 연산</strong>에 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// &lt;10, 12&gt;</span>
+<span class="mi">1</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">&gt;</span>
+<span class="mi">2</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">&gt;</span>
+<span class="mi">3</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="mi">13</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">3</span><span class="o">,</span> <span class="mi">1</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="mi">23</span><span class="n">번째</span> <span class="n">해</span> <span class="o">:</span> <span class="o">&lt;</span><span class="mi">3</span><span class="o">,</span> <span class="mi">11</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>3, 13, 23번째를 보면 M의 배수에서 3만큼 더한 값을 넘어야 3이 나오게 된다. 시간초과를 고려해 모든 경우를 다 구하며 계산할 순 없기 때문에, <strong>x값을 기준으로 y값을 함께 N으로 나눈 나머지가 y가 나오는지 확인</strong>하면 된다.</p>
+
+<p>결국, 구할 수 있는 최대 범위는 M과 N의 최소공배수인데 이를 초과하는 경우는 표현될 수 있는 해가 없다는 것이기에 -1로 만들면 된다.</p>
+
+<p>문제 풀이를 위한 아이디어는 다음과 같다.</p>
+
+<ol>
+  <li>M과 N의 최소공배수를 구하여 최소공배수까지 순회한다.</li>
+  <li>순회하며 x값을 기준으로 y값도 N으로 나눈 나머지가 y가 된다면 해를 출력한다.</li>
+  <li>순회하며 2번 기준이 충족되지 않는다면 구할 수 없는 해이기에 -1을 출력한다.</li>
+</ol>
 
 <p><br /></p>
 
@@ -78,6 +142,9 @@
 58
 59
 60
+61
+62
+63
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -102,9 +169,12 @@
                     <span class="c1">// 최소 공배수 구해오기</span>
                     <span class="kt">int</span> <span class="n">lcm</span> <span class="o">=</span> <span class="no">LCM</span><span class="o">(</span><span class="no">M</span><span class="o">,</span> <span class="no">N</span><span class="o">);</span>
 
-                    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                    <span class="c1">// while 조건을 충족하지 않아 구할 수 없는 해라면 -1을 출력하기 위해 -1로 초기화한다.</span>
                     <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
 
+                    <span class="c1">// 최소공배수의 범위를 벗어나면 구할 수 없는 해이다.</span>
+                    <span class="c1">// x값과 y값을 N으로 나눈 나머지가 y인지 확인하여 해를 구한다.</span>
+                    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
                     <span class="k">while</span><span class="o">((</span><span class="n">cnt</span> <span class="o">*</span> <span class="no">M</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">lcm</span><span class="o">)</span> <span class="o">{</span>
                         <span class="k">if</span><span class="o">(((</span><span class="n">cnt</span> <span class="o">*</span> <span class="no">M</span><span class="o">)</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">)</span> <span class="o">%</span> <span class="no">N</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">cnt</span> <span class="o">*</span> <span class="no">M</span><span class="o">)</span> <span class="o">+</span> <span class="n">x</span><span class="o">;</span>
