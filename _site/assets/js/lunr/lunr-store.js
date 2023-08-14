@@ -1510,4 +1510,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/252-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 프렌즈 4블록",
+        "excerpt":"문제 풀이 이번 문제는 문제에서 요구한 대로 구현하기만 하면 되는 문제이다. 아이디어 도출 문제의 요구사항대로 정리하면 아이디어는 간단하다. 2X2 블록을 체크한다. 체크된 2x2 블록을 제거한다. 블록의 제거는 ‘#’으로 치환하는 것으로 한다. 블록을 떨어뜨린다. 제거할 블록이 없을 때까지 1-3번 과정을 반복한다. 2X2 블록을 체크하고 제거하는 것은 크게 어렵지 않았지만, 블록을 떨어뜨리는(윗블록과...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/253-post/",
+        "teaser": null
       }]
