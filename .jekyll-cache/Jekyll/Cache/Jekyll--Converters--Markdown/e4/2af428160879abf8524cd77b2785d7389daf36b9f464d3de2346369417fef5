@@ -1,0 +1,259 @@
+I"�B<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이 문제는 재귀를 통한 <strong>백트래킹</strong> 유형으로 풀 수 있는 문제 중 하나이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>N이 4일 때, 즉 4명의 사람이 있을 경우 2팀으로 나누어 조합을 톨해 경우의 수를 구해야 한다. 그 경우의 수는 다음과 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="o">[(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">),</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)],</span>
+<span class="o">[(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">)],</span>
+<span class="o">[(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이를 통해 구할 수 있는 스타트 팀과 링크 팀의 능력치를 다음과 같이 구할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="o">[</span><span class="mi">5</span><span class="o">(</span><span class="no">S12</span> <span class="o">+</span> <span class="no">S21</span><span class="o">),</span> <span class="mi">7</span><span class="o">(</span><span class="no">S34</span><span class="o">,</span> <span class="no">S43</span><span class="o">)]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">,</span>
+<span class="o">[</span><span class="mi">9</span><span class="o">(</span><span class="no">S13</span><span class="o">,</span> <span class="no">S31</span><span class="o">),</span> <span class="mi">10</span><span class="o">(</span><span class="no">S24</span><span class="o">,</span> <span class="no">S42</span><span class="o">)]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">,</span>
+<span class="o">[</span><span class="mi">6</span><span class="o">(</span><span class="no">S14</span><span class="o">,</span> <span class="no">S41</span><span class="o">),</span> <span class="mi">6</span><span class="o">(</span><span class="no">S23</span><span class="o">,</span> <span class="no">S32</span><span class="o">)]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위 조합에서 팀 간의 점수 차가 가장 낮은 방법은 1번과 4번이 한 팀, 2번과 3번이 한 팀이었을 때이다! 이와 같이 모든 조합의 경우의 수를 탐색해가며 <strong>두 팀 간 능력치의 차가 최솟값이 되는 조합</strong> 방법을 찾으면 된다.</p>
+
+<p>문제풀이를 위한 아이디어는 다음과 같다.</p>
+
+<ol>
+  <li>N/2 만큼 사람을 구분하여 팀을 나누기 때문에, 재귀 호출을 하며 재귀의 깊이가 N/2가 되면 종료한다.</li>
+  <li></li>
+</ol>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="c1">// 방문배열과 입력배열 선언</span>
+    <span class="kd">static</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">arr</span><span class="o">;</span>    
+
+    <span class="c1">// 배열의 크기 N 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">N</span><span class="o">;</span>
+
+    <span class="c1">// 최솟값을 담을 변수 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">min</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+            
+                <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+                <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="no">N</span><span class="o">];</span>
+                <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="no">N</span><span class="o">];</span>
+
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+
+                <span class="c1">// 최솟값 갱신을 위한 min 초기화.</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+
+                <span class="c1">// dfs 함수 호출</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">min</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * idx: 인덱스
+     * depth: 재귀의 깊이, 조합 개수
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">idx</span><span class="o">,</span> <span class="kt">int</span> <span class="n">depth</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">// N/2 번만큼 반복후 종료한다.</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">depth</span> <span class="o">==</span> <span class="no">N</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+            
+            <span class="c1">// 스타트 팀과 링크 팀의 점수를 구하기 위한 초기화.</span>
+            <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">link</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+            <span class="c1">// 방문한 팀과 방문하지 않은 팀을 나누어 팀의 점수를 구하고 최솟값을 찾는다.</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+
+                    <span class="c1">// i번째와 j번째 사람이 true라면, start team이다.</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">start</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+                        <span class="n">start</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+                    <span class="o">}</span>
+                    <span class="c1">// i번째와 j번째 사람이 fals라면, link team이다.</span>
+                    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="n">visited</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">link</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+                        <span class="n">link</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">];</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 두 팀의 점수 차이 절댓값을 구한다.</span>
+            <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">start</span> <span class="o">-</span> <span class="n">link</span><span class="o">);</span>
+
+            <span class="c1">// 만약 두 팀의 점수 차가 0이라면 가장 최솟값이기에 바로 죵료한다.</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+            
+            <span class="n">min</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">min</span><span class="o">,</span> <span class="n">result</span><span class="o">);</span>
+
+        <span class="o">}</span>
+
+        <span class="c1">// N까지 반복해가며 방문하지 않았다면 아래 내용 수행</span>
+        <span class="c1">// 방문 처리 -&gt; 재귀 호출 -&gt; 방문 처리 해제</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">idx</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+                <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/14889">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
