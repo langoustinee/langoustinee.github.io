@@ -1522,4 +1522,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/254-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-2) 1182번 - 부분수열의 합",
+        "excerpt":"문제 풀이 이 문제는 재귀를 통한 백트래킹 유형으로 풀 수 있는 문제 중 하나이다. 아이디어 도출 이 문제에서는 수열에 담긴 배열의 원소를 선택하는 경우와 선택하지 않는 경우를 구분하는 것이 핵심이다. 생각해낸 아이디어를 먼저 살펴보자. dfs로 배열을 탐색하며, 배열의 모든 원소로 포함시켜 만드는 부분수열과, 포함시키지 않는 부분수열을 만들어간다. dfs의 깊이가 N(수열의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/255-post/",
+        "teaser": null
       }]
