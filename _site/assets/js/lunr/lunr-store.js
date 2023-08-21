@@ -1528,4 +1528,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/255-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 11403번 - 경로 찾기",
+        "excerpt":"문제 풀이 이 문제는 플로이드 워셜 알고리즘을 이용해 풀 수 있는 문제이다. 아이디어 도출 플로이드 워셜 알고리즘은 모든 정점에서 모든 정점으로의 최단거리를 구하는 알고리즘이다. 문제에서 요구하는 경로 확인을 위해서는 플로이드 워셜 알고리즘을 이용해 거쳐가는 정점을 확인해야 한다. 이 거쳐 가는 정점을 기준으로 최단 거리를 구할 수 있다. 이 말은 즉,...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/256-post/",
+        "teaser": null
       }]
