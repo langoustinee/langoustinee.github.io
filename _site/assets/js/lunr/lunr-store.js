@@ -1534,4 +1534,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/256-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1389번 - 케빈 베이컨의 6단계 법칙",
+        "excerpt":"문제 풀이 이 문제는 플로이드 워셜 알고리즘을 이용해 풀 수 있는 문제이다. 아이디어 도출 이전에 풀어봤던 문제에서는 정점사이의 경로 여부만 체크했다면, 이번 문제에서는 모든 정점 사이의 최단거리를 구해주어야 한다. 이전에 풀었던 경로 찾기 문제에서의 조건은 단순히 거쳐가는 정점의 경로가 존재하는지 체크하는 것이었지만, 이번에는 최단 경로를 나타내야하기 때문에 arr[i][j] &gt; arr[i][k]...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/257-post/",
+        "teaser": null
       }]
