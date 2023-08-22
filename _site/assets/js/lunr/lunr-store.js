@@ -1540,4 +1540,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/257-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 5525번 - IOIOI",
+        "excerpt":"문제 풀이 이번 문제는 문자열 문제로 문제의 서브테스크를 모두 충족해야 100점을 받을 수 있다. 아이디어 도출 처음에는 단순히 이중 for문으로 Pn 만큼 추가로 순회하며 IOI를 체크했지만, 시간초과가 발생하였다. 그래서 시간복잡도를 O(n)으로 줄이기 위해 DP 테이블을 이용하였다. 문제 풀이를 위한 아이디어는 다음과 같다. Pn에 해당하는 문자열인지 확인하기 위해 S의 2번째 원소부터...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/258-post/",
+        "teaser": null
       }]
