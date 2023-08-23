@@ -1,0 +1,287 @@
+I"�C<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 <strong>너비 우선 탐색 BFS</strong>을 응용하여 풀 수 있는 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>여태 BFS를 이용하며, 지도 배열에서 상,하,좌,우를 탐색할 dx, dy 배열을 이용했지만, 이번 문제는 D,S,L,R이라는 특수 명령마다 탐색해가며 누적되는 문자열을 반환해야 하는 문제이기에 별도의 레지스터 값과 문자열을 담을 클래스를 이용하게 되었다.</p>
+
+<p>그렇게, A라는 수를 B로 표현할 수 있는 최소한의 방법인 <strong>수행할 명령을 나열한 문자열</strong>을 출력하는 방법을 살펴보자.</p>
+
+<ol>
+  <li>BFS를 통해 A라는 수를 D,S,L,R 명령을 통해 변환한다.</li>
+  <li>문제의 요구사항을 잘 살펴서 D, S, L, R 명령을 수행한다.(자세한 내용은 아래에서 확인!)</li>
+  <li>D,S,L,R 명령을 수행하며 변환된 레지스터 값이 B가 된다면 탐색을 종료한다.</li>
+  <li>변환 과정에서 수행한 명령을 문자열로 출력하면 된다.</li>
+</ol>
+
+<blockquote>
+  <p>D,S,L,R 명령 수행</p>
+  <ul>
+    <li>D: 수를 2배로 바꾸고 10000으로 나눈 나머지로 갱신한다.</li>
+    <li>S: 수를 0일 때, 9999, 아니면 1을 빼준다</li>
+    <li>L: 왼쪽으로 자리수를 바꾼다. 1234 -&gt; 2341, 1234를 1000으로 나눈 나머지(234)에 10을 곱함=2340, 1234를 1000으로 나누면 1, 2340+1=2341</li>
+    <li>R: 오른쪽으로 자리수를 바꾼다. 1234 -&gt; 4123, 1234를 10으로 나눈 나머지에 1000 곱합 = 4000, 1234를 10으로 나누면 123, 4000+123=4123</li>
+  </ul>
+</blockquote>
+
+<p>이때, <strong>현재까지의 레지스터값과 수행한 명령어를 담을 Register라는 클래스를 사용</strong>하였다.</p>
+
+<p>그렇게 모든 경우에서 4가지 명령어를 실행하고 각각의 실행한 경우에서 또 명령어를 실행하도록 반복하였고 결국, 변환된 값이 B가 되었을때 누적된 문자열(명령어)를 반환하도록 구현했다.</p>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">java_study</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">static</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="kt">char</span><span class="o">[]</span> <span class="n">cmds</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'D'</span><span class="o">,</span> <span class="sc">'S'</span><span class="o">,</span> <span class="sc">'L'</span><span class="o">,</span> <span class="sc">'R'</span><span class="o">};</span>
+
+    <span class="kd">static</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">command</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+                
+                <span class="kt">int</span> <span class="no">T</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                <span class="k">while</span><span class="o">(</span><span class="no">T</span> <span class="o">--&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    
+                    <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                    <span class="kt">int</span> <span class="no">A</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                    <span class="kt">int</span> <span class="no">B</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+                    <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="mi">10000</span><span class="o">];</span>
+                    <span class="n">command</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="mi">10000</span><span class="o">];</span>
+                    
+                    <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">bfs</span><span class="o">(</span><span class="no">A</span><span class="o">,</span> <span class="no">B</span><span class="o">);</span>
+                    <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">result</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+                <span class="o">}</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="c1">// D,S,L,R 만큼 너비우번 탐색을 진행할 bfs 함수</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Register</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Register</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="s">""</span><span class="o">));</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+        <span class="k">while</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            
+            <span class="nc">Register</span> <span class="n">now</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+        
+            <span class="c1">// 만약 A와 B가 같다면 변환이 성공한 것이니 탐색을 종료한다.</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">now</span><span class="o">.</span><span class="na">num</span> <span class="o">==</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">now</span><span class="o">.</span><span class="na">command</span><span class="o">;</span>
+            <span class="o">}</span>
+            
+            <span class="c1">// D,S,L,R 4번을 반복한다.</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">change</span> <span class="o">=</span> <span class="n">changeRegister</span><span class="o">(</span><span class="n">now</span><span class="o">.</span><span class="na">num</span><span class="o">,</span> <span class="n">cmds</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">change</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">change</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="nc">Register</span><span class="o">(</span><span class="n">change</span><span class="o">,</span> <span class="n">now</span><span class="o">.</span><span class="na">command</span> <span class="o">+</span> <span class="n">cmds</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * D,S,L,R 명령별 기능을 수행할 함수
+     * D: 수를 2배로 바꾸고 10000으로 나눈 나머지로 갱신한다.
+     * S: 수를 0일 때, 9999, 아니면 1을 빼준다 
+     * L: 왼쪽으로 자리수를 바꾼다.
+     * R: 오른쪽으로 자리수를 바꾼다.
+     */</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">changeRegister</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="kt">char</span> <span class="n">cmd</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">cmd</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="sc">'D'</span><span class="o">:</span>
+                <span class="n">num</span> <span class="o">*=</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">9999</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">num</span> <span class="o">%=</span> <span class="mi">10000</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="sc">'S'</span><span class="o">:</span>
+                <span class="n">num</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="mi">9999</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="sc">'L'</span><span class="o">:</span>
+                <span class="kt">int</span> <span class="n">tmp_l1</span> <span class="o">=</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">1000</span><span class="o">)</span> <span class="o">*</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">tmp_l2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">;</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="n">tmp_l1</span> <span class="o">+</span> <span class="n">tmp_l2</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="sc">'R'</span><span class="o">:</span>
+                <span class="kt">int</span> <span class="n">tmp_r1</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">tmp_r2</span> <span class="o">=</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">10</span><span class="o">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">;</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="n">tmp_r1</span> <span class="o">+</span> <span class="n">tmp_r2</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">num</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// register값과 수행한 명령을 담을 Register 클래스</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Register</span> <span class="o">{</span>
+        
+        <span class="kt">int</span> <span class="n">num</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">command</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Register</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span> <span class="nc">String</span> <span class="n">command</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">command</span> <span class="o">=</span> <span class="n">command</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/9019">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

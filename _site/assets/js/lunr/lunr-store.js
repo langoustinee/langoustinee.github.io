@@ -1546,4 +1546,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/258-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-4) 9019번 - DSLR",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색 BFS을 응용하여 풀 수 있는 문제이다. 아이디어 도출 여태 BFS를 이용하며, 지도 배열에서 상,하,좌,우를 탐색할 dx, dy 배열을 이용했지만, 이번 문제는 D,S,L,R이라는 특수 명령마다 탐색해가며 누적되는 문자열을 반환해야 하는 문제이기에 별도의 레지스터 값과 문자열을 담을 클래스를 이용하게 되었다. 그렇게, A라는 수를 B로 표현할...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/259-post/",
+        "teaser": null
       }]

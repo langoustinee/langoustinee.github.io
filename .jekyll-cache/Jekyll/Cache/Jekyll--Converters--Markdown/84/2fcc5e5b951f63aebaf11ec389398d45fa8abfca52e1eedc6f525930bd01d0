@@ -1,4 +1,4 @@
-I"N<p><br /><br /></p>
+I"�<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
@@ -19,6 +19,10 @@
   <li>S를 순회하면서, 현재 위치까지 Pn만큼의 문자열을 만들어 Pn과 같다면, <strong>DP 테이블 위치에 1씩 카운트를 누적하도록 갱신</strong>한다.</li>
   <li>이후, <strong>DP 테이블의 현재값이 N보다 크거나 같다면, Pn이 포함되어 있는 것이기에 카운트를 1씩 증가</strong>시킨다.</li>
 </ol>
+
+<blockquote>
+  <p>Pn이 S에 포함되어 있는지를 DP 테이블의 값을 보고 판단하기에 시간복잡도를 O(n)으로 줄일 수 있었다.</p>
+</blockquote>
 
 <p><br /></p>
 
@@ -75,9 +79,7 @@
 45
 46
 47
-</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">java_study</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
 <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
@@ -102,13 +104,15 @@
                 <span class="c1">// 2번째 위치부터 Pn이 포함되는지를 확인하기 위해 순회한다.</span>
                 <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">M</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
                     
-                    <span class="c1">// 현재 위치까지 Pn(IOI)만큼의 문자열을 만든다.</span>
+                    <span class="c1">// 현재 위치까지 Pn(IOI)만큼 길이가 3인 문자열을 만든다.</span>
                     <span class="nc">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="no">S</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
                     
+                    <span class="c1">// 만든 temp가 "IOI"와 같다면 DP 테이블에 카운트를 1씩 갱신한다.  </span>
                     <span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"IOI"</span><span class="o">))</span> <span class="o">{</span>
                         <span class="no">D</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="no">D</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
                     <span class="o">}</span>
 
+                    <span class="c1">// DP 테이블의 값이 N보다 크거나 같다면 Pn이 포함되어 있는 것이기에 result를 1씩 증가시킨다.</span>
                     <span class="k">if</span><span class="o">(</span><span class="no">D</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="no">N</span><span class="o">)</span> <span class="o">{</span>
                         <span class="n">result</span><span class="o">++;</span>
                     <span class="o">}</span>

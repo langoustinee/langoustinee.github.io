@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-4) 9019번 - DSLR",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/259-post/",
+        "date"     : "2023-08-23 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 5525번 - IOIOI",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
