@@ -1552,4 +1552,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/259-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 14719번 - 빗물",
+        "excerpt":"     문제 풀이     이번 문제는 요구사항대로 잘 구현하면 된다.       아이디어 도출       문제 풀이를 위해 작성한 코드는 아래와 같다.   작성코드     1    출처        해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 문제 링크에서 참조바랍니다.  ","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/260-post/",
+        "teaser": null
       }]
