@@ -1,0 +1,170 @@
+I"x)<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 요구사항대로 잘 <strong>구현</strong>하면 된다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>빗물이 고이기 위한 조건은 무엇일까?</p>
+
+<ol>
+  <li>현재 블록의 높이보다 높은 블록이 왼쪽에 있어야 한다.</li>
+  <li>현재 블록의 높이보다 높은 블록이 오른쪽에 있어야 한다.</li>
+  <li>첫 블록과, 마지막 블록에는 빗물이 고일 수 없다.</li>
+</ol>
+
+<p>아이디어 자체는 단순하다. 이 조건을 문제 풀이를 위한 아이디어로 접목시켜 보자.</p>
+
+<ol>
+  <li><strong>첫 블록과 마지막 블록을 제외한 블록들을 탐색</strong>한다.</li>
+  <li>기둥들을 탐색하며 현재 기둥을 기준으로 <strong>왼쪽으로 가장 높은 기둥</strong>과, <strong>오른쪽으로 가장 높은 기둥</strong>을 구한다.</li>
+  <li>현재 기둥이 양 옆의 기둥의 높이보다 낮다면 <strong>왼쪽, 오른쪽 기둥 중 낮은 기둥 높이 값에서 현재 기둥 높이값을 빼준다.</strong></li>
+</ol>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+                
+                <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                <span class="kt">int</span> <span class="no">H</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                <span class="kt">int</span> <span class="no">W</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+                <span class="kt">int</span><span class="o">[]</span> <span class="n">heights</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">W</span><span class="o">];</span>
+
+                <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">W</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="n">heights</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                <span class="o">}</span>
+                
+                <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+                <span class="c1">// 1. 현재 블록 높이보다 왼쪽 블록이 높아야 한다.</span>
+                <span class="c1">// 2. 현재 블록 높이보다 오른쪽 블록이 높아야 한다.</span>
+                <span class="c1">// 3. 첫 줄 블록과 마지막 줄의 블록에는 빗물이 고일 수 없다.</span>
+
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">W</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                    
+                    <span class="c1">// 현재 기둥</span>
+                    <span class="kt">int</span> <span class="n">now</span> <span class="o">=</span> <span class="n">heights</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                    
+                    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+                    <span class="c1">// 왼쪽에서 가장 높은 기둥을 구한다.</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="n">left</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">heights</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">left</span><span class="o">);</span>
+                    <span class="o">}</span>
+                    
+                    <span class="c1">// 오른쪽에서 가장 높은 기둥을 구한다.</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="no">W</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="n">right</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">heights</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">right</span><span class="o">);</span>
+                    <span class="o">}</span>
+
+                    <span class="cm">/**
+                     * 현재 블록이 왼쪽, 오른쪽 블록보다 낮다면,
+                     * 둘 중 더 낮은 기둥의 높이값으로 현재 기둥 높이값을 빼준다.
+                     */</span>
+                    
+                    <span class="k">if</span><span class="o">(</span><span class="n">heights</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">left</span> <span class="o">&amp;&amp;</span> <span class="n">heights</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">result</span> <span class="o">+=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">)</span> <span class="o">-</span> <span class="n">heights</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                    <span class="o">}</span>
+
+                <span class="o">}</span>
+                
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">result</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/14719">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET
