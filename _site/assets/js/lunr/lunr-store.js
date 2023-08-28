@@ -1558,4 +1558,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/260-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 롤케이크 자르기",
+        "excerpt":"문제 풀이 이번 문제는 문제에서 요구한 대로 자료구조를 잘 활용하여 구현하면 되는 문제이다. 아이디어 도출 이 문제에서는 철수와 동생이 동일한 토핑 수를 나눠 먹을 수 있도록 롤케이크를 자를 수 있는 경우를 반환해야 한다. 어떤 자료구조를 이용할 수 있을까? HashMap HashSet 필자는 위 2개의 자료구조를 이용해 형과 동생이 나눠먹을 토핑 수를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/261-post/",
+        "teaser": null
       }]

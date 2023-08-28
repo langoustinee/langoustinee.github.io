@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 롤케이크 자르기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/261-post/",
+        "date"     : "2023-08-28 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(골드-5) 14719번 - 빗물",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
