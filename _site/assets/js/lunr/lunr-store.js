@@ -1564,4 +1564,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/261-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 하노이의 탑",
+        "excerpt":"문제 풀이 이번 문제는 하노이의 탑 원리를 잘 숙지하고 있으면 풀 수 있는 문제이다. 아이디어 도출 필자는 하노이의 탑 원리를 구현하기 위해 재귀 함수를 이용했다. 또한 이번 문제는 백준에서 출제된 하노이의 탑 이동순서 문제와 굉장히 유사하니 해당 문제를 풀었다면 해당 문제도 쉽게 풀 수 있을 것이다. 재귀를 이용해 하노이의 탑에서...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/262-post/",
+        "teaser": null
       }]
