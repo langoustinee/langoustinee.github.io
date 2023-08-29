@@ -1576,4 +1576,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/263-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 20529번 - 가장 가까운 세 사람의 심리적 거리",
+        "excerpt":"문제 풀이 이번 문제는 문제의 제약사항을 잘 파악한 뒤, 완전탐색을 이용해 쉽게 풀 수 있다. 아이디어 도출 처음에 단순히 완전탐색을 통해 모든 경우를 탐색하려 했으나 N의 범위가 최대 100,000이기에 시간초과를 어느정도 고려해야 했다. 시간 초과를 어떻게 줄일 수 있을까? 우리는 가까운 3 사람의 MBTI를 통해 최소가 되는 심리거리를 구해야 한다....","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/264-post/",
+        "teaser": null
       }]

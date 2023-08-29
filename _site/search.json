@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-1) 20529번 - 가장 가까운 세 사람의 심리적 거리",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/264-post/",
+        "date"     : "2023-08-29 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 2583번 - 영역 구하기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
