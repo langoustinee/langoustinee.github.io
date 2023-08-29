@@ -1570,4 +1570,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/262-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 2583번 - 영역 구하기",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색 BFS를 이용해 풀 수 있는 문제이다. 아이디어 도출 일반적인 BFS 문제들과 유사하나, 직사각형의 위치를 먼저 갱신하고 BFS 탐색을 진행하도록 구현하면 된다. 그래서 문제에서 주어지는 4개의 x,y좌표를 통해 직사각형의 위치를 갱신하는 것이 핵심이다. 문제에서는 왼쪽 아래 x,y 좌표와 오른쪽 위 x,y죄표를 어떻게 직사각형 위치만큼...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/263-post/",
+        "teaser": null
       }]
