@@ -1582,4 +1582,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/264-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 숫자 변환하기",
+        "excerpt":"문제 풀이 이번 문제는 동적 계획법(DP)을 통해 풀 수 있다. 처음엔 단순히 재귀를 통해 xn, x2, x*3 경우별로 재귀 호출하여 y가 되는 순간의 최소 깊이를 반환하는 방식으로 풀었으나 시간초과가 발생했다. 재귀 코드 - 오답(시간초과 발생) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/265-post/",
+        "teaser": null
       }]

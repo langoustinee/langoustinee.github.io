@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 숫자 변환하기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/265-post/",
+        "date"     : "2023-08-30 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 20529번 - 가장 가까운 세 사람의 심리적 거리",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
