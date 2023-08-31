@@ -1588,4 +1588,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/265-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 두 큐 합 같게 만들기",
+        "excerpt":"문제 풀이 이 문제는 완전탐색을 활용해 풀기보다는 그리디 알고리즘을 활용해 풀어야 한다. 아아디어 도출 정직하게 문제에서 주어진대로 접근한다면 1번큐와 2번큐 중 추출시 선택의 기로가 생기게 되고, 결국 큐의 길이(최대 300,000)만큼 완전 탐색하며 경우의 수를 따지게 된다면 시간초과가 발생할 수 있다. 모든 큐의 합을 맟추려하지 말고, 아래처럼 접근하며 어떨까? 두 큐의...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/266-post/",
+        "teaser": null
       }]

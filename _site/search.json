@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 두 큐 합 같게 만들기",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/266-post/",
+        "date"     : "2023-08-31 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 숫자 변환하기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",
