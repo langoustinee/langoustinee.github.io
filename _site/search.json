@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-1) 1149번 - RGB거리",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/267-post/",
+        "date"     : "2023-09-04 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 두 큐 합 같게 만들기",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

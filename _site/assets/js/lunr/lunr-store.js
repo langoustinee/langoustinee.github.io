@@ -1594,4 +1594,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/266-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1149번 - RGB거리",
+        "excerpt":"문제 풀이 이번 문제는 동적 계획법 DP를 이용해 점화식을 세운다면 쉽게 풀 수 있는 문제이다. 아이디어 도출 처음엔 문제를 잘 이해하기 어려울 수 있다. 하나씩 살펴보며 간단히 정리해보자. 일단 1번부터 N번까지의 집을 색칠해야하는데 이때, 색칠할 수 있는 색의 종류는 빨강, 초록, 파랑 3가지가 주어진다. 그리고 각 집마다 색을 칠하는 비용이...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/267-post/",
+        "teaser": null
       }]
