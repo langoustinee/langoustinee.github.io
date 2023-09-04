@@ -1,0 +1,198 @@
+I"�7<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 <strong>동적 계획법 DP</strong>를 이용해 풀 수 있는 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>필자는 반복문을 활용한 Bottom-Up 방식이 아닌 재귀 함수를 이용한 Top-Down 방식을 이용해 풀었다.</p>
+
+<p>이번 문제는 이전에 풀었던 <a href="https://langoustinee.github.io/java/232-post/">계단 오르기</a>와 같은 <strong>LIS(최장 증가 부분 수열) 유형의 문제</strong>이다.</p>
+
+<blockquote>
+  <p>최장 증가 부분 수열(LIS)란 주어진 수열에서 오름차순으로 구성 가능한 원소들을 선택하여 최대 길이를 찾아내는 것이다. 잘 활용하면 O(N logN) 의 시간복잡도를 갖는다.</p>
+</blockquote>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="c1">// DP 테이블 선언</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="no">D</span><span class="o">;</span>
+    
+    <span class="c1">// 색상별 비용을 담을 배열</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">arr</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+                
+                <span class="c1">// 1번 규칙: 1번 집과 2번 집의 색은 달라야 한다.</span>
+                <span class="c1">// 2번 규칙: N-1번 집과 N번 집의 색은 달라야 한다.</span>
+                <span class="c1">// 3번 규칙: i번 집은 i-1번 집, i+1번 집의 색과 달라야 한다.</span>
+
+                <span class="c1">// 모든 집을 탐색하며 경로마다 경우의 수를 찾아 가장 작은 누적합을 찾아야 한다.</span>
+                <span class="c1">// 1번집을 DP 테이블의 0번째로 초기화</span>
+
+                <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+
+                <span class="c1">// 안쪽 배열은 R,G,B 3가지이기에 3의 크기로 초기화</span>
+                <span class="no">D</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
+
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">(),</span> <span class="s">" "</span><span class="o">);</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                <span class="o">}</span>
+
+                <span class="c1">// DP 테이블의 1번 집의 R,G,B 비용 설정</span>
+                <span class="no">D</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+                <span class="no">D</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+                <span class="no">D</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+
+                <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">),</span> <span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)));</span>
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">result</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * DP 테이블을 갱신할 재귀함수
+     *
+     * 점화식은 아래와 같다.
+     * Red: arr[N][0] = min(arr[N-1][1], arr[N-1][2]) + arr[N][0]
+     * Green: arr[N][1] = min(arr[N-1][0], arr[N-1][2]) + arr[N][1]
+     * Blue: arr[N][2] = min(arr[N-1][0], arr[N-1][1]) + arr[N][2]
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">recursion</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/**
+         * 탐색하지 않은 집의 위치라면 R,G,B 중 최소 비용을 갱신한다.
+         * Red일 경우 == 0
+         * Green일 경우 == 1
+         * Blue일 경우 == 2
+         */</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">D</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="n">color</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">color</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="no">D</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">),</span> <span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">))</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">color</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="no">D</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">))</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+            <span class="o">}</span> 
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="no">D</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="n">recursion</span><span class="o">(</span><span class="no">N</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="mi">2</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 메모이제이션을 통해 탐색한 집이라면 위 제어문을 타지 않고 바로 반환한다.</span>
+        <span class="k">return</span> <span class="no">D</span><span class="o">[</span><span class="no">N</span><span class="o">][</span><span class="n">color</span><span class="o">];</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/1149">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

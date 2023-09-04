@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 11053번 - 가장 긴 증가하는 부분 수열",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/268-post/",
+        "date"     : "2023-09-04 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 1149번 - RGB거리",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
