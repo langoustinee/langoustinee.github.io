@@ -1606,4 +1606,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/268-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 2xn 타일링",
+        "excerpt":"문제 풀이 이번 문제는 동적 계획법 DP를 이용해 손쉽게 풀 수 있다. 아아디어 도출 이 문제는 백준의 2×n 타일링 문제와 거의 유사한 문제이다. 문제의 자세한 풀이는 해당 문제와 거의 동일해서 위 링크를 참조하기 바란다. 간단히 문제 핵심 아이디어만 살펴보고 넘어가자. 2xn 타일링 문제는 피보나치 수열과 동일한 구조를 가지고 있기에 DP를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/269-post/",
+        "teaser": null
       }]
