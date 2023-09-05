@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 프로그래머스(level-2) - 2개 이하로 다른 비트",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, programmers",
+        "url"      : "/java/270-post/",
+        "date"     : "2023-09-05 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 프로그래머스(level-2) - 2xn 타일링",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, programmers",

@@ -1612,4 +1612,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/269-post/",
         "teaser": null
+      },{
+        "title": "[Java] 프로그래머스(level-2) - 2개 이하로 다른 비트",
+        "excerpt":"문제 풀이 이번 문제는 문제의 요구사항대로 비트를 활용해 구현하면 되는 문제이다. 아아디어 도출 비트연산자를 활용하면 풀 수 있을 것으로 보이나 필자는 비트연산에 대해서 부족한 점이 많아 규칙을 찾아서 풀었다. 정수를 비트(2진수)로 변환한 후, 이 수보다 큰 수이면서 비트일 때의 차이가 1~2개이여야 한다. 여기서 어떤 규칙을 찾아낼 수 있을까? 먼저 십진수...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","programmers"],
+        "url": "/java/270-post/",
+        "teaser": null
       }]
