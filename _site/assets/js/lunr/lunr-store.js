@@ -1618,4 +1618,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","programmers"],
         "url": "/java/270-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1932번 - 정수 삼각형",
+        "excerpt":"문제 풀이 이번 문제는 동적 계획법 DP를 이용해 풀 수 있는 문제이다. 아이디어 도출 이번에는 재귀가 아닌 반복문을 활용한 Bottom-Up 방식으로 풀었다. 문제풀이를 위한 과정을 살펴보자면, 정수 삼각형의 꼭대기부터 아래로 내려가면서 누적합을 구해가는데 최하단 층까지 누적합을 구했다면, 최하단 층에서 가장 큰 최댓값을 구하면 된다. 점화식 세우기 그렇다면 이제, 동적 계획법을...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/271-post/",
+        "teaser": null
       }]
