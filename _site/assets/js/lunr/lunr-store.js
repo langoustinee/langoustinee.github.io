@@ -1624,4 +1624,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/271-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 7562번 - 나이트의 이동",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색인 BFS를 이용해 풀 수 있다. 아이디어 도출 보통, BFS를 이용하여 상,하,좌,우 4 방향으로 이동하는 문제가 많지만, 이번 문제에서는 이동할 수 있는 구간이 8 방향임을 고려하여 접근해야 한다. 나이트의 이동반경을 체스판 위에서 x,y 좌표로 살펴보자. x 좌표 y 좌표 -2 -1 -2 1 -1...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/272-post/",
+        "teaser": null
       }]
