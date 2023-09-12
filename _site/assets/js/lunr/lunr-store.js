@@ -1630,4 +1630,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/272-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-4) 1158번 - 요세푸스 문제",
+        "excerpt":"문제 풀이 이번 문제는 큐를 이용해 문제의 요구사항을 구현하면 되는 문제이다. 아이디어 도출 큐를 이용한 접근 방식은 단순하다. 1에서 N까지의 수를 큐에 삽입한다. K-1번째 수까지는 첫 번째 값을 맨 뒤로 보낸다. K번째 수일 경우, 큐에서 추출하여 출력한다. 2-3번 과정을 큐의 사이즈가 1개일 때까지 반복한다. 마지막 남은 1개의 원소를 출력한다. 위...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/273-post/",
+        "teaser": null
       }]
