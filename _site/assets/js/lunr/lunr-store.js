@@ -1636,4 +1636,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/273-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 2615번 - 오목",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색인 BFS를 잘 응용하면 풀 수 있는 문제이다. 아이디어 도출 문제의 요구사항을 보면, 연속으로 5알이 놓인 오목은 정상이나, 6알인 육목이나 7알인 칠목의 경우는 조건 달성 실패라고 한다. 예륻 들어 흰돌이 6알, 검은돌이 5알이면 흰돌이 아닌 검은돌이 이기는 것이다. 먼저 오목판의 길이는 최대 19이기에 시간복잡도...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/274-post/",
+        "teaser": null
       }]

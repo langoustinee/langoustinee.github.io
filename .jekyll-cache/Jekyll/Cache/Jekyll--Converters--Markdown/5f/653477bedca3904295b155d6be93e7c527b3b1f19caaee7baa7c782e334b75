@@ -1,0 +1,138 @@
+I"�<p><br /><br /></p>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+
+<hr />
+
+<p>이번 문제는 <strong>BFS를 잘 응용</strong>하면 풀 수 있는 문제이다.</p>
+
+<p><br /></p>
+
+<h4 id="아이디어-도출">아이디어 도출</h4>
+
+<p>큐를 이용한 접근 방식은 단순하다.</p>
+
+<ol>
+  <li>1에서 N까지의 수를 큐에 삽입한다.</li>
+  <li><strong>K-1번째 수까지는 첫 번째 값을 맨 뒤로</strong> 보낸다.</li>
+  <li><strong>K번째 수일 경우, 큐에서 추출하여 출력</strong>한다.</li>
+  <li>2-3번 과정을 <strong>큐의 사이즈가 1개일 때까지 반복</strong>한다.</li>
+  <li>마지막 남은 1개의 원소를 출력한다.</li>
+</ol>
+
+<p>위 아이디어대로 큐를 이용해 구현하면 쉽게 풀 수 있는 문제였다.</p>
+
+<p><br /></p>
+
+<p>문제 풀이를 위해 작성한 코드는 아래와 같다.</p>
+
+<h3 id="작성코드">작성코드</h3>
+
+<hr />
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>    
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">try</span> <span class="o">(</span><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+            <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">)))</span> <span class="o">{</span>
+                
+                <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+                <span class="kt">int</span> <span class="no">N</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+                <span class="kt">int</span> <span class="no">K</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+
+                <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"&lt;"</span><span class="o">);</span>
+
+                <span class="c1">// 1. 1부터 N-1까지 큐에 삽입한다.</span>
+                <span class="c1">// 2. K-1번째 까지는 큐의 첫째 값을 맨 뒤로 보낸다.</span>
+                <span class="c1">// 3. K번째에는 삽입하여 출력한다.</span>
+
+                <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="no">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="o">}</span>
+
+                <span class="cm">/**
+                 * 큐의 원소가 1개 남을 때까지 반복한다.
+                 * K-1번째까지는 첫 원소를 맨 뒤로 보낸다.
+                 * K번째 값은 추출하여 출력한다.
+                 */</span>
+                <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">while</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">idx</span> <span class="o">==</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span> <span class="s">", "</span><span class="o">);</span>
+                        <span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                        <span class="k">continue</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                    <span class="n">q</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+                    <span class="n">idx</span><span class="o">++;</span>
+                <span class="o">}</span>
+                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">()</span> <span class="o">+</span><span class="s">"&gt;"</span><span class="o">);</span>
+                <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">sb</span><span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>
+                
+        <span class="o">}</span>
+    <span class="o">}</span>    
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="출처">출처</h3>
+
+<hr />
+
+<ul>
+  <li>해당 문제의 저작권은 문제를 만든이에게 있으며 자세한 내용은 <a href="https://www.acmicpc.net/problem/1158">문제 링크</a>에서 참조바랍니다.</li>
+</ul>
+:ET

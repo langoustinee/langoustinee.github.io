@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-1) 2615번 - 오목",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/274-post/",
+        "date"     : "2023-09-12 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-4) 1158번 - 요세푸스 문제",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
