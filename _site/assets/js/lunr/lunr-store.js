@@ -1642,4 +1642,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/274-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(실버-1) 1325번 - 효율적인 해킹",
+        "excerpt":"문제 풀이 이번 문제는 너비 우선 탐색인 BFS를 이용해 풀 수 있는 문제이다. 아이디어 도출 이번 문제에서는 컴퓨터를 노드, 연결된 신뢰도를 에지라고 생각하고 BFS 탐색을 수행했다. A와 B에 관계에 대해서 유의할 점은 다음과 같다. A가 B를 신뢰하는 경우 B를 해킹하면 A도 해킹할 수 있는데, 반대의 경우, 즉 A가 B를 신뢰하는...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/275-post/",
+        "teaser": null
       }]
