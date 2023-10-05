@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(실버-2) 16953번 - A → B",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/276-post/",
+        "date"     : "2023-10-05 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-1) 1325번 - 효율적인 해킹",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",
