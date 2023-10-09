@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(골드-5) 12865번 - 평범한 배낭",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/277-post/",
+        "date"     : "2023-10-09 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(실버-2) 16953번 - A → B",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

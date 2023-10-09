@@ -1654,4 +1654,10 @@ var store = [{
         "tags": ["blog","algorithm","study","java","baekjoon"],
         "url": "/java/276-post/",
         "teaser": null
+      },{
+        "title": "[Java] 백준(골드-5) 12865번 - 평범한 배낭",
+        "excerpt":"문제 풀이 유명한 배낭 문제 중 하나인 이번 문제는, 조합 최적화 문제로 동적 계획법(DP)로 해결해야 한다. 아이디어 도출 배낭 문제의 경우 짐을 쪼갤 수 있는 문제(Fraction Knapsack Problem)와 짐을 쪼갤 수 없는 문제(0/1 Knapsack Problem)로 나눠진다. 알고리즘 또한 다르게 적용하는데, Fraction Knapsack Problem은 그리디 알고리즘을, 0/1 Knapsack Problem의 경우 DP를...","categories": ["Java"],
+        "tags": ["blog","algorithm","study","java","baekjoon"],
+        "url": "/java/277-post/",
+        "teaser": null
       }]
