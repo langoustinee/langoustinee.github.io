@@ -1,6 +1,14 @@
 [
     
         {
+        "title"    : "[Java] 백준(브론즈-2) 13458번 - 시험 감독",
+        "category" : "",
+        "tags"     : "blog, algorithm, study, java, baekjoon",
+        "url"      : "/java/278-post/",
+        "date"     : "2023-10-11 00:00:00 +0900"
+        } ,
+    
+        {
         "title"    : "[Java] 백준(골드-5) 12865번 - 평범한 배낭",
         "category" : "",
         "tags"     : "blog, algorithm, study, java, baekjoon",

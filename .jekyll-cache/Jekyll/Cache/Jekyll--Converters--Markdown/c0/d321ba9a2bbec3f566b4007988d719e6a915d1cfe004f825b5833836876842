@@ -1,91 +1,14 @@
-I"�4<p><br /><br /></p>
+I")<p><br /><br /></p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 
 <hr />
 
-<p>유명한 배낭 문제 중 하나인 이번 문제는, <strong>조합 최적화</strong> 문제로 <strong>동적 계획법(DP)</strong>로 해결해야 한다.</p>
+<p>이번 문제는 사칙 연산을 통해 간단하게 풀 수 있는 문제이다.</p>
 
 <p><br /></p>
 
 <h4 id="아이디어-도출">아이디어 도출</h4>
-
-<blockquote>
-  <p>배낭 문제의 경우 짐을 쪼갤 수 있는 문제(Fraction Knapsack Problem)와 짐을 쪼갤 수 없는 문제(0/1 Knapsack Problem)로 나눠진다. 알고리즘 또한 다르게 적용하는데, Fraction Knapsack Problem은 그리디 알고리즘을, 0/1 Knapsack Problem의 경우 DP를 사용한다.</p>
-</blockquote>
-
-<p>이번 문제는 짐을 쪼갤 수 없는 배낭문제이기에 DP로 풀어야 한다.</p>
-
-<p>N개만큼의 무게와 가치들을 토대로 수용가능한 최대 무게를 구하기 위한 규칙을 살펴보자.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">i/dp</th>
-      <th style="text-align: center">0</th>
-      <th style="text-align: center">1</th>
-      <th style="text-align: center">2</th>
-      <th style="text-align: center">3</th>
-      <th style="text-align: center">4</th>
-      <th style="text-align: center">5</th>
-      <th style="text-align: center">6</th>
-      <th>7</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">13</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">8</td>
-      <td style="text-align: center">8</td>
-      <td style="text-align: center">13</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">6</td>
-      <td style="text-align: center">8</td>
-      <td style="text-align: center">8</td>
-      <td style="text-align: center">13</td>
-      <td><strong>14</strong></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">4</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">6</td>
-      <td style="text-align: center">8</td>
-      <td style="text-align: center">12</td>
-      <td style="text-align: center">13</td>
-      <td><strong>14</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>위 표를 보면, i에 따른 무게와 가치별로</p>
-
-<h4 id="점화식">점화식</h4>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">DP[i][k] = max(DP[i-1][k], DP[i-1][k - W[i]] + V[i])</code></li>
-</ul>
 
 <p><br /></p>
 
